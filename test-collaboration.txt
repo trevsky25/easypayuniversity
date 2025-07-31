@@ -1,0 +1,16 @@
+Git Collaboration Test File
+========================
+
+This is a test file created to demonstrate git collaboration workflow.
+
+Created by: Claude (AI Assistant)
+Date: July 31, 2025
+Purpose: Testing how multiple collaborators can push to the same repository
+
+This file should help demonstrate:
+- How git handles multiple contributors
+- Push/pull workflows
+- Potential merge conflicts
+- Best practices for collaboration
+
+Feel free to modify this file to test collaboration scenarios!
