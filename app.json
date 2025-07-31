@@ -1,0 +1,29 @@
+{
+  "name": "easypay-university",
+  "description": "EasyPay University - Comprehensive training platform for EasyPay Finance merchant partners",
+  "repository": "https://github.com/trevsky25/easypayuniversity",
+  "logo": "https://easypay-university.herokuapp.com/easypay-logo.svg",
+  "keywords": ["nextjs", "react", "training", "education", "finance"],
+  "image": "heroku/nodejs",
+  "buildpacks": [
+    {
+      "url": "heroku/nodejs"
+    }
+  ],
+  "env": {
+    "NODE_ENV": {
+      "description": "Node environment",
+      "value": "production"
+    }
+  },
+  "formation": {
+    "web": {
+      "quantity": 1,
+      "size": "basic"
+    }
+  },
+  "addons": [],
+  "scripts": {
+    "postdeploy": "echo 'Deployment complete!'"
+  }
+}
