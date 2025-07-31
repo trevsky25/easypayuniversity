@@ -1,0 +1,26 @@
+
+> easypay-university@0.1.0 dev
+> next dev --turbopack
+
+ ⚠ Warning: Found multiple lockfiles. Selecting /Users/TrevorKist/package-lock.json.
+   Consider removing the lockfiles at:
+   * /Users/TrevorKist/Desktop/EasyPay University/easypay-university/package-lock.json
+   * /Users/TrevorKist/Desktop/package-lock.json
+
+   ▲ Next.js 15.4.5 (Turbopack)
+   - Local:        http://localhost:3000
+   - Network:      http://10.0.0.53:3000
+
+ ✓ Starting...
+ ✓ Ready in 1982ms
+ ○ Compiling / ...
+ ✓ Compiled / in 3.3s
+ GET / 200 in 3805ms
+ GET / 200 in 203ms
+ ✓ Compiled /favicon.ico in 324ms
+ GET /favicon.ico?favicon.45db1c09.ico 200 in 632ms
+ GET / 200 in 175ms
+ GET /favicon.ico?favicon.45db1c09.ico 200 in 290ms
+ GET / 200 in 186ms
+ ✓ Compiled in 409ms
+[?25h
