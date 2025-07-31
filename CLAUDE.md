@@ -14,6 +14,8 @@ EasyPay University is a comprehensive training platform designed for EasyPay Fin
 - **Progress Tracking**: Individual and team progress monitoring
 - **Certificate System**: Automatic certificate generation upon module completion
 - **Gamification**: Streaks, badges, and completion tracking
+- **EasyPay Bucks Currency**: Digital currency system where users earn 100 bucks per completed module
+- **Currency Exchange**: Redemption system for Amazon gift cards (100 bucks = $5 gift card)
 
 ### User Interface & Experience
 - **EasyPay Branding**: Full integration of EasyPay logo and color scheme (#00D4AA teal)
@@ -43,6 +45,7 @@ EasyPay University is a comprehensive training platform designed for EasyPay Fin
 easypay-university/
 ├── app/
 │   ├── admin/page.tsx                 # Admin analytics dashboard
+│   ├── currency-exchange/page.tsx     # EasyPay Bucks exchange for gift cards
 │   ├── modules/
 │   │   ├── page.tsx                   # Modules listing page
 │   │   ├── [id]/page.tsx              # Individual module content
@@ -66,6 +69,7 @@ easypay-university/
 ├── data/
 │   └── quizData.ts                    # Quiz questions database
 ├── lib/
+│   ├── easypayBucks.ts                # EasyPay Bucks currency management system
 │   └── utils.ts                       # Utility functions
 └── public/
     └── easypay-logo.svg               # EasyPay branding
@@ -152,8 +156,32 @@ The application is configured for easy deployment on Vercel or any Node.js hosti
 - Secure admin access patterns implemented
 - Production build optimization enabled
 
+## Claude Code Instructions
+- **Git Commits**: Do not include any reference to "Claude Code" or similar AI assistant branding in commit messages
+- **Keep commits clean**: Use professional, descriptive commit messages without AI attribution
+
 ---
 
-**Project Status**: ✅ Complete and Production Ready
+## Recent Updates - July 31, 2025
+
+### ✅ New Gamification System
+- **EasyPay Bucks Currency**: Implemented complete digital currency system
+- **Module Rewards**: Users earn 100 EasyPay Bucks for each completed training module
+- **Currency Exchange**: New dedicated page for redeeming bucks for Amazon gift cards
+- **Exchange Rates**: 100 bucks = $5 gift card, with better rates for higher values ($10, $25 cards)
+- **Balance Display**: Real-time balance shown in header with click-to-exchange functionality
+- **Transaction History**: Complete activity tracking for all earnings and spending
+- **Visual Feedback**: Celebration messages and notifications when earning rewards
+- **Local Storage**: Persistent data storage for user progress and currency balance
+
+### Technical Implementation
+- **State Management**: Custom React hooks and singleton pattern for currency management
+- **Type Safety**: Full TypeScript implementation with proper interfaces
+- **UI Integration**: Seamless integration with existing EasyPay design system
+- **Performance**: Optimized with proper React lifecycle management and conditional rendering
+
+---
+
+**Project Status**: ✅ Complete and Production Ready with Gamification
 **Last Updated**: July 31, 2025
 **Repository**: https://github.com/trevsky25/easypayuniversity.git

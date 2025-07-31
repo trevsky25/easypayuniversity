@@ -3,6 +3,7 @@
 import { useState } from 'react'
 import { Card } from '@/components/ui/Card'
 import { Progress } from '@/components/ui/Progress'
+import { easyPayBucksManager } from '@/lib/easypayBucks'
 import { 
   CheckCircle, 
   XCircle, 
@@ -11,7 +12,8 @@ import {
   ArrowLeft,
   Trophy,
   AlertCircle,
-  RotateCcw
+  RotateCcw,
+  Coins
 } from 'lucide-react'
 
 export interface QuizQuestion {
@@ -104,6 +106,12 @@ export function QuizComponent({
       // Quiz complete
       const score = calculateScore()
       const passed = score >= passingScore
+      
+      // Award EasyPay Bucks for passing the quiz
+      if (passed) {
+        easyPayBucksManager.markModuleCompleted(moduleId)
+      }
+      
       setShowResults(true)
       onComplete(score, passed, answers)
     }
@@ -219,6 +227,17 @@ export function QuizComponent({
               : `You need ${passingScore}% to pass. You can retake the quiz anytime.`
             }
           </p>
+          {passed && (
+            <div className="mt-4 bg-easypay-green/10 border border-easypay-green/20 rounded-lg p-4">
+              <div className="flex items-center justify-center gap-2 text-easypay-green font-semibold">
+                <Coins className="w-5 h-5" />
+                <span>+100 EasyPay Bucks Earned!</span>
+              </div>
+              <p className="text-sm text-easypay-green/80 text-center mt-1">
+                Congratulations! You've earned 100 EasyPay Bucks for completing this module.
+              </p>
+            </div>
+          )}
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">

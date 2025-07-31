@@ -8,7 +8,8 @@ import {
   HeadphonesIcon,
   Menu,
   X,
-  Users
+  Users,
+  Coins
 } from 'lucide-react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
@@ -20,6 +21,7 @@ const navigation = [
   { name: 'Training Modules', href: '/modules', icon: BookOpen },
   { name: 'Resources', href: '/resources', icon: FileText },
   { name: 'My Progress', href: '/progress', icon: Trophy },
+  { name: 'Currency Exchange', href: '/currency-exchange', icon: Coins },
   { name: 'Support', href: '/support', icon: HeadphonesIcon },
 ]
 
