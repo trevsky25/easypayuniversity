@@ -1,42 +1,77 @@
 # EasyPay University
 
-A comprehensive training platform for EasyPay Finance merchant partners, built with Next.js and TypeScript.
+A comprehensive gamified training platform for EasyPay Finance merchant partners, built with Next.js and TypeScript.
 
 ![EasyPay University](https://img.shields.io/badge/Status-Production%20Ready-brightgreen)
 ![Next.js](https://img.shields.io/badge/Next.js-15.4.5-black)
 ![TypeScript](https://img.shields.io/badge/TypeScript-5.0-blue)
 ![Tailwind CSS](https://img.shields.io/badge/Tailwind%20CSS-3.0-38B2AC)
+![Live Demo](https://img.shields.io/badge/Demo-Live-success)
 
 ## 🎯 Overview
 
-EasyPay University is a modern Learning Management System (LMS) designed to train merchant partners on EasyPay Finance's processes, requirements, and best practices. The platform features interactive modules, comprehensive quizzes, progress tracking, and administrative analytics.
+EasyPay University is a cutting-edge Learning Management System (LMS) designed to train merchant partners on EasyPay Finance's processes, requirements, and best practices. The platform features interactive modules, comprehensive quizzes, gamification with eBucks currency system, practice scenarios, and progress tracking.
 
-## ✨ Features
+## ✨ Key Features
 
 ### 🎓 Learning Management
-- **4 Comprehensive Modules** covering company overview, applications, credit culture, and advanced topics
-- **Interactive Quiz System** with 50+ questions across multiple formats
-- **Progress Tracking** with completion certificates
-- **Gamification** including streaks and achievement badges
+- **7 Comprehensive Modules** covering company overview, credit culture, RIC vs LTO contracts, applications, and customer handling
+- **Interactive Learning Content** with calculators, simulations, and gamified experiences
+- **Dynamic Quiz System** with 100+ questions across multiple formats
+- **Completion Certificates** with achievement tracking
+- **Self-paced Learning** with progress preservation
 
-### 🎨 User Experience  
-- **EasyPay Branding** with official logo and color scheme
-- **Responsive Design** optimized for all devices
-- **Intuitive Navigation** with active state indicators
-- **Clean Modern UI** matching EasyPay Business Center design
+### 🎮 Gamification System
+- **eBucks Currency** - Earn virtual currency for completing activities
+- **Daily Challenges** - Fresh challenges with bonus eBucks rewards
+- **Achievement System** - Unlock badges and milestones
+- **Streak Tracking** - Maintain learning momentum
+- **Gift Card Exchange** - Redeem eBucks for Amazon gift cards
+- **Leaderboards** - Optional competitive elements
 
-### 📊 Admin Dashboard
-- **Platform Analytics** with user engagement metrics
-- **Module Performance** tracking and insights  
-- **Geographic Distribution** of training completion
-- **Real-time Activity** feed and notifications
+### 🛠️ Interactive Tools
+- **Financing Calculator** - Real-time payment calculations
+- **Program Comparison Tool** - Compare RIC, LTO, and TLP options
+- **Customer Matching Game** - Practice customer profiling
+- **Objection Trainer** - Handle common customer concerns
+- **Application Simulator** - Practice application submissions
+- **Practice Scenarios** - Real-world conversational training
+
+### 🎯 Practice Environment
+- **LTO Application Scenarios** - Step-by-step application walkthroughs
+- **Conversational Training** - Interactive customer dialogue practice
+- **Automotive Scenarios** - Industry-specific training content
+- **Customer Objection Handling** - Practice overcoming resistance
+- **Credit Culture Building** - Team training scenarios
+
+### 📱 User Experience  
+- **EasyPay Branding** with official green theme and custom eBucks logo
+- **Responsive Design** optimized for all devices and mobile-first
+- **Intuitive Navigation** with sidebar and breadcrumb navigation
+- **Consistent UI** matching EasyPay Business Center design
+- **Dark/Light Theme** support with accessibility features
+
+### 📊 Analytics & Progress
+- **Comprehensive Progress Tracking** with visual stat tiles
+- **Module Completion Analytics** with time tracking
+- **Achievement Progress** with points and milestone tracking
+- **Learning Streak Monitoring** with daily engagement metrics
+- **Performance Insights** with quiz scores and improvement areas
+
+### 🆘 Support Center
+- **35 Official FAQs** directly from EasyPay Finance website
+- **Categorized Help Content** across 7 support categories
+- **Multi-channel Support** with phone, email, and live chat
+- **Quick Reference Guides** for common tasks
+- **Searchable Knowledge Base** with instant filtering
 
 ### 🛠️ Technical Stack
-- **Next.js 15.4.5** with App Router
-- **TypeScript** for type safety
-- **Tailwind CSS** with custom EasyPay theme
-- **React Components** with client-side interactivity
+- **Next.js 15.4.5** with App Router and TypeScript
+- **React 18** with modern hooks and patterns
+- **Tailwind CSS** with custom EasyPay design system
+- **Local Storage** for data persistence and offline capability
 - **Lucide Icons** for consistent iconography
+- **Responsive Grid Layouts** with mobile optimization
 
 ## 🚀 Quick Start
 
@@ -67,30 +102,59 @@ EasyPay University is a modern Learning Management System (LMS) designed to trai
 
 ## 📚 Training Modules
 
-| Module | Title | Duration | Status |
-|--------|-------|----------|--------|
-| 1 | Welcome to EasyPay Finance | 45 min | ✅ Complete |
-| 2 | How to Submit Applications | 60 min | ✅ Complete |  
-| 3 | Establishing a Credit Culture | 90 min | ✅ Complete |
-| 4 | Advanced Topics | 120 min | ✅ Complete |
+| Module | Title | Duration | Content Type | Status |
+|--------|-------|----------|--------------|--------|
+| 1 | Welcome to EasyPay Finance | 45 min | Interactive + Quiz | ✅ Complete |
+| 2 | Establishing a Credit Culture | 75 min | Interactive + Quiz | ✅ Complete |  
+| 3 | Understanding RIC vs LTO Contracts | 60 min | Interactive + Quiz | ✅ Complete |
+| 4 | How to Submit a RIC Application | 90 min | Interactive + Quiz | ✅ Complete |
+| 5 | How to Submit a LTO Application | 90 min | Interactive + Quiz | ✅ Complete |
+| 6 | Handling Customer Objections | 75 min | Interactive + Quiz | ✅ Complete |
+| 7 | Common Customer Pain Points | 60 min | Interactive + Quiz | ✅ Complete |
 
-## 🎯 Quiz System
+### 🎮 Additional Features
+- **Daily Challenges** - Fresh daily tasks with eBucks rewards
+- **Practice Scenarios** - Real-world customer interaction training
+- **Currency Exchange** - Redeem eBucks for Amazon gift cards
+- **Progress Tracking** - Comprehensive analytics and achievement system
 
-- **Multiple Choice Questions** - Standard knowledge assessment
+## 🎯 Interactive Learning System
+
+### Quiz Features
+- **Multiple Choice Questions** - Standard knowledge assessment with 4 options
 - **True/False Questions** - Quick concept verification  
 - **Scenario-Based Questions** - Real-world application testing
-- **Immediate Feedback** - Instant explanations and learning
-- **Progress Tracking** - Real-time completion monitoring
+- **Immediate Feedback** - Instant explanations and learning tips
+- **Progress Tracking** - Real-time completion monitoring with streak tracking
 
-## 📊 Admin Features
+### Interactive Components
+- **Financing Calculator** - Calculate monthly payments and terms
+- **Program Comparison Tool** - Side-by-side RIC vs LTO vs TLP comparison
+- **Customer Matching Game** - Match customers to appropriate financing programs
+- **Objection Trainer** - Practice handling customer concerns with branching scenarios
+- **Application Simulator** - Step-by-step application process practice
+- **Credit Culture Builder** - Team training and implementation guides
 
-Access the admin dashboard at `/admin` to view:
+## 💰 eBucks Gamification System
 
-- Platform usage statistics
-- Module completion rates
-- User engagement metrics
-- Geographic training distribution
-- Real-time activity feed
+### Earning eBucks
+- **Module Completion**: 100 eBucks per module
+- **Quiz Success**: 50-75 eBucks based on score
+- **Daily Challenges**: 20-100 eBucks per challenge
+- **Login Streaks**: Bonus multipliers
+- **Special Activities**: Google reviews, referrals, etc.
+
+### Spending eBucks
+- **$5 Amazon Card**: 750 eBucks
+- **$10 Amazon Card**: 1,400 eBucks
+- **$25 Amazon Card**: 3,000 eBucks
+- **Better exchange rates** for higher value cards
+
+### Achievement System
+- **Learning Milestones** with rarity tiers (Common, Uncommon, Rare, Legendary)
+- **Streak Achievements** for consistent daily learning
+- **Performance Badges** for quiz excellence
+- **Completion Certificates** for module mastery
 
 ## 🎨 Design System
 
@@ -109,18 +173,28 @@ Access the admin dashboard at `/admin` to view:
 
 ```
 easypay-university/
-├── app/                    # Next.js app directory
-│   ├── admin/             # Admin dashboard
-│   ├── modules/           # Training modules
-│   ├── progress/          # Progress tracking
-│   ├── resources/         # Learning resources
-│   └── support/           # Help and FAQs
-├── components/            # React components
-│   ├── layout/           # Header and sidebar
-│   ├── quiz/             # Quiz system
-│   └── ui/               # Reusable UI components
-├── data/                 # Quiz questions database
-└── public/               # Static assets
+├── app/                           # Next.js app directory
+│   ├── modules/                  # Training modules with dynamic routing
+│   │   ├── [id]/                # Individual module pages
+│   │   └── page.tsx             # Module overview
+│   ├── daily-challenges/        # Gamified daily challenges
+│   ├── practice-scenarios/      # Interactive practice environment
+│   ├── currency-exchange/       # eBucks exchange system
+│   ├── progress/               # Progress tracking dashboard
+│   ├── resources/              # Learning resources and downloads
+│   └── support/                # Comprehensive FAQ and help center
+├── components/                  # React components
+│   ├── layout/                 # Header, sidebar, and navigation
+│   ├── quiz/                   # Quiz system and question components
+│   ├── interactive/            # Interactive learning components
+│   └── ui/                     # Reusable UI components and icons
+├── data/                       # Content and configuration
+│   ├── modules.ts              # Complete module content and structure
+│   ├── conversationalScenarios.ts  # Practice conversation data
+│   └── ltoApplicationScenarios.ts  # LTO application practice data
+├── lib/                        # Utilities and business logic
+│   └── eBucks.ts              # eBucks gamification system
+└── public/                     # Static assets and images
 ```
 
 ## 🚀 Deployment

@@ -1,204 +1,327 @@
-# EasyPay University - Project Documentation
+# CLAUDE.md - EasyPay Finance Merchant Training Platform Guide
 
 ## Project Overview
-EasyPay University is a comprehensive training platform designed for EasyPay Finance merchant partners. The platform provides structured learning modules, interactive quizzes, progress tracking, and administrative analytics to ensure merchant partners are properly trained on EasyPay's processes and requirements.
+
+EasyPay University is a comprehensive, gamified training platform for EasyPay Finance merchant partners. The platform educates merchants on financing programs, application processes, and best practices while providing an engaging learning experience with eBucks currency system, interactive tools, and real-world practice scenarios. The platform features modern UI design matching EasyPay's Business Center portal with green branding, comprehensive analytics, and seamless mobile responsiveness.
+
+## Current Platform Status
+
+✅ **PRODUCTION READY** - Fully functional training platform with:
+- 7 complete training modules with interactive content
+- eBucks gamification system with gift card exchange
+- Daily challenges and achievement tracking
+- Practice scenarios and conversational training
+- Comprehensive FAQ support center with 35 official EasyPay FAQs
+- Progress tracking with visual analytics
+- Responsive design optimized for all devices
+
+## EasyPay Finance Company Profile
+
+### Company Information
+- **Legal Entity**: Duvera Billing Services, LLC (DBA EasyPay Finance)
+- **Founded**: 2001 (20+ years of experience)
+- **Headquarters**: Carlsbad, CA
+- **Coverage**: 12,000+ locations across 21 states
+- **Mission**: "Customer Financing Made EASY" - offering simple, transparent consumer finance options
+
+### Core Financing Programs
+
+1. **Credit Sales Program (Retail Installment Contracts)**
+   - Merchant originates credit sales and executes RIC with customer
+   - EasyPay purchases and services the contract
+   - No credit bureau reporting
+
+2. **Lease-to-Own (LTO) Program**
+   - EasyPay Leasing purchases items from merchants to lease to customers
+   - Rental-Purchase Agreement structure
+   - Early purchase options available
+   - Processing fee applies
+
+3. **Third-Party Loan Provider (TLP) Program**
+   - Partners with banks (e.g., TAB Bank)
+   - EasyPay facilitates and services bank-originated loans
+   - Credit bureau reporting varies by provider
+
+### Key Features
+- **Financing Amount**: Up to $5,000
+- **90-Day Finance Charge Cap**: $40 maximum if paid within 90 days
+- **No Down Payment Required**
+- **Instant Approvals**: Real-time decisions
+- **Same-Day Funding**: If contract received by 4pm EST
 
 ## ✅ Completed Features
 
-### Core Learning Management System
-- **4 Training Modules**: Complete curriculum covering company overview, application process, credit culture, and advanced topics
-- **Interactive Quiz System**: 50+ questions across all modules with multiple question types:
-  - Multiple choice questions
-  - True/false questions  
-  - Scenario-based questions with text input
-- **Progress Tracking**: Individual and team progress monitoring
-- **Certificate System**: Automatic certificate generation upon module completion
-- **Gamification**: Streaks, badges, and completion tracking
-- **EasyPay Bucks Currency**: Digital currency system where users earn 100 bucks per completed module
-- **Currency Exchange**: Redemption system for Amazon gift cards (100 bucks = $5 gift card)
+### 🎓 Learning Management System
+- **7 Training Modules**: Complete curriculum covering:
+  1. Welcome to EasyPay Finance
+  2. Establishing a Credit Culture
+  3. Understanding RIC vs LTO Contracts
+  4. How to Submit a Retail Installment Contract (RIC) Application
+  5. How to Submit a Lease-to-Own (LTO) Application
+  6. Handling Customer Objections
+  7. Common Customer Pain Points
 
-### User Interface & Experience
-- **EasyPay Branding**: Full integration of EasyPay logo and color scheme (#00D4AA teal)
-- **Responsive Design**: Mobile-first approach with responsive layouts
-- **Clean Modern UI**: Matches EasyPay Business Center design patterns
-- **Intuitive Navigation**: Clear sidebar navigation with active state indicators
-- **Status Indicators**: Visual progress indicators and completion badges
+### 🎮 Gamification & eBucks System
+- **eBucks Currency**: Digital currency earned through learning activities
+- **Earning Mechanisms**:
+  - Module completion: 100 eBucks
+  - Quiz performance: 50-75 eBucks based on score
+  - Daily challenges: 20-100 eBucks per challenge
+  - Login streaks: Bonus multipliers
+  - Special activities: Google reviews, referrals
+- **Exchange System**: Redeem eBucks for Amazon gift cards
+  - $5 gift card: 750 eBucks
+  - $10 gift card: 1,400 eBucks
+  - $25 gift card: 3,000 eBucks
+- **Achievement System**: Badges with rarity tiers (Common, Uncommon, Rare, Legendary)
+- **Streak Tracking**: Daily login and learning streaks
 
-### Administrative Features
-- **Admin Dashboard**: Comprehensive analytics for platform administrators
-- **Platform Statistics**: User engagement, completion rates, geographic data
-- **Module Performance**: Individual module analytics and insights
-- **Real-time Activity**: Live feed of user activities and completions
-- **Merchant Management**: Overview of trained vs untrained merchants
+### 🛠️ Interactive Learning Components
+- **Financing Calculator**: Real-time payment calculations
+- **Program Comparison Tool**: Side-by-side RIC vs LTO vs TLP comparison
+- **Customer Matching Game**: Practice customer profiling
+- **Objection Trainer**: Handle common customer concerns with branching scenarios
+- **Application Simulator**: Step-by-step application process practice
+- **Credit Culture Builder**: Team training and implementation guides
 
-### Technical Implementation
-- **Next.js 15.4.5**: Modern React framework with App Router
-- **TypeScript**: Full type safety throughout the application
-- **Tailwind CSS**: Utility-first CSS framework with custom EasyPay theme
-- **Component Architecture**: Reusable UI components (Card, Badge, Progress, etc.)
-- **Client-side Interactivity**: Quiz functionality and navigation
-- **Responsive Design**: Mobile, tablet, and desktop optimized
+### 🎯 Practice Environment
+- **Daily Challenges**: Fresh challenges with rotating content and bonus rewards
+- **Practice Scenarios**: Real-world customer interaction training
+- **LTO Application Scenarios**: Step-by-step application walkthroughs
+- **Conversational Training**: Interactive customer dialogue practice
+- **Automotive Scenarios**: Industry-specific training content
+- **Customer Objection Handling**: Practice overcoming resistance
+
+### 📊 Progress & Analytics
+- **Comprehensive Progress Tracking**: Visual stat tiles showing key metrics
+- **Module Completion Analytics**: Time tracking and performance insights
+- **Achievement Progress**: Points and milestone tracking
+- **Learning Streak Monitoring**: Daily engagement metrics
+- **Performance Insights**: Quiz scores and improvement areas
+
+### 🆘 Support Center
+- **35 Official FAQs**: Direct integration from EasyPay Finance website
+- **7 Support Categories**:
+  - General Questions
+  - Application Process
+  - Retail Installment Contracts
+  - Lease-to-Own
+  - Customer Payments
+  - Business Partners
+  - Training Platform
+- **Multi-channel Support**: Phone, email, and live chat options
+- **Searchable Knowledge Base**: Instant filtering and categorization
+- **Contact Information**: Complete business support details
+
+### 🎨 User Interface & Experience
+- **EasyPay Branding**: Official green theme (#2E7D32) with custom eBucks logo
+- **Responsive Design**: Mobile-first approach optimized for all devices
+- **Consistent UI**: Stat tiles and card layouts matching across pages
+- **Intuitive Navigation**: Sidebar with active state indicators
+- **Visual Hierarchy**: Clear typography and spacing
+- **Accessibility**: WCAG compliant design patterns
+
+### 🛠️ Technical Implementation
+- **Next.js 15.4.5**: Modern React framework with App Router and TypeScript
+- **React 18**: Latest React features with hooks and modern patterns
+- **Tailwind CSS**: Custom EasyPay design system with utility-first approach
+- **Local Storage**: Client-side data persistence for offline capability
+- **Component Architecture**: Reusable UI components and interactive tools
+- **Performance Optimized**: Fast loading with modern web standards
 
 ## File Structure
 
 ```
 easypay-university/
-├── app/
-│   ├── admin/page.tsx                 # Admin analytics dashboard
-│   ├── currency-exchange/page.tsx     # EasyPay Bucks exchange for gift cards
-│   ├── modules/
-│   │   ├── page.tsx                   # Modules listing page
-│   │   ├── [id]/page.tsx              # Individual module content
-│   │   └── [id]/quiz/page.tsx         # Module quiz pages
-│   ├── progress/page.tsx              # User progress tracking
-│   ├── resources/page.tsx             # Learning resources
-│   ├── support/page.tsx               # Support and FAQs
-│   ├── layout.tsx                     # Root layout with header/sidebar
-│   ├── page.tsx                       # Dashboard homepage
-│   └── globals.css                    # Global styles
-├── components/
-│   ├── layout/
-│   │   ├── Header.tsx                 # Top navigation header
-│   │   └── Sidebar.tsx                # Left navigation sidebar
-│   ├── quiz/
-│   │   └── QuizComponent.tsx          # Interactive quiz system
-│   └── ui/
-│       ├── Badge.tsx                  # Status badges
-│       ├── Card.tsx                   # Content cards
-│       └── Progress.tsx               # Progress bars
-├── data/
-│   └── quizData.ts                    # Quiz questions database
-├── lib/
-│   ├── easypayBucks.ts                # EasyPay Bucks currency management system
-│   └── utils.ts                       # Utility functions
-└── public/
-    └── easypay-logo.svg               # EasyPay branding
+├── app/                           # Next.js app directory
+│   ├── modules/                  # Training modules with dynamic routing
+│   │   ├── [id]/                # Individual module pages with quizzes
+│   │   │   ├── page.tsx         # Module content and lessons
+│   │   │   └── quiz/page.tsx    # Module quiz system
+│   │   └── page.tsx             # Module overview and selection
+│   ├── daily-challenges/        # Gamified daily challenges
+│   ├── practice-scenarios/      # Interactive practice environment
+│   ├── currency-exchange/       # eBucks exchange system
+│   ├── progress/               # Progress tracking dashboard
+│   ├── resources/              # Learning resources and downloads
+│   ├── support/                # Comprehensive FAQ and help center
+│   └── page.tsx                # Main dashboard
+├── components/                  # React components
+│   ├── layout/                 # Header, sidebar, and navigation
+│   │   ├── Header.tsx          # Top navigation with eBucks display
+│   │   └── Sidebar.tsx         # Side navigation with active states
+│   ├── quiz/                   # Quiz system and question components
+│   │   └── QuizComponent.tsx   # Main quiz interface
+│   ├── interactive/            # Interactive learning components
+│   │   └── InteractiveContent.tsx  # All interactive tools
+│   └── ui/                     # Reusable UI components
+│       ├── Card.tsx            # Content container component
+│       ├── Badge.tsx           # Status indicator component
+│       ├── Progress.tsx        # Progress bar component
+│       └── eBucksIcon.tsx      # Custom eBucks currency icon
+├── data/                       # Content and configuration
+│   ├── modules.ts              # Complete module content and structure
+│   ├── conversationalScenarios.ts  # Practice conversation data
+│   └── ltoApplicationScenarios.ts  # LTO application practice data
+├── lib/                        # Utilities and business logic
+│   └── eBucks.ts              # eBucks gamification system logic
+└── public/                     # Static assets and images
 ```
 
-## Training Modules
+## Platform Features
 
-### Module 1: Welcome to EasyPay Finance
-- **Duration**: 45 minutes
-- **Content**: Company mission, programs overview, portal navigation
-- **Quiz**: 10 questions covering company basics and platform usage
-- **Status**: ✅ Complete with interactive content
+### Training Platform Structure
 
-### Module 2: How to Submit Applications  
-- **Duration**: 60 minutes
-- **Content**: Step-by-step application process, best practices, common mistakes
-- **Quiz**: 15 questions including scenario-based applications
-- **Status**: ✅ Complete with practical examples
+Each module includes:
+- **Learning Objectives**: Clear goals for each module
+- **Interactive Content**: Engaging tools and simulations
+- **Knowledge Checks**: Quizzes with immediate feedback
+- **Real-world Applications**: Practice scenarios
+- **Progress Tracking**: Visual completion indicators
 
-### Module 3: Establishing a Credit Culture
-- **Duration**: 90 minutes  
-- **Content**: Credit awareness, organizational integration, staff training
-- **Quiz**: 12 questions on credit culture implementation
-- **Status**: ✅ Complete with actionable strategies
+### Module Content Overview
 
-### Module 4: Advanced Topics
-- **Duration**: 120 minutes
-- **Content**: Complex scenarios, compliance, troubleshooting
-- **Quiz**: 13 questions covering edge cases and regulations
-- **Status**: ✅ Complete with expert-level content
+#### Module 1: Welcome to EasyPay Finance
+- Company overview and mission
+- Program comparison interactive tool
+- Portal navigation tutorial
+- Knowledge assessment
 
-## Quiz System Features
-- **Multiple Question Types**: Support for various assessment formats
-- **Immediate Feedback**: Instant explanations for correct/incorrect answers
-- **Progress Tracking**: Real-time progress updates during quizzes
-- **Scenario Questions**: Text input for complex business scenarios
-- **Completion Certificates**: Automatic generation upon passing
+#### Module 2: Establishing a Credit Culture
+- Credit culture foundation principles
+- Staff training framework
+- Customer conversation guides
+- Implementation roadmap
 
-## Admin Analytics Features
-- **Platform Overview**: Total users, completions, active learners
-- **Module Performance**: Individual module success rates and timing
-- **Geographic Distribution**: Training completion by location
-- **Activity Feed**: Real-time user actions and milestones
-- **Export Capabilities**: Data export for further analysis
+#### Module 3: Understanding RIC vs LTO Contracts
+- Contract type comparison
+- When to use each program
+- Legal and regulatory considerations
+- Customer education strategies
 
-## Design System
-- **Primary Color**: EasyPay Teal (#00D4AA)
-- **Typography**: System fonts with clear hierarchy
-- **Spacing**: Consistent 8px grid system
-- **Components**: Material Design-inspired with custom EasyPay styling
-- **Icons**: Lucide React icon library
-- **Responsive**: Mobile-first breakpoints (sm, md, lg, xl)
+#### Module 4: How to Submit a RIC Application
+- Step-by-step application process
+- Required documentation
+- Best practices and troubleshooting
+- Interactive application simulator
 
-## Technical Stack
-- **Frontend**: Next.js 15.4.5, React, TypeScript
-- **Styling**: Tailwind CSS with custom configuration
-- **State Management**: React hooks and client-side state
-- **Build Tools**: Next.js built-in compilation and optimization
-- **Development**: Hot reload, TypeScript checking, ESLint
+#### Module 5: How to Submit a LTO Application
+- LTO-specific application flow
+- Lease agreement considerations
+- Customer qualification criteria
+- Practice scenarios with feedback
 
-## Development Commands
-```bash
-npm run dev          # Start development server
-npm run build        # Build production version  
-npm run start        # Start production server
-npm run lint         # Run ESLint checks
-npm run typecheck    # Run TypeScript checks
-```
+#### Module 6: Handling Customer Objections
+- Common objection categories
+- Response strategies and scripts
+- Building trust and rapport
+- Interactive objection trainer
 
-## Deployment
-The application is configured for easy deployment on Vercel or any Node.js hosting platform. All static assets are optimized and the build process generates a production-ready application.
+#### Module 7: Common Customer Pain Points
+- Identifying customer concerns
+- Proactive problem solving
+- Follow-up best practices
+- Resolution strategies
 
-## Future Enhancements
-- User authentication and role-based access
-- Email notifications for completions
-- Advanced reporting and analytics
-- Integration with EasyPay's existing systems
-- Mobile application version
-- Multilingual support
+### Gamification Elements
 
-## Security Considerations
-- No sensitive data stored in client-side code
-- Proper input validation in quiz components  
-- Secure admin access patterns implemented
-- Production build optimization enabled
+#### Achievement System
+- **Progress Milestones**: Module completion badges
+- **Performance Excellence**: Quiz score achievements
+- **Engagement Rewards**: Login streak recognition
+- **Special Recognition**: Peer referral bonuses
 
-## Claude Code Instructions
-- **Git Commits**: Do not include any reference to "Claude Code" or similar AI assistant branding in commit messages
-- **Keep commits clean**: Use professional, descriptive commit messages without AI attribution
+#### Daily Challenges
+- **Learning Challenges**: Quick knowledge reviews
+- **Application Practice**: Mini-scenarios
+- **Team Building**: Collaborative activities
+- **Skill Development**: Targeted improvement tasks
 
----
+### Support Features
 
-## Recent Updates - July 31, 2025
+#### Multi-Channel Support
+- **Phone Support**: (866) 337-2537 for business inquiries
+- **Email Support**: MerchantServices@easypayfinance.com
+- **Live Chat**: Integrated chat widget
+- **Knowledge Base**: Searchable FAQ database
 
-### ✅ New Gamification System
-- **EasyPay Bucks Currency**: Implemented complete digital currency system
-- **Module Rewards**: Users earn 100 EasyPay Bucks for each completed training module
-- **Currency Exchange**: New dedicated page for redeeming bucks for Amazon gift cards
-- **Exchange Rates**: 100 bucks = $5 gift card, with better rates for higher values ($10, $25 cards)
-- **Balance Display**: Real-time balance shown in header with click-to-exchange functionality
-- **Transaction History**: Complete activity tracking for all earnings and spending
-- **Visual Feedback**: Celebration messages and notifications when earning rewards
-- **Local Storage**: Persistent data storage for user progress and currency balance
+#### Business Hours
+- **Weekdays**: 5am-6pm PST
+- **Saturday**: 5am-5pm PST
+- **Sunday**: Closed
 
-### Technical Implementation
-- **State Management**: Custom React hooks and singleton pattern for currency management
-- **Type Safety**: Full TypeScript implementation with proper interfaces
-- **UI Integration**: Seamless integration with existing EasyPay design system
-- **Performance**: Optimized with proper React lifecycle management and conditional rendering
+### Success Metrics
 
-### ✅ Heroku Deployment - July 31, 2025
-- **Live Platform**: Successfully deployed to Heroku cloud platform
-- **Production URL**: https://easypay-university-training.herokuapp.com
-- **Deployment Method**: Heroku CLI with optimized build configuration
-- **Build Optimization**: Custom Next.js config and ESLint handling for production builds
-- **Zero Downtime**: Fully functional with all gamification features working live
-- **Performance**: Fast loading with optimized Next.js production build
-- **Scalability**: Ready for production traffic on Heroku infrastructure
+#### Platform Engagement
+- Login frequency and session duration
+- Module completion rates and timing
+- Quiz performance and retry patterns
+- eBucks earning and spending behavior
 
-### Deployment Configuration
-- **Procfile**: Configured for Heroku web process management
-- **Build Scripts**: Optimized heroku-postbuild with ESLint bypass for legacy code
-- **Node.js Version**: Compatible with Heroku-24 stack (Node 22.x)
-- **Environment**: Production-ready with proper Next.js optimizations
-- **Monitoring**: Heroku logs and metrics available for performance tracking
+#### Learning Outcomes
+- Knowledge retention through assessments
+- Practical application in scenarios
+- Certification achievement rates
+- Skill improvement tracking
 
----
+#### Business Impact
+- Application submission improvements
+- Customer satisfaction increases
+- Revenue growth through better practices
+- Merchant confidence and competency
 
-**Project Status**: ✅ Complete, Production Ready, and LIVE on Heroku
-**Live URL**: https://easypay-university-training.herokuapp.com
-**Last Updated**: July 31, 2025
-**Repository**: https://github.com/trevsky25/easypayuniversity.git
+## Implementation Best Practices
+
+### Content Delivery
+- **Microlearning Approach**: Bite-sized lessons for better retention
+- **Adult Learning Principles**: Problem-centered and relevant content
+- **Multimodal Learning**: Interactive, visual, and practical elements
+- **Self-paced Progression**: Flexible learning schedules
+
+### Merchant Pain Point Solutions
+- **Clear Process Guidance**: Step-by-step instructions
+- **Common Error Prevention**: Proactive troubleshooting
+- **Quick Reference Materials**: Downloadable guides
+- **Practice Environments**: Safe spaces to learn
+
+### Technical Standards
+- **Page Load Speed**: <3 seconds
+- **Mobile Optimization**: Touch-friendly interfaces
+- **Cross-browser Compatibility**: Modern browser support
+- **Accessibility Compliance**: WCAG 2.1 AA standards
+
+## Continuous Improvement
+
+### Regular Updates
+- **Quarterly Content Reviews**: Keep material current
+- **Technology Platform Updates**: Latest features and security
+- **User Experience Enhancements**: Based on feedback
+- **Performance Optimization**: Speed and reliability improvements
+
+### Feedback Integration
+- **User Surveys**: Regular satisfaction assessments
+- **Analytics Monitoring**: Usage pattern analysis
+- **A/B Testing**: Feature effectiveness measurement
+- **Community Input**: Merchant suggestions and requests
+
+## Security & Compliance
+
+### Data Protection
+- **Client-side Storage**: No sensitive server data
+- **Input Validation**: All form submissions secured
+- **Privacy Compliance**: User data protection
+- **Secure Communications**: Encrypted data transmission
+
+### Content Accuracy
+- **Official Source Material**: EasyPay Finance approved content
+- **Regular Updates**: Quarterly content review cycle
+- **Compliance Monitoring**: Regulatory requirement adherence
+- **Quality Assurance**: Multi-level content verification
+
+## Conclusion
+
+EasyPay University represents a comprehensive, modern training solution that combines effective learning methodologies with engaging user experiences. The platform successfully addresses merchant training needs while providing measurable business value through improved processes, enhanced customer relationships, and increased revenue opportunities.
+
+The gamified approach with eBucks currency and achievement systems creates sustained engagement, while the comprehensive support center ensures merchants have access to official EasyPay Finance information and assistance when needed.
+
+Regular platform improvements and content updates ensure the training remains current, relevant, and effective for EasyPay Finance's growing merchant partner network.
