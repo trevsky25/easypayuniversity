@@ -1,13 +1,14 @@
 'use client'
 
-import { ChevronDown, User, Coins } from 'lucide-react'
+import { ChevronDown, User } from 'lucide-react'
 import { useState } from 'react'
-import { useEasyPayBucks } from '@/lib/easypayBucks'
+import { useEBucks } from '@/lib/eBucks'
+import { EBucksIcon } from '@/components/ui/eBucksIcon'
 import Link from 'next/link'
 
 export function Header() {
   const [isProfileOpen, setIsProfileOpen] = useState(false)
-  const { balance } = useEasyPayBucks()
+  const { balance } = useEBucks()
 
   return (
     <header className="bg-white border-b border-easypay-gray-200 h-16 flex items-center justify-between px-6">
@@ -23,14 +24,14 @@ export function Header() {
       <div className="flex items-center gap-4">
         <div className="text-sm text-easypay-gray-600">12841 - 1835 Gqk Team Inc DBA Big Discount Tire Pros</div>
         
-        {/* EasyPay Bucks Balance */}
+        {/* eBucks Balance */}
         <Link 
           href="/currency-exchange"
-          className="flex items-center gap-2 bg-easypay-green/10 hover:bg-easypay-green/20 px-3 py-2 rounded-lg transition-colors group"
+          className="flex items-center gap-2 bg-easypay-green/10 hover:bg-easypay-green/20 px-3 py-2 rounded-lg transition-all hover:scale-105 group"
         >
-          <Coins className="w-4 h-4 text-easypay-green" />
-          <span className="text-sm font-medium text-easypay-green">{balance}</span>
-          <span className="text-xs text-easypay-green/80 group-hover:text-easypay-green">Bucks</span>
+          <EBucksIcon className="w-5 h-5" />
+          <span className="text-sm font-semibold text-easypay-green">{balance.toLocaleString()}</span>
+          <span className="text-xs text-easypay-green/80 group-hover:text-easypay-green">eBucks</span>
         </Link>
         
         <div className="relative">

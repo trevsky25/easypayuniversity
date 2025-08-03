@@ -1,0 +1,434 @@
+# CLAUDE.md - EasyPay Finance Merchant Training Platform Guide
+
+## Project Overview
+
+Build a comprehensive training platform for EasyPay Finance merchant partners that educates them on the company's financing programs, application processes, and best practices for establishing a credit culture in their retail environments. The platform should match the existing Business Center portal design with a green header, sidebar navigation, and card-based layouts with status indicators.
+
+## EasyPay Finance Company Profile
+
+### Company Information
+- **Legal Entity**: Duvera Billing Services, LLC (DBA EasyPay Finance)
+- **Founded**: 2001 (20+ years of experience)
+- **Headquarters**: Carlsbad, CA
+- **Coverage**: 12,000+ locations across 21 states
+- **Mission**: "Customer Financing Made EASY" - offering simple, transparent consumer finance options
+
+### Core Financing Programs
+
+1. **Credit Sales Program (Retail Installment Contracts)**
+   - Merchant originates credit sales and executes RIC with customer
+   - EasyPay purchases and services the contract
+   - No credit bureau reporting
+
+2. **Lease-to-Own (LTO) Program**
+   - EasyPay Leasing purchases items from merchants to lease to customers
+   - Rental-Purchase Agreement structure
+   - Early purchase options available
+   - Processing fee applies
+
+3. **Third-Party Loan Provider (TLP) Program**
+   - Partners with banks (e.g., TAB Bank)
+   - EasyPay facilitates and services bank-originated loans
+   - Credit bureau reporting varies by provider
+
+### Key Features
+- **Financing Amount**: Up to $5,000
+- **90-Day Finance Charge Cap**: $40 maximum if paid within 90 days
+- **No Down Payment Required**
+- **Instant Approvals**: Real-time decisions
+- **Same-Day Funding**: If contract received by 4pm EST
+
+## Training Platform Structure
+
+### Module 1: Welcome to EasyPay Finance
+
+**Learning Objectives:**
+- Understand EasyPay's mission and values
+- Learn about the three financing programs
+- Recognize the benefits for merchants and customers
+- Navigate the Business Center portal
+
+**Content Components:**
+1. **Company Overview Video** (5 minutes)
+   - History and mission
+   - Geographic coverage and scale
+   - Partnership philosophy
+
+2. **Program Comparison Interactive Tool**
+   - Side-by-side comparison of Credit Sales, LTO, and TLP
+   - When to use each program
+   - State availability matrix
+
+3. **Portal Navigation Tutorial**
+   - Dashboard overview
+   - Location management
+   - Employee access controls
+   - Reporting features
+
+4. **Knowledge Check**
+   - 10-question quiz on company basics
+   - 80% passing score required
+
+### Module 2: How to Submit Applications
+
+**Learning Objectives:**
+- Master the customer application process
+- Understand approval criteria
+- Handle different financing scenarios
+- Troubleshoot common issues
+
+**Content Components:**
+1. **Application Process Walkthrough**
+   - Step-by-step mobile application demo
+   - Required customer information
+   - Real-time decision process
+   - Electronic signature capture
+
+2. **Scenario-Based Training**
+   - Credit-challenged customer ($3,000 furniture purchase)
+   - Prime credit customer (auto repair financing)
+   - Early payoff scenario (90-day promotion)
+
+3. **Best Practices Checklist**
+   - Pre-qualification benefits
+   - Documentation requirements
+   - Same-day funding cutoff times
+   - Customer communication scripts
+
+4. **Interactive Role-Play**
+   - Practice application submission
+   - Handle customer questions
+   - Address common objections
+
+### Module 3: Establishing a Credit Culture
+
+**Learning Objectives:**
+- Build credit awareness across your organization
+- Implement consistent financing conversations
+- Train staff effectively
+- Measure success metrics
+
+**Content Components:**
+1. **Credit Culture Foundation**
+   - Four pillars: communication, training, incentives, leadership
+   - Shifting from transactional to relationship mindset
+   - Creating accountability systems
+
+2. **Staff Training Framework**
+   - Onboarding new employees
+   - Regular skill refreshers
+   - Performance tracking
+   - Recognition programs
+
+3. **Customer Conversation Guide**
+   - Timing financing discussions
+   - Using payment calculators effectively
+   - Overcoming common objections
+   - Building trust and transparency
+
+4. **Implementation Roadmap**
+   - 30-60-90 day action plan
+   - Success metrics and KPIs
+   - Continuous improvement process
+
+### Module 4: Advanced Topics
+
+**Learning Objectives:**
+- Handle complex financing scenarios
+- Ensure compliance with regulations
+- Maximize program benefits
+- Troubleshoot edge cases
+
+**Content Components:**
+1. **Regulatory Compliance**
+   - TILA requirements
+   - State-specific regulations
+   - Data protection and privacy
+   - Documentation best practices
+
+2. **Advanced Sales Techniques**
+   - Upselling with financing
+   - Bundle offers and promotions
+   - Seasonal campaign strategies
+   - Customer retention tactics
+
+3. **Technology Integration**
+   - MyEasyPay app features
+   - Business Center reporting
+   - API capabilities (if applicable)
+   - Troubleshooting common issues
+
+4. **Case Study Analysis**
+   - Success stories from top merchants
+   - Problem-solving exercises
+   - Peer learning opportunities
+
+## UI/UX Design Requirements
+
+### Visual Design System
+
+**Header**
+- Green primary color (#2E7D32 or similar EasyPay brand green)
+- White EasyPay Finance logo on green background
+- User profile dropdown in top-right
+- Notification bell icon
+- Help/support link
+
+**Sidebar Navigation**
+- Dark gray/charcoal background (#333333)
+- White text and icons
+- Active state: Green highlight bar
+- Collapsible for mobile responsiveness
+- Navigation items:
+  - Dashboard
+  - Training Modules
+  - Resources
+  - Reports
+  - My Progress
+  - Support
+
+**Main Content Area**
+- Light gray background (#F5F5F5)
+- White content cards with subtle shadows
+- Card-based layout for module selection
+- Progress indicators on each card
+- Status badges (Not Started, In Progress, Complete)
+
+**Typography**
+- Headers: Sans-serif, bold (e.g., Open Sans, Roboto)
+- Body text: Sans-serif, regular
+- Consistent hierarchy with clear sizing
+
+**Interactive Elements**
+- Green primary buttons (#2E7D32)
+- White text on buttons
+- Hover states with darker green
+- Progress bars in green
+- Success messages in green
+- Error messages in red
+
+### Layout Structure
+
+```
++----------------------------------+
+|        Green Header Bar          |
++--------+-------------------------+
+|        |                         |
+| Dark   |    Main Content Area    |
+| Gray   |                         |
+| Side   |    [Module Cards]       |
+| bar    |                         |
+|        |    [Progress Stats]     |
+|        |                         |
++--------+-------------------------+
+```
+
+### Mobile Responsiveness
+- Hamburger menu for navigation
+- Stack cards vertically on small screens
+- Touch-friendly button sizes (44px minimum)
+- Simplified header on mobile
+
+## Training Platform Features
+
+### Core Functionality
+
+1. **Learning Management System**
+   - User registration and profiles
+   - Progress tracking
+   - Certificate generation
+   - Reporting dashboard
+
+2. **Interactive Components**
+   - Video players with chapter markers
+   - Interactive calculators
+   - Drag-and-drop exercises
+   - Role-play simulations
+
+3. **Assessment Tools**
+   - Module quizzes (10-15 questions)
+   - Final certification exam
+   - Practice scenarios
+   - Immediate feedback
+
+4. **Resource Library**
+   - Downloadable PDFs
+   - Marketing materials
+   - Script templates
+   - Quick reference guides
+
+### Gamification Elements
+
+1. **Achievement System**
+   - Module completion badges
+   - Streak rewards for daily logins
+   - Performance milestones
+   - Leaderboards (optional)
+
+2. **Progress Visualization**
+   - Overall completion percentage
+   - Module progress bars
+   - Time investment tracking
+   - Skill level indicators
+
+### Support Features
+
+1. **Help Center**
+   - Searchable FAQ database
+   - Video tutorials
+   - Contact information
+   - Live chat (if available)
+
+2. **Community Features**
+   - Discussion forums
+   - Best practices sharing
+   - Q&A with experts
+   - Success story submissions
+
+## Implementation Best Practices
+
+### Content Delivery
+
+1. **Microlearning Approach**
+   - 10-15 minute lessons
+   - Single concept focus
+   - Mobile-friendly format
+   - Just-in-time availability
+
+2. **Adult Learning Principles**
+   - Problem-centered scenarios
+   - Real-world applications
+   - Self-paced progression
+   - Immediate relevance
+
+3. **Multimodal Learning**
+   - Video content (40%)
+   - Interactive exercises (30%)
+   - Reading materials (20%)
+   - Assessments (10%)
+
+### Merchant Pain Point Solutions
+
+1. **Application Process**
+   - Clear step-by-step guides
+   - Common error troubleshooting
+   - Quick reference cards
+   - Practice environment
+
+2. **Staff Training**
+   - Manager training guides
+   - Team meeting materials
+   - Performance tracking tools
+   - Recognition program templates
+
+3. **Customer Objections**
+   - Objection handling scripts
+   - Trust-building techniques
+   - Value communication strategies
+   - Success story library
+
+4. **Compliance Concerns**
+   - Regulatory checklists
+   - Documentation templates
+   - Update notifications
+   - Audit preparation guides
+
+### Success Metrics
+
+1. **Platform Engagement**
+   - Login frequency
+   - Module completion rates
+   - Time spent learning
+   - Resource downloads2
+
+2. **Learning Outcomes**
+   - Quiz scores
+   - Certification pass rates
+   - Skill assessments
+   - Knowledge retention tests
+
+3. **Business Impact**
+   - Application submission rates
+   - Approval rates
+   - Funding volumes
+   - Customer satisfaction scores
+
+4. **Continuous Improvement**
+   - User feedback surveys
+   - Content effectiveness ratings
+   - Feature requests
+   - A/B testing results
+
+## Technical Specifications
+
+### Platform Requirements
+- Cloud-based hosting for scalability
+- SSL encryption for security
+- Single Sign-On (SSO) capability
+- API integration with Business Center
+- Mobile app compatibility (iOS/Android)
+
+### Performance Standards
+- Page load time < 3 seconds
+- Video buffering < 2 seconds
+- 99.9% uptime SLA
+- Concurrent user support (1000+)
+
+### Data and Analytics
+- User behavior tracking
+- Progress data export
+- Custom report generation
+- Integration with CRM systems
+
+## Content Update Schedule
+
+### Quarterly Updates
+- Regulatory changes
+- Product enhancements
+- New feature tutorials
+- Success story additions
+
+### Annual Reviews
+- Full curriculum assessment
+- Technology platform updates
+- User experience improvements
+- Certification requirement updates
+
+## Launch Strategy
+
+### Phase 1: Pilot Program (Month 1)
+- Select 50 merchant partners
+- Core modules only
+- Gather feedback
+- Iterate on content
+
+### Phase 2: Soft Launch (Month 2)
+- Expand to 500 merchants
+- Add advanced modules
+- Implement gamification
+- Refine support processes
+
+### Phase 3: Full Launch (Month 3)
+- All merchant partners
+- Complete feature set
+- Marketing campaign
+- Success measurement
+
+## Support Resources
+
+### For Merchants
+- **Business Support**: MerchantServices@easypayfinance.com
+- **Phone**: (866) 337-2537
+- **Hours**: Mon-Fri 5am-6pm PST, Sat 5am-5pm PST
+
+### For Platform Issues
+- **Help Desk**: Integrated ticketing system
+- **Knowledge Base**: Searchable support articles
+- **Video Tutorials**: Platform navigation guides
+- **Community Forum**: Peer support network
+
+## Conclusion
+
+This training platform will empower EasyPay Finance merchant partners to effectively offer financing solutions, establish strong credit cultures, and grow their businesses. By combining comprehensive education with intuitive design and ongoing support, merchants will be equipped to serve more customers and drive mutual success.
+
+The platform should be built with scalability in mind, allowing for easy content updates, feature additions, and integration with existing EasyPay Finance systems. Regular assessment of merchant needs and platform effectiveness will ensure continuous improvement and long-term value delivery.

@@ -2,7 +2,8 @@
 
 import { useState } from 'react'
 import { Card } from '@/components/ui/Card'
-import { useEasyPayBucks } from '@/lib/easypayBucks'
+import { useEBucks } from '@/lib/eBucks'
+import { EBucksIcon, EBucksDisplay } from '@/components/ui/eBucksIcon'
 import Link from 'next/link'
 import { 
   Coins, 
@@ -20,10 +21,11 @@ export default function CurrencyExchangePage() {
     balance, 
     transactions, 
     totalEarned, 
+    totalSpent,
     spendBucks, 
     canAffordGiftCard, 
     getGiftCardOptions 
-  } = useEasyPayBucks()
+  } = useEBucks()
   
   const [redeeming, setRedeeming] = useState<string | null>(null)
   const [redeemed, setRedeemed] = useState<string[]>([])
@@ -52,9 +54,9 @@ export default function CurrencyExchangePage() {
   return (
     <div className="space-y-8">
       <div>
-        <h1 className="text-3xl font-bold text-gray-900 mb-2">Currency Exchange</h1>
+        <h1 className="text-3xl font-bold text-gray-900 mb-2">eBucks Exchange</h1>
         <p className="text-gray-600">
-          Exchange your EasyPay Bucks for Amazon gift cards and other rewards
+          Exchange your eBucks for Amazon gift cards and other rewards
         </p>
       </div>
 
@@ -62,12 +64,10 @@ export default function CurrencyExchangePage() {
       <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
         <Card className="p-6">
           <div className="flex items-center gap-3">
-            <div className="w-12 h-12 bg-easypay-green/10 rounded-full flex items-center justify-center">
-              <Coins className="w-6 h-6 text-easypay-green" />
-            </div>
+            <EBucksIcon className="w-12 h-12" showGlow />
             <div>
-              <p className="text-2xl font-bold text-gray-900">{balance}</p>
-              <p className="text-sm text-gray-600">Available Bucks</p>
+              <p className="text-2xl font-bold text-gray-900">{balance.toLocaleString()}</p>
+              <p className="text-sm text-gray-600">Available eBucks</p>
             </div>
           </div>
         </Card>
@@ -78,7 +78,7 @@ export default function CurrencyExchangePage() {
               <Award className="w-6 h-6 text-blue-600" />
             </div>
             <div>
-              <p className="text-2xl font-bold text-gray-900">{totalEarned}</p>
+              <p className="text-2xl font-bold text-gray-900">{totalEarned.toLocaleString()}</p>
               <p className="text-sm text-gray-600">Total Earned</p>
             </div>
           </div>
@@ -102,7 +102,7 @@ export default function CurrencyExchangePage() {
               <Zap className="w-6 h-6 text-orange-600" />
             </div>
             <div>
-              <p className="text-2xl font-bold text-gray-900">{Math.floor(balance / 100)}</p>
+              <p className="text-2xl font-bold text-gray-900">{Math.floor(balance / 750)}</p>
               <p className="text-sm text-gray-600">Cards Available</p>
             </div>
           </div>
@@ -116,11 +116,13 @@ export default function CurrencyExchangePage() {
             <Gift className="w-6 h-6 text-easypay-green" />
           </div>
           <div>
-            <h3 className="text-lg font-semibold text-gray-900 mb-2">How EasyPay Bucks Work</h3>
+            <h3 className="text-lg font-semibold text-gray-900 mb-2">How eBucks Work</h3>
             <div className="space-y-2 text-sm text-gray-600">
-              <p>• Complete training modules to earn 100 EasyPay Bucks each</p>
-              <p>• Exchange 100 EasyPay Bucks for a $5 Amazon gift card</p>
-              <p>• Higher value cards offer better exchange rates</p>
+              <p>• Complete training modules to earn 100 eBucks each</p>
+              <p>• Complete daily challenges for bonus eBucks (20-100 per challenge)</p>
+              <p>• Leave a Google review to earn 150 bonus eBucks</p>
+              <p>• Exchange 750 eBucks for a $5 Amazon gift card</p>
+              <p>• Higher value cards offer better exchange rates (up to 25% bonus)</p>
               <p>• Gift cards are delivered electronically within 24 hours</p>
             </div>
           </div>
@@ -149,10 +151,7 @@ export default function CurrencyExchangePage() {
                 <div className="space-y-3 mb-6">
                   <div className="flex justify-between items-center">
                     <span className="text-sm text-gray-600">Cost:</span>
-                    <div className="flex items-center gap-1">
-                      <Coins className="w-4 h-4 text-easypay-green" />
-                      <span className="font-semibold">{option.bucksRequired}</span>
-                    </div>
+                    <EBucksDisplay amount={option.bucksRequired} size="small" />
                   </div>
                   <div className="flex justify-between items-center">
                     <span className="text-sm text-gray-600">Value:</span>
@@ -160,7 +159,7 @@ export default function CurrencyExchangePage() {
                   </div>
                   <div className="flex justify-between items-center">
                     <span className="text-sm text-gray-600">Exchange Rate:</span>
-                    <span className="font-semibold">{(option.value / (option.bucksRequired / 100)).toFixed(2)}x</span>
+                    <span className="font-semibold">${(option.value / option.bucksRequired * 100).toFixed(2)} per 100 eBucks</span>
                   </div>
                 </div>
 
@@ -197,7 +196,7 @@ export default function CurrencyExchangePage() {
                   ) : canAfford ? (
                     'Redeem Now'
                   ) : (
-                    `Need ${option.bucksRequired - balance} more bucks`
+                    `Need ${option.bucksRequired - balance} more eBucks`
                   )}
                 </button>
               </Card>
@@ -246,16 +245,16 @@ export default function CurrencyExchangePage() {
       )}
 
       {/* Earn More Section */}
-      {balance < 100 && (
+      {balance < 750 && (
         <Card className="p-6 bg-gradient-to-r from-easypay-green/5 to-blue-50 border-easypay-green/20">
           <div className="flex items-start gap-4">
             <div className="w-12 h-12 bg-easypay-green/10 rounded-full flex items-center justify-center">
               <AlertCircle className="w-6 h-6 text-easypay-green" />
             </div>
             <div>
-              <h3 className="text-lg font-semibold text-gray-900 mb-2">Need More EasyPay Bucks?</h3>
+              <h3 className="text-lg font-semibold text-gray-900 mb-2">Need More eBucks?</h3>
               <p className="text-gray-600 mb-4">
-                Complete training modules to earn more EasyPay Bucks. Each module completion earns you 100 bucks!
+                Complete training modules, daily challenges, and more to earn eBucks!
               </p>
               <Link 
                 href="/modules"

@@ -3,7 +3,8 @@
 import { useState } from 'react'
 import { Card } from '@/components/ui/Card'
 import { Progress } from '@/components/ui/Progress'
-import { easyPayBucksManager } from '@/lib/easypayBucks'
+import { eBucksManager } from '@/lib/eBucks'
+import { EBucksDisplay } from '@/components/ui/eBucksIcon'
 import { 
   CheckCircle, 
   XCircle, 
@@ -107,9 +108,17 @@ export function QuizComponent({
       const score = calculateScore()
       const passed = score >= passingScore
       
-      // Award EasyPay Bucks for passing the quiz
+      // Award eBucks for passing the quiz
       if (passed) {
-        easyPayBucksManager.markModuleCompleted(moduleId)
+        eBucksManager.markModuleCompleted(moduleId)
+        
+        // Check for daily challenges
+        if (score >= 80) {
+          eBucksManager.completeDailyChallenge('quiz-master', 25, 'Completed a quiz with 80% or higher')
+        }
+        if (timeLimit * 60 - timeRemaining < 300) { // Under 5 minutes
+          eBucksManager.completeDailyChallenge('speed-demon', 30, 'Completed a quiz in under 5 minutes')
+        }
       }
       
       setShowResults(true)
@@ -230,11 +239,11 @@ export function QuizComponent({
           {passed && (
             <div className="mt-4 bg-easypay-green/10 border border-easypay-green/20 rounded-lg p-4">
               <div className="flex items-center justify-center gap-2 text-easypay-green font-semibold">
-                <Coins className="w-5 h-5" />
-                <span>+100 EasyPay Bucks Earned!</span>
+                <EBucksDisplay amount={100} size="large" showAnimation />
+                <span>Earned!</span>
               </div>
               <p className="text-sm text-easypay-green/80 text-center mt-1">
-                Congratulations! You've earned 100 EasyPay Bucks for completing this module.
+                Congratulations! You've earned 100 eBucks for completing this module.
               </p>
             </div>
           )}

@@ -3,20 +3,28 @@
 import { Card } from '@/components/ui/Card'
 import { Progress } from '@/components/ui/Progress'
 import { Badge } from '@/components/ui/Badge'
+import { useEBucks } from '@/lib/eBucks'
+import { EBucksDisplay } from '@/components/ui/eBucksIcon'
+import Link from 'next/link'
 import { 
   BookOpen, 
   Users, 
   Trophy, 
   Clock,
   TrendingUp,
-  Award
+  Award,
+  Sparkles,
+  Target
 } from 'lucide-react'
 
 export default function Dashboard() {
+  const { balance, loginStreak, getDailyChallenges } = useEBucks()
+  const dailyChallenges = getDailyChallenges()
+  
   const stats = [
     { label: 'Modules Completed', value: '2/4', icon: BookOpen, color: 'text-easypay-green' },
     { label: 'Team Members Trained', value: '8/12', icon: Users, color: 'text-blue-600' },
-    { label: 'Current Streak', value: '5 days', icon: Trophy, color: 'text-yellow-600' },
+    { label: 'Login Streak', value: `${loginStreak} days`, icon: Trophy, color: 'text-yellow-600' },
     { label: 'Time Invested', value: '4.5 hrs', icon: Clock, color: 'text-purple-600' },
   ]
 
@@ -57,9 +65,47 @@ export default function Dashboard() {
 
   return (
     <div className="space-y-6">
-      <div>
+      <div className="flex justify-between items-center">
         <h1 className="text-2xl font-bold text-easypay-gray-900">Overview</h1>
+        <div className="flex items-center gap-4">
+          <div className="bg-teal-50 px-4 py-2 rounded-lg">
+            <EBucksDisplay amount={balance} size="large" />
+          </div>
+        </div>
       </div>
+
+      {/* Daily Challenges Banner */}
+      {dailyChallenges.length > 0 && (
+        <Card className="p-6 bg-gradient-to-r from-teal-50 to-green-50 border-teal-200">
+          <div className="flex items-center justify-between">
+            <div>
+              <h2 className="text-lg font-semibold mb-2 flex items-center gap-2">
+                <Sparkles className="w-5 h-5 text-teal-600" />
+                Today's Challenges
+              </h2>
+              <p className="text-gray-600 mb-3">
+                Complete {dailyChallenges.length} challenges to earn up to{' '}
+                <span className="font-semibold text-teal-600">
+                  {dailyChallenges.reduce((sum, c) => sum + c.reward, 0)} eBucks
+                </span>
+              </p>
+              <div className="flex gap-2">
+                {dailyChallenges.slice(0, 3).map((challenge) => (
+                  <Badge key={challenge.id} variant="secondary" className="text-xs">
+                    {challenge.title} (+{challenge.reward})
+                  </Badge>
+                ))}
+              </div>
+            </div>
+            <Link
+              href="/daily-challenges"
+              className="px-4 py-2 bg-teal-500 text-white rounded-lg hover:bg-teal-600 transition-colors"
+            >
+              View Challenges
+            </Link>
+          </div>
+        </Card>
+      )}
 
       {/* Status Overview */}
       <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">

@@ -9,7 +9,8 @@ import {
   Menu,
   X,
   Users,
-  Coins
+  Coins,
+  Sparkles
 } from 'lucide-react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
@@ -19,9 +20,11 @@ import { cn } from '@/lib/utils'
 const navigation = [
   { name: 'Dashboard', href: '/', icon: LayoutDashboard },
   { name: 'Training Modules', href: '/modules', icon: BookOpen },
-  { name: 'Resources', href: '/resources', icon: FileText },
+  { name: 'Daily Challenges', href: '/daily-challenges', icon: Sparkles },
+  { name: 'Practice Scenarios', href: '/practice-scenarios', icon: FileText },
   { name: 'My Progress', href: '/progress', icon: Trophy },
-  { name: 'Currency Exchange', href: '/currency-exchange', icon: Coins },
+  { name: 'eBucks Exchange', href: '/currency-exchange', icon: Coins },
+  { name: 'Resources', href: '/resources', icon: FileText },
   { name: 'Support', href: '/support', icon: HeadphonesIcon },
 ]
 

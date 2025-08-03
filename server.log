@@ -4,7 +4,7 @@
 
  ⚠ Warning: Found multiple lockfiles. Selecting /Users/TrevorKist/package-lock.json.
    Consider removing the lockfiles at:
-   * /Users/TrevorKist/Desktop/EasyPay University/easypay-university/package-lock.json
+   * /Users/TrevorKist/Desktop/EasyPay University/package-lock.json
    * /Users/TrevorKist/Desktop/package-lock.json
 
    ▲ Next.js 15.4.5 (Turbopack)
@@ -12,15 +12,534 @@
    - Network:      http://10.0.0.53:3000
 
  ✓ Starting...
- ✓ Ready in 1982ms
+ ⚠ Invalid next.config.js options detected: 
+ ⚠     Unrecognized key(s) in object: 'swcMinify'
+ ⚠ See more info here: https://nextjs.org/docs/messages/invalid-next-config
+ ✓ Ready in 2.2s
  ○ Compiling / ...
- ✓ Compiled / in 3.3s
- GET / 200 in 3805ms
- GET / 200 in 203ms
- ✓ Compiled /favicon.ico in 324ms
- GET /favicon.ico?favicon.45db1c09.ico 200 in 632ms
- GET / 200 in 175ms
+ ✓ Compiled / in 5.5s
+ GET / 200 in 3516ms
+ ○ Compiling /favicon.ico ...
+ ✓ Compiled /favicon.ico in 582ms
+ GET /favicon.ico?favicon.45db1c09.ico 200 in 952ms
+ GET /favicon.ico 200 in 918ms
+ GET /favicon.ico?favicon.45db1c09.ico 200 in 245ms
+ ○ Compiling /currency-exchange ...
+ ✓ Compiled /currency-exchange in 689ms
+ GET /currency-exchange 200 in 742ms
+ ○ Compiling /modules ...
+ ✓ Compiled /modules in 569ms
+ GET /modules 200 in 638ms
+ ○ Compiling /daily-challenges ...
+ ✓ Compiled /daily-challenges in 600ms
+ GET /daily-challenges 200 in 671ms
+ GET /currency-exchange 200 in 75ms
+ ○ Compiling /resources ...
+ ✓ Compiled /resources in 913ms
+ GET /resources 200 in 974ms
+ ○ Compiling /support ...
+ ✓ Compiled /support in 810ms
+ GET /support 200 in 880ms
+ GET / 200 in 88ms
+ GET /daily-challenges 200 in 78ms
+ ○ Compiling /practice-scenarios ...
+ ✓ Compiled /practice-scenarios in 830ms
+ GET /practice-scenarios 200 in 893ms
+ GET /currency-exchange 200 in 54ms
+ GET /currency-exchange 200 in 186ms
+ GET /favicon.ico?favicon.45db1c09.ico 200 in 249ms
+ GET /modules 200 in 72ms
+ ✓ Compiled in 282ms
+ ✓ Compiled /modules/3 in 389ms
+ GET /modules/3 200 in 445ms
+ ✓ Compiled in 24ms
+ ✓ Compiled in 207ms
+ ✓ Compiled in 196ms
+ ✓ Compiled in 190ms
+ ✓ Compiled in 198ms
+ GET /modules/3 200 in 736ms
+ GET /favicon.ico?favicon.45db1c09.ico 200 in 306ms
+ GET /currency-exchange 200 in 198ms
+ GET / 200 in 57ms
+ GET /currency-exchange 200 in 53ms
+ ✓ Compiled in 168ms
+ GET / 200 in 50ms
+ ✓ Compiled in 241ms
+ GET /currency-exchange 200 in 205ms
+ ✓ Compiled in 188ms
+ ✓ Compiled in 240ms
+ ✓ Compiled in 169ms
+ GET /currency-exchange 200 in 382ms
+ GET /favicon.ico?favicon.45db1c09.ico 200 in 253ms
+ GET /currency-exchange 200 in 175ms
+ GET /favicon.ico?favicon.45db1c09.ico 200 in 245ms
+ ✓ Compiled in 23ms
+ ✓ Compiled in 194ms
+ ✓ Compiled in 166ms
+ ✓ Compiled in 178ms
+ GET /currency-exchange 200 in 382ms
+ GET /favicon.ico?favicon.45db1c09.ico 200 in 261ms
+ GET / 200 in 65ms
+ GET /resources 200 in 70ms
+ GET / 200 in 257ms
+ GET /resources 200 in 364ms
+ GET /favicon.ico?favicon.45db1c09.ico 200 in 257ms
+ GET /favicon.ico 200 in 285ms
+ GET /favicon.ico?favicon.45db1c09.ico 200 in 248ms
+ GET /modules 200 in 64ms
+ GET / 200 in 57ms
+ GET /modules 200 in 53ms
+ GET /daily-challenges 200 in 65ms
+ GET /modules 200 in 55ms
+ GET /modules/3 200 in 65ms
+ GET /daily-challenges 200 in 58ms
+ GET /practice-scenarios 200 in 58ms
+ ✓ Compiled in 170ms
+ ✓ Compiled in 228ms
+ ✓ Compiled in 188ms
+ ✓ Compiled in 234ms
+ ✓ Compiled in 175ms
+ ✓ Compiled in 239ms
+ ✓ Compiled in 186ms
+ ✓ Compiled in 229ms
+ ✓ Compiled in 160ms
+ GET /practice-scenarios 200 in 215ms
+ GET /practice-scenarios 200 in 339ms
+ GET /favicon.ico?favicon.45db1c09.ico 200 in 260ms
+ ✓ Compiled in 17ms
+ ✓ Compiled in 237ms
+ GET /practice-scenarios 200 in 512ms
+ GET /favicon.ico?favicon.45db1c09.ico 200 in 260ms
+ GET /practice-scenarios 200 in 225ms
+ GET /favicon.ico?favicon.45db1c09.ico 200 in 242ms
+ GET /currency-exchange 200 in 72ms
+ GET / 200 in 71ms
+ GET /currency-exchange 200 in 65ms
+ GET / 200 in 53ms
+ GET /daily-challenges 200 in 67ms
+ GET /practice-scenarios 200 in 78ms
+ GET /practice-scenarios 200 in 57ms
+ GET / 200 in 57ms
+ ○ Compiling /progress ...
+ ✓ Compiled /progress in 505ms
+ GET /progress 200 in 572ms
+ GET /currency-exchange 200 in 79ms
+ GET / 200 in 56ms
+ GET /modules 200 in 72ms
+ GET /daily-challenges 200 in 58ms
+ GET / 200 in 80ms
+ GET /daily-challenges 200 in 57ms
+ GET /modules 200 in 87ms
+ ✓ Compiled /modules/[id] in 439ms
+ GET /modules/1 200 in 1441ms
+ GET /modules/1 200 in 154ms
+ GET /modules 200 in 56ms
+ GET /modules/2 200 in 70ms
+ GET /modules 200 in 61ms
+ GET /modules/3 200 in 77ms
+ GET / 200 in 64ms
+ GET /modules 200 in 67ms
+ GET /daily-challenges 200 in 71ms
+ GET /progress 200 in 67ms
+ GET /currency-exchange 200 in 66ms
+ GET /currency-exchange 200 in 202ms
+ GET /favicon.ico?favicon.45db1c09.ico 200 in 268ms
+ GET / 200 in 72ms
+ GET /modules/2 200 in 217ms
+ GET /modules 200 in 90ms
+ GET /modules/1 200 in 69ms
+ GET /modules 200 in 54ms
+ GET / 200 in 68ms
+ GET /progress 200 in 73ms
+ GET /practice-scenarios 200 in 58ms
+ ✓ Compiled in 302ms
+ GET /practice-scenarios 200 in 544ms
+ GET /favicon.ico?favicon.45db1c09.ico 200 in 274ms
+ GET /currency-exchange 200 in 121ms
+ GET /resources 200 in 108ms
+ GET /support 200 in 87ms
+ GET / 200 in 78ms
+ GET /currency-exchange 200 in 88ms
+ GET /practice-scenarios 200 in 63ms
+ GET /practice-scenarios 200 in 299ms
+ GET /favicon.ico?favicon.45db1c09.ico 200 in 268ms
+ GET /currency-exchange 200 in 72ms
+ GET / 200 in 60ms
+ GET /daily-challenges 200 in 76ms
+ GET /resources 200 in 72ms
+ GET /currency-exchange 200 in 65ms
+ GET /modules 200 in 73ms
+ GET / 200 in 70ms
+ GET /modules 200 in 67ms
+ GET /daily-challenges 200 in 142ms
+ GET /practice-scenarios 200 in 74ms
+ GET /progress 200 in 74ms
+ GET /currency-exchange 200 in 74ms
+ GET /progress 200 in 62ms
+ GET /resources 200 in 62ms
+ GET /support 200 in 71ms
+ GET /progress 200 in 76ms
+ GET /support 200 in 68ms
+ GET /progress 200 in 74ms
+ ✓ Compiled in 36ms
+ ✓ Compiled in 3ms
+ ✓ Compiled in 252ms
+ ✓ Compiled in 209ms
+ ✓ Compiled in 255ms
+ ✓ Compiled in 240ms
+ GET /progress 200 in 230ms
+ GET /favicon.ico?favicon.45db1c09.ico 200 in 273ms
+ GET /practice-scenarios 200 in 208ms
+ GET /progress 200 in 70ms
+ GET /practice-scenarios 200 in 58ms
+ GET /support 200 in 63ms
+ GET /practice-scenarios 200 in 63ms
+ ✓ Compiled in 18ms
+ ✓ Compiled in 234ms
+ ✓ Compiled in 119ms
+ GET /practice-scenarios 200 in 853ms
+ GET /favicon.ico?favicon.45db1c09.ico 200 in 280ms
+ GET /practice-scenarios 200 in 70ms
+ GET /progress 200 in 65ms
+ ✓ Compiled in 241ms
+ ✓ Compiled in 268ms
+ GET /progress 200 in 469ms
+ GET /favicon.ico?favicon.45db1c09.ico 200 in 283ms
+ GET /support 200 in 158ms
+ GET /progress 200 in 87ms
+ GET /progress 200 in 277ms
+ GET /favicon.ico?favicon.45db1c09.ico 200 in 265ms
+ GET /progress 200 in 179ms
+ GET /favicon.ico?favicon.45db1c09.ico 200 in 261ms
+ GET / 200 in 92ms
+ ✓ Compiled in 215ms
+ GET /practice-scenarios 200 in 87ms
+ GET /daily-challenges 200 in 80ms
+ GET /progress 200 in 177ms
+ GET /progress 200 in 333ms
+ GET /favicon.ico?favicon.45db1c09.ico 200 in 261ms
+ ✓ Compiled in 237ms
+ GET /progress 200 in 242ms
+ GET /favicon.ico?favicon.45db1c09.ico 200 in 257ms
+ GET /support 200 in 171ms
+ GET /resources 200 in 84ms
+ GET /modules 200 in 76ms
+ ✓ Compiled in 305ms
+ ✓ Compiled in 357ms
+ ⨯ ./app/modules/page.tsx:15:1
+Export modules doesn't exist in target module
+[0m [90m 13 |[39m } [36mfrom[39m [32m'lucide-react'[39m
+ [90m 14 |[39m [36mimport[39m [33mLink[39m [36mfrom[39m [32m'next/link'[39m
+[31m[1m>[22m[39m[90m 15 |[39m [36mimport[39m { modules } [36mfrom[39m [32m'@/data/modules'[39m
+ [90m    |[39m [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m
+ [90m 16 |[39m
+ [90m 17 |[39m [36mexport[39m [36mdefault[39m [36mfunction[39m [33mModulesPage[39m() {
+ [90m 18 |[39m   [90m// Calculate dynamic stats based on module data[39m[0m
+
+The export modules was not found in module [project]/data/modules.ts [app-client] (ecmascript).
+Did you mean to import default?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./app/modules/page.tsx [Client Component Browser]
+    ./app/modules/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./app/modules/page.tsx [Client Component SSR]
+    ./app/modules/page.tsx [Server Component]
+
+
+
+./app/modules/page.tsx:15:1
+Export modules doesn't exist in target module
+[0m [90m 13 |[39m } [36mfrom[39m [32m'lucide-react'[39m
+ [90m 14 |[39m [36mimport[39m [33mLink[39m [36mfrom[39m [32m'next/link'[39m
+[31m[1m>[22m[39m[90m 15 |[39m [36mimport[39m { modules } [36mfrom[39m [32m'@/data/modules'[39m
+ [90m    |[39m [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m
+ [90m 16 |[39m
+ [90m 17 |[39m [36mexport[39m [36mdefault[39m [36mfunction[39m [33mModulesPage[39m() {
+ [90m 18 |[39m   [90m// Calculate dynamic stats based on module data[39m[0m
+
+The export modules was not found in module [project]/data/modules.ts [app-ssr] (ecmascript).
+Did you mean to import default?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./app/modules/page.tsx [Client Component Browser]
+    ./app/modules/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./app/modules/page.tsx [Client Component SSR]
+    ./app/modules/page.tsx [Server Component]
+
+
+ ○ Compiling /_error ...
+ ✓ Compiled /_error in 1836ms
+ GET /modules 500 in 2387ms
+ GET /favicon.ico 500 in 90ms
+ GET / 200 in 267ms
+ GET /favicon.ico?favicon.45db1c09.ico 500 in 106ms
+ GET /favicon.ico 500 in 120ms
+ GET /favicon.ico?favicon.45db1c09.ico 500 in 83ms
+ GET / 200 in 190ms
+ GET /favicon.ico?favicon.45db1c09.ico 500 in 80ms
+ GET / 200 in 259ms
+ GET /favicon.ico?favicon.45db1c09.ico 500 in 65ms
+ ✓ Compiled in 331ms
+ ✓ Compiled in 352ms
+ GET / 200 in 104ms
+ GET / 200 in 73ms
+ ✓ Compiled in 237ms
+ ✓ Compiled /modules in 38ms
+ GET /modules 200 in 241ms
  GET /favicon.ico?favicon.45db1c09.ico 200 in 290ms
- GET / 200 in 186ms
- ✓ Compiled in 409ms
-[?25h
+ ✓ Compiled /modules/[id] in 36ms
+ GET /modules/module-1 200 in 181ms
+ GET /modules 200 in 70ms
+ GET /modules 200 in 337ms
+ GET /favicon.ico?favicon.45db1c09.ico 200 in 247ms
+ GET /modules 200 in 500ms
+ GET /favicon.ico?favicon.45db1c09.ico 200 in 278ms
+ GET /modules 200 in 197ms
+ GET /favicon.ico?favicon.45db1c09.ico 200 in 255ms
+ GET /modules 200 in 214ms
+ GET /favicon.ico?favicon.45db1c09.ico 200 in 266ms
+ GET /modules 200 in 246ms
+ GET /favicon.ico?favicon.45db1c09.ico 200 in 256ms
+ GET /modules 200 in 238ms
+ GET /favicon.ico?favicon.45db1c09.ico 200 in 250ms
+ GET /modules 200 in 363ms
+ GET /favicon.ico?favicon.45db1c09.ico 200 in 265ms
+ GET / 200 in 121ms
+ GET /modules 200 in 136ms
+ GET /modules/module-3 200 in 84ms
+ GET /modules 200 in 69ms
+ ✓ Compiled in 207ms
+ GET /modules/3 200 in 100ms
+ ✓ Compiled in 266ms
+ GET /modules 200 in 260ms
+ GET /modules/4 200 in 272ms
+ GET /favicon.ico 200 in 321ms
+Looking for module: module-1
+Available modules: [
+  'module-1',
+  'module-2',
+  'module-3',
+  'module-4',
+  'module-5',
+  'module-6',
+  'module-7'
+]
+Found module: Welcome to EasyPay Finance
+ ⨯ [Error: Objects are not valid as a React child (found: object with keys {id, question, type, options, correctAnswer, explanation, points}). If you meant to render a collection of children, use an array instead.] {
+  digest: '2916506267'
+}
+ GET /modules/1 500 in 910ms
+ GET /modules 200 in 389ms
+ GET /favicon.ico?favicon.45db1c09.ico 200 in 257ms
+ GET /modules/2 200 in 238ms
+ GET /modules 200 in 77ms
+ GET /modules/5 200 in 83ms
+ GET /modules 200 in 68ms
+ GET /modules/3 200 in 73ms
+ GET /favicon.ico?favicon.45db1c09.ico 200 in 268ms
+ GET /modules 200 in 68ms
+ GET /modules/7 200 in 75ms
+ GET /modules 200 in 71ms
+ GET /modules/5 200 in 70ms
+ GET /modules 200 in 78ms
+ GET /modules/4 200 in 112ms
+ GET /modules 200 in 64ms
+ GET /modules/4 200 in 69ms
+ GET /modules 200 in 71ms
+ GET /modules/2 200 in 74ms
+ GET /modules 200 in 65ms
+ GET /modules/3 200 in 73ms
+ GET /modules 200 in 95ms
+ GET /daily-challenges 200 in 97ms
+ GET /practice-scenarios 200 in 99ms
+ GET /progress 200 in 109ms
+ GET /progress 200 in 254ms
+ GET /favicon.ico?favicon.45db1c09.ico 200 in 270ms
+ GET /currency-exchange 200 in 90ms
+ GET /progress 200 in 92ms
+ GET /support 200 in 87ms
+ GET /resources 200 in 86ms
+ GET /currency-exchange 200 in 77ms
+ GET /progress 200 in 105ms
+ GET /daily-challenges 200 in 90ms
+ GET /modules 200 in 108ms
+ GET / 200 in 91ms
+ GET /progress 200 in 72ms
+ GET /practice-scenarios 200 in 77ms
+ GET /currency-exchange 200 in 87ms
+ GET / 200 in 82ms
+ ✓ Compiled in 347ms
+ ✓ Compiled in 25ms
+ ✓ Compiled in 21ms
+ ✓ Compiled in 23ms
+ ✓ Compiled in 28ms
+ ✓ Compiled in 24ms
+ ✓ Compiled in 24ms
+ ✓ Compiled in 40ms
+ GET / 200 in 426ms
+ GET /favicon.ico?favicon.45db1c09.ico 200 in 266ms
+ GET /modules 200 in 261ms
+ GET /modules/4 200 in 181ms
+ GET /favicon.ico 200 in 322ms
+ GET / 200 in 348ms
+ GET /favicon.ico?favicon.45db1c09.ico 200 in 307ms
+ GET /daily-challenges 200 in 96ms
+ GET /modules 200 in 120ms
+ GET /favicon.ico?favicon.45db1c09.ico 200 in 301ms
+ GET /modules/1 200 in 100ms
+ GET /favicon.ico 200 in 276ms
+ GET /daily-challenges 200 in 239ms
+ GET /favicon.ico?favicon.45db1c09.ico 200 in 264ms
+ GET / 200 in 68ms
+ ✓ Compiled in 70ms
+ ⚠ Fast Refresh had to perform a full reload due to a runtime error.
+ ✓ Compiled in 34ms
+ GET / 200 in 694ms
+ GET /favicon.ico?favicon.45db1c09.ico 200 in 350ms
+ GET /modules 200 in 85ms
+ GET /favicon.ico?favicon.45db1c09.ico 200 in 277ms
+ GET /modules/3 200 in 80ms
+ GET /modules/3 200 in 236ms
+ GET /favicon.ico?favicon.45db1c09.ico 200 in 292ms
+ GET /modules 200 in 77ms
+ GET /modules/4 200 in 104ms
+ GET /favicon.ico 200 in 315ms
+ GET /modules 200 in 335ms
+ GET /favicon.ico?favicon.45db1c09.ico 200 in 325ms
+ GET /favicon.ico 200 in 270ms
+ GET /favicon.ico?favicon.45db1c09.ico 200 in 260ms
+ GET /modules/5 200 in 94ms
+ GET /favicon.ico 200 in 379ms
+ GET /modules 200 in 271ms
+ GET /favicon.ico?favicon.45db1c09.ico 200 in 263ms
+ GET /favicon.ico 200 in 306ms
+ GET /favicon.ico?favicon.45db1c09.ico 200 in 260ms
+ GET /modules/3 200 in 74ms
+ ✓ Compiled /modules/3/quiz in 484ms
+ GET /modules/3/quiz 200 in 550ms
+ GET /modules/3 200 in 70ms
+ GET / 200 in 62ms
+ GET /daily-challenges 200 in 131ms
+ GET /practice-scenarios 200 in 112ms
+ GET /daily-challenges 200 in 80ms
+ GET /modules 200 in 88ms
+ GET /modules/4 200 in 299ms
+ GET /modules 200 in 78ms
+ GET /modules/2 200 in 75ms
+ GET /modules 200 in 70ms
+ GET /modules/1 200 in 76ms
+ GET /modules 200 in 108ms
+ GET /modules/3 200 in 114ms
+ GET /modules 200 in 92ms
+ GET /modules/5 200 in 94ms
+ ✓ Compiled in 269ms
+ ○ Compiling /modules/[id]/quiz ...
+ ✓ Compiled /modules/[id]/quiz in 548ms
+ GET /modules/5/quiz 200 in 1554ms
+ GET /modules 200 in 75ms
+ GET /modules/1 200 in 102ms
+ GET /modules/1/quiz 200 in 68ms
+ GET /modules/1 200 in 67ms
+ GET /modules 200 in 66ms
+ GET /currency-exchange 200 in 78ms
+ GET / 200 in 94ms
+ GET /currency-exchange 200 in 110ms
+ ✓ Compiled in 146ms
+ GET /currency-exchange 200 in 496ms
+ GET /favicon.ico?favicon.45db1c09.ico 200 in 316ms
+ GET /currency-exchange 200 in 195ms
+ GET /favicon.ico?favicon.45db1c09.ico 200 in 296ms
+ ✓ Compiled in 241ms
+ GET /currency-exchange 200 in 744ms
+ GET /favicon.ico?favicon.45db1c09.ico 200 in 306ms
+ GET /currency-exchange 200 in 199ms
+ GET /favicon.ico?favicon.45db1c09.ico 200 in 306ms
+ GET /currency-exchange 200 in 212ms
+ GET /favicon.ico?favicon.45db1c09.ico 200 in 307ms
+ GET / 200 in 87ms
+ GET /modules 200 in 93ms
+ GET /daily-challenges 200 in 98ms
+ GET /practice-scenarios 200 in 84ms
+ GET /progress 200 in 102ms
+ GET /currency-exchange 200 in 99ms
+ GET /resources 200 in 73ms
+ GET /support 200 in 72ms
+ GET / 200 in 62ms
+ ✓ Compiled in 278ms
+ GET / 200 in 498ms
+ GET /favicon.ico?favicon.45db1c09.ico 200 in 305ms
+ GET /currency-exchange 200 in 76ms
+ GET /currency-exchange 200 in 378ms
+ GET /favicon.ico?favicon.45db1c09.ico 200 in 335ms
+ ✓ Compiled in 235ms
+ GET / 200 in 233ms
+ GET /practice-scenarios 200 in 117ms
+ GET /currency-exchange 200 in 87ms
+ GET /progress 200 in 90ms
+ ✓ Compiled in 170ms
+ GET /support 200 in 121ms
+ GET /resources 200 in 113ms
+ GET /currency-exchange 200 in 94ms
+ GET /support 200 in 88ms
+ GET /currency-exchange 200 in 77ms
+ GET /progress 200 in 230ms
+ GET / 200 in 85ms
+ GET /practice-scenarios 200 in 122ms
+ GET /progress 200 in 81ms
+ GET /resources 200 in 91ms
+ GET /support 200 in 82ms
+ GET / 200 in 96ms
+ GET /currency-exchange 200 in 123ms
+ GET /currency-exchange 200 in 213ms
+ GET /favicon.ico?favicon.45db1c09.ico 200 in 306ms
+ GET / 200 in 68ms
+ GET /daily-challenges 200 in 73ms
+ GET /practice-scenarios 200 in 96ms
+ GET /progress 200 in 140ms
+ GET /currency-exchange 200 in 101ms
+ GET /modules 200 in 95ms
+ GET /modules/4 200 in 104ms
+ GET /modules 200 in 81ms
+ GET /modules/7 200 in 79ms
+ GET /modules/7/quiz 200 in 93ms
+ GET /modules 200 in 80ms
+ GET / 200 in 91ms
+ GET /modules 200 in 81ms
+ GET /daily-challenges 200 in 75ms
+ GET /practice-scenarios 200 in 86ms
+ GET /currency-exchange 200 in 89ms
+ GET /resources 200 in 76ms
+ GET /support 200 in 235ms
+ ✓ Compiled in 217ms
+ GET / 200 in 139ms
+ GET /daily-challenges 200 in 121ms
+ GET /practice-scenarios 200 in 102ms
+ GET /progress 200 in 111ms
+ GET /currency-exchange 200 in 110ms
+ GET /support 200 in 289ms
+ GET /resources 200 in 92ms
+ GET /support 200 in 83ms
+ GET /currency-exchange 200 in 85ms
+ GET /currency-exchange 200 in 177ms
+ ✓ Compiled in 265ms
+ GET /support 200 in 226ms
+ GET /support 200 in 85ms
+ GET /support 200 in 756ms
+ GET /favicon.ico?favicon.45db1c09.ico 200 in 324ms
+ GET /support 200 in 382ms
+ GET /favicon.ico?favicon.45db1c09.ico 200 in 289ms
+ ✓ Compiled in 462ms
+ GET /support 200 in 1313ms
+ GET /favicon.ico?favicon.45db1c09.ico 200 in 275ms
+ ✓ Compiled in 411ms
+ GET /support 200 in 910ms
+ GET /favicon.ico?favicon.45db1c09.ico 200 in 278ms
+ GET / 200 in 82ms

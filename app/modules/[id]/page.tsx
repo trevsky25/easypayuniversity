@@ -13,111 +13,26 @@ import {
   Video,
   FileText,
   HelpCircle,
-  Award
+  Award,
+  Star,
+  Trophy
 } from 'lucide-react'
 import { useState } from 'react'
 import { useParams, useRouter } from 'next/navigation'
+import trainingModules from '@/data/modules'
+import { useEBucks } from '@/lib/eBucks'
+import { InteractiveContent } from '@/components/interactive/InteractiveContent'
 
-interface ModuleContent {
-  id: number
-  title: string
-  description: string
-  duration: string
-  lessons: {
-    id: number
-    title: string
-    type: 'video' | 'reading' | 'interactive' | 'quiz'
-    duration: string
-    completed: boolean
-  }[]
-  quiz: {
-    questions: number
-    passingScore: number
-    timeLimit: string
-  }
-}
-
-const moduleData: Record<string, ModuleContent> = {
-  '1': {
-    id: 1,
-    title: 'Welcome to EasyPay Finance',
-    description: 'Learn about our mission, values, and the three financing programs that power merchant success.',
-    duration: '45 min',
-    lessons: [
-      { id: 1, title: 'Company Overview Video', type: 'video', duration: '5 min', completed: true },
-      { id: 2, title: 'Program Comparison Tool', type: 'interactive', duration: '15 min', completed: true },
-      { id: 3, title: 'Portal Navigation Tutorial', type: 'video', duration: '15 min', completed: true },
-      { id: 4, title: 'Getting Started Guide', type: 'reading', duration: '10 min', completed: false }
-    ],
-    quiz: {
-      questions: 10,
-      passingScore: 80,
-      timeLimit: '15 min'
-    }
-  },
-  '2': {
-    id: 2,
-    title: 'How to Submit Applications',
-    description: 'Master the customer application process, understand approval criteria, and handle various financing scenarios.',
-    duration: '60 min',
-    lessons: [
-      { id: 1, title: 'Application Process Walkthrough', type: 'video', duration: '15 min', completed: true },
-      { id: 2, title: 'Scenario-Based Training', type: 'interactive', duration: '20 min', completed: true },
-      { id: 3, title: 'Best Practices Checklist', type: 'reading', duration: '10 min', completed: true },
-      { id: 4, title: 'Interactive Role-Play', type: 'interactive', duration: '15 min', completed: false }
-    ],
-    quiz: {
-      questions: 12,
-      passingScore: 80,
-      timeLimit: '20 min'
-    }
-  },
-  '3': {
-    id: 3,
-    title: 'Establishing a Credit Culture',
-    description: 'Build credit awareness across your organization and implement best practices for consistent financing conversations.',
-    duration: '90 min',
-    lessons: [
-      { id: 1, title: 'Credit Culture Foundation', type: 'video', duration: '15 min', completed: true },
-      { id: 2, title: 'Staff Training Framework', type: 'interactive', duration: '20 min', completed: true },
-      { id: 3, title: 'Customer Conversation Guide', type: 'reading', duration: '25 min', completed: false },
-      { id: 4, title: 'Building Accountability Systems', type: 'interactive', duration: '15 min', completed: false },
-      { id: 5, title: 'Overcoming Common Objections', type: 'video', duration: '18 min', completed: false },
-      { id: 6, title: 'Implementation Roadmap', type: 'reading', duration: '12 min', completed: false }
-    ],
-    quiz: {
-      questions: 12,
-      passingScore: 80,
-      timeLimit: '18 min'
-    }
-  },
-  '4': {
-    id: 4,
-    title: 'Advanced Topics',
-    description: 'Handle complex financing scenarios, ensure compliance, and maximize program benefits.',
-    duration: '120 min',
-    lessons: [
-      { id: 1, title: 'Regulatory Compliance', type: 'reading', duration: '30 min', completed: false },
-      { id: 2, title: 'Advanced Sales Techniques', type: 'interactive', duration: '25 min', completed: false },
-      { id: 3, title: 'Technology Integration', type: 'video', duration: '20 min', completed: false },
-      { id: 4, title: 'Case Study Analysis', type: 'interactive', duration: '35 min', completed: false },
-      { id: 5, title: 'Compliance Documentation', type: 'reading', duration: '20 min', completed: false }
-    ],
-    quiz: {
-      questions: 15,
-      passingScore: 80,
-      timeLimit: '25 min'
-    }
-  }
-}
 
 export default function ModulePage() {
   const params = useParams()
   const router = useRouter()
   const moduleId = params.id as string
-  const module = moduleData[moduleId]
+  const module = trainingModules.find(m => m.id === `module-${moduleId}`)
+  const { awardEBucks } = useEBucks()
   
   const [selectedLesson, setSelectedLesson] = useState(0)
+  const [showLessonContent, setShowLessonContent] = useState(false)
 
   if (!module) {
     return (
@@ -133,20 +48,40 @@ export default function ModulePage() {
     )
   }
 
-  const completedLessons = module.lessons.filter(lesson => lesson.completed).length
+  // Mock completion status for now
+  const completedLessons = Math.floor(module.lessons.length * 0.6) // 60% completed for demo
   const progressPercentage = Math.round((completedLessons / module.lessons.length) * 100)
   
-  const getTypeIcon = (type: string) => {
-    switch (type) {
-      case 'video': return <Video className="w-4 h-4" />
-      case 'reading': return <FileText className="w-4 h-4" />
-      case 'interactive': return <PlayCircle className="w-4 h-4" />
-      case 'quiz': return <HelpCircle className="w-4 h-4" />
-      default: return <BookOpen className="w-4 h-4" />
-    }
+  // Use estimated time from module
+  const duration = module.estimatedTime
+  
+  const handleLessonComplete = () => {
+    awardEBucks(25, `Completed lesson: "${currentLesson.title}"`)
+    // In a real app, you'd update the lesson completion status
+  }
+  
+  const getTypeIcon = (lesson: any) => {
+    if (!lesson || !lesson.content) return <FileText className="w-4 h-4" />
+    const hasInteractive = lesson.content.some((c: any) => c.type === 'interactive')
+    if (hasInteractive) return <PlayCircle className="w-4 h-4" />
+    return <FileText className="w-4 h-4" />
   }
 
   const currentLesson = module.lessons[selectedLesson]
+  
+  if (!currentLesson) {
+    return (
+      <div className="text-center py-12">
+        <h1 className="text-2xl font-bold text-gray-900">Lesson not found</h1>
+        <button 
+          onClick={() => router.push('/modules')}
+          className="mt-4 text-easypay-green hover:underline"
+        >
+          Back to modules
+        </button>
+      </div>
+    )
+  }
 
   return (
     <div className="space-y-6">
@@ -165,37 +100,98 @@ export default function ModulePage() {
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         <div className="lg:col-span-2">
-          <Card className="h-96 flex items-center justify-center bg-gray-50">
-            {currentLesson.type === 'video' && (
-              <div className="text-center">
-                <Video className="w-16 h-16 text-gray-400 mx-auto mb-4" />
-                <h3 className="text-lg font-semibold text-gray-900 mb-2">{currentLesson.title}</h3>
-                <p className="text-gray-600 mb-4">Video content would load here</p>
-                <button className="bg-easypay-green text-white px-6 py-3 rounded-lg hover:bg-easypay-green-dark transition-colors">
-                  Play Video
-                </button>
+          <Card className="min-h-96">
+            {!showLessonContent ? (
+              <div className="flex items-center justify-center h-96 bg-gray-50">
+                <div className="text-center">
+                  {getTypeIcon(currentLesson)}
+                  <h3 className="text-lg font-semibold text-gray-900 mb-2 mt-4">{currentLesson.title}</h3>
+                  <p className="text-gray-600 mb-4">Duration: {currentLesson.duration}</p>
+                  <button 
+                    onClick={() => setShowLessonContent(true)}
+                    className="bg-easypay-green text-white px-6 py-3 rounded-lg hover:bg-easypay-green-dark transition-colors"
+                  >
+                    {currentLesson.type === 'video' ? 'Play Video' : 
+                     currentLesson.type === 'interactive' ? 'Start Interactive' : 'Read Content'}
+                  </button>
+                </div>
               </div>
-            )}
-            
-            {currentLesson.type === 'interactive' && (
-              <div className="text-center">
-                <PlayCircle className="w-16 h-16 text-gray-400 mx-auto mb-4" />
-                <h3 className="text-lg font-semibold text-gray-900 mb-2">{currentLesson.title}</h3>
-                <p className="text-gray-600 mb-4">Interactive content would load here</p>
-                <button className="bg-easypay-green text-white px-6 py-3 rounded-lg hover:bg-easypay-green-dark transition-colors">
-                  Start Interactive
-                </button>
-              </div>
-            )}
-            
-            {currentLesson.type === 'reading' && (
-              <div className="text-center">
-                <FileText className="w-16 h-16 text-gray-400 mx-auto mb-4" />
-                <h3 className="text-lg font-semibold text-gray-900 mb-2">{currentLesson.title}</h3>
-                <p className="text-gray-600 mb-4">Reading material would load here</p>
-                <button className="bg-easypay-green text-white px-6 py-3 rounded-lg hover:bg-easypay-green-dark transition-colors">
-                  Read Article
-                </button>
+            ) : (
+              <div className="p-6">
+                <div className="flex items-center justify-between mb-6">
+                  <h3 className="text-xl font-semibold text-gray-900">{currentLesson.title}</h3>
+                  <button 
+                    onClick={() => setShowLessonContent(false)}
+                    className="text-gray-500 hover:text-gray-700"
+                  >
+                    ✕
+                  </button>
+                </div>
+                
+                <div className="prose max-w-none">
+                  {currentLesson.content && currentLesson.content.length > 0 ? (
+                    <div className="space-y-6">
+                      {currentLesson.content.map((section, index) => (
+                        <div key={index}>
+                          {section.type === 'interactive' ? (
+                            <InteractiveContent 
+                              type={section.interactiveType || 'knowledge-quiz'} 
+                              data={section}
+                              onComplete={() => handleLessonComplete()}
+                            />
+                          ) : (
+                            <div className={`
+                              ${section.type === 'example' ? 'bg-blue-50 border-l-4 border-blue-400 p-4' :
+                                section.type === 'tip' ? 'bg-green-50 border-l-4 border-green-400 p-4' :
+                                section.type === 'warning' ? 'bg-yellow-50 border-l-4 border-yellow-400 p-4' :
+                                ''}
+                            `}>
+                              {section.title && (
+                                <h4 className="font-semibold text-gray-900 mb-2">{section.title}</h4>
+                              )}
+                              <div className="whitespace-pre-line text-gray-700">{section.content}</div>
+                            </div>
+                          )}
+                        </div>
+                      ))}
+                    </div>
+                  ) : (
+                    <div className="text-center py-12 text-gray-500">
+                      <p>Lesson content would be displayed here.</p>
+                      <p className="mt-2">This is a preview of the lesson structure.</p>
+                    </div>
+                  )}
+                </div>
+                
+                {currentLesson.keyTakeaways && currentLesson.keyTakeaways.length > 0 && (
+                  <div className="mt-8 p-4 bg-emerald-50 rounded-lg">
+                    <h4 className="font-semibold text-emerald-900 mb-3">Key Takeaways</h4>
+                    <div className="space-y-2">
+                      {currentLesson.keyTakeaways.map((takeaway, index) => (
+                        <div key={index} className="flex items-start gap-2 text-emerald-800">
+                          <Star className="w-4 h-4 mt-0.5 flex-shrink-0" />
+                          <span className="text-sm">{takeaway}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                )}
+                
+                <div className="flex justify-between mt-8 pt-6 border-t">
+                  <button 
+                    onClick={() => setShowLessonContent(false)}
+                    className="px-4 py-2 text-gray-600 hover:text-gray-800"
+                  >
+                    ← Back to Overview
+                  </button>
+                  <button 
+                    onClick={handleLessonComplete}
+                    className="bg-green-600 text-white px-6 py-2 rounded-lg hover:bg-green-700 transition-colors flex items-center gap-2"
+                  >
+                    <Trophy className="w-4 h-4" />
+                    Mark Complete (+25 eBucks)
+                  </button>
+                </div>
               </div>
             )}
           </Card>
@@ -232,7 +228,7 @@ export default function ModulePage() {
               </div>
               <div className="flex items-center gap-2 text-sm text-gray-600">
                 <Clock className="w-4 h-4" />
-                <span>{module.duration} total</span>
+                <span>{duration} total</span>
               </div>
             </div>
           </Card>
@@ -251,10 +247,14 @@ export default function ModulePage() {
                   }`}
                 >
                   <div className="flex items-center gap-3">
-                    {lesson.completed ? (
-                      <CheckCircle className="w-5 h-5 text-green-500" />
+                    {index < completedLessons ? (
+                      <CheckCircle className={`w-5 h-5 ${
+                        selectedLesson === index ? 'text-white' : 'text-green-500'
+                      }`} />
                     ) : (
-                      getTypeIcon(lesson.type)
+                      <div className={selectedLesson === index ? 'text-white' : 'text-gray-400'}>
+                        {getTypeIcon(lesson)}
+                      </div>
                     )}
                     <div className="flex-1">
                       <div className="font-medium">{lesson.title}</div>
@@ -275,15 +275,15 @@ export default function ModulePage() {
             <div className="space-y-3">
               <div className="flex justify-between text-sm">
                 <span className="text-gray-600">Questions:</span>
-                <span>{module.quiz.questions}</span>
+                <span>{module.quiz.questions.length}</span>
               </div>
               <div className="flex justify-between text-sm">
                 <span className="text-gray-600">Passing Score:</span>
                 <span>{module.quiz.passingScore}%</span>
               </div>
               <div className="flex justify-between text-sm">
-                <span className="text-gray-600">Time Limit:</span>
-                <span>{module.quiz.timeLimit}</span>
+                <span className="text-gray-600">eBucks Reward:</span>
+                <span className="text-easypay-green font-semibold">{module.ebucksReward}</span>
               </div>
               <button 
                 onClick={() => router.push(`/modules/${moduleId}/quiz`)}

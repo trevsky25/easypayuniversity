@@ -12,62 +12,36 @@ import {
   Star
 } from 'lucide-react'
 import Link from 'next/link'
+import trainingModules from '@/data/modules'
 
 export default function ModulesPage() {
-  const modules = [
-    { 
-      id: 1, 
-      title: 'Welcome to EasyPay Finance', 
-      description: 'Learn about our mission, programs, and portal navigation. Perfect for new merchant partners.',
-      progress: 100, 
-      status: 'completed' as const,
-      duration: '45 min',
-      lessons: 4,
-      quiz: true,
-      locked: false,
-      rating: 4.8,
-      learners: 1245
-    },
-    { 
-      id: 2, 
-      title: 'How to Submit Applications', 
-      description: 'Master the customer application process, approval criteria, and troubleshooting.',
-      progress: 100, 
-      status: 'completed' as const,
-      duration: '60 min',
-      lessons: 5,
-      quiz: true,
-      locked: false,
-      rating: 4.9,
-      learners: 1156
-    },
-    { 
-      id: 3, 
-      title: 'Establishing a Credit Culture', 
-      description: 'Build credit awareness across your organization and implement best practices.',
-      progress: 35, 
-      status: 'in-progress' as const,
-      duration: '90 min',
-      lessons: 6,
-      quiz: true,
-      locked: false,
-      rating: 4.7,
-      learners: 987
-    },
-    { 
-      id: 4, 
-      title: 'Advanced Topics', 
-      description: 'Handle complex financing scenarios, ensure compliance, and maximize program benefits.',
-      progress: 0, 
-      status: 'not-started' as const,
-      duration: '120 min',
-      lessons: 8,
-      quiz: true,
-      locked: true,
-      rating: 4.6,
-      learners: 756
-    },
-  ]
+  // Calculate dynamic stats based on module data
+  const moduleStats = trainingModules.map((module, index) => {
+    const totalLessons = module.lessons.length
+    // Mock completion for demo - first 2 modules completed, 3rd in progress
+    const completedLessons = index === 0 ? totalLessons : index === 1 ? totalLessons : index === 2 ? Math.floor(totalLessons * 0.35) : 0
+    const progress = totalLessons > 0 ? Math.round((completedLessons / totalLessons) * 100) : 0
+    
+    let status: 'completed' | 'in-progress' | 'not-started' = 'not-started'
+    if (progress === 100) status = 'completed'
+    else if (progress > 0) status = 'in-progress'
+    
+    const moduleIdNumber = parseInt(module.id.split('-')[1])
+    
+    return {
+      id: moduleIdNumber,
+      title: module.title,
+      description: module.description,
+      progress,
+      status,
+      duration: module.estimatedTime,
+      lessons: totalLessons,
+      quiz: module.quiz.questions.length > 0,
+      locked: false, // Unlock all modules for easy access
+      rating: 4.5 + (Math.random() * 0.5), // Mock rating
+      learners: Math.floor(Math.random() * 500) + 500 // Mock learner count
+    }
+  })
 
   const getStatusIcon = (status: string, progress: number) => {
     if (status === 'completed') return <CheckCircle className="w-5 h-5 text-green-600" />
@@ -85,7 +59,7 @@ export default function ModulesPage() {
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-6">
-        {modules.map((module) => (
+        {moduleStats.slice(0, 7).map((module) => (
           <Card key={module.id} className="relative overflow-hidden">
             {module.locked && (
               <div className="absolute inset-0 bg-gray-100/80 backdrop-blur-sm z-10 flex items-center justify-center">
@@ -101,7 +75,7 @@ export default function ModulesPage() {
                 {getStatusIcon(module.status, module.progress)}
                 <Badge status={module.status}>
                   {module.status === 'completed' ? 'Completed' : 
-                   module.status === 'in-progress' ? 'In Progress' : 'Locked'}
+                   module.status === 'in-progress' ? 'In Progress' : 'Not Started'}
                 </Badge>
               </div>
               {module.status === 'completed' && (
@@ -126,7 +100,7 @@ export default function ModulesPage() {
                 <span className="text-gray-500">{module.progress}% Complete</span>
                 <div className="flex items-center gap-1">
                   <Star className="w-3 h-3 text-yellow-400 fill-current" />
-                  <span className="text-gray-500">{module.rating}</span>
+                  <span className="text-gray-500">{module.rating.toFixed(1)}</span>
                 </div>
               </div>
 
@@ -162,7 +136,7 @@ export default function ModulesPage() {
             <Progress value={50} className="bg-white/20 [&>div]:bg-white" />
           </div>
           <div className="text-center">
-            <div className="text-3xl font-bold">2/4</div>
+            <div className="text-3xl font-bold">2/7</div>
             <div className="text-sm opacity-90">Modules Complete</div>
           </div>
         </div>

@@ -216,28 +216,70 @@ export default function ProgressPage() {
         </p>
       </div>
 
-      {/* Overall Progress */}
-      <Card className="bg-gradient-to-r from-easypay-green to-easypay-green-dark text-white">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
-          <div className="text-center">
-            <div className="text-3xl font-bold">{userStats.overallProgress}%</div>
-            <div className="text-sm opacity-90">Overall Progress</div>
+      {/* Learning Stats Tiles */}
+      <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
+        <Card className="p-6">
+          <div className="flex items-center gap-3">
+            <div className="w-12 h-12 bg-emerald-100 rounded-full flex items-center justify-center">
+              <TrendingUp className="w-6 h-6 text-emerald-600" />
+            </div>
+            <div>
+              <p className="text-2xl font-bold text-gray-900">{userStats.overallProgress}%</p>
+              <p className="text-sm text-gray-600">Overall Progress</p>
+            </div>
           </div>
-          <div className="text-center">
-            <div className="text-3xl font-bold">{userStats.completedModules}/{userStats.totalModules}</div>
-            <div className="text-sm opacity-90">Modules Complete</div>
+        </Card>
+
+        <Card className="p-6">
+          <div className="flex items-center gap-3">
+            <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center">
+              <BookOpen className="w-6 h-6 text-blue-600" />
+            </div>
+            <div>
+              <p className="text-2xl font-bold text-gray-900">{userStats.completedModules}/{userStats.totalModules}</p>
+              <p className="text-sm text-gray-600">Modules Complete</p>
+            </div>
           </div>
-          <div className="text-center">
-            <div className="text-3xl font-bold">{userStats.certificatesEarned}</div>
-            <div className="text-sm opacity-90">Certificates Earned</div>
+        </Card>
+
+        <Card className="p-6">
+          <div className="flex items-center gap-3">
+            <div className="w-12 h-12 bg-yellow-100 rounded-full flex items-center justify-center">
+              <Award className="w-6 h-6 text-yellow-600" />
+            </div>
+            <div>
+              <p className="text-2xl font-bold text-gray-900">{userStats.certificatesEarned}</p>
+              <p className="text-sm text-gray-600">Certificates Earned</p>
+            </div>
           </div>
-          <div className="text-center">
-            <div className="text-3xl font-bold">{totalPoints}</div>
-            <div className="text-sm opacity-90">Total Points</div>
+        </Card>
+
+        <Card className="p-6">
+          <div className="flex items-center gap-3">
+            <div className="w-12 h-12 bg-purple-100 rounded-full flex items-center justify-center">
+              <Star className="w-6 h-6 text-purple-600" />
+            </div>
+            <div>
+              <p className="text-2xl font-bold text-gray-900">{totalPoints}</p>
+              <p className="text-sm text-gray-600">Achievement Points</p>
+            </div>
+          </div>
+        </Card>
+      </div>
+
+      {/* Overall Progress Bar */}
+      <Card className="p-6">
+        <h3 className="text-lg font-semibold text-gray-900 mb-4">Learning Progress</h3>
+        <div className="bg-gray-200 rounded-full p-1">
+          <div 
+            className="bg-gradient-to-r from-emerald-500 to-blue-500 h-6 rounded-full transition-all duration-1000 ease-out relative overflow-hidden shadow-md"
+            style={{ width: `${userStats.overallProgress}%` }}
+          >
+            <div className="absolute inset-0 bg-white/30 animate-pulse rounded-full" />
           </div>
         </div>
-        <div className="mt-6">
-          <Progress value={userStats.overallProgress} className="bg-white/20 [&>div]:bg-white" />
+        <div className="text-center mt-4">
+          <span className="text-gray-700 font-semibold">Progress: {userStats.overallProgress}% Complete</span>
         </div>
       </Card>
 
@@ -297,7 +339,7 @@ export default function ProgressPage() {
                       <span className="text-xs text-gray-400">
                         {new Date(activity.date).toLocaleDateString()}
                       </span>
-                      <span className="text-xs text-easypay-green font-medium">
+                      <span className="text-xs bg-emerald-100 text-emerald-700 px-2 py-0.5 rounded-full font-medium">
                         +{activity.points} pts
                       </span>
                     </div>
@@ -358,7 +400,7 @@ export default function ProgressPage() {
                       }`}>
                         {achievement.rarity}
                       </span>
-                      <span className="text-sm font-medium text-easypay-green">
+                      <span className="text-sm font-bold bg-emerald-100 text-emerald-700 px-2 py-1 rounded-full">
                         {achievement.points} pts
                       </span>
                     </div>
@@ -387,9 +429,9 @@ export default function ProgressPage() {
                   <h4 className="font-medium text-gray-900">{module.title}</h4>
                   <div className="flex items-center gap-3">
                     {module.certificate && (
-                      <div className="flex items-center gap-1 text-easypay-green">
+                      <div className="flex items-center gap-1 bg-emerald-100 text-emerald-700 px-3 py-1 rounded-full">
                         <Award className="w-4 h-4" />
-                        <span className="text-sm font-medium">Certified</span>
+                        <span className="text-sm font-bold">Certified</span>
                       </div>
                     )}
                     {module.score && (
