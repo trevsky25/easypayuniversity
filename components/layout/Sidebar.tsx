@@ -40,7 +40,7 @@ export function Sidebar() {
         {/* Mobile Close Button */}
         <button
           onClick={() => setIsMobileOpen(false)}
-          className="lg:hidden absolute top-4 right-4 p-2 hover:bg-easypay-gray-50 rounded-lg transition-colors"
+          className="lg:hidden absolute top-20 right-4 p-2 hover:bg-easypay-gray-50 rounded-lg transition-colors"
           aria-label="Close menu"
         >
           <X className="w-5 h-5 text-easypay-gray-600" />

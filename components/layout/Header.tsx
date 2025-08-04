@@ -13,7 +13,7 @@ export function Header() {
   const { balance } = useEBucks()
 
   return (
-    <header className="fixed top-0 left-0 right-0 bg-white border-b border-easypay-gray-200 h-16 flex items-center justify-between px-4 sm:px-6 z-30">
+    <header className="fixed top-0 left-0 right-0 bg-white border-b border-easypay-gray-200 h-16 flex items-center justify-between px-4 sm:px-6 z-50">
       <div className="flex items-center gap-3">
         {/* Mobile Menu Button */}
         <button
@@ -27,7 +27,12 @@ export function Header() {
         <img 
           src="/easypay-logo.svg" 
           alt="EasyPay Finance" 
-          className="h-6 sm:h-8 w-auto"
+          className="h-6 sm:h-8 w-auto relative z-10"
+          onError={(e) => {
+            const target = e.target as HTMLImageElement;
+            target.style.display = 'none';
+            target.insertAdjacentHTML('afterend', '<span class="text-easypay-green font-bold text-lg">EasyPay</span>');
+          }}
         />
         <div className="hidden sm:block text-sm text-easypay-gray-600 whitespace-nowrap">Merchant Training Platform</div>
       </div>
