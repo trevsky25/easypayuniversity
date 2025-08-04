@@ -60,7 +60,7 @@ export const trainingModules: TrainingModule[] = [
     prerequisites: [],
     objectives: [
       'Understand EasyPay Finance\'s history and mission',
-      'Learn about our three core financing programs',
+      'Learn about our two core financing programs',
       'Identify the benefits for merchants and customers',
       'Navigate the Business Center portal effectively'
     ],
@@ -78,22 +78,22 @@ export const trainingModules: TrainingModule[] = [
           {
             type: 'text',
             title: 'Welcome to EasyPay Finance',
-            content: 'Welcome to EasyPay Finance, where we\'ve been making "Customer Financing Made EASY" for over 20 years. Since our founding in 2001, we\'ve grown to serve over 12,000 locations across 21 states, helping merchants like you provide flexible financing solutions to your customers.'
+            content: 'Welcome to EasyPay Finance, where we\'ve been delivering "Easy Payment Solutions - No Perfect Credit Required" for over 20 years. Since our founding in 2001, we\'ve grown to serve over 12,000 locations across the United States, helping merchants like you provide flexible financing solutions to your customers.\n\nBuilt on two decades of customer finance experience, we specialize in serving retailers, auto repair dealers, furniture stores, mattress retailers, and electronics merchants. Our comprehensive approach consolidates the need for multiple finance companies into one easy solution, providing coverage for customers with good, challenged, and poor credit alike.'
           },
           {
             type: 'text',
             title: 'Our Mission',
-            content: 'Our mission is simple: provide accessible, transparent financing options that help working people get what they need when they need it. We believe everyone deserves access to quality goods and services, regardless of their credit history.'
+            content: 'Our mission is simple: Easy Payment Solutions - No Perfect Credit Required. We provide accessible, transparent financing options that help working people get what they need when they need it. We believe everyone deserves access to quality goods and services, regardless of their credit history.\n\nUsing alternative credit assessment that looks beyond just credit scores, we create flexible payment solutions designed to work with customer budgets. Our dedicated sales support and mobile application process allows customers to apply and get decisions quickly, making the purchasing process smooth for both merchants and customers.'
           },
           {
             type: 'text',
             title: 'Company Details',
-            content: 'EasyPay Finance operates as Duvera Billing Services, LLC (DBA EasyPay Finance) and is headquartered in Carlsbad, California. Our extensive network covers 21 states, providing financing solutions for automotive repairs, furniture, appliances, electronics, and more.'
+            content: 'EasyPay Finance operates as Duvera Billing Services, LLC (DBA EasyPay Finance) and is headquartered in Carlsbad, California. Our extensive network covers locations across the United States, providing financing solutions for automotive repairs, tires, furniture, mattresses, appliances, electronics, and more.\n\nWe\'ve built a stable, growing company focused on serving both merchants and customers. Our clear agreements contain no hidden fees, and we provide dedicated business support through multiple channels including phone, email, and our comprehensive Business Center portal.'
           },
           {
             type: 'example',
             title: 'Our Impact by the Numbers',
-            content: '• 20+ years in business\n• 12,000+ merchant locations\n• 21 states covered\n• Millions of customers helped\n• Same-day funding available\n• Up to $5,000 financing amounts'
+            content: '• 20+ years in business (since 2001)\n• 12,000+ merchant locations nationwide\n• Comprehensive credit coverage for all credit types\n• Alternative credit assessment beyond just scores\n• Same-day funding available\n• Up to $5,000 financing amounts\n• No hidden fees policy\n• Dedicated sales support team\n• Mobile application process\n• Multiple industry specializations (auto, furniture, electronics, etc.)'
           },
           {
             type: 'tip',
@@ -139,7 +139,7 @@ export const trainingModules: TrainingModule[] = [
         title: 'Understanding Our Three Core Programs',
         duration: '20 minutes',
         objectives: [
-          'Distinguish between RIC, LTO, and TLP programs',
+          'Distinguish between RIC and LTO programs',
           'Understand when to use each program',
           'Learn the unique benefits of each option'
         ],
@@ -170,16 +170,6 @@ export const trainingModules: TrainingModule[] = [
             content: '• Rental-Purchase Agreement structure\n• Early purchase options available\n• Lower approval requirements\n• Weekly, bi-weekly, or monthly payments\n• Processing fee applies ($39)\n• Great for credit-challenged customers'
           },
           {
-            type: 'text',
-            title: '3. Third-Party Loan Provider (TLP) Program',
-            content: 'Through our TLP program, we partner with banks (like TAB Bank) where EasyPay facilitates and services bank-originated loans. This provides additional options for customers with varying credit profiles.'
-          },
-          {
-            type: 'example',
-            title: 'TLP Program Features',
-            content: '• Bank-originated loans\n• EasyPay facilitates and services\n• Credit bureau reporting varies by provider\n• Different terms and rates available\n• Good for customers seeking traditional loans'
-          },
-          {
             type: 'interactive',
             title: 'Program Comparison Challenge',
             content: 'Master program selection with this interactive challenge!',
@@ -188,23 +178,23 @@ export const trainingModules: TrainingModule[] = [
               {
                 customer: 'Sarah - Credit Score 580, Needs furniture for new apartment',
                 item: '$2,500 Living Room Set',
-                options: ['RIC', 'LTO', 'TLP'],
+                options: ['RIC', 'LTO'],
                 best: 'LTO',
                 reason: 'LTO is perfect for credit-challenged customers like Sarah. Lower approval requirements and flexible payment options.'
               },
               {
                 customer: 'Mike - Credit Score 720, Emergency car repair',
                 item: '$1,800 Auto Repair',
-                options: ['RIC', 'LTO', 'TLP'],
+                options: ['RIC', 'LTO'],
                 best: 'RIC',
                 reason: 'RIC offers immediate ownership and competitive rates for customers with good credit like Mike.'
               },
               {
                 customer: 'Jennifer - Credit Score 650, Kitchen appliances',
                 item: '$3,200 Appliance Package',
-                options: ['RIC', 'LTO', 'TLP'],
-                best: 'TLP',
-                reason: 'TLP provides bank-originated loans that work well for medium credit customers seeking larger purchases.'
+                options: ['RIC', 'LTO'],
+                best: 'RIC',
+                reason: 'RIC provides traditional financing that works well for medium credit customers seeking larger purchases.'
               }
             ]
           }
@@ -212,7 +202,6 @@ export const trainingModules: TrainingModule[] = [
         keyTakeaways: [
           'RIC provides immediate ownership with traditional financing structure',
           'LTO offers flexible payments with early purchase options, ideal for challenged credit',
-          'TLP provides bank-originated loans for customers seeking traditional financing',
           'Each program serves different customer needs and credit situations'
         ]
       },
@@ -329,7 +318,7 @@ export const trainingModules: TrainingModule[] = [
           id: 'q1-5',
           question: 'Which program is best suited for credit-challenged customers?',
           type: 'multiple-choice',
-          options: ['RIC Program', 'LTO Program', 'TLP Program', 'All programs equally'],
+          options: ['RIC Program', 'LTO Program', 'Both programs equally'],
           correctAnswer: 'LTO Program',
           explanation: 'The LTO (Lease-to-Own) program is specifically designed for credit-challenged customers with lower approval requirements.',
           points: 15
@@ -695,44 +684,27 @@ export const trainingModules: TrainingModule[] = [
           {
             type: 'text',
             title: 'What is a Retail Installment Contract?',
-            content: 'A Retail Installment Contract (RIC) is a traditional financing agreement where the customer purchases merchandise and agrees to pay for it in installments over time. The customer owns the item immediately upon purchase, and EasyPay purchases the contract from you to handle servicing.'
+            content: 'A Retail Installment Contract (RIC) is EasyPay Finance\'s traditional credit sales program where merchants originate credit sales and execute retail installment contracts with customers. EasyPay then purchases and services these contracts, providing immediate funding to merchants while handling all customer payments and servicing.'
           },
           {
             type: 'text',
             title: 'Key RIC Characteristics',
-            content: 'In RIC financing, ownership transfers immediately to the customer. They receive full title and ownership rights from day one. The contract specifies payment terms, interest rates, and conditions, similar to traditional retail financing.'
+            content: 'In RIC financing, the customer immediately owns the merchandise upon contract execution. EasyPay Finance purchases the contract from you, providing same-day funding if received by 4pm EST. The customer makes installment payments directly to EasyPay, and there is no credit bureau reporting for these contracts.'
           },
           {
             type: 'example',
             title: 'RIC Structure Example',
-            content: '• Customer selects $2,000 furniture set\n• Customer signs RIC for $2,000 + applicable fees\n• Customer owns furniture immediately\n• Customer makes monthly payments to EasyPay\n• No early payment penalties\n• Traditional financing structure'
+            content: '• Customer selects $3,500 appliance package\n• Merchant completes RIC application through EasyPay portal\n• Customer signs retail installment contract\n• Customer owns appliances immediately\n• EasyPay purchases contract and funds merchant same-day\n• Customer makes payments directly to EasyPay Finance\n• 90-day finance charge capped at $40 maximum\n• Up to $5,000 financing available'
           },
           {
             type: 'text',
             title: 'Customer Benefits of RIC',
-            content: 'RIC customers benefit from immediate ownership, the ability to modify or sell the item, no restrictions on use, and often lower total cost compared to lease arrangements. This makes RIC ideal for customers who want traditional financing with ownership benefits.'
+            content: 'RIC customers benefit from immediate ownership, no down payment required, instant approval decisions, and the 90-day finance charge cap of only $40 if paid within 90 days. There is no credit bureau reporting, making it ideal for customers who want traditional financing without credit reporting concerns.'
           },
           {
             type: 'text',
-            title: 'Credit Requirements',
-            content: 'RIC typically requires stronger credit profiles than LTO. Customers should have steady income, reasonable debt-to-income ratios, and while not perfect credit, they should demonstrate ability to handle installment debt.'
-          },
-          {
-            type: 'checklist',
-            title: 'Ideal RIC Customers',
-            items: [
-              'Steady employment (6+ months)',
-              'Regular, verifiable income',
-              'Fair to good credit history',
-              'Comfortable with ownership responsibilities',
-              'Prefer traditional financing structure',
-              'Want immediate full ownership rights'
-            ]
-          },
-          {
-            type: 'warning',
-            title: 'RIC Considerations',
-            content: 'Because RIC provides immediate ownership, customers are fully responsible for the item from day one. This includes maintenance, insurance (if applicable), and the item cannot be returned for credit toward the balance.'
+            title: 'EasyPay Finance RIC Program Details',
+            content: 'EasyPay Finance has been offering RIC programs since 2001 with over 20 years of experience. The program covers 12,000+ locations across 21 states. Key features include instant approvals, same-day funding, financing up to $5,000, and the 90-day $40 finance charge cap that makes it very affordable for customers who pay quickly.'
           }
         ],
         keyTakeaways: [
@@ -755,49 +727,27 @@ export const trainingModules: TrainingModule[] = [
           {
             type: 'text',
             title: 'Understanding Lease-to-Own Structure',
-            content: 'Lease-to-Own is fundamentally different from traditional financing. EasyPay Leasing purchases the merchandise from you and then leases it to the customer under a rental-purchase agreement. The customer has the right to purchase the item at any time with significant savings for early purchase.'
+            content: 'EasyPay Finance\'s Lease-to-Own (LTO) program is a rental-purchase agreement where EasyPay Leasing purchases merchandise from merchants and leases it to customers. This structure provides more flexible qualification requirements since EasyPay retains ownership until the customer exercises their purchase option.'
           },
           {
             type: 'text',
             title: 'Rental-Purchase Agreement Framework',
-            content: 'Under the rental-purchase structure, customers make regular payments for the right to use the merchandise. They can choose to purchase early (saving money), continue payments until ownership, or return the item without further obligation.'
+            content: 'Under EasyPay\'s LTO program, customers make regular rental payments with the right to purchase at any time. The customer can exercise early purchase options with significant savings, continue until ownership transfer, or return the merchandise without further payment obligation.'
           },
           {
             type: 'example',
             title: 'LTO Structure Example',
-            content: '• Customer selects $2,000 appliance\n• EasyPay Leasing purchases from merchant\n• Customer signs rental-purchase agreement\n• Customer makes weekly/monthly payments\n• Early purchase option saves 30-50%\n• Customer can return item anytime\n• $39 processing fee applies'
-          },
-          {
-            type: 'text',
-            title: 'Early Purchase Benefits',
-            content: 'One of LTO\'s biggest advantages is the early purchase option. Customers who pay off their agreement early can save substantial amounts - often 30-50% of the total lease cost. This makes LTO attractive even to customers who could afford to pay cash.'
-          },
-          {
-            type: 'text',
-            title: 'Lower Qualification Requirements',
-            content: 'LTO has much more flexible qualification requirements. Because EasyPay retains ownership until purchase, the risk is lower, allowing approval of customers who might not qualify for traditional financing.'
-          },
-          {
-            type: 'checklist',
-            title: 'LTO Qualification Factors',
-            items: [
-              'Verifiable income (any amount)',
-              'Active checking account',
-              'Valid identification',
-              'Reasonable income-to-payment ratio',
-              'No recent bankruptcy (varies)',
-              'Employment or income verification'
-            ]
-          },
-          {
-            type: 'tip',
-            title: 'LTO Advantages for Merchants',
-            content: 'LTO often has higher approval rates than RIC, meaning you can serve more customers. The early purchase incentive also encourages customers to pay off quickly, reducing their cost and your risk.'
+            content: '• Customer selects $2,500 furniture set\n• Merchant submits LTO application to EasyPay Leasing\n• Customer approved and signs rental-purchase agreement\n• Customer pays $39 processing fee at signing\n• EasyPay purchases merchandise from merchant\n• Customer makes weekly/bi-weekly/monthly payments\n• Early purchase options provide 30-50% savings\n• Customer can return merchandise anytime\n• Up to $5,000 financing available'
           },
           {
             type: 'text',
             title: 'Processing Fee Structure',
-            content: 'LTO agreements include a $39 processing fee that must be collected at the time of signing. This fee covers administrative costs and must be paid before the customer can take possession of the merchandise.'
+            content: 'All EasyPay LTO agreements include a mandatory $39 processing fee that must be collected at the time of signing. This fee covers administrative costs and application processing. The customer cannot take possession of merchandise until this processing fee is paid in full.'
+          },
+          {
+            type: 'warning',
+            title: 'Important LTO Requirements',
+            content: 'The $39 processing fee is mandatory and must be collected before merchandise delivery. This fee is separate from the rental-purchase payments and cannot be financed or waived. Ensure customers understand this requirement during the application process.'
           }
         ],
         keyTakeaways: [
@@ -824,9 +774,9 @@ export const trainingModules: TrainingModule[] = [
           },
           {
             type: 'interactive',
-            title: 'Customer Assessment Tool',
-            content: 'Use this interactive tool to determine which program is best for different customer scenarios.',
-            interactiveType: 'calculator'
+            title: 'RIC vs LTO Comparison Tool',
+            content: 'Use this interactive comparison tool to understand the key differences between RIC and LTO programs and determine which program is best for different customer scenarios.',
+            interactiveType: 'scenario'
           },
           {
             type: 'example',
@@ -837,16 +787,6 @@ export const trainingModules: TrainingModule[] = [
             type: 'example',
             title: 'When to Recommend LTO',
             content: 'Recommend LTO for customers with:\n• Challenged credit history\n• Variable or newer income\n• Preference for lower payments\n• Interest in early purchase savings\n• Uncertainty about long-term item need'
-          },
-          {
-            type: 'text',
-            title: 'Presenting Both Options',
-            content: 'Sometimes you can present both options, allowing customers to choose based on their preferences. This approach works well when customers fall into the "borderline" category for RIC qualification.'
-          },
-          {
-            type: 'tip',
-            title: 'Customer-Centric Approach',
-            content: 'Focus on what\'s best for the customer rather than approval rates. Happy customers become repeat customers and refer others. The right program match creates better experiences for everyone.'
           }
         ],
         keyTakeaways: [
@@ -859,52 +799,45 @@ export const trainingModules: TrainingModule[] = [
     ],
     quiz: {
       id: 'quiz-3',
-      title: 'RIC vs LTO Contracts Assessment',
+      title: 'RIC vs LTO Assessment',
       passingScore: 80,
-      timeLimit: 20,
+      timeLimit: 15,
       questions: [
         {
           id: 'q3-1',
-          question: 'In a RIC agreement, when does the customer own the merchandise?',
+          question: 'What is the maximum finance charge for RIC customers who pay within 90 days?',
           type: 'multiple-choice',
-          options: ['After making the first payment', 'After making half the payments', 'Immediately upon purchase', 'After completing all payments'],
-          correctAnswer: 'Immediately upon purchase',
-          explanation: 'In RIC (Retail Installment Contract) agreements, the customer owns the merchandise immediately upon purchase.',
+          options: ['$25', '$40', '$50', '$75'],
+          correctAnswer: '$40',
+          explanation: 'EasyPay Finance caps the finance charge at $40 maximum for RIC customers who pay within 90 days, making it very affordable for quick payoffs.',
           points: 15
         },
         {
           id: 'q3-2',
-          question: 'What is the processing fee for LTO agreements?',
+          question: 'What is the mandatory processing fee for LTO agreements?',
           type: 'multiple-choice',
-          options: ['$25', '$39', '$50', '$75'],
+          options: ['$25', '$35', '$39', '$50'],
           correctAnswer: '$39',
-          explanation: 'LTO agreements include a $39 processing fee that must be collected at the time of signing.',
-          points: 10
+          explanation: 'All EasyPay LTO agreements require a mandatory $39 processing fee that must be collected at signing before merchandise delivery.',
+          points: 15
         },
         {
           id: 'q3-3',
           question: 'Which program typically has lower qualification requirements?',
           type: 'multiple-choice',
-          options: ['RIC', 'LTO', 'Both are the same', 'It depends on the customer'],
-          correctAnswer: 'LTO',
-          explanation: 'LTO has lower qualification requirements because EasyPay retains ownership until purchase, reducing risk.',
+          options: ['RIC (Retail Installment Contract)', 'LTO (Lease-to-Own)', 'Both have the same requirements', 'It depends on the merchandise type'],
+          correctAnswer: 'LTO (Lease-to-Own)',
+          explanation: 'LTO has more flexible qualification requirements because EasyPay retains ownership until purchase, reducing risk.',
           points: 15
         },
         {
           id: 'q3-4',
-          question: 'What are the key benefits of early purchase in LTO? (Select all that apply)',
-          type: 'select-multiple',
-          options: [
-            'Significant cost savings (30-50%)',
-            'Immediate ownership',
-            'Lower total cost than full lease term',
-            'No more payment obligations',
-            'Ability to return the item',
-            'Transfer to RIC contract'
-          ],
-          correctAnswer: ['Significant cost savings (30-50%)', 'Immediate ownership', 'Lower total cost than full lease term', 'No more payment obligations'],
-          explanation: 'Early purchase provides savings, immediate ownership, lower total cost, and ends payment obligations. You cannot return after purchase or transfer to RIC.',
-          points: 20
+          question: 'In RIC agreements, when does the customer own the merchandise?',
+          type: 'multiple-choice',
+          options: ['After making the first payment', 'After making half the payments', 'Immediately upon contract execution', 'After completing all payments'],
+          correctAnswer: 'Immediately upon contract execution',
+          explanation: 'In RIC agreements, the customer owns the merchandise immediately upon contract execution.',
+          points: 15
         },
         {
           id: 'q3-5',
@@ -917,27 +850,11 @@ export const trainingModules: TrainingModule[] = [
         },
         {
           id: 'q3-6',
-          question: 'RIC customers can modify or sell their merchandise without restrictions.',
-          type: 'true-false',
-          options: ['True', 'False'],
-          correctAnswer: 'True',
-          explanation: 'Since RIC customers own the merchandise immediately, they have full ownership rights including the ability to modify or sell.',
-          points: 10
-        },
-        {
-          id: 'q3-7',
-          question: 'Which customers are ideal for RIC programs? (Select all that apply)',
-          type: 'select-multiple',
-          options: [
-            'Steady employment (6+ months)',
-            'Fair to good credit history',
-            'Preference for immediate ownership',
-            'Challenged credit history',
-            'Variable income',
-            'Want traditional financing structure'
-          ],
-          correctAnswer: ['Steady employment (6+ months)', 'Fair to good credit history', 'Preference for immediate ownership', 'Want traditional financing structure'],
-          explanation: 'RIC is ideal for customers with steady employment, fair to good credit, who prefer immediate ownership and traditional financing. Challenged credit and variable income customers are better suited for LTO.',
+          question: 'When does same-day funding occur for approved RIC applications?',
+          type: 'multiple-choice',
+          options: ['If received by 2pm EST', 'If received by 4pm EST', 'If received by 6pm EST', 'Next business day only'],
+          correctAnswer: 'If received by 4pm EST',
+          explanation: 'EasyPay Finance provides same-day funding for RIC contracts received by 4pm EST.',
           points: 15
         }
       ]
@@ -2112,7 +2029,7 @@ export const trainingModules: TrainingModule[] = [
             solutions: [
               { id: 'furniture', name: 'LTO Program - Flexible Approval', painPoint: 'credit-rejection', best: 'LTO' },
               { id: 'auto-repair', name: 'Payment Options Discussion', painPoint: 'payment-fear', best: 'RIC' },
-              { id: 'appliances', name: 'Simple Application Process', painPoint: 'process-complexity', best: 'TLP' }
+              { id: 'appliances', name: 'Simple Application Process', painPoint: 'process-complexity', best: 'RIC' }
             ]
           }
         ],

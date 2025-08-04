@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { Card } from '@/components/ui/Card'
 import { useEBucks } from '@/lib/eBucks'
 import { EBucksIcon, EBucksDisplay } from '@/components/ui/eBucksIcon'
@@ -13,7 +13,9 @@ import {
   Zap,
   ShoppingBag,
   Clock,
-  Award
+  Award,
+  Users,
+  Sparkles
 } from 'lucide-react'
 
 export default function CurrencyExchangePage() {
@@ -29,9 +31,33 @@ export default function CurrencyExchangePage() {
   
   const [redeeming, setRedeeming] = useState<string | null>(null)
   const [redeemed, setRedeemed] = useState<string[]>([])
+  const [showReferralModal, setShowReferralModal] = useState(false)
+  const [referralCode, setReferralCode] = useState('')
 
   const giftCardOptions = getGiftCardOptions()
   const recentTransactions = transactions.slice(0, 5)
+  
+  useEffect(() => {
+    // Generate or retrieve referral code
+    const savedCode = localStorage.getItem('merchantReferralCode')
+    if (savedCode) {
+      setReferralCode(savedCode)
+    } else {
+      // Generate a unique referral code (format: EP-XXXX-XXXX)
+      const generateCode = () => {
+        const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789'
+        let code = 'EP-'
+        for (let i = 0; i < 8; i++) {
+          if (i === 4) code += '-'
+          code += chars.charAt(Math.floor(Math.random() * chars.length))
+        }
+        return code
+      }
+      const newCode = generateCode()
+      localStorage.setItem('merchantReferralCode', newCode)
+      setReferralCode(newCode)
+    }
+  }, [])
 
   const handleRedeem = (giftCardId: string, bucksRequired: number, value: number) => {
     if (!canAffordGiftCard(bucksRequired)) {
@@ -54,8 +80,8 @@ export default function CurrencyExchangePage() {
   return (
     <div className="space-y-8">
       <div>
-        <h1 className="text-3xl font-bold text-gray-900 mb-2">eBucks Exchange</h1>
-        <p className="text-gray-600">
+        <h1 className="text-3xl font-bold text-gray-900">eBucks Exchange</h1>
+        <p className="text-gray-600 mt-2">
           Exchange your eBucks for Amazon gift cards and other rewards
         </p>
       </div>
@@ -64,7 +90,11 @@ export default function CurrencyExchangePage() {
       <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
         <Card className="p-6">
           <div className="flex items-center gap-3">
-            <EBucksIcon className="w-12 h-12" showGlow />
+            <div className="w-12 h-12 bg-easypay-green/10 rounded-full flex items-center justify-center overflow-hidden">
+              <div className="w-14 h-14 flex items-center justify-center ml-2 mt-1">
+                <EBucksIcon className="w-14 h-14" />
+              </div>
+            </div>
             <div>
               <p className="text-2xl font-bold text-gray-900">{balance.toLocaleString()}</p>
               <p className="text-sm text-gray-600">Available eBucks</p>
@@ -109,25 +139,64 @@ export default function CurrencyExchangePage() {
         </Card>
       </div>
 
-      {/* Exchange Rate Info */}
-      <Card className="p-6">
-        <div className="flex items-start gap-4">
-          <div className="w-12 h-12 bg-easypay-green/10 rounded-full flex items-center justify-center">
-            <Gift className="w-6 h-6 text-easypay-green" />
-          </div>
-          <div>
-            <h3 className="text-lg font-semibold text-gray-900 mb-2">How eBucks Work</h3>
-            <div className="space-y-2 text-sm text-gray-600">
-              <p>• Complete training modules to earn 100 eBucks each</p>
-              <p>• Complete daily challenges for bonus eBucks (20-100 per challenge)</p>
-              <p>• Leave a Google review to earn 150 bonus eBucks</p>
-              <p>• Exchange 750 eBucks for a $5 Amazon gift card</p>
-              <p>• Higher value cards offer better exchange rates (up to 25% bonus)</p>
-              <p>• Gift cards are delivered electronically within 24 hours</p>
+      {/* Exchange Rate Info & Referral CTA */}
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+        {/* How eBucks Work */}
+        <Card className="p-6 bg-gradient-to-br from-easypay-green/5 to-blue-50 border-2 border-easypay-green/20">
+          <div className="flex items-start gap-4">
+            <div className="w-12 h-12 bg-easypay-green/20 rounded-full flex items-center justify-center">
+              <Gift className="w-6 h-6 text-easypay-green" />
+            </div>
+            <div>
+              <h3 className="text-lg font-semibold text-gray-900 mb-2">How eBucks Work</h3>
+              <div className="space-y-2 text-sm text-gray-600">
+                <p>• Complete training modules to earn 100 eBucks each</p>
+                <p>• Complete daily challenges for bonus eBucks (20-100 per challenge)</p>
+                <p>• Leave a Google review to earn 150 bonus eBucks</p>
+                <p>• Exchange 750 eBucks for a $5 Amazon gift card</p>
+                <p>• Higher value cards offer better exchange rates (up to 25% bonus)</p>
+                <p>• Gift cards are delivered electronically within 24 hours</p>
+              </div>
             </div>
           </div>
-        </div>
-      </Card>
+        </Card>
+
+        {/* Refer a Business CTA */}
+        <Card className="p-6 bg-gradient-to-br from-teal-50 to-easypay-green/10 border-2 border-teal-200">
+          <div className="flex items-start gap-4">
+            <div className="w-12 h-12 bg-teal-100 rounded-full flex items-center justify-center">
+              <Users className="w-6 h-6 text-teal-600" />
+            </div>
+            <div className="flex-1">
+              <h3 className="text-lg font-semibold text-gray-900 mb-2">Refer a Business</h3>
+              <p className="text-sm text-gray-600 mb-4">
+                Earn 1000 eBucks when you refer a business that enrolls with EasyPay Finance and completes their first training module!
+              </p>
+              <div className="space-y-3">
+                <div className="flex items-center gap-2 text-sm">
+                  <Sparkles className="w-4 h-4 text-yellow-500" />
+                  <span className="text-gray-700">1000 eBucks per successful referral</span>
+                </div>
+                <div className="flex items-center gap-2 text-sm">
+                  <CheckCircle className="w-4 h-4 text-green-500" />
+                  <span className="text-gray-700">Help businesses grow with financing</span>
+                </div>
+                <div className="flex items-center gap-2 text-sm">
+                  <Award className="w-4 h-4 text-purple-500" />
+                  <span className="text-gray-700">Build your eBucks faster</span>
+                </div>
+              </div>
+              <button 
+                onClick={() => setShowReferralModal(true)}
+                className="mt-4 w-full bg-teal-600 text-white py-2 px-4 rounded-lg hover:bg-teal-700 transition-colors font-medium flex items-center justify-center gap-2"
+              >
+                <Sparkles className="w-4 h-4" />
+                Start Referring
+              </button>
+            </div>
+          </div>
+        </Card>
+      </div>
 
       {/* Gift Card Options */}
       <div>
@@ -266,6 +335,118 @@ export default function CurrencyExchangePage() {
             </div>
           </div>
         </Card>
+      )}
+
+      {/* Referral Modal */}
+      {showReferralModal && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
+          <div className="bg-white rounded-xl max-w-md w-full max-h-[90vh] flex flex-col">
+            {/* Fixed Modal Header */}
+            <div className="flex items-center justify-between p-6 pb-4 border-b border-gray-200 flex-shrink-0">
+              <h2 className="text-2xl font-bold text-gray-900">Refer a New Business to EasyPay</h2>
+              <button
+                onClick={() => setShowReferralModal(false)}
+                className="text-gray-400 hover:text-gray-600"
+              >
+                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                </svg>
+              </button>
+            </div>
+            
+            {/* Scrollable Content */}
+            <div className="flex-1 overflow-y-auto p-6 pt-4">
+
+              {/* Referral Code Display */}
+              <div className="bg-teal-50 border-2 border-teal-200 rounded-lg p-6 mb-6 text-center">
+                <p className="text-sm text-gray-600 mb-2">Your Unique Referral Code</p>
+                <p className="text-3xl font-bold text-teal-600 mb-4">{referralCode}</p>
+                <button
+                  onClick={() => {
+                    navigator.clipboard.writeText(referralCode)
+                    alert('Referral code copied to clipboard!')
+                  }}
+                  className="text-sm text-teal-600 hover:text-teal-700 underline"
+                >
+                  Copy to Clipboard
+                </button>
+              </div>
+
+              {/* Instructions */}
+              <div className="space-y-4 mb-6">
+                <h3 className="font-semibold text-gray-900">How It Works:</h3>
+                <ol className="space-y-3 text-sm text-gray-600">
+                  <li className="flex gap-2">
+                    <span className="font-semibold text-teal-600">1.</span>
+                    Share your referral code with businesses that could benefit from offering customer financing
+                  </li>
+                  <li className="flex gap-2">
+                    <span className="font-semibold text-teal-600">2.</span>
+                    They provide your code when enrolling as a new EasyPay Finance merchant partner
+                  </li>
+                  <li className="flex gap-2">
+                    <span className="font-semibold text-teal-600">3.</span>
+                    When they're approved and complete their first training module, you earn 1000 eBucks!
+                  </li>
+                </ol>
+              </div>
+
+              {/* Benefits Section */}
+              <div className="bg-blue-50 rounded-lg p-4 mb-6">
+                <h4 className="font-semibold text-gray-900 mb-2">Why Businesses Love EasyPay:</h4>
+                <ul className="space-y-2 text-sm text-gray-600">
+                  <li className="flex items-start gap-2">
+                    <CheckCircle className="w-4 h-4 text-green-500 mt-0.5 flex-shrink-0" />
+                    <span>Instant approvals with financing up to $5,000</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <CheckCircle className="w-4 h-4 text-green-500 mt-0.5 flex-shrink-0" />
+                    <span>Same-day funding for approved applications</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <CheckCircle className="w-4 h-4 text-green-500 mt-0.5 flex-shrink-0" />
+                    <span>No merchant fees - EasyPay handles everything</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <CheckCircle className="w-4 h-4 text-green-500 mt-0.5 flex-shrink-0" />
+                    <span>Increase sales by offering flexible payment options</span>
+                  </li>
+                </ul>
+              </div>
+
+              {/* Rewards Section */}
+              <div className="bg-gray-50 rounded-lg p-4 mb-6">
+                <h4 className="font-semibold text-gray-900 mb-2">Your Referral Reward:</h4>
+                <div className="text-center py-2">
+                  <EBucksDisplay amount={1000} size="large" />
+                  <p className="text-xs text-gray-600 mt-2">
+                    Earned when they enroll and complete Module 1
+                  </p>
+                </div>
+              </div>
+
+              {/* Share Options */}
+              <div className="space-y-3">
+                <button
+                  onClick={() => {
+                    const message = `I've been using EasyPay Finance to offer customer financing at my business and it's been great! They offer instant approvals up to $5,000 with same-day funding. If you're interested in growing your sales, you should check them out. Use my referral code ${referralCode} when you enroll. Contact EasyPay at (866) 337-2537 or visit easypayfinance.com`
+                    navigator.clipboard.writeText(message)
+                    alert('Message copied! You can now paste it in an email or text.')
+                  }}
+                  className="w-full bg-easypay-green text-white px-4 py-3 rounded-lg font-medium hover:bg-green-700 transition-colors"
+                >
+                  Copy Referral Message
+                </button>
+                <button
+                  onClick={() => setShowReferralModal(false)}
+                  className="w-full bg-gray-200 text-gray-700 px-4 py-3 rounded-lg font-medium hover:bg-gray-300 transition-colors"
+                >
+                  Close
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
       )}
     </div>
   )

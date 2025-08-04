@@ -1,8 +1,10 @@
 'use client'
 
+import { useState, useEffect } from 'react'
 import { Card } from '@/components/ui/Card'
 import { Progress } from '@/components/ui/Progress'
 import { Badge } from '@/components/ui/Badge'
+import { trainingModules } from '@/data/modules'
 import { 
   Award, 
   Trophy, 
@@ -20,16 +22,33 @@ import {
 } from 'lucide-react'
 
 export default function ProgressPage() {
+  const [completedModules, setCompletedModules] = useState(0)
+  
+  useEffect(() => {
+    const completions = localStorage.getItem('module-completions')
+    if (completions) {
+      const completionData = JSON.parse(completions)
+      const completedCount = Object.values(completionData).filter(Boolean).length
+      setCompletedModules(completedCount)
+    } else {
+      const initialCompletions = { 1: true, 2: true }
+      localStorage.setItem('module-completions', JSON.stringify(initialCompletions))
+      setCompletedModules(2)
+    }
+  }, [])
+
+  const overallProgress = Math.round((completedModules / trainingModules.length) * 100)
+  
   const userStats = {
-    totalModules: 4,
-    completedModules: 2,
+    totalModules: trainingModules.length,
+    completedModules: completedModules,
     totalLessons: 23,
     completedLessons: 14,
     totalTime: '4.5 hours',
     currentStreak: 5,
     longestStreak: 12,
     certificatesEarned: 2,
-    overallProgress: 60
+    overallProgress: overallProgress
   }
 
   const achievements = [

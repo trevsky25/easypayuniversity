@@ -17,7 +17,7 @@ import {
   Star,
   Trophy
 } from 'lucide-react'
-import { useState } from 'react'
+import React, { useState } from 'react'
 import { useParams, useRouter } from 'next/navigation'
 import trainingModules from '@/data/modules'
 import { useEBucks } from '@/lib/eBucks'
@@ -28,11 +28,36 @@ export default function ModulePage() {
   const params = useParams()
   const router = useRouter()
   const moduleId = params.id as string
-  const module = trainingModules.find(m => m.id === `module-${moduleId}`)
+  
+  // Add error handling for module lookup
+  let module
+  try {
+    module = trainingModules.find(m => m.id === `module-${moduleId}`)
+  } catch (error) {
+    console.error('Error finding module:', error)
+    return (
+      <div className="text-center py-12">
+        <h1 className="text-2xl font-bold text-gray-900">Error loading module</h1>
+        <button 
+          onClick={() => window.location.href = '/modules'}
+          className="mt-4 text-easypay-green hover:underline"
+        >
+          Back to modules
+        </button>
+      </div>
+    )
+  }
+  
   const { awardEBucks } = useEBucks()
   
   const [selectedLesson, setSelectedLesson] = useState(0)
   const [showLessonContent, setShowLessonContent] = useState(false)
+  
+  // Reset lesson selection when module changes
+  React.useEffect(() => {
+    setSelectedLesson(0)
+    setShowLessonContent(false)
+  }, [moduleId])
 
   if (!module) {
     return (
@@ -56,18 +81,32 @@ export default function ModulePage() {
   const duration = module.estimatedTime
   
   const handleLessonComplete = () => {
-    awardEBucks(25, `Completed lesson: "${currentLesson.title}"`)
-    // In a real app, you'd update the lesson completion status
+    try {
+      if (currentLesson && currentLesson.title) {
+        awardEBucks(25, `Completed lesson: "${currentLesson.title}"`)
+        // In a real app, you'd update the lesson completion status
+      }
+    } catch (error) {
+      console.error('Error completing lesson:', error)
+    }
   }
   
   const getTypeIcon = (lesson: any) => {
-    if (!lesson || !lesson.content) return <FileText className="w-4 h-4" />
-    const hasInteractive = lesson.content.some((c: any) => c.type === 'interactive')
-    if (hasInteractive) return <PlayCircle className="w-4 h-4" />
-    return <FileText className="w-4 h-4" />
+    if (!lesson || !lesson.content || !Array.isArray(lesson.content)) {
+      return <FileText className="w-4 h-4" />
+    }
+    try {
+      const hasInteractive = lesson.content.some((c: any) => c && c.type === 'interactive')
+      if (hasInteractive) return <PlayCircle className="w-4 h-4" />
+      return <FileText className="w-4 h-4" />
+    } catch (error) {
+      return <FileText className="w-4 h-4" />
+    }
   }
 
-  const currentLesson = module.lessons[selectedLesson]
+  // Ensure selectedLesson is within bounds
+  const safeSelectedLesson = Math.max(0, Math.min(selectedLesson, module.lessons.length - 1))
+  const currentLesson = module.lessons[safeSelectedLesson]
   
   if (!currentLesson) {
     return (
@@ -87,7 +126,13 @@ export default function ModulePage() {
     <div className="space-y-6">
       <div className="flex items-center gap-4">
         <button 
-          onClick={() => router.push('/modules')}
+          onClick={() => {
+            try {
+              router.push('/modules')
+            } catch (error) {
+              window.location.href = '/modules'
+            }
+          }}
           className="p-2 hover:bg-gray-100 rounded-lg transition-colors"
         >
           <ArrowLeft className="w-5 h-5" />
@@ -198,7 +243,10 @@ export default function ModulePage() {
 
           <div className="flex justify-between mt-6">
             <button 
-              onClick={() => setSelectedLesson(Math.max(0, selectedLesson - 1))}
+              onClick={() => {
+                setSelectedLesson(Math.max(0, selectedLesson - 1))
+                window.scrollTo({ top: 0, behavior: 'smooth' })
+              }}
               disabled={selectedLesson === 0}
               className="flex items-center gap-2 px-4 py-2 bg-gray-100 text-gray-700 rounded-lg hover:bg-gray-200 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
             >
@@ -207,7 +255,10 @@ export default function ModulePage() {
             </button>
             
             <button 
-              onClick={() => setSelectedLesson(Math.min(module.lessons.length - 1, selectedLesson + 1))}
+              onClick={() => {
+                setSelectedLesson(Math.min(module.lessons.length - 1, selectedLesson + 1))
+                window.scrollTo({ top: 0, behavior: 'smooth' })
+              }}
               disabled={selectedLesson === module.lessons.length - 1}
               className="flex items-center gap-2 px-4 py-2 bg-easypay-green text-white rounded-lg hover:bg-easypay-green-dark disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
             >
@@ -239,7 +290,10 @@ export default function ModulePage() {
               {module.lessons.map((lesson, index) => (
                 <div
                   key={lesson.id}
-                  onClick={() => setSelectedLesson(index)}
+                  onClick={() => {
+                    setSelectedLesson(index)
+                    window.scrollTo({ top: 0, behavior: 'smooth' })
+                  }}
                   className={`p-3 rounded-lg cursor-pointer transition-colors ${
                     selectedLesson === index 
                       ? 'bg-easypay-green text-white' 

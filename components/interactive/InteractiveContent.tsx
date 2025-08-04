@@ -66,7 +66,7 @@ function FinancingCalculator({ data, onComplete }: { data: any, onComplete?: () 
       term = 18
       payment = Math.round((purchaseAmount * 1.8) / term)
       total = payment * term
-    } else { // TLP
+    } else { // Default to RIC
       term = 24
       payment = Math.round((purchaseAmount * 1.25) / term)
       total = payment * term
@@ -116,8 +116,8 @@ function FinancingCalculator({ data, onComplete }: { data: any, onComplete?: () 
               <label className="block text-sm font-medium text-gray-700 mb-2">
                 Financing Program
               </label>
-              <div className="grid grid-cols-3 gap-2">
-                {['RIC', 'LTO', 'TLP'].map((prog) => (
+              <div className="grid grid-cols-2 gap-2">
+                {['RIC', 'LTO'].map((prog) => (
                   <button
                     key={prog}
                     onClick={() => setProgram(prog)}
@@ -193,14 +193,14 @@ function ProgramComparison({ data, onComplete }: { data: any, onComplete?: () =>
     {
       customer: "Sarah - Credit Score 580, Needs furniture for new apartment",
       item: "$2,500 Living Room Set",
-      options: ['RIC', 'LTO', 'TLP'],
+      options: ['RIC', 'LTO'],
       best: 'LTO',
       reason: "LTO is perfect for credit-challenged customers like Sarah. Lower approval requirements and flexible payment options."
     },
     {
       customer: "Mike - Credit Score 720, Emergency car repair",
       item: "$1,800 Auto Repair",
-      options: ['RIC', 'LTO', 'TLP'],
+      options: ['RIC', 'LTO'],
       best: 'RIC',
       reason: "RIC offers immediate ownership and competitive rates for customers with good credit like Mike."
     }
@@ -273,7 +273,7 @@ function ProgramComparison({ data, onComplete }: { data: any, onComplete?: () =>
                 <div className="text-xl font-bold mb-2">{option}</div>
                 <div className="text-sm text-gray-600">
                   {option === 'RIC' ? 'Credit Sales' : 
-                   option === 'LTO' ? 'Lease-to-Own' : 'Third-Party Loan'}
+                   option === 'LTO' ? 'Lease-to-Own' : 'Retail Installment Contract'}
                 </div>
               </button>
             ))}
@@ -331,7 +331,7 @@ function CustomerMatching({ data, onComplete }: { data: any, onComplete?: () => 
   const products = [
     { id: 'furniture', name: 'Living Room Set', amount: 2500, best: 'LTO' },
     { id: 'auto-repair', name: 'Car Repair', amount: 1800, best: 'RIC' },
-    { id: 'appliances', name: 'Kitchen Appliances', amount: 3200, best: 'TLP' }
+    { id: 'appliances', name: 'Kitchen Appliances', amount: 3200, best: 'RIC' }
   ]
 
   const checkMatch = () => {
@@ -491,6 +491,8 @@ function ObjectionTrainer({ data, onComplete }: { data: any, onComplete?: () => 
       setCurrentObjection(currentObjection + 1)
       setSelectedResponse(null)
       setShowFeedback(false)
+      // Scroll to top when moving to next objection
+      window.scrollTo({ top: 0, behavior: 'smooth' })
     }
   }
 
@@ -587,6 +589,8 @@ function ApplicationSimulator({ data, onComplete }: { data: any, onComplete?: ()
     setApplicationData({ ...applicationData, ...data })
     if (step < steps.length - 1) {
       setStep(step + 1)
+      // Scroll to top when moving to next step
+      window.scrollTo({ top: 0, behavior: 'smooth' })
     } else {
       setShowResult(true)
       onComplete?.()
@@ -653,8 +657,8 @@ function ApplicationSimulator({ data, onComplete }: { data: any, onComplete?: ()
             )}
             
             {step === 2 && (
-              <div className="grid grid-cols-3 gap-4">
-                {['RIC', 'LTO', 'TLP'].map((program) => (
+              <div className="grid grid-cols-2 gap-4">
+                {['RIC', 'LTO'].map((program) => (
                   <button
                     key={program}
                     onClick={() => handleStepComplete({ program })}
@@ -832,6 +836,8 @@ function KnowledgeQuiz({ data, onComplete }: { data: any, onComplete?: () => voi
       setCurrentQuestion(currentQuestion + 1)
       setSelectedAnswer(null)
       setShowResult(false)
+      // Scroll to top when moving to next question
+      window.scrollTo({ top: 0, behavior: 'smooth' })
     } else {
       onComplete?.()
     }

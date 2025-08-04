@@ -13,20 +13,37 @@ import {
 } from 'lucide-react'
 import Link from 'next/link'
 import trainingModules from '@/data/modules'
+import { useEffect, useState } from 'react'
 
 export default function ModulesPage() {
+  const [moduleCompletions, setModuleCompletions] = useState<Record<number, boolean>>({})
+  
+  useEffect(() => {
+    // Get module completion status from localStorage
+    const completions = localStorage.getItem('module-completions')
+    if (completions) {
+      setModuleCompletions(JSON.parse(completions))
+    } else {
+      // Initialize with modules 1 and 2 completed
+      const initialCompletions = { 1: true, 2: true }
+      localStorage.setItem('module-completions', JSON.stringify(initialCompletions))
+      setModuleCompletions(initialCompletions)
+    }
+  }, [])
+  
   // Calculate dynamic stats based on module data
   const moduleStats = trainingModules.map((module, index) => {
     const totalLessons = module.lessons.length
-    // Mock completion for demo - first 2 modules completed, 3rd in progress
-    const completedLessons = index === 0 ? totalLessons : index === 1 ? totalLessons : index === 2 ? Math.floor(totalLessons * 0.35) : 0
+    const moduleIdNumber = parseInt(module.id.split('-')[1])
+    
+    // Check if module is completed from localStorage
+    const isCompleted = moduleCompletions[moduleIdNumber] || false
+    const completedLessons = isCompleted ? totalLessons : index === 2 ? Math.floor(totalLessons * 0.35) : 0
     const progress = totalLessons > 0 ? Math.round((completedLessons / totalLessons) * 100) : 0
     
     let status: 'completed' | 'in-progress' | 'not-started' = 'not-started'
-    if (progress === 100) status = 'completed'
+    if (isCompleted) status = 'completed'
     else if (progress > 0) status = 'in-progress'
-    
-    const moduleIdNumber = parseInt(module.id.split('-')[1])
     
     return {
       id: moduleIdNumber,

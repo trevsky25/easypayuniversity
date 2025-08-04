@@ -11,7 +11,7 @@ export function Header() {
   const { balance } = useEBucks()
 
   return (
-    <header className="bg-white border-b border-easypay-gray-200 h-16 flex items-center justify-between px-6">
+    <header className="fixed top-0 left-0 right-0 bg-white border-b border-easypay-gray-200 h-16 flex items-center justify-between px-6 z-30">
       <div className="flex items-center gap-6">
         <img 
           src="/easypay-logo.svg" 

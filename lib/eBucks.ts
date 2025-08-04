@@ -10,6 +10,8 @@ export interface eBucksState {
   dailyChallengesCompleted: string[]
   lastLoginDate: string | null
   loginStreak: number
+  lastWheelSpinDate: string | null
+  wheelSpinsToday: number
 }
 
 export interface Transaction {
@@ -40,6 +42,15 @@ export interface DailyChallenge {
   action?: () => void
 }
 
+export interface WheelSlot {
+  id: number
+  label: string
+  value: number
+  type: 'win' | 'blank' | 'lose'
+  color: string
+  probability: number
+}
+
 class EBucksManager {
   private static instance: EBucksManager
   private listeners: (() => void)[] = []
@@ -66,7 +77,9 @@ class EBucksManager {
         totalSpent: 0,
         dailyChallengesCompleted: [],
         lastLoginDate: null,
-        loginStreak: 0
+        loginStreak: 0,
+        lastWheelSpinDate: null,
+        wheelSpinsToday: 0
       }
     }
 
@@ -89,7 +102,9 @@ class EBucksManager {
       totalSpent: 0,
       dailyChallengesCompleted: [],
       lastLoginDate: null,
-      loginStreak: 0
+      loginStreak: 0,
+      lastWheelSpinDate: null,
+      wheelSpinsToday: 0
     }
   }
 
@@ -222,6 +237,94 @@ class EBucksManager {
       .map(id => id.split('-').slice(1).join('-'))
   }
 
+  resetChallengeCompletion(challengeId: string): void {
+    const today = new Date().toDateString()
+    const state = this.getState()
+    const challengeKey = `${today}-${challengeId}`
+    
+    const updatedCompletions = state.dailyChallengesCompleted.filter(id => id !== challengeKey)
+    
+    this.saveState({
+      ...state,
+      dailyChallengesCompleted: updatedCompletions
+    })
+  }
+
+  private static wheelSlots: WheelSlot[] = [
+    // Mixed up arrangement for better visual variety
+    { id: 0, label: '25 eBucks', value: 25, type: 'win', color: '#95E1D3', probability: 0.12 },
+    { id: 1, label: 'Try Again!', value: 0, type: 'blank', color: '#E8E8E8', probability: 0.08 },
+    { id: 2, label: '100 eBucks', value: 100, type: 'win', color: '#4ECDC4', probability: 0.08 },
+    { id: 3, label: '5 eBucks', value: 5, type: 'win', color: '#95E1D3', probability: 0.08 },
+    { id: 4, label: '200 eBucks!', value: 200, type: 'win', color: '#FF6B35', probability: 0.05 },
+    { id: 5, label: '15 eBucks', value: 15, type: 'win', color: '#95E1D3', probability: 0.08 },
+    { id: 6, label: 'Almost!', value: 0, type: 'blank', color: '#E8E8E8', probability: 0.07 },
+    { id: 7, label: '50 eBucks', value: 50, type: 'win', color: '#4ECDC4', probability: 0.09 },
+    { id: 8, label: '10 eBucks', value: 10, type: 'win', color: '#95E1D3', probability: 0.08 },
+    { id: 9, label: '500 eBucks!', value: 500, type: 'win', color: '#FFD700', probability: 0.02 },
+    { id: 10, label: '20 eBucks', value: 20, type: 'win', color: '#95E1D3', probability: 0.10 },
+    { id: 11, label: 'So Close!', value: 0, type: 'blank', color: '#E8E8E8', probability: 0.05 },
+    { id: 12, label: '75 eBucks', value: 75, type: 'win', color: '#4ECDC4', probability: 0.08 },
+    { id: 13, label: '8 eBucks', value: 8, type: 'win', color: '#95E1D3', probability: 0.05 },
+    { id: 14, label: '250 eBucks!', value: 250, type: 'win', color: '#FF6B35', probability: 0.03 },
+    { id: 15, label: '12 eBucks', value: 12, type: 'win', color: '#95E1D3', probability: 0.05 },
+    { id: 16, label: 'Better Luck!', value: 0, type: 'blank', color: '#E8E8E8', probability: 0.06 },
+    { id: 17, label: '40 eBucks', value: 40, type: 'win', color: '#4ECDC4', probability: 0.07 },
+    { id: 18, label: '30 eBucks', value: 30, type: 'win', color: '#95E1D3', probability: 0.06 },
+    { id: 19, label: 'Next Time!', value: 0, type: 'blank', color: '#E8E8E8', probability: 0.05 }
+  ]
+
+  getWheelSlots(): WheelSlot[] {
+    return EBucksManager.wheelSlots
+  }
+
+  canSpinWheelToday(): boolean {
+    const today = new Date().toDateString()
+    const state = this.getState()
+    return state.lastWheelSpinDate !== today
+  }
+
+  spinWheel(): WheelSlot {
+    const slots = this.getWheelSlots()
+    const random = Math.random()
+    let cumulativeProbability = 0
+    
+    for (const slot of slots) {
+      cumulativeProbability += slot.probability
+      if (random <= cumulativeProbability) {
+        const state = this.getState()
+        const today = new Date().toDateString()
+        
+        // Update balance based on result
+        if (slot.value > 0) {
+          this.awardBucks(slot.value, `Won ${slot.value} eBucks from wheel spin!`, undefined, 'challenge')
+        }
+        // No negative outcomes anymore - only wins or blanks
+        
+        // Update spin tracking
+        this.saveState({
+          ...this.getState(),
+          lastWheelSpinDate: today,
+          wheelSpinsToday: state.wheelSpinsToday + 1
+        })
+        
+        return slot
+      }
+    }
+    
+    // Fallback to first slot if something goes wrong
+    return slots[0]
+  }
+
+  resetWheelForToday(): void {
+    const state = this.getState()
+    this.saveState({
+      ...state,
+      lastWheelSpinDate: null,
+      wheelSpinsToday: 0
+    })
+  }
+
   canAffordGiftCard(bucksRequired: number): boolean {
     return this.getState().balance >= bucksRequired
   }
@@ -347,19 +450,181 @@ class EBucksManager {
         reward: 45,
         category: 'practice',
         difficulty: 'hard'
+      },
+      {
+        id: 'calculator-wizard',
+        title: 'Calculator Wizard',
+        description: 'Use the financing calculator to compare 5 different scenarios',
+        reward: 35,
+        category: 'tools',
+        difficulty: 'easy'
+      },
+      {
+        id: 'conversation-champion',
+        title: 'Conversation Champion',
+        description: 'Complete 2 conversational practice scenarios with perfect responses',
+        reward: 55,
+        category: 'practice',
+        difficulty: 'hard'
+      },
+      {
+        id: 'faq-explorer',
+        title: 'FAQ Explorer',
+        description: 'Visit the support center and read at least 10 FAQs',
+        reward: 15,
+        category: 'learning',
+        difficulty: 'easy'
+      },
+      {
+        id: 'automotive-expert',
+        title: 'Automotive Expert',
+        description: 'Complete all automotive repair scenarios in practice mode',
+        reward: 60,
+        category: 'practice',
+        difficulty: 'hard'
+      },
+      {
+        id: 'achievement-hunter',
+        title: 'Achievement Hunter',
+        description: 'Earn any 2 new achievement badges today',
+        reward: 50,
+        category: 'performance',
+        difficulty: 'medium'
+      },
+      {
+        id: 'early-bird',
+        title: 'Early Bird',
+        description: 'Complete a training module before 9 AM',
+        reward: 30,
+        category: 'engagement',
+        difficulty: 'easy'
+      },
+      {
+        id: 'night-owl',
+        title: 'Night Owl',
+        description: 'Complete a training activity after 8 PM',
+        reward: 30,
+        category: 'engagement',
+        difficulty: 'easy'
+      },
+      {
+        id: 'perfect-week',
+        title: 'Perfect Week',
+        description: 'Complete all daily challenges for 5 consecutive days',
+        reward: 150,
+        category: 'engagement',
+        difficulty: 'hard'
+      },
+      {
+        id: 'module-marathon',
+        title: 'Module Marathon',
+        description: 'Complete 2 full training modules in one day',
+        reward: 80,
+        category: 'learning',
+        difficulty: 'hard'
+      },
+      {
+        id: 'objection-handler',
+        title: 'Objection Handler',
+        description: 'Practice handling 10 customer objections successfully',
+        reward: 45,
+        category: 'practice',
+        difficulty: 'medium'
+      },
+      {
+        id: 'comparison-pro',
+        title: 'Comparison Pro',
+        description: 'Use the program comparison tool to analyze RIC vs LTO',
+        reward: 25,
+        category: 'tools',
+        difficulty: 'easy'
+      },
+      {
+        id: 'credit-culture-builder',
+        title: 'Credit Culture Builder',
+        description: 'Complete the Credit Culture Builder interactive activity',
+        reward: 35,
+        category: 'learning',
+        difficulty: 'medium'
+      },
+      {
+        id: 'referral-rockstar',
+        title: 'Referral Rockstar',
+        description: 'Refer a business to EasyPay Finance',
+        reward: 1000,
+        category: 'community',
+        difficulty: 'medium'
+      },
+      {
+        id: 'feedback-provider',
+        title: 'Feedback Provider',
+        description: 'Submit feedback or suggestions for platform improvement',
+        reward: 40,
+        category: 'community',
+        difficulty: 'easy'
       }
     ]
     
-    // Select 3 challenges for today based on day of week
-    const todaysChallenges = [
-      allChallenges[(dayOfWeek * 2) % allChallenges.length],
-      allChallenges[(dayOfWeek * 2 + 1) % allChallenges.length],
-      allChallenges[(dayOfWeek * 3) % allChallenges.length]
+    // Select 4 challenges for today with better distribution
+    // Use a more complex rotation to ensure variety across the expanded pool
+    // Add randomization to ensure new challenges show up
+    const seed = dayOfWeek + today.getDate() // Add date to rotation for more variety
+    
+    // Prioritize showing new challenges (indices 7-20) for better visibility
+    const newChallengeOffset = 7 // Start from first new challenge
+    const challengeIndices = [
+      (seed * 2 + newChallengeOffset) % allChallenges.length,
+      (seed * 3 + newChallengeOffset + 3) % allChallenges.length,
+      (seed * 5 + newChallengeOffset + 6) % allChallenges.length,
+      (seed * 7 + newChallengeOffset + 9) % allChallenges.length
     ]
     
-    return todaysChallenges.filter(
+    // Ensure we get unique challenges by filtering duplicates
+    const uniqueIndices = [...new Set(challengeIndices)]
+    
+    // If we have duplicates, add more unique ones
+    while (uniqueIndices.length < 4 && uniqueIndices.length < allChallenges.length) {
+      const newIndex = (uniqueIndices[uniqueIndices.length - 1] + 5) % allChallenges.length
+      if (!uniqueIndices.includes(newIndex)) {
+        uniqueIndices.push(newIndex)
+      }
+    }
+    
+    const todaysChallenges = uniqueIndices
+      .slice(0, 4)
+      .map(index => allChallenges[index])
+      .filter(Boolean) // Ensure no undefined challenges
+    
+    // If we somehow have no challenges, return first 4 from the pool
+    if (todaysChallenges.length === 0) {
+      return allChallenges.slice(0, 4)
+    }
+    
+    // Always include referral-rockstar challenge, even if completed
+    const referralChallenge = allChallenges.find(c => c.id === 'referral-rockstar')
+    let finalChallenges = todaysChallenges.filter(
       challenge => !completedToday.includes(challenge.id)
     )
+    
+    // Always ensure referral-rockstar is included
+    if (referralChallenge && !finalChallenges.some(c => c.id === 'referral-rockstar')) {
+      // Replace the last challenge with referral challenge if not already present
+      if (finalChallenges.length >= 4) {
+        finalChallenges[finalChallenges.length - 1] = referralChallenge
+      } else {
+        finalChallenges.push(referralChallenge)
+      }
+    }
+    
+    // If all other challenges are completed, still return them but always keep referral
+    if (finalChallenges.length === 0) {
+      finalChallenges = todaysChallenges
+      if (referralChallenge && !finalChallenges.some(c => c.id === 'referral-rockstar')) {
+        finalChallenges[finalChallenges.length - 1] = referralChallenge
+      }
+    }
+    
+    return finalChallenges
   }
 }
 
@@ -399,7 +664,12 @@ export function useEBucks() {
       completeDailyChallenge: () => false,
       getDailyChallenges: () => [],
       completeGoogleReview: () => false,
-      getTodaysChallengesCompleted: () => []
+      getTodaysChallengesCompleted: () => [],
+      resetChallengeCompletion: () => {},
+      getWheelSlots: () => [],
+      canSpinWheelToday: () => false,
+      spinWheel: () => ({ id: 0, label: '', value: 0, type: 'blank' as const, color: '', probability: 0 }),
+      resetWheelForToday: () => {}
     }
   }
 
@@ -413,6 +683,11 @@ export function useEBucks() {
     completeDailyChallenge: eBucksManager.completeDailyChallenge.bind(eBucksManager),
     getDailyChallenges: eBucksManager.getDailyChallenges.bind(eBucksManager),
     completeGoogleReview: eBucksManager.completeGoogleReview.bind(eBucksManager),
-    getTodaysChallengesCompleted: eBucksManager.getTodaysChallengesCompleted.bind(eBucksManager)
+    getTodaysChallengesCompleted: eBucksManager.getTodaysChallengesCompleted.bind(eBucksManager),
+    resetChallengeCompletion: eBucksManager.resetChallengeCompletion.bind(eBucksManager),
+    getWheelSlots: eBucksManager.getWheelSlots.bind(eBucksManager),
+    canSpinWheelToday: eBucksManager.canSpinWheelToday.bind(eBucksManager),
+    spinWheel: eBucksManager.spinWheel.bind(eBucksManager),
+    resetWheelForToday: eBucksManager.resetWheelForToday.bind(eBucksManager)
   }
 }

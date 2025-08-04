@@ -24,6 +24,7 @@ EasyPay University is a cutting-edge Learning Management System (LMS) designed t
 ### 🎮 Gamification System
 - **eBucks Currency** - Earn virtual currency for completing activities
 - **Daily Challenges** - Fresh challenges with bonus eBucks rewards
+- **Business Referrals** - Earn 1000 eBucks for successful merchant referrals
 - **Achievement System** - Unlock badges and milestones
 - **Streak Tracking** - Maintain learning momentum
 - **Gift Card Exchange** - Redeem eBucks for Amazon gift cards
@@ -31,7 +32,7 @@ EasyPay University is a cutting-edge Learning Management System (LMS) designed t
 
 ### 🛠️ Interactive Tools
 - **Financing Calculator** - Real-time payment calculations
-- **Program Comparison Tool** - Compare RIC, LTO, and TLP options
+- **Program Comparison Tool** - Compare RIC and LTO options
 - **Customer Matching Game** - Practice customer profiling
 - **Objection Trainer** - Handle common customer concerns
 - **Application Simulator** - Practice application submissions
@@ -47,7 +48,10 @@ EasyPay University is a cutting-edge Learning Management System (LMS) designed t
 ### 📱 User Experience  
 - **EasyPay Branding** with official green theme and custom eBucks logo
 - **Responsive Design** optimized for all devices and mobile-first
-- **Intuitive Navigation** with sidebar and breadcrumb navigation
+- **Enhanced Navigation** with carousel controls and pagination system
+- **Mobile Touch Gestures** with swipe navigation support
+- **Keyboard Accessibility** with arrow key navigation
+- **Robust Error Handling** with improved browser navigation support
 - **Consistent UI** matching EasyPay Business Center design
 - **Dark/Light Theme** support with accessibility features
 
@@ -72,6 +76,24 @@ EasyPay University is a cutting-edge Learning Management System (LMS) designed t
 - **Local Storage** for data persistence and offline capability
 - **Lucide Icons** for consistent iconography
 - **Responsive Grid Layouts** with mobile optimization
+
+## 🆕 Recent Updates
+
+### v2.1.0 - Dashboard & Navigation Enhancements
+- **Module Pagination System**: 4 modules per page with smooth carousel navigation
+- **Touch Gesture Support**: Swipe left/right on mobile devices for navigation
+- **Keyboard Navigation**: Arrow keys for accessibility compliance
+- **Enhanced RIC vs LTO Module**: Comprehensive content with EasyPay-specific details
+- **Business Referral Boost**: Increased reward from 500 to 1000 eBucks
+- **Error Recovery**: Improved browser navigation and state management
+- **Mobile Optimization**: Better responsive design and touch controls
+
+### Key Improvements
+- ✅ All 7 training modules now properly displayed with pagination
+- ✅ Fixed module 3 content loading issues
+- ✅ Enhanced navigation error handling
+- ✅ Updated business referral rewards across all pages
+- ✅ Mobile-first carousel design with gesture support
 
 ## 🚀 Quick Start
 
@@ -129,7 +151,7 @@ EasyPay University is a cutting-edge Learning Management System (LMS) designed t
 
 ### Interactive Components
 - **Financing Calculator** - Calculate monthly payments and terms
-- **Program Comparison Tool** - Side-by-side RIC vs LTO vs TLP comparison
+- **Program Comparison Tool** - Side-by-side RIC vs LTO comparison
 - **Customer Matching Game** - Match customers to appropriate financing programs
 - **Objection Trainer** - Practice handling customer concerns with branching scenarios
 - **Application Simulator** - Step-by-step application process practice

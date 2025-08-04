@@ -17,17 +17,124 @@ import {
   ThumbsUp,
   ThumbsDown
 } from 'lucide-react'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 
 export default function SupportPage() {
   const [searchTerm, setSearchTerm] = useState('')
   const [selectedCategory, setSelectedCategory] = useState('all')
+  const [currentTime, setCurrentTime] = useState(new Date())
+  
+  // Update time every minute to check online status
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentTime(new Date())
+    }, 60000) // Update every minute
+    
+    return () => clearInterval(timer)
+  }, [])
+  
+  // Function to check if a department is online
+  const isOnline = (hours: { weekday: string, saturday: string }) => {
+    const now = currentTime
+    const day = now.getDay()
+    const currentHour = now.getHours()
+    const currentMinute = now.getMinutes()
+    const currentTimeInMinutes = currentHour * 60 + currentMinute
+    
+    // Convert PST hours to local time (assuming PST is UTC-8)
+    const pstOffset = -8
+    const localOffset = now.getTimezoneOffset() / 60
+    const hourDiff = localOffset + pstOffset
+    
+    if (day === 0) return false // Sunday - closed
+    
+    let schedule
+    if (day === 6) { // Saturday
+      schedule = hours.saturday
+    } else { // Weekday
+      schedule = hours.weekday
+    }
+    
+    // Parse schedule (e.g., "Mon-Fri 5am - 7pm PST")
+    const timeMatch = schedule.match(/(\d+):?(\d*)(am|pm)\s*-\s*(\d+):?(\d*)(pm|am)/i)
+    if (!timeMatch) return false
+    
+    let startHour = parseInt(timeMatch[1])
+    const startMinute = timeMatch[2] ? parseInt(timeMatch[2]) : 0
+    const startPeriod = timeMatch[3].toLowerCase()
+    let endHour = parseInt(timeMatch[4])
+    const endMinute = timeMatch[5] ? parseInt(timeMatch[5]) : 0
+    const endPeriod = timeMatch[6].toLowerCase()
+    
+    // Convert to 24-hour format
+    if (startPeriod === 'pm' && startHour !== 12) startHour += 12
+    if (startPeriod === 'am' && startHour === 12) startHour = 0
+    if (endPeriod === 'pm' && endHour !== 12) endHour += 12
+    if (endPeriod === 'am' && endHour === 12) endHour = 0
+    
+    // Adjust for timezone difference
+    startHour += hourDiff
+    endHour += hourDiff
+    
+    const startTimeInMinutes = startHour * 60 + startMinute
+    const endTimeInMinutes = endHour * 60 + endMinute
+    
+    return currentTimeInMinutes >= startTimeInMinutes && currentTimeInMinutes < endTimeInMinutes
+  }
 
   const contactInfo = {
+    financingSupport: {
+      title: 'Financing Support',
+      description: 'For customer service inquiries',
+      email: 'CustomerService@easypayfinance.com',
+      phone: '(866) 438-8372',
+      hours: {
+        weekday: 'Mon-Fri 5am - 7pm PST',
+        saturday: 'Sat 7:30am - 4pm PST'
+      },
+      color: '#1ac668'
+    },
+    leasingSupport: {
+      title: 'Leasing Support',
+      description: 'For lease-to-own customer service',
+      email: 'LeasingCustomerService@easypayfinance.com',
+      phone: '(800) 447-6215',
+      hours: {
+        weekday: 'Mon-Fri 6am - 7pm PST',
+        saturday: 'Sat 7:30am - 12pm PST'
+      },
+      color: 'teal'
+    },
     businessSupport: {
+      title: 'Business Support',
+      description: 'For merchant services',
       email: 'MerchantServices@easypayfinance.com',
       phone: '(866) 337-2537',
-      hours: 'Mon-Fri 5am-6pm PST, Sat 5am-5pm PST'
+      hours: {
+        weekday: 'Mon-Fri 5am - 6pm PST',
+        saturday: 'Sat 5am - 5pm PST'
+      },
+      color: '#1f5577'
+    }
+  }
+  
+  // Sales rep information
+  const salesReps = {
+    regionalManager: {
+      title: 'Regional Sales Manager',
+      name: 'Michael Thompson',
+      email: 'mthompson@easypayfinance.com',
+      phone: '(866) 555-0123',
+      mobile: '(619) 555-4567',
+      territory: 'Southern California & Arizona'
+    },
+    insideSalesManager: {
+      title: 'Merchant Success Manager',
+      name: 'Sarah Martinez',
+      email: 'smartinez@easypayfinance.com',
+      phone: '(866) 555-0124',
+      extension: 'ext. 234',
+      specialization: 'New Merchant Onboarding'
     }
   }
 
@@ -388,56 +495,262 @@ export default function SupportPage() {
       {/* Contact Information */}
       <div className="border-3 border-dashed border-gray-300 rounded-2xl p-8 bg-gray-50/50">
         <div className="text-center mb-8">
-          <h2 className="text-2xl font-bold text-gray-900 mb-2">Need Help? We're Here for You</h2>
-          <p className="text-gray-600">Multiple ways to get the support you need</p>
+          <h2 className="text-2xl font-bold text-gray-900 mb-2">Contact Us by Department</h2>
+          <p className="text-gray-600">Get the right support for your specific needs</p>
         </div>
         
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          <div className="text-center p-6 border border-gray-200 rounded-xl bg-white hover:shadow-md transition-all duration-300">
-            <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
-              <Phone className="w-8 h-8 text-blue-600" />
+          {/* Financing Support */}
+          <div className="border border-gray-200 rounded-xl bg-white hover:shadow-lg transition-all duration-300 relative">
+            {/* Status indicator */}
+            <div className="absolute top-4 right-4">
+              <div className={`flex items-center gap-2 px-3 py-1 rounded-full ${
+                isOnline(contactInfo.financingSupport.hours) 
+                  ? 'bg-green-100 text-green-700' 
+                  : 'bg-gray-100 text-gray-600'
+              }`}>
+                <div className={`w-2 h-2 rounded-full ${
+                  isOnline(contactInfo.financingSupport.hours) 
+                    ? 'bg-green-500 animate-pulse' 
+                    : 'bg-gray-400'
+                }`} />
+                <span className="text-xs font-medium">
+                  {isOnline(contactInfo.financingSupport.hours) ? 'Online' : 'Offline'}
+                </span>
+              </div>
             </div>
-            <h3 className="font-bold text-gray-900 text-lg mb-2">Phone Support</h3>
-            <p className="text-gray-600 text-sm mb-3">Speak directly with our support team</p>
-            <a 
-              href={`tel:${contactInfo.businessSupport.phone.replace(/[^0-9]/g, '')}`}
-              className="text-xl font-bold text-blue-600 hover:text-blue-800 transition-colors duration-200 border-b-2 border-transparent hover:border-blue-600"
-            >
-              {contactInfo.businessSupport.phone}
-            </a>
+            
+            <div className="p-6">
+              <div className="w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4" 
+                   style={{ backgroundColor: `${contactInfo.financingSupport.color}20` }}>
+                <Phone className="w-8 h-8" style={{ color: contactInfo.financingSupport.color }} />
+              </div>
+              <h3 className="font-bold text-gray-900 text-xl mb-2 text-center">{contactInfo.financingSupport.title}</h3>
+              <p className="text-gray-600 text-sm mb-4 text-center">{contactInfo.financingSupport.description}</p>
+              
+              <div className="space-y-3">
+                <div className="text-center">
+                  <a 
+                    href={`tel:${contactInfo.financingSupport.phone.replace(/[^0-9]/g, '')}`}
+                    className="text-lg font-bold transition-colors duration-200"
+                    style={{ color: contactInfo.financingSupport.color }}
+                  >
+                    {contactInfo.financingSupport.phone}
+                  </a>
+                </div>
+                
+                <div className="text-center">
+                  <a 
+                    href={`mailto:${contactInfo.financingSupport.email}`}
+                    className="text-sm text-gray-600 hover:opacity-80 transition-colors duration-200 break-all"
+                  >
+                    {contactInfo.financingSupport.email}
+                  </a>
+                </div>
+                
+                <div className="rounded-lg p-3 text-center" 
+                     style={{ backgroundColor: `${contactInfo.financingSupport.color}10` }}>
+                  <div className="text-sm font-medium text-gray-700">
+                    <div>{contactInfo.financingSupport.hours.weekday}</div>
+                    <div>{contactInfo.financingSupport.hours.saturday}</div>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
-          
-          <div className="text-center p-6 border border-gray-200 rounded-xl bg-white hover:shadow-md transition-all duration-300">
-            <div className="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
-              <Mail className="w-8 h-8 text-purple-600" />
+
+          {/* Leasing Support */}
+          <div className="border border-gray-200 rounded-xl bg-white hover:shadow-lg transition-all duration-300 relative">
+            {/* Status indicator */}
+            <div className="absolute top-4 right-4">
+              <div className={`flex items-center gap-2 px-3 py-1 rounded-full ${
+                isOnline(contactInfo.leasingSupport.hours) 
+                  ? 'bg-green-100 text-green-700' 
+                  : 'bg-gray-100 text-gray-600'
+              }`}>
+                <div className={`w-2 h-2 rounded-full ${
+                  isOnline(contactInfo.leasingSupport.hours) 
+                    ? 'bg-green-500 animate-pulse' 
+                    : 'bg-gray-400'
+                }`} />
+                <span className="text-xs font-medium">
+                  {isOnline(contactInfo.leasingSupport.hours) ? 'Online' : 'Offline'}
+                </span>
+              </div>
             </div>
-            <h3 className="font-bold text-gray-900 text-lg mb-2">Email Support</h3>
-            <p className="text-gray-600 text-sm mb-3">Send us a detailed message</p>
-            <a 
-              href={`mailto:${contactInfo.businessSupport.email}`}
-              className="text-sm font-semibold text-purple-600 hover:text-purple-800 transition-colors duration-200 border-b-2 border-transparent hover:border-purple-600 break-all"
-            >
-              {contactInfo.businessSupport.email}
-            </a>
+            
+            <div className="p-6">
+              <div className="w-16 h-16 bg-teal-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                <FileText className="w-8 h-8 text-teal-600" />
+              </div>
+              <h3 className="font-bold text-gray-900 text-xl mb-2 text-center">{contactInfo.leasingSupport.title}</h3>
+              <p className="text-gray-600 text-sm mb-4 text-center">{contactInfo.leasingSupport.description}</p>
+              
+              <div className="space-y-3">
+                <div className="text-center">
+                  <a 
+                    href={`tel:${contactInfo.leasingSupport.phone.replace(/[^0-9]/g, '')}`}
+                    className="text-lg font-bold text-teal-600 hover:text-teal-800 transition-colors duration-200"
+                  >
+                    {contactInfo.leasingSupport.phone}
+                  </a>
+                </div>
+                
+                <div className="text-center">
+                  <a 
+                    href={`mailto:${contactInfo.leasingSupport.email}`}
+                    className="text-sm text-gray-600 hover:text-teal-600 transition-colors duration-200 break-all"
+                  >
+                    {contactInfo.leasingSupport.email}
+                  </a>
+                </div>
+                
+                <div className="bg-teal-50 rounded-lg p-3 text-center">
+                  <div className="text-sm font-medium text-gray-700">
+                    <div>{contactInfo.leasingSupport.hours.weekday}</div>
+                    <div>{contactInfo.leasingSupport.hours.saturday}</div>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
-          
-          <div className="text-center p-6 border border-gray-200 rounded-xl bg-white hover:shadow-md transition-all duration-300">
-            <div className="w-16 h-16 bg-emerald-100 rounded-full flex items-center justify-center mx-auto mb-4">
-              <Clock className="w-8 h-8 text-emerald-600" />
+
+          {/* Business Support */}
+          <div className="border border-gray-200 rounded-xl bg-white hover:shadow-lg transition-all duration-300 relative">
+            {/* Status indicator */}
+            <div className="absolute top-4 right-4">
+              <div className={`flex items-center gap-2 px-3 py-1 rounded-full ${
+                isOnline(contactInfo.businessSupport.hours) 
+                  ? 'bg-green-100 text-green-700' 
+                  : 'bg-gray-100 text-gray-600'
+              }`}>
+                <div className={`w-2 h-2 rounded-full ${
+                  isOnline(contactInfo.businessSupport.hours) 
+                    ? 'bg-green-500 animate-pulse' 
+                    : 'bg-gray-400'
+                }`} />
+                <span className="text-xs font-medium">
+                  {isOnline(contactInfo.businessSupport.hours) ? 'Online' : 'Offline'}
+                </span>
+              </div>
             </div>
-            <h3 className="font-bold text-gray-900 text-lg mb-2">Business Hours</h3>
-            <p className="text-gray-600 text-sm mb-3">When we're available to help</p>
-            <div className="text-gray-900 font-semibold text-sm leading-relaxed">
-              <div>Mon-Fri: 5am-6pm PST</div>
-              <div>Sat: 5am-5pm PST</div>
+            
+            <div className="p-6">
+              <div className="w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4" 
+                   style={{ backgroundColor: `${contactInfo.businessSupport.color}20` }}>
+                <Users className="w-8 h-8" style={{ color: contactInfo.businessSupport.color }} />
+              </div>
+              <h3 className="font-bold text-gray-900 text-xl mb-2 text-center">{contactInfo.businessSupport.title}</h3>
+              <p className="text-gray-600 text-sm mb-4 text-center">{contactInfo.businessSupport.description}</p>
+              
+              <div className="space-y-3">
+                <div className="text-center">
+                  <a 
+                    href={`tel:${contactInfo.businessSupport.phone.replace(/[^0-9]/g, '')}`}
+                    className="text-lg font-bold transition-colors duration-200"
+                    style={{ color: contactInfo.businessSupport.color }}
+                  >
+                    {contactInfo.businessSupport.phone}
+                  </a>
+                </div>
+                
+                <div className="text-center">
+                  <a 
+                    href={`mailto:${contactInfo.businessSupport.email}`}
+                    className="text-sm text-gray-600 hover:opacity-80 transition-colors duration-200 break-all"
+                  >
+                    {contactInfo.businessSupport.email}
+                  </a>
+                </div>
+                
+                <div className="rounded-lg p-3 text-center" 
+                     style={{ backgroundColor: `${contactInfo.businessSupport.color}10` }}>
+                  <div className="text-sm font-medium text-gray-700">
+                    <div>{contactInfo.businessSupport.hours.weekday}</div>
+                    <div>{contactInfo.businessSupport.hours.saturday}</div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
         
-        <div className="mt-8 text-center">
-          <div className="inline-flex items-center gap-2 bg-emerald-50 border border-emerald-200 rounded-full px-6 py-3">
-            <div className="w-3 h-3 bg-emerald-500 rounded-full animate-pulse" />
-            <span className="text-emerald-700 font-medium">Support team is currently online</span>
+        {/* Sales Representatives Section */}
+        <div className="mt-8 border-t-2 border-gray-200 pt-8">
+          <h3 className="text-xl font-bold text-gray-900 mb-6 text-center">Your Dedicated Sales Team</h3>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {/* Regional Sales Manager */}
+            <div className="border border-gray-200 rounded-xl bg-gradient-to-br from-gray-50 to-white p-6 hover:shadow-md transition-all duration-300">
+              <div className="flex items-start gap-4">
+                <div className="w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center flex-shrink-0">
+                  <Users className="w-8 h-8 text-gray-600" />
+                </div>
+                <div className="flex-1">
+                  <h4 className="font-bold text-gray-900 text-lg">{salesReps.regionalManager.name}</h4>
+                  <p className="text-sm font-medium text-gray-600 mb-3">{salesReps.regionalManager.title}</p>
+                  
+                  <div className="space-y-2 text-sm">
+                    <div className="flex items-center gap-2">
+                      <Phone className="w-4 h-4 text-gray-400" />
+                      <a href={`tel:${salesReps.regionalManager.phone.replace(/[^0-9]/g, '')}`} 
+                         className="text-gray-700 hover:text-blue-600 transition-colors">
+                        {salesReps.regionalManager.phone}
+                      </a>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <Phone className="w-4 h-4 text-gray-400" />
+                      <span className="text-gray-600">Mobile: {salesReps.regionalManager.mobile}</span>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <Mail className="w-4 h-4 text-gray-400" />
+                      <a href={`mailto:${salesReps.regionalManager.email}`} 
+                         className="text-gray-700 hover:text-blue-600 transition-colors break-all">
+                        {salesReps.regionalManager.email}
+                      </a>
+                    </div>
+                    <div className="mt-3 pt-3 border-t border-gray-100">
+                      <span className="text-xs font-medium text-gray-500">Territory:</span>
+                      <p className="text-sm text-gray-700">{salesReps.regionalManager.territory}</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            {/* Inside Sales Manager */}
+            <div className="border border-gray-200 rounded-xl bg-gradient-to-br from-gray-50 to-white p-6 hover:shadow-md transition-all duration-300">
+              <div className="flex items-start gap-4">
+                <div className="w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center flex-shrink-0">
+                  <Users className="w-8 h-8 text-gray-600" />
+                </div>
+                <div className="flex-1">
+                  <h4 className="font-bold text-gray-900 text-lg">{salesReps.insideSalesManager.name}</h4>
+                  <p className="text-sm font-medium text-gray-600 mb-3">{salesReps.insideSalesManager.title}</p>
+                  
+                  <div className="space-y-2 text-sm">
+                    <div className="flex items-center gap-2">
+                      <Phone className="w-4 h-4 text-gray-400" />
+                      <a href={`tel:${salesReps.insideSalesManager.phone.replace(/[^0-9]/g, '')}`} 
+                         className="text-gray-700 hover:text-blue-600 transition-colors">
+                        {salesReps.insideSalesManager.phone} {salesReps.insideSalesManager.extension}
+                      </a>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <Mail className="w-4 h-4 text-gray-400" />
+                      <a href={`mailto:${salesReps.insideSalesManager.email}`} 
+                         className="text-gray-700 hover:text-blue-600 transition-colors break-all">
+                        {salesReps.insideSalesManager.email}
+                      </a>
+                    </div>
+                    <div className="mt-3 pt-3 border-t border-gray-100">
+                      <span className="text-xs font-medium text-gray-500">Specialization:</span>
+                      <p className="text-sm text-gray-700">{salesReps.insideSalesManager.specialization}</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>

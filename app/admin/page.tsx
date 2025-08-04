@@ -145,8 +145,8 @@ export default function AdminDashboard() {
                 className="h-10 w-auto"
               />
               <div>
-                <h1 className="text-2xl font-bold text-gray-900">EasyPay University Admin</h1>
-                <p className="text-gray-600">Platform Analytics & Merchant Management</p>
+                <h1 className="text-3xl font-bold text-gray-900">Platform Analytics</h1>
+                <p className="text-gray-600 mt-2">Monitor platform performance and merchant training progress</p>
               </div>
             </div>
             

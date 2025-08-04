@@ -543,3 +543,1162 @@ Found module: Welcome to EasyPay Finance
  GET /support 200 in 910ms
  GET /favicon.ico?favicon.45db1c09.ico 200 in 278ms
  GET / 200 in 82ms
+ GET / 200 in 513ms
+ GET /favicon.ico?favicon.45db1c09.ico 200 in 321ms
+ GET /resources 200 in 121ms
+ GET /support 200 in 91ms
+ GET /daily-challenges 200 in 93ms
+ GET / 200 in 93ms
+ GET /daily-challenges 200 in 104ms
+ GET /modules 200 in 107ms
+ GET /modules/4 200 in 239ms
+ GET / 200 in 108ms
+ GET /currency-exchange 200 in 120ms
+ GET / 200 in 89ms
+ GET /currency-exchange 200 in 104ms
+ GET /currency-exchange 200 in 391ms
+ GET /favicon.ico?favicon.45db1c09.ico 200 in 346ms
+ GET / 200 in 74ms
+ GET / 200 in 663ms
+ GET / 200 in 211ms
+ GET /favicon.ico?favicon.45db1c09.ico 200 in 283ms
+ GET /modules 200 in 90ms
+ GET /practice-scenarios 200 in 97ms
+ GET /modules 200 in 184ms
+ GET /modules/5 200 in 128ms
+ GET /modules 200 in 86ms
+ GET /currency-exchange 200 in 99ms
+ GET /progress 200 in 92ms
+ GET /currency-exchange 200 in 79ms
+ GET / 200 in 123ms
+ GET /daily-challenges 200 in 148ms
+ GET /practice-scenarios 200 in 270ms
+ GET / 200 in 84ms
+ GET /modules 200 in 93ms
+ GET /modules 200 in 105ms
+ GET /daily-challenges 200 in 83ms
+ GET / 200 in 78ms
+ GET /daily-challenges 200 in 73ms
+ GET /practice-scenarios 200 in 71ms
+ GET /currency-exchange 200 in 106ms
+ GET / 200 in 68ms
+ ✓ Compiled in 381ms
+ ✓ Compiled in 360ms
+ ✓ Compiled in 292ms
+ ✓ Compiled in 321ms
+ ✓ Compiled in 322ms
+ ✓ Compiled in 305ms
+ ✓ Compiled in 246ms
+ ✓ Compiled in 249ms
+ ✓ Compiled in 186ms
+ GET /currency-exchange 200 in 101ms
+ ✓ Compiled in 299ms
+ ✓ Compiled in 303ms
+ GET /currency-exchange 200 in 436ms
+ GET /favicon.ico?favicon.45db1c09.ico 200 in 319ms
+ GET /practice-scenarios 200 in 239ms
+ GET /modules 200 in 73ms
+ GET /modules/6 200 in 256ms
+ GET /modules 200 in 79ms
+ GET /currency-exchange 200 in 78ms
+ GET /currency-exchange 200 in 72ms
+ GET / 200 in 76ms
+ GET /daily-challenges 200 in 95ms
+ GET / 200 in 68ms
+ GET /daily-challenges 200 in 92ms
+ ✓ Compiled in 104ms
+ ✓ Compiled in 133ms
+ ✓ Compiled in 283ms
+ ✓ Compiled in 325ms
+ GET /daily-challenges 200 in 546ms
+ GET /favicon.ico?favicon.45db1c09.ico 200 in 276ms
+ GET / 200 in 76ms
+ GET /daily-challenges 200 in 139ms
+ GET /daily-challenges 200 in 307ms
+ GET /favicon.ico?favicon.45db1c09.ico 200 in 280ms
+ GET / 200 in 127ms
+ ✓ Compiled in 230ms
+ ✓ Compiled in 36ms
+ ✓ Compiled in 265ms
+ ✓ Compiled in 41ms
+ ✓ Compiled in 35ms
+ GET /daily-challenges 200 in 224ms
+ GET / 200 in 72ms
+ GET /modules/1 200 in 74ms
+ GET /practice-scenarios 200 in 82ms
+ GET / 200 in 61ms
+ GET / 200 in 80ms
+ GET / 200 in 77ms
+ GET / 200 in 69ms
+ GET /daily-challenges 200 in 385ms
+ GET /favicon.ico?favicon.45db1c09.ico 200 in 304ms
+ GET / 200 in 73ms
+ GET /modules 200 in 76ms
+ GET /practice-scenarios 200 in 72ms
+ GET /support 200 in 78ms
+ GET / 200 in 351ms
+ GET /modules 200 in 68ms
+ GET /daily-challenges 200 in 70ms
+ GET /practice-scenarios 200 in 77ms
+ GET /progress 200 in 87ms
+ ✓ Compiled in 278ms
+ GET /daily-challenges 200 in 202ms
+ GET /practice-scenarios 200 in 77ms
+ GET /progress 200 in 101ms
+ GET /daily-challenges 200 in 67ms
+ GET /daily-challenges 200 in 351ms
+ GET /favicon.ico?favicon.45db1c09.ico 200 in 287ms
+ GET / 200 in 102ms
+ GET /daily-challenges 200 in 69ms
+ GET /practice-scenarios 200 in 69ms
+ GET /daily-challenges 200 in 78ms
+ ✓ Compiled in 257ms
+ ✓ Compiled in 363ms
+ ✓ Compiled in 189ms
+ GET /modules 200 in 122ms
+ GET /daily-challenges 200 in 163ms
+ GET /daily-challenges 200 in 300ms
+ GET /favicon.ico?favicon.45db1c09.ico 200 in 314ms
+ GET / 200 in 67ms
+ GET /modules 200 in 74ms
+ GET /daily-challenges 200 in 67ms
+ GET /practice-scenarios 200 in 76ms
+ GET /progress 200 in 81ms
+ GET /currency-exchange 200 in 79ms
+ GET /resources 200 in 134ms
+ GET /support 200 in 80ms
+ ✓ Compiled in 261ms
+ GET /support 200 in 404ms
+ GET /favicon.ico?favicon.45db1c09.ico 500 in 139ms
+ ✓ Compiled in 294ms
+ GET /support 200 in 121ms
+ ✓ Compiled /daily-challenges in 36ms
+ GET /daily-challenges 200 in 205ms
+ GET /favicon.ico?favicon.45db1c09.ico 200 in 320ms
+ GET / 200 in 99ms
+ GET /daily-challenges 200 in 70ms
+ ✓ Compiled in 223ms
+ GET /daily-challenges 200 in 487ms
+ GET /favicon.ico?favicon.45db1c09.ico 200 in 332ms
+ ✓ Compiled in 36ms
+ GET /daily-challenges 200 in 415ms
+ GET /favicon.ico?favicon.45db1c09.ico 200 in 316ms
+ GET /modules 200 in 84ms
+ GET / 200 in 80ms
+ GET /practice-scenarios 200 in 76ms
+ GET / 200 in 67ms
+ GET /daily-challenges 200 in 81ms
+ GET /support 200 in 81ms
+ GET / 200 in 156ms
+ GET /daily-challenges 200 in 83ms
+ GET /practice-scenarios 200 in 84ms
+ GET / 200 in 507ms
+ ✓ Compiled in 257ms
+ GET / 200 in 1338ms
+ GET /favicon.ico?favicon.45db1c09.ico 200 in 291ms
+ ✓ Compiled in 204ms
+ ✓ Compiled in 517ms
+ GET /modules 200 in 146ms
+ GET / 200 in 220ms
+ ✓ Compiled in 240ms
+ ✓ Compiled in 137ms
+ GET / 200 in 697ms
+ GET /favicon.ico?favicon.45db1c09.ico 200 in 335ms
+ GET /daily-challenges 200 in 142ms
+ ✓ Compiled in 234ms
+ GET / 200 in 100ms
+ ✓ Compiled in 254ms
+ ✓ Compiled in 302ms
+ ✓ Compiled in 233ms
+ ✓ Compiled in 195ms
+ ✓ Compiled in 186ms
+ GET /support 200 in 122ms
+ ✓ Compiled in 263ms
+ GET / 200 in 303ms
+ ✓ Compiled in 132ms
+ ✓ Compiled in 258ms
+ ✓ Compiled in 137ms
+ GET /favicon.ico 200 in 311ms
+ GET / 200 in 678ms
+ ✓ Compiled in 324ms
+ ✓ Compiled in 243ms
+ ✓ Compiled in 223ms
+ GET /modules/3 200 in 306ms
+ GET /support 200 in 115ms
+ GET / 200 in 262ms
+ GET /currency-exchange 200 in 110ms
+ GET /progress 200 in 138ms
+ GET / 200 in 115ms
+ GET /daily-challenges 200 in 273ms
+ ✓ Compiled in 252ms
+ GET /modules 200 in 244ms
+ GET /support 200 in 233ms
+ GET /support 200 in 618ms
+ GET /favicon.ico?favicon.45db1c09.ico 200 in 346ms
+ ✓ Compiled in 311ms
+ ✓ Compiled in 346ms
+ ⚠ Fast Refresh had to perform a full reload due to a runtime error.
+ ✓ Compiled in 323ms
+ GET /support 200 in 957ms
+ GET /favicon.ico?favicon.45db1c09.ico 200 in 373ms
+ ✓ Compiled in 273ms
+ ✓ Compiled in 243ms
+ GET /support 200 in 815ms
+ GET /favicon.ico?favicon.45db1c09.ico 200 in 346ms
+ ✓ Compiled in 163ms
+ ✓ Compiled in 345ms
+ ✓ Compiled in 322ms
+ ✓ Compiled in 257ms
+ ✓ Compiled in 196ms
+ ✓ Compiled in 256ms
+ GET /resources 200 in 132ms
+ GET / 200 in 148ms
+ GET /daily-challenges 200 in 118ms
+ GET /practice-scenarios 200 in 133ms
+ GET /modules/1 200 in 124ms
+ GET /modules 200 in 128ms
+ GET /modules/2 200 in 117ms
+ GET /modules 200 in 98ms
+ GET /modules/3 200 in 129ms
+ GET /modules 200 in 125ms
+ GET /currency-exchange 200 in 132ms
+ GET /currency-exchange 200 in 368ms
+ GET /favicon.ico?favicon.45db1c09.ico 200 in 310ms
+ GET /currency-exchange 200 in 488ms
+ GET /favicon.ico?favicon.45db1c09.ico 200 in 332ms
+ GET /resources 200 in 123ms
+ ✓ Compiled in 278ms
+ GET / 200 in 149ms
+ ✓ Compiled in 253ms
+ ✓ Compiled in 259ms
+ GET /resources 200 in 265ms
+ ✓ Compiled in 217ms
+ ✓ Compiled in 142ms
+ ✓ Compiled in 274ms
+ ✓ Compiled in 238ms
+ ✓ Compiled in 302ms
+ ✓ Compiled in 260ms
+ ✓ Compiled in 262ms
+ ✓ Compiled in 277ms
+ ✓ Compiled in 255ms
+ ✓ Compiled in 183ms
+ ✓ Compiled in 316ms
+ ✓ Compiled in 217ms
+ ✓ Compiled in 293ms
+ ✓ Compiled in 241ms
+ ✓ Compiled in 265ms
+ ✓ Compiled in 212ms
+ ✓ Compiled in 332ms
+ GET / 200 in 571ms
+ GET /resources 200 in 254ms
+ GET / 200 in 431ms
+ GET /resources 200 in 111ms
+ ✓ Compiled in 267ms
+ ✓ Compiled in 186ms
+ ✓ Compiled in 282ms
+ ✓ Compiled in 308ms
+ GET /currency-exchange 200 in 121ms
+ ✓ Compiled in 205ms
+ ✓ Compiled in 344ms
+ ✓ Compiled in 299ms
+ GET /modules 200 in 145ms
+ GET /daily-challenges 200 in 118ms
+ GET /practice-scenarios 200 in 123ms
+ GET /progress 200 in 119ms
+ GET /currency-exchange 200 in 236ms
+ GET /support 200 in 236ms
+ ✓ Compiled in 266ms
+ GET /currency-exchange 200 in 285ms
+ GET / 200 in 138ms
+ GET /currency-exchange 200 in 120ms
+ ✓ Compiled in 466ms
+ ✓ Compiled in 313ms
+ ✓ Compiled in 332ms
+ ✓ Compiled in 253ms
+ GET /currency-exchange 200 in 791ms
+ GET /favicon.ico?favicon.45db1c09.ico 200 in 335ms
+ ✓ Compiled in 363ms
+ GET /currency-exchange 200 in 646ms
+ GET /favicon.ico?favicon.45db1c09.ico 200 in 343ms
+ GET /currency-exchange 200 in 244ms
+ GET /favicon.ico?favicon.45db1c09.ico 200 in 316ms
+ ✓ Compiled in 318ms
+ GET /currency-exchange 200 in 494ms
+ GET /favicon.ico?favicon.45db1c09.ico 200 in 339ms
+ ✓ Compiled in 339ms
+ GET /currency-exchange 200 in 604ms
+ GET /favicon.ico?favicon.45db1c09.ico 200 in 343ms
+ ✓ Compiled in 278ms
+ ✓ Compiled in 399ms
+ GET /currency-exchange 200 in 631ms
+ GET /favicon.ico?favicon.45db1c09.ico 200 in 336ms
+ GET /currency-exchange 200 in 413ms
+ GET /favicon.ico?favicon.45db1c09.ico 200 in 356ms
+ ✓ Compiled in 305ms
+ ✓ Compiled in 224ms
+ GET /currency-exchange 200 in 605ms
+ GET /favicon.ico?favicon.45db1c09.ico 200 in 325ms
+ GET /resources 200 in 288ms
+ GET /currency-exchange 200 in 136ms
+ GET /progress 200 in 127ms
+ ✓ Compiled in 333ms
+ GET /progress 200 in 989ms
+ GET /favicon.ico?favicon.45db1c09.ico 200 in 382ms
+ ✓ Compiled in 275ms
+ ✓ Compiled in 323ms
+ GET /modules 200 in 165ms
+ GET /modules/3 200 in 127ms
+ GET /modules/3/quiz 200 in 310ms
+ ✓ Compiled in 315ms
+ ✓ Compiled in 286ms
+ ⨯ ./components/quiz/QuizComponent.tsx:527:1
+Parsing ecmascript source code failed
+[0m [90m 525 |[39m     )}
+ [90m 526 |[39m   [33m<[39m[33m/[39m[33m>[39m
+[31m[1m>[22m[39m[90m 527 |[39m }
+ [90m     |[39m [31m[1m^[22m[39m[0m
+
+Expected ',', got '}'
+
+Import traces:
+  Client Component Browser:
+    ./components/quiz/QuizComponent.tsx [Client Component Browser]
+    ./app/modules/3/quiz/page.tsx [Client Component Browser]
+    ./app/modules/3/quiz/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./components/quiz/QuizComponent.tsx [Client Component SSR]
+    ./app/modules/3/quiz/page.tsx [Client Component SSR]
+    ./app/modules/3/quiz/page.tsx [Server Component]
+
+
+ GET /modules/3/quiz 500 in 239ms
+ GET /favicon.ico 500 in 174ms
+ GET /modules/3 200 in 485ms
+ GET /favicon.ico?favicon.45db1c09.ico 500 in 126ms
+ GET /favicon.ico 500 in 230ms
+ GET /favicon.ico?favicon.45db1c09.ico 500 in 209ms
+ GET /modules 200 in 1000ms
+ GET /favicon.ico?favicon.45db1c09.ico 500 in 222ms
+ GET /favicon.ico 500 in 206ms
+ GET /favicon.ico?favicon.45db1c09.ico 500 in 183ms
+ GET /modules/3 200 in 410ms
+ GET /favicon.ico?favicon.45db1c09.ico 500 in 119ms
+ GET /modules 200 in 407ms
+ GET /favicon.ico?favicon.45db1c09.ico 500 in 325ms
+ GET /favicon.ico 500 in 281ms
+ GET /favicon.ico?favicon.45db1c09.ico 500 in 146ms
+ GET / 200 in 406ms
+ GET /favicon.ico?favicon.45db1c09.ico 500 in 134ms
+ ✓ Compiled in 407ms
+ GET / 200 in 161ms
+ GET / 200 in 137ms
+ GET /modules 200 in 119ms
+ GET /favicon.ico?favicon.45db1c09.ico 200 in 298ms
+ GET / 200 in 107ms
+ GET /practice-scenarios 200 in 120ms
+ GET /currency-exchange 200 in 123ms
+ GET /modules 200 in 119ms
+ GET /currency-exchange 200 in 104ms
+ GET /progress 200 in 246ms
+ GET / 200 in 114ms
+ GET /modules/2 200 in 599ms
+ GET /modules 200 in 160ms
+ GET /modules/1 200 in 131ms
+ ✓ Compiled in 89ms
+ ✓ Compiled in 41ms
+ ✓ Compiled in 40ms
+ ✓ Compiled in 51ms
+ ✓ Compiled in 55ms
+ ✓ Compiled in 45ms
+ ✓ Compiled in 42ms
+ GET /modules 200 in 329ms
+ GET /resources 200 in 353ms
+ ✓ Compiled in 50ms
+ ✓ Compiled in 27ms
+ ✓ Compiled in 26ms
+ ✓ Compiled in 31ms
+ ✓ Compiled in 303ms
+ ✓ Compiled in 260ms
+ ✓ Compiled in 330ms
+ GET /support 200 in 256ms
+ ✓ Compiled in 471ms
+ ✓ Compiled in 300ms
+ ✓ Compiled in 322ms
+ ✓ Compiled in 257ms
+ ✓ Compiled in 48ms
+ GET /daily-challenges 200 in 978ms
+ GET /daily-challenges 200 in 147ms
+ GET /modules 200 in 126ms
+ ✓ Compiled in 10ms
+ ✓ Compiled in 54ms
+ ✓ Compiled in 53ms
+ ✓ Compiled in 39ms
+ ✓ Compiled in 31ms
+ ✓ Compiled in 40ms
+ ✓ Compiled in 35ms
+ GET /modules/1 200 in 338ms
+ ✓ Compiled in 39ms
+ GET /resources 200 in 327ms
+ ✓ Compiled in 52ms
+ GET /daily-challenges 200 in 171ms
+ GET /modules 200 in 276ms
+ GET /modules/1 200 in 555ms
+ GET /modules 200 in 164ms
+ GET / 200 in 309ms
+ ✓ Compiled in 205ms
+ ✓ Compiled in 401ms
+ ✓ Compiled in 290ms
+ ✓ Compiled / in 83ms
+ GET / 200 in 322ms
+ GET / 200 in 177ms
+ GET / 200 in 161ms
+ GET / 200 in 151ms
+ GET / 200 in 129ms
+ GET / 200 in 127ms
+ GET / 200 in 198ms
+ GET / 200 in 132ms
+ GET / 200 in 107ms
+ GET / 200 in 110ms
+ GET / 200 in 110ms
+ GET / 200 in 108ms
+ ✓ Compiled /modules in 43ms
+ GET /modules 200 in 172ms
+ ✓ Compiled /daily-challenges in 81ms
+ GET /daily-challenges 200 in 201ms
+ ✓ Compiled /progress in 52ms
+ GET /progress 200 in 231ms
+ ✓ Compiled /resources in 40ms
+ GET /resources 200 in 128ms
+ ✓ Compiled /practice-scenarios in 42ms
+ GET /practice-scenarios 200 in 121ms
+ GET /progress 200 in 110ms
+ ✓ Compiled /currency-exchange in 44ms
+ GET /currency-exchange 200 in 135ms
+ GET /resources 200 in 124ms
+ GET /practice-scenarios 200 in 106ms
+ GET /progress 200 in 106ms
+ GET /daily-challenges 200 in 123ms
+ GET /modules 200 in 109ms
+ GET / 200 in 108ms
+ GET /resources 200 in 119ms
+ ✓ Compiled /support in 36ms
+ GET /support 200 in 113ms
+ ✓ Compiled in 461ms
+ GET /daily-challenges 200 in 277ms
+ GET /practice-scenarios 200 in 184ms
+ GET /daily-challenges 200 in 137ms
+ GET /progress 200 in 124ms
+ GET / 200 in 167ms
+ GET /modules 200 in 153ms
+ GET /progress 200 in 125ms
+ GET /practice-scenarios 200 in 169ms
+ GET /daily-challenges 200 in 126ms
+ GET /currency-exchange 200 in 238ms
+ GET / 200 in 107ms
+ ✓ Compiled in 236ms
+ GET /modules 200 in 141ms
+ GET /daily-challenges 200 in 124ms
+ GET / 200 in 273ms
+ ✓ Compiled in 265ms
+ ✓ Compiled in 308ms
+ GET / 200 in 974ms
+ GET /favicon.ico?favicon.45db1c09.ico 500 in 209ms
+ GET / 200 in 478ms
+ GET /favicon.ico?favicon.45db1c09.ico 500 in 180ms
+ GET / 200 in 411ms
+ GET /favicon.ico?favicon.45db1c09.ico 500 in 186ms
+ GET / 200 in 525ms
+ GET /favicon.ico?favicon.45db1c09.ico 500 in 152ms
+ GET / 200 in 1160ms
+ GET /favicon.ico?favicon.45db1c09.ico 500 in 185ms
+ ✓ Compiled in 405ms
+ GET / 200 in 298ms
+ GET /modules 200 in 174ms
+ GET /favicon.ico?favicon.45db1c09.ico 200 in 352ms
+ ✓ Compiled /daily-challenges in 58ms
+ GET /daily-challenges 200 in 355ms
+ GET /practice-scenarios 200 in 257ms
+ GET /progress 200 in 140ms
+ GET /currency-exchange 200 in 228ms
+ GET /resources 200 in 133ms
+ GET /support 200 in 136ms
+ ○ Compiling /admin ...
+ ✓ Compiled /admin in 874ms
+ GET /admin 200 in 960ms
+ GET /support 200 in 118ms
+ GET /resources 200 in 120ms
+ GET /currency-exchange 200 in 122ms
+ GET /progress 200 in 122ms
+ GET /practice-scenarios 200 in 135ms
+ GET /daily-challenges 200 in 137ms
+ GET /practice-scenarios 200 in 122ms
+ GET /modules 200 in 120ms
+ GET /daily-challenges 200 in 119ms
+ GET /practice-scenarios 200 in 121ms
+ GET /daily-challenges 200 in 114ms
+ ✓ Compiled in 309ms
+ ✓ Compiled in 338ms
+ ✓ Compiled in 288ms
+ GET /daily-challenges 200 in 792ms
+ GET /favicon.ico?favicon.45db1c09.ico 200 in 402ms
+ ✓ Compiled in 281ms
+ ✓ Compiled in 266ms
+ ✓ Compiled in 403ms
+ GET /daily-challenges 200 in 1660ms
+ GET /favicon.ico?favicon.45db1c09.ico 200 in 368ms
+ ✓ Compiled in 314ms
+ ✓ Compiled in 557ms
+ GET /daily-challenges 200 in 935ms
+ GET /favicon.ico?favicon.45db1c09.ico 200 in 383ms
+ GET /daily-challenges 200 in 465ms
+ GET /favicon.ico?favicon.45db1c09.ico 200 in 338ms
+ GET /modules 200 in 138ms
+ ✓ Compiled /modules/[id] in 52ms
+ GET /modules/2 200 in 158ms
+ GET /modules 200 in 119ms
+ ✓ Compiled /modules/3 in 48ms
+ GET /modules/3 200 in 137ms
+ GET /modules 200 in 117ms
+ GET /modules/3 200 in 128ms
+ GET /modules 200 in 133ms
+ GET /modules/2 200 in 123ms
+ GET /modules 200 in 132ms
+ GET /modules/4 200 in 143ms
+ GET /modules 200 in 120ms
+ ✓ Compiled in 68ms
+ GET /daily-challenges 200 in 270ms
+ ✓ Compiled in 46ms
+ ✓ Compiled in 23ms
+ ✓ Compiled in 285ms
+ ✓ Compiled in 629ms
+ ✓ Compiled in 49ms
+ ✓ Compiled in 328ms
+ ✓ Compiled in 396ms
+ ✓ Compiled in 20ms
+ ✓ Compiled in 70ms
+ ✓ Compiled in 36ms
+ ✓ Compiled in 266ms
+ ✓ Compiled in 331ms
+ ✓ Compiled in 323ms
+ ⚠ Fast Refresh had to perform a full reload due to a runtime error.
+ ✓ Compiled in 267ms
+ GET /daily-challenges 200 in 973ms
+ GET /favicon.ico?favicon.45db1c09.ico 200 in 418ms
+ ⚠ Fast Refresh had to perform a full reload due to a runtime error.
+ ⚠ Fast Refresh had to perform a full reload due to a runtime error.
+ ✓ Compiled in 530ms
+ ⨯ TypeError: getWheelSlots is not a function
+    at DailyChallengesPage (app/daily-challenges/page.tsx:313:17)
+  311 |                 style={{ transform: `rotate(${wheelRotation}deg)` }}
+  312 |               >
+> 313 |                 {getWheelSlots().map((slot, index) => {
+      |                 ^
+  314 |                   const angle = (360 / 20) * index
+  315 |                   const nextAngle = (360 / 20) * (index + 1)
+  316 |                    {
+  digest: '2678146076'
+}
+ GET /daily-challenges 500 in 715ms
+ GET /favicon.ico 200 in 372ms
+ ⚠ Fast Refresh had to perform a full reload due to a runtime error.
+ ⚠ Fast Refresh had to perform a full reload due to a runtime error.
+ ✓ Compiled in 487ms
+ ⨯ TypeError: getWheelSlots is not a function
+    at DailyChallengesPage (app/daily-challenges/page.tsx:313:17)
+  311 |                 style={{ transform: `rotate(${wheelRotation}deg)` }}
+  312 |               >
+> 313 |                 {getWheelSlots().map((slot, index) => {
+      |                 ^
+  314 |                   const angle = (360 / 20) * index
+  315 |                   const nextAngle = (360 / 20) * (index + 1)
+  316 |                    {
+  digest: '1641109707'
+}
+ GET /daily-challenges 500 in 675ms
+ GET /favicon.ico 200 in 391ms
+ ⨯ TypeError: getWheelSlots is not a function
+    at DailyChallengesPage (app/daily-challenges/page.tsx:313:17)
+  311 |                 style={{ transform: `rotate(${wheelRotation}deg)` }}
+  312 |               >
+> 313 |                 {getWheelSlots().map((slot, index) => {
+      |                 ^
+  314 |                   const angle = (360 / 20) * index
+  315 |                   const nextAngle = (360 / 20) * (index + 1)
+  316 |                    {
+  digest: '1641109707'
+}
+ GET /daily-challenges 500 in 431ms
+ GET /favicon.ico 200 in 330ms
+ GET / 200 in 690ms
+ GET /favicon.ico?favicon.45db1c09.ico 200 in 366ms
+ GET /daily-challenges 200 in 138ms
+ ⚠ Fast Refresh had to perform a full reload due to a runtime error.
+ ✓ Compiled in 354ms
+ ⨯ TypeError: getWheelSlots is not a function
+    at DailyChallengesPage (app/daily-challenges/page.tsx:314:17)
+  312 |                 style={{ transform: `rotate(${wheelRotation}deg)` }}
+  313 |               >
+> 314 |                 {getWheelSlots().map((slot, index) => {
+      |                 ^
+  315 |                   const angle = (360 / 20) * index
+  316 |                   const nextAngle = (360 / 20) * (index + 1)
+  317 |                    {
+  digest: '1641109707'
+}
+ GET /daily-challenges 500 in 781ms
+ GET /favicon.ico?favicon.45db1c09.ico 200 in 444ms
+ GET /favicon.ico 200 in 394ms
+ ⚠ Fast Refresh had to perform a full reload due to a runtime error.
+ ✓ Compiled in 383ms
+ ⨯ TypeError: getWheelSlots is not a function
+    at DailyChallengesPage (app/daily-challenges/page.tsx:319:17)
+  317 |                 style={{ transform: `rotate(${wheelRotation}deg)` }}
+  318 |               >
+> 319 |                 {getWheelSlots().map((slot, index) => {
+      |                 ^
+  320 |                   const angle = (360 / 20) * index
+  321 |                   const nextAngle = (360 / 20) * (index + 1)
+  322 |                    {
+  digest: '1641109707'
+}
+ GET /daily-challenges 500 in 724ms
+ GET /favicon.ico?favicon.45db1c09.ico 200 in 444ms
+ GET /favicon.ico 200 in 451ms
+ ⚠ Fast Refresh had to perform a full reload due to a runtime error.
+ ✓ Compiled in 344ms
+ GET /daily-challenges 200 in 976ms
+ GET /favicon.ico?favicon.45db1c09.ico 200 in 539ms
+ ⚠ Fast Refresh had to perform a full reload due to a runtime error.
+ ✓ Compiled in 59ms
+ GET /daily-challenges 200 in 809ms
+ GET /favicon.ico?favicon.45db1c09.ico 200 in 479ms
+ ⚠ Fast Refresh had to perform a full reload due to a runtime error.
+ ✓ Compiled in 42ms
+ GET /daily-challenges 200 in 1350ms
+ GET /favicon.ico?favicon.45db1c09.ico 200 in 379ms
+ ✓ Compiled in 482ms
+ GET /daily-challenges 200 in 953ms
+ GET /favicon.ico?favicon.45db1c09.ico 200 in 406ms
+ ✓ Compiled in 334ms
+ ✓ Compiled in 424ms
+ ✓ Compiled in 334ms
+ ✓ Compiled in 378ms
+ GET /currency-exchange 200 in 215ms
+ GET /daily-challenges 200 in 314ms
+ ✓ Compiled in 153ms
+ ✓ Compiled in 41ms
+ ✓ Compiled in 614ms
+ ✓ Compiled in 325ms
+ ✓ Compiled in 372ms
+ ✓ Compiled in 340ms
+ ✓ Compiled in 399ms
+ ✓ Compiled in 433ms
+ ✓ Compiled in 255ms
+ ✓ Compiled in 417ms
+ GET /daily-challenges 200 in 1948ms
+ GET /favicon.ico?favicon.45db1c09.ico 200 in 411ms
+ ✓ Compiled in 387ms
+ ✓ Compiled in 461ms
+ ✓ Compiled in 477ms
+ ✓ Compiled in 399ms
+ ✓ Compiled in 454ms
+ ✓ Compiled in 343ms
+ ✓ Compiled in 397ms
+ GET /daily-challenges 200 in 1225ms
+ GET /favicon.ico?favicon.45db1c09.ico 200 in 376ms
+ GET /daily-challenges 200 in 600ms
+ GET /favicon.ico?favicon.45db1c09.ico 200 in 343ms
+ ✓ Compiled in 376ms
+ ✓ Compiled in 566ms
+ ✓ Compiled in 338ms
+ ✓ Compiled in 62ms
+ ✓ Compiled in 410ms
+ ✓ Compiled in 294ms
+ ✓ Compiled in 67ms
+ ✓ Compiled in 421ms
+ ✓ Compiled in 429ms
+ ✓ Compiled in 319ms
+ ✓ Compiled in 391ms
+ ✓ Compiled in 725ms
+ ✓ Compiled in 351ms
+ ✓ Compiled in 468ms
+ ✓ Compiled in 383ms
+ ⚠ Fast Refresh had to perform a full reload due to a runtime error.
+ ✓ Compiled in 419ms
+ GET /daily-challenges 200 in 2104ms
+ GET /favicon.ico?favicon.45db1c09.ico 200 in 419ms
+ ✓ Compiled in 427ms
+ ✓ Compiled in 252ms
+ ✓ Compiled in 370ms
+ ✓ Compiled in 431ms
+ ✓ Compiled in 363ms
+ ✓ Compiled in 483ms
+ ✓ Compiled in 374ms
+ ✓ Compiled in 354ms
+ ⚠ Fast Refresh had to perform a full reload due to a runtime error.
+ ✓ Compiled in 478ms
+ GET /daily-challenges 200 in 1064ms
+ GET /favicon.ico?favicon.45db1c09.ico 200 in 404ms
+ ✓ Compiled in 346ms
+ ✓ Compiled in 371ms
+ ✓ Compiled in 327ms
+ ✓ Compiled in 455ms
+ ✓ Compiled in 237ms
+ ✓ Compiled in 410ms
+ ✓ Compiled in 365ms
+ ✓ Compiled in 687ms
+ GET / 200 in 161ms
+ GET /currency-exchange 200 in 176ms
+ GET /daily-challenges 200 in 270ms
+ ✓ Compiled in 499ms
+ GET / 200 in 152ms
+ ✓ Compiled in 280ms
+ GET /daily-challenges 200 in 1273ms
+ ✓ Compiled in 250ms
+ GET / 200 in 302ms
+ GET /modules 200 in 279ms
+ GET /daily-challenges 200 in 185ms
+ GET /practice-scenarios 200 in 167ms
+ GET /progress 200 in 149ms
+ GET /currency-exchange 200 in 148ms
+ ✓ Compiled in 276ms
+ GET / 200 in 334ms
+ ✓ Compiled in 387ms
+ ✓ Compiled in 619ms
+ GET /modules/3 200 in 529ms
+ GET /modules/3 200 in 401ms
+ GET /favicon.ico?favicon.45db1c09.ico 200 in 326ms
+ GET /modules 200 in 149ms
+ GET / 200 in 280ms
+ GET / 200 in 529ms
+ GET /favicon.ico?favicon.45db1c09.ico 200 in 357ms
+ GET /modules 200 in 134ms
+ GET /modules/3 200 in 133ms
+ GET /modules 200 in 129ms
+ ✓ Compiled in 418ms
+ GET / 200 in 271ms
+ ✓ Compiled in 466ms
+ ✓ Compiled in 332ms
+ ✓ Compiled in 336ms
+ GET /daily-challenges 200 in 189ms
+ GET /modules 200 in 148ms
+ GET /modules/3 200 in 155ms
+ GET /modules 200 in 201ms
+ GET /modules/2 200 in 164ms
+ GET /modules 200 in 178ms
+ GET /modules/3 200 in 153ms
+ GET /modules/3 200 in 623ms
+ GET /favicon.ico?favicon.45db1c09.ico 200 in 325ms
+ GET /modules/3 200 in 560ms
+ GET /favicon.ico?favicon.45db1c09.ico 200 in 364ms
+ GET / 200 in 267ms
+ GET / 200 in 701ms
+ GET /favicon.ico?favicon.45db1c09.ico 200 in 370ms
+ GET /modules 200 in 184ms
+ GET /modules/3 200 in 163ms
+ ✓ Compiled in 113ms
+ ✓ Compiled in 48ms
+ ✓ Compiled in 42ms
+ GET /modules 200 in 330ms
+ GET /modules/2 200 in 298ms
+ GET /modules 200 in 172ms
+ GET /modules/3 200 in 138ms
+ GET /modules 200 in 136ms
+ ✓ Compiled in 43ms
+ ✓ Compiled in 69ms
+ GET /modules/3 200 in 167ms
+ ✓ Compiled in 47ms
+ GET /modules 200 in 293ms
+ GET /modules/4 200 in 253ms
+ GET /modules 200 in 155ms
+ GET /modules/5 200 in 170ms
+ GET /modules 200 in 218ms
+ GET /modules/3 200 in 142ms
+ ✓ Compiled in 308ms
+ ⨯ [Error: ENOENT: no such file or directory, open '/Users/TrevorKist/Desktop/EasyPay University/.next/server/app/modules/[id]/page/app-build-manifest.json'] {
+  errno: -2,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: '/Users/TrevorKist/Desktop/EasyPay University/.next/server/app/modules/[id]/page/app-build-manifest.json'
+}
+ ⨯ [Error: ENOENT: no such file or directory, open '/Users/TrevorKist/Desktop/EasyPay University/.next/server/pages/_app/build-manifest.json'] {
+  errno: -2,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: '/Users/TrevorKist/Desktop/EasyPay University/.next/server/pages/_app/build-manifest.json'
+}
+[Error: ENOENT: no such file or directory, open '/Users/TrevorKist/Desktop/EasyPay University/.next/server/app/modules/[id]/page/app-build-manifest.json'] {
+  errno: -2,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: '/Users/TrevorKist/Desktop/EasyPay University/.next/server/app/modules/[id]/page/app-build-manifest.json'
+}
+ ⨯ [Error: ENOENT: no such file or directory, open '/Users/TrevorKist/Desktop/EasyPay University/.next/server/pages/_app/build-manifest.json'] {
+  errno: -2,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: '/Users/TrevorKist/Desktop/EasyPay University/.next/server/pages/_app/build-manifest.json'
+}
+[Error: ENOENT: no such file or directory, open '/Users/TrevorKist/Desktop/EasyPay University/.next/server/pages/_app/build-manifest.json'] {
+  errno: -2,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: '/Users/TrevorKist/Desktop/EasyPay University/.next/server/pages/_app/build-manifest.json'
+}
+ ⨯ [Error: ENOENT: no such file or directory, open '/Users/TrevorKist/Desktop/EasyPay University/.next/server/app/modules/[id]/page/app-build-manifest.json'] {
+  errno: -2,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: '/Users/TrevorKist/Desktop/EasyPay University/.next/server/app/modules/[id]/page/app-build-manifest.json'
+}
+ ⨯ [Error: ENOENT: no such file or directory, open '/Users/TrevorKist/Desktop/EasyPay University/.next/server/pages/_app/build-manifest.json'] {
+  errno: -2,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: '/Users/TrevorKist/Desktop/EasyPay University/.next/server/pages/_app/build-manifest.json'
+}
+[Error: ENOENT: no such file or directory, open '/Users/TrevorKist/Desktop/EasyPay University/.next/server/app/modules/[id]/page/app-build-manifest.json'] {
+  errno: -2,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: '/Users/TrevorKist/Desktop/EasyPay University/.next/server/app/modules/[id]/page/app-build-manifest.json'
+}
+ ⨯ [Error: ENOENT: no such file or directory, open '/Users/TrevorKist/Desktop/EasyPay University/.next/server/pages/_app/build-manifest.json'] {
+  errno: -2,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: '/Users/TrevorKist/Desktop/EasyPay University/.next/server/pages/_app/build-manifest.json'
+}
+[Error: ENOENT: no such file or directory, open '/Users/TrevorKist/Desktop/EasyPay University/.next/server/pages/_app/build-manifest.json'] {
+  errno: -2,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: '/Users/TrevorKist/Desktop/EasyPay University/.next/server/pages/_app/build-manifest.json'
+}
+ ⨯ [Error: ENOENT: no such file or directory, open '/Users/TrevorKist/Desktop/EasyPay University/.next/server/app/modules/[id]/page/app-build-manifest.json'] {
+  errno: -2,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: '/Users/TrevorKist/Desktop/EasyPay University/.next/server/app/modules/[id]/page/app-build-manifest.json'
+}
+ ⨯ [Error: ENOENT: no such file or directory, open '/Users/TrevorKist/Desktop/EasyPay University/.next/server/pages/_app/build-manifest.json'] {
+  errno: -2,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: '/Users/TrevorKist/Desktop/EasyPay University/.next/server/pages/_app/build-manifest.json'
+}
+[Error: ENOENT: no such file or directory, open '/Users/TrevorKist/Desktop/EasyPay University/.next/server/app/modules/[id]/page/app-build-manifest.json'] {
+  errno: -2,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: '/Users/TrevorKist/Desktop/EasyPay University/.next/server/app/modules/[id]/page/app-build-manifest.json'
+}
+ ⨯ [Error: ENOENT: no such file or directory, open '/Users/TrevorKist/Desktop/EasyPay University/.next/server/pages/_app/build-manifest.json'] {
+  errno: -2,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: '/Users/TrevorKist/Desktop/EasyPay University/.next/server/pages/_app/build-manifest.json'
+}
+[Error: ENOENT: no such file or directory, open '/Users/TrevorKist/Desktop/EasyPay University/.next/server/pages/_app/build-manifest.json'] {
+  errno: -2,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: '/Users/TrevorKist/Desktop/EasyPay University/.next/server/pages/_app/build-manifest.json'
+}
+ ⨯ [Error: ENOENT: no such file or directory, open '/Users/TrevorKist/Desktop/EasyPay University/.next/server/app/modules/[id]/page/app-build-manifest.json'] {
+  errno: -2,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: '/Users/TrevorKist/Desktop/EasyPay University/.next/server/app/modules/[id]/page/app-build-manifest.json'
+}
+ ⨯ [Error: ENOENT: no such file or directory, open '/Users/TrevorKist/Desktop/EasyPay University/.next/server/pages/_app/build-manifest.json'] {
+  errno: -2,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: '/Users/TrevorKist/Desktop/EasyPay University/.next/server/pages/_app/build-manifest.json'
+}
+[Error: ENOENT: no such file or directory, open '/Users/TrevorKist/Desktop/EasyPay University/.next/server/app/modules/[id]/page/app-build-manifest.json'] {
+  errno: -2,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: '/Users/TrevorKist/Desktop/EasyPay University/.next/server/app/modules/[id]/page/app-build-manifest.json'
+}
+ ⨯ [Error: ENOENT: no such file or directory, open '/Users/TrevorKist/Desktop/EasyPay University/.next/server/pages/_app/build-manifest.json'] {
+  errno: -2,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: '/Users/TrevorKist/Desktop/EasyPay University/.next/server/pages/_app/build-manifest.json'
+}
+[Error: ENOENT: no such file or directory, open '/Users/TrevorKist/Desktop/EasyPay University/.next/server/pages/_app/build-manifest.json'] {
+  errno: -2,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: '/Users/TrevorKist/Desktop/EasyPay University/.next/server/pages/_app/build-manifest.json'
+}
+ ⨯ [Error: ENOENT: no such file or directory, open '/Users/TrevorKist/Desktop/EasyPay University/.next/server/app/favicon.ico/[__metadata_id__]/route/app-paths-manifest.json'] {
+  errno: -2,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: '/Users/TrevorKist/Desktop/EasyPay University/.next/server/app/favicon.ico/[__metadata_id__]/route/app-paths-manifest.json'
+}
+ ⨯ [Error: ENOENT: no such file or directory, open '/Users/TrevorKist/Desktop/EasyPay University/.next/server/app/page/app-build-manifest.json'] {
+  errno: -2,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: '/Users/TrevorKist/Desktop/EasyPay University/.next/server/app/page/app-build-manifest.json'
+}
+ ⨯ [Error: ENOENT: no such file or directory, open '/Users/TrevorKist/Desktop/EasyPay University/.next/server/pages/_app/build-manifest.json'] {
+  errno: -2,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: '/Users/TrevorKist/Desktop/EasyPay University/.next/server/pages/_app/build-manifest.json'
+}
+[Error: ENOENT: no such file or directory, open '/Users/TrevorKist/Desktop/EasyPay University/.next/server/app/page/app-build-manifest.json'] {
+  errno: -2,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: '/Users/TrevorKist/Desktop/EasyPay University/.next/server/app/page/app-build-manifest.json'
+}
+ ⨯ [Error: ENOENT: no such file or directory, open '/Users/TrevorKist/Desktop/EasyPay University/.next/server/pages/_app/build-manifest.json'] {
+  errno: -2,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: '/Users/TrevorKist/Desktop/EasyPay University/.next/server/pages/_app/build-manifest.json'
+}
+[Error: ENOENT: no such file or directory, open '/Users/TrevorKist/Desktop/EasyPay University/.next/server/pages/_app/build-manifest.json'] {
+  errno: -2,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: '/Users/TrevorKist/Desktop/EasyPay University/.next/server/pages/_app/build-manifest.json'
+}
+ ⨯ [Error: ENOENT: no such file or directory, open '/Users/TrevorKist/Desktop/EasyPay University/.next/server/app/page/app-build-manifest.json'] {
+  errno: -2,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: '/Users/TrevorKist/Desktop/EasyPay University/.next/server/app/page/app-build-manifest.json'
+}
+ ⨯ [Error: ENOENT: no such file or directory, open '/Users/TrevorKist/Desktop/EasyPay University/.next/server/pages/_app/build-manifest.json'] {
+  errno: -2,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: '/Users/TrevorKist/Desktop/EasyPay University/.next/server/pages/_app/build-manifest.json'
+}
+[Error: ENOENT: no such file or directory, open '/Users/TrevorKist/Desktop/EasyPay University/.next/server/app/page/app-build-manifest.json'] {
+  errno: -2,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: '/Users/TrevorKist/Desktop/EasyPay University/.next/server/app/page/app-build-manifest.json'
+}
+ ⨯ [Error: ENOENT: no such file or directory, open '/Users/TrevorKist/Desktop/EasyPay University/.next/server/pages/_app/build-manifest.json'] {
+  errno: -2,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: '/Users/TrevorKist/Desktop/EasyPay University/.next/server/pages/_app/build-manifest.json'
+}
+[Error: ENOENT: no such file or directory, open '/Users/TrevorKist/Desktop/EasyPay University/.next/server/pages/_app/build-manifest.json'] {
+  errno: -2,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: '/Users/TrevorKist/Desktop/EasyPay University/.next/server/pages/_app/build-manifest.json'
+}
+ ⨯ [Error: ENOENT: no such file or directory, open '/Users/TrevorKist/Desktop/EasyPay University/.next/server/app/favicon.ico/[__metadata_id__]/route/app-paths-manifest.json'] {
+  errno: -2,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: '/Users/TrevorKist/Desktop/EasyPay University/.next/server/app/favicon.ico/[__metadata_id__]/route/app-paths-manifest.json'
+}
+ ⨯ [Error: ENOENT: no such file or directory, open '/Users/TrevorKist/Desktop/EasyPay University/.next/server/app/page/app-build-manifest.json'] {
+  errno: -2,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: '/Users/TrevorKist/Desktop/EasyPay University/.next/server/app/page/app-build-manifest.json'
+}
+ ⨯ [Error: ENOENT: no such file or directory, open '/Users/TrevorKist/Desktop/EasyPay University/.next/server/pages/_app/build-manifest.json'] {
+  errno: -2,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: '/Users/TrevorKist/Desktop/EasyPay University/.next/server/pages/_app/build-manifest.json'
+}
+[Error: ENOENT: no such file or directory, open '/Users/TrevorKist/Desktop/EasyPay University/.next/server/app/page/app-build-manifest.json'] {
+  errno: -2,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: '/Users/TrevorKist/Desktop/EasyPay University/.next/server/app/page/app-build-manifest.json'
+}
+ ⨯ [Error: ENOENT: no such file or directory, open '/Users/TrevorKist/Desktop/EasyPay University/.next/server/pages/_app/build-manifest.json'] {
+  errno: -2,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: '/Users/TrevorKist/Desktop/EasyPay University/.next/server/pages/_app/build-manifest.json'
+}
+[Error: ENOENT: no such file or directory, open '/Users/TrevorKist/Desktop/EasyPay University/.next/server/pages/_app/build-manifest.json'] {
+  errno: -2,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: '/Users/TrevorKist/Desktop/EasyPay University/.next/server/pages/_app/build-manifest.json'
+}
+ ⨯ [Error: ENOENT: no such file or directory, open '/Users/TrevorKist/Desktop/EasyPay University/.next/server/app/page/app-build-manifest.json'] {
+  errno: -2,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: '/Users/TrevorKist/Desktop/EasyPay University/.next/server/app/page/app-build-manifest.json'
+}
+ ⨯ [Error: ENOENT: no such file or directory, open '/Users/TrevorKist/Desktop/EasyPay University/.next/server/pages/_app/build-manifest.json'] {
+  errno: -2,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: '/Users/TrevorKist/Desktop/EasyPay University/.next/server/pages/_app/build-manifest.json'
+}
+[Error: ENOENT: no such file or directory, open '/Users/TrevorKist/Desktop/EasyPay University/.next/server/app/page/app-build-manifest.json'] {
+  errno: -2,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: '/Users/TrevorKist/Desktop/EasyPay University/.next/server/app/page/app-build-manifest.json'
+}
+ ⨯ [Error: ENOENT: no such file or directory, open '/Users/TrevorKist/Desktop/EasyPay University/.next/server/pages/_app/build-manifest.json'] {
+  errno: -2,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: '/Users/TrevorKist/Desktop/EasyPay University/.next/server/pages/_app/build-manifest.json'
+}
+[Error: ENOENT: no such file or directory, open '/Users/TrevorKist/Desktop/EasyPay University/.next/server/pages/_app/build-manifest.json'] {
+  errno: -2,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: '/Users/TrevorKist/Desktop/EasyPay University/.next/server/pages/_app/build-manifest.json'
+}
+ ⨯ [Error: ENOENT: no such file or directory, open '/Users/TrevorKist/Desktop/EasyPay University/.next/server/app/favicon.ico/[__metadata_id__]/route/app-paths-manifest.json'] {
+  errno: -2,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: '/Users/TrevorKist/Desktop/EasyPay University/.next/server/app/favicon.ico/[__metadata_id__]/route/app-paths-manifest.json'
+}
+ ⨯ [Error: ENOENT: no such file or directory, open '/Users/TrevorKist/Desktop/EasyPay University/.next/server/app/page/app-build-manifest.json'] {
+  errno: -2,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: '/Users/TrevorKist/Desktop/EasyPay University/.next/server/app/page/app-build-manifest.json'
+}
+ ⨯ [Error: ENOENT: no such file or directory, open '/Users/TrevorKist/Desktop/EasyPay University/.next/server/pages/_app/build-manifest.json'] {
+  errno: -2,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: '/Users/TrevorKist/Desktop/EasyPay University/.next/server/pages/_app/build-manifest.json'
+}
+[Error: ENOENT: no such file or directory, open '/Users/TrevorKist/Desktop/EasyPay University/.next/server/app/page/app-build-manifest.json'] {
+  errno: -2,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: '/Users/TrevorKist/Desktop/EasyPay University/.next/server/app/page/app-build-manifest.json'
+}
+ ⨯ [Error: ENOENT: no such file or directory, open '/Users/TrevorKist/Desktop/EasyPay University/.next/server/pages/_app/build-manifest.json'] {
+  errno: -2,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: '/Users/TrevorKist/Desktop/EasyPay University/.next/server/pages/_app/build-manifest.json'
+}
+[Error: ENOENT: no such file or directory, open '/Users/TrevorKist/Desktop/EasyPay University/.next/server/pages/_app/build-manifest.json'] {
+  errno: -2,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: '/Users/TrevorKist/Desktop/EasyPay University/.next/server/pages/_app/build-manifest.json'
+}
+ ⨯ [Error: ENOENT: no such file or directory, open '/Users/TrevorKist/Desktop/EasyPay University/.next/server/app/page/app-build-manifest.json'] {
+  errno: -2,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: '/Users/TrevorKist/Desktop/EasyPay University/.next/server/app/page/app-build-manifest.json'
+}
+ ⨯ [Error: ENOENT: no such file or directory, open '/Users/TrevorKist/Desktop/EasyPay University/.next/server/pages/_app/build-manifest.json'] {
+  errno: -2,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: '/Users/TrevorKist/Desktop/EasyPay University/.next/server/pages/_app/build-manifest.json'
+}
+[Error: ENOENT: no such file or directory, open '/Users/TrevorKist/Desktop/EasyPay University/.next/server/app/page/app-build-manifest.json'] {
+  errno: -2,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: '/Users/TrevorKist/Desktop/EasyPay University/.next/server/app/page/app-build-manifest.json'
+}
+ ⨯ [Error: ENOENT: no such file or directory, open '/Users/TrevorKist/Desktop/EasyPay University/.next/server/pages/_app/build-manifest.json'] {
+  errno: -2,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: '/Users/TrevorKist/Desktop/EasyPay University/.next/server/pages/_app/build-manifest.json'
+}
+[Error: ENOENT: no such file or directory, open '/Users/TrevorKist/Desktop/EasyPay University/.next/server/pages/_app/build-manifest.json'] {
+  errno: -2,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: '/Users/TrevorKist/Desktop/EasyPay University/.next/server/pages/_app/build-manifest.json'
+}
+ ⨯ [Error: ENOENT: no such file or directory, open '/Users/TrevorKist/Desktop/EasyPay University/.next/server/app/favicon.ico/[__metadata_id__]/route/app-paths-manifest.json'] {
+  errno: -2,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: '/Users/TrevorKist/Desktop/EasyPay University/.next/server/app/favicon.ico/[__metadata_id__]/route/app-paths-manifest.json'
+}
+ GET / 200 in 513ms
+ ⨯ [Error: ENOENT: no such file or directory, open '/Users/TrevorKist/Desktop/EasyPay University/.next/server/app/modules/page/app-build-manifest.json'] {
+  errno: -2,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: '/Users/TrevorKist/Desktop/EasyPay University/.next/server/app/modules/page/app-build-manifest.json'
+}
+ ⨯ [Error: ENOENT: no such file or directory, open '/Users/TrevorKist/Desktop/EasyPay University/.next/server/pages/_app/build-manifest.json'] {
+  errno: -2,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: '/Users/TrevorKist/Desktop/EasyPay University/.next/server/pages/_app/build-manifest.json'
+}
+[Error: ENOENT: no such file or directory, open '/Users/TrevorKist/Desktop/EasyPay University/.next/server/app/modules/page/app-build-manifest.json'] {
+  errno: -2,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: '/Users/TrevorKist/Desktop/EasyPay University/.next/server/app/modules/page/app-build-manifest.json'
+}
+ ⨯ [Error: ENOENT: no such file or directory, open '/Users/TrevorKist/Desktop/EasyPay University/.next/server/pages/_app/build-manifest.json'] {
+  errno: -2,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: '/Users/TrevorKist/Desktop/EasyPay University/.next/server/pages/_app/build-manifest.json'
+}
+[Error: ENOENT: no such file or directory, open '/Users/TrevorKist/Desktop/EasyPay University/.next/server/pages/_app/build-manifest.json'] {
+  errno: -2,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: '/Users/TrevorKist/Desktop/EasyPay University/.next/server/pages/_app/build-manifest.json'
+}
+ ⨯ [Error: ENOENT: no such file or directory, open '/Users/TrevorKist/Desktop/EasyPay University/.next/server/app/modules/page/app-build-manifest.json'] {
+  errno: -2,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: '/Users/TrevorKist/Desktop/EasyPay University/.next/server/app/modules/page/app-build-manifest.json'
+}
+ ⨯ [Error: ENOENT: no such file or directory, open '/Users/TrevorKist/Desktop/EasyPay University/.next/server/pages/_app/build-manifest.json'] {
+  errno: -2,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: '/Users/TrevorKist/Desktop/EasyPay University/.next/server/pages/_app/build-manifest.json'
+}
+[Error: ENOENT: no such file or directory, open '/Users/TrevorKist/Desktop/EasyPay University/.next/server/app/modules/page/app-build-manifest.json'] {
+  errno: -2,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: '/Users/TrevorKist/Desktop/EasyPay University/.next/server/app/modules/page/app-build-manifest.json'
+}
+ ⨯ [Error: ENOENT: no such file or directory, open '/Users/TrevorKist/Desktop/EasyPay University/.next/server/pages/_app/build-manifest.json'] {
+  errno: -2,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: '/Users/TrevorKist/Desktop/EasyPay University/.next/server/pages/_app/build-manifest.json'
+}
+[Error: ENOENT: no such file or directory, open '/Users/TrevorKist/Desktop/EasyPay University/.next/server/pages/_app/build-manifest.json'] {
+  errno: -2,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: '/Users/TrevorKist/Desktop/EasyPay University/.next/server/pages/_app/build-manifest.json'
+}
+ GET /favicon.ico 200 in 422ms

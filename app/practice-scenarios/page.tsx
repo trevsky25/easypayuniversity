@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect, useRef } from 'react'
+import { useState } from 'react'
 import { Card } from '@/components/ui/Card'
 import { useEBucks } from '@/lib/eBucks'
 import { EBucksDisplay } from '@/components/ui/eBucksIcon'
@@ -40,17 +40,6 @@ export default function PracticeScenariosPage() {
   const [conversationStep, setConversationStep] = useState(0)
   const [selectedChoice, setSelectedChoice] = useState<string | null>(null)
   const [conversationHistory, setConversationHistory] = useState<Array<{step: number, choice?: string, feedback?: string}>>([])
-  const stepContentRef = useRef<HTMLDivElement>(null)
-
-  // Scroll to top of step content when step changes
-  useEffect(() => {
-    if (stepContentRef.current) {
-      stepContentRef.current.scrollIntoView({ 
-        behavior: 'smooth', 
-        block: 'start' 
-      })
-    }
-  }, [currentStep])
 
   const handleStartScenario = (scenario: any) => {
     setSelectedScenario(scenario)
@@ -95,8 +84,12 @@ export default function PracticeScenariosPage() {
     
     if (currentConvStep.nextStep !== undefined) {
       setConversationStep(currentConvStep.nextStep)
+      // Scroll to top when moving to next step
+      window.scrollTo({ top: 0, behavior: 'smooth' })
     } else if (conversationStep < selectedConversation.conversation.length - 1) {
       setConversationStep(conversationStep + 1)
+      // Scroll to top when moving to next step
+      window.scrollTo({ top: 0, behavior: 'smooth' })
     } else {
       // Complete conversation scenario
       if (!completedScenarios.includes(selectedConversation.id)) {
@@ -124,12 +117,16 @@ export default function PracticeScenariosPage() {
       setSelectedChoice(null)
       // Remove last history entry if going back
       setConversationHistory(prev => prev.filter(h => h.step < conversationStep))
+      // Scroll to top when going to previous step
+      window.scrollTo({ top: 0, behavior: 'smooth' })
     }
   }
 
   const handleNextStep = () => {
     if (selectedScenario && currentStep < ltoApplicationProcess.length - 1) {
       setCurrentStep(currentStep + 1)
+      // Scroll to top when moving to next step
+      window.scrollTo({ top: 0, behavior: 'smooth' })
     } else if (selectedScenario) {
       // Complete scenario
       if (!completedScenarios.includes(selectedScenario.id)) {
@@ -163,6 +160,8 @@ export default function PracticeScenariosPage() {
   const handlePreviousStep = () => {
     if (currentStep > 0) {
       setCurrentStep(currentStep - 1)
+      // Scroll to top when going to previous step
+      window.scrollTo({ top: 0, behavior: 'smooth' })
     }
   }
 
@@ -284,7 +283,7 @@ export default function PracticeScenariosPage() {
             </div>
 
             {/* Main Conversation Area */}
-            <div className="lg:col-span-3" ref={stepContentRef}>
+            <div className="lg:col-span-3">
               <Card className="p-8 min-h-[600px]">
                 {/* Speaker Header */}
                 <div className="mb-6">
@@ -525,7 +524,7 @@ export default function PracticeScenariosPage() {
             </div>
 
             {/* Main Content */}
-            <div className="lg:col-span-3" ref={stepContentRef}>
+            <div className="lg:col-span-3">
               <Card className="p-8 min-h-[600px]">
                 {/* Step Header */}
                 <div className="mb-8">
@@ -677,12 +676,11 @@ export default function PracticeScenariosPage() {
   const filteredScenarios = getFilteredScenarios()
 
   return (
-    <div className="max-w-7xl mx-auto px-6 py-8">
-      {/* Header */}
-      <div className="mb-8">
-        <h1 className="text-3xl font-bold text-gray-900 mb-2">Lease-to-Own Practice Scenarios</h1>
-        <p className="text-gray-600 text-lg">
-          Master the EasyPay Lease-to-Own application process with realistic customer scenarios
+    <div className="space-y-8">
+      <div>
+        <h1 className="text-3xl font-bold text-gray-900">Practice Scenarios</h1>
+        <p className="text-gray-600 mt-2">
+          Master customer interactions and application processes through realistic practice scenarios
         </p>
       </div>
 

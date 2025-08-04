@@ -55,15 +55,15 @@ export const module1Quiz: QuizQuestion[] = [
   {
     id: 5,
     type: 'multiple-choice',
-    question: 'What are the three main financing programs offered by EasyPay Finance?',
+    question: 'What are the two main financing programs offered by EasyPay Finance?',
     options: [
       'Credit Sales, Personal Loans, and Business Loans',
-      'Credit Sales, Lease-to-Own, and Third-Party Loan Provider',
+      'Credit Sales and Lease-to-Own',
       'Installment Loans, Credit Cards, and Lease-to-Own',
       'Personal Finance, Business Credit, and Equipment Leasing'
     ],
     correctAnswer: 1,
-    explanation: 'EasyPay Finance offers three main programs: Credit Sales Program (Retail Installment Contracts), Lease-to-Own (LTO) Program, and Third-Party Loan Provider (TLP) Program.',
+    explanation: 'EasyPay Finance offers two main programs: Credit Sales Program (Retail Installment Contracts) and Lease-to-Own (LTO) Program.',
     points: 10
   },
   {
@@ -108,12 +108,12 @@ export const module1Quiz: QuizQuestion[] = [
     question: 'What is EasyPay Finance\'s mission statement?',
     options: [
       '"Making Payments Simple"',
-      '"Customer Financing Made EASY"',
+      '"Easy Payment Solutions - No Perfect Credit Required"',
       '"Easy Finance for Everyone"',
       '"Simplifying Customer Credit"'
     ],
     correctAnswer: 1,
-    explanation: 'EasyPay Finance\'s mission is "Customer Financing Made EASY" - emphasizing simplicity and transparency in consumer finance options.',
+    explanation: 'EasyPay Finance\'s mission is "Easy Payment Solutions - No Perfect Credit Required" - emphasizing accessible financing options for all credit types.',
     points: 10
   },
   {
@@ -178,12 +178,12 @@ export const module2Quiz: QuizQuestion[] = [
     question: 'Which financing program would likely be most appropriate?',
     options: [
       'Only Lease-to-Own due to the repair nature',
-      'Credit Sales Program or Third-Party Loan Provider',
+      'Credit Sales Program',
       'Cash payment only for repairs',
       'Extended payment plan without financing'
     ],
     correctAnswer: 1,
-    explanation: 'Prime credit customers often qualify for the Credit Sales Program or Third-Party Loan Provider program, which offer competitive terms for qualified borrowers.',
+    explanation: 'Prime credit customers often qualify for the Credit Sales Program, which offers competitive terms for qualified borrowers.',
     points: 15
   },
   {

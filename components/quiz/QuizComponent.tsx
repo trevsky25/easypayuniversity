@@ -5,6 +5,7 @@ import { Card } from '@/components/ui/Card'
 import { Progress } from '@/components/ui/Progress'
 import { eBucksManager } from '@/lib/eBucks'
 import { EBucksDisplay } from '@/components/ui/eBucksIcon'
+import { CertificateModal } from '@/components/ui/Certificate'
 import { 
   CheckCircle, 
   XCircle, 
@@ -14,7 +15,8 @@ import {
   Trophy,
   AlertCircle,
   RotateCcw,
-  Coins
+  Coins,
+  Award
 } from 'lucide-react'
 
 export interface QuizQuestion {
@@ -48,6 +50,7 @@ export function QuizComponent({
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0)
   const [answers, setAnswers] = useState<any[]>(new Array(questions.length).fill(null))
   const [showResults, setShowResults] = useState(false)
+  const [showCertificate, setShowCertificate] = useState(false)
   const [timeRemaining, setTimeRemaining] = useState(timeLimit * 60)
   const [quizStarted, setQuizStarted] = useState(false)
   const [showExplanation, setShowExplanation] = useState(false)
@@ -277,8 +280,15 @@ export function QuizComponent({
             Retake Quiz
           </button>
           {passed && (
-            <button className="bg-easypay-green text-white px-6 py-3 rounded-lg hover:bg-easypay-green-dark transition-colors">
-              Download Certificate
+            <button 
+              onClick={() => {
+                console.log('Certificate button clicked')
+                setShowCertificate(true)
+              }}
+              className="bg-easypay-green text-white px-6 py-3 rounded-lg hover:bg-easypay-green-dark transition-colors flex items-center gap-2"
+            >
+              <Award className="w-4 h-4" />
+              View Certificate
             </button>
           )}
         </div>
@@ -288,6 +298,7 @@ export function QuizComponent({
 
   // Quiz Question Screen
   return (
+    <>
     <div className="max-w-4xl mx-auto space-y-6">
       {/* Progress Header */}
       <Card>
@@ -495,5 +506,32 @@ export function QuizComponent({
         </div>
       </div>
     </div>
+    
+    {/* Certificate Modal - Rendered outside main container */}
+    {showCertificate && (
+      <>
+        {console.log('Rendering certificate modal', showCertificate)}
+        <CertificateModal
+          isOpen={showCertificate}
+          onClose={() => {
+            console.log('Closing certificate modal')
+            setShowCertificate(false)
+          }}
+          certificateData={{
+            recipientName: "Merchant Representative", // This could be made dynamic
+            shopName: "Your Business", // This could be made dynamic  
+            moduleTitle: moduleName,
+            moduleId: moduleId,
+            completionDate: new Date().toLocaleDateString('en-US', { 
+              year: 'numeric', 
+              month: 'long', 
+              day: 'numeric' 
+            }),
+            score: calculateScore()
+          }}
+        />
+      </>
+    )}
+    </>
   )
 }

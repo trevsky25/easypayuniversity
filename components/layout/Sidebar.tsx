@@ -36,13 +36,13 @@ export function Sidebar() {
     <>
       <button
         onClick={() => setIsMobileOpen(!isMobileOpen)}
-        className="lg:hidden fixed top-4 left-4 z-50 p-2 bg-easypay-gray-dark text-white rounded-lg"
+        className="lg:hidden fixed top-20 left-4 z-50 p-2 bg-easypay-gray-dark text-white rounded-lg"
       >
         {isMobileOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
       </button>
 
       <aside className={cn(
-        "fixed lg:static inset-y-0 left-0 z-40 w-64 bg-white border-r border-easypay-gray-200 transform transition-transform duration-300",
+        "fixed inset-y-0 left-0 z-20 w-64 bg-white border-r border-easypay-gray-200 transform transition-transform duration-300 pt-16",
         isMobileOpen ? "translate-x-0" : "-translate-x-full lg:translate-x-0"
       )}>
         <div className="px-4 pt-6 pb-2">
