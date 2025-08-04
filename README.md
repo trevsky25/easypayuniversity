@@ -7,7 +7,6 @@ A comprehensive gamified training platform for EasyPay Finance merchant partners
 ![TypeScript](https://img.shields.io/badge/TypeScript-5.0-blue)
 ![Tailwind CSS](https://img.shields.io/badge/Tailwind%20CSS-3.0-38B2AC)
 ![Live Demo](https://img.shields.io/badge/Demo-Live-success)
-![Heroku](https://img.shields.io/badge/Deployed%20on-Heroku-430098)
 
 ## 🎯 Overview
 
@@ -47,10 +46,12 @@ EasyPay University is a cutting-edge Learning Management System (LMS) designed t
 
 ### 📱 User Experience  
 - **EasyPay Branding** with official green theme and custom eBucks logo
-- **Responsive Design** optimized for all devices and mobile-first
+- **Responsive Design** optimized for all devices with mobile-first approach
+- **Mobile Optimization** with hamburger menu, touch gestures, and responsive components
 - **Intuitive Navigation** with sidebar and breadcrumb navigation
 - **Consistent UI** matching EasyPay Business Center design
-- **Dark/Light Theme** support with accessibility features
+- **Error Boundaries** for graceful error handling and crash prevention
+- **Offline Capability** with safe localStorage persistence
 
 ### 📊 Analytics & Progress
 - **Comprehensive Progress Tracking** with visual stat tiles
@@ -100,17 +101,6 @@ EasyPay University is a cutting-edge Learning Management System (LMS) designed t
 
 4. **Open in browser**
    Navigate to [http://localhost:3000](http://localhost:3000)
-
-## 🌐 Live Demo
-
-**🚀 Live Production Site:** [https://easypay-merchant-training-4d416b62c4e9.herokuapp.com/](https://easypay-merchant-training-4d416b62c4e9.herokuapp.com/)
-
-### Deployment Details
-- **Platform**: Heroku
-- **Environment**: Production
-- **Build**: Optimized Next.js production build
-- **Status**: ✅ Active and running
-- **Auto-Deploy**: Linked to GitHub repository
 
 ## 📚 Training Modules
 
@@ -211,7 +201,17 @@ easypay-university/
 
 ## 🚀 Deployment
 
-### Vercel (Recommended)
+### 🌐 Live Production Site
+**Visit the live platform:** [https://easypay-merchant-training-4d416b62c4e9.herokuapp.com/](https://easypay-merchant-training-4d416b62c4e9.herokuapp.com/)
+
+### Heroku (Current Production)
+- Fully deployed with production optimizations
+- Connected to GitHub for continuous deployment
+- Mobile-optimized with professional UX design
+- Enhanced stability with error boundaries
+- All features fully functional
+
+### Vercel (Alternative)
 1. Connect your GitHub repository to Vercel
 2. Configure environment variables if needed
 3. Deploy automatically on push to main

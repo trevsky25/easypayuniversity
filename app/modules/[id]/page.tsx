@@ -39,7 +39,7 @@ export default function ModulePage() {
       <div className="text-center py-12">
         <h1 className="text-2xl font-bold text-gray-900">Error loading module</h1>
         <button 
-          onClick={() => window.location.href = '/modules'}
+          onClick={() => router.push('/modules')}
           className="mt-4 text-easypay-green hover:underline"
         >
           Back to modules

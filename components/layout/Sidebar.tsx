@@ -6,16 +6,15 @@ import {
   FileText, 
   Trophy, 
   HeadphonesIcon,
-  Menu,
-  X,
   Users,
   Coins,
-  Sparkles
+  Sparkles,
+  X
 } from 'lucide-react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-import { useState } from 'react'
 import { cn } from '@/lib/utils'
+import { useMobileMenu } from './MobileMenuProvider'
 
 const navigation = [
   { name: 'Dashboard', href: '/', icon: LayoutDashboard },
@@ -30,21 +29,23 @@ const navigation = [
 
 export function Sidebar() {
   const pathname = usePathname()
-  const [isMobileOpen, setIsMobileOpen] = useState(false)
+  const { isOpen: isMobileOpen, setIsOpen: setIsMobileOpen } = useMobileMenu()
 
   return (
     <>
-      <button
-        onClick={() => setIsMobileOpen(!isMobileOpen)}
-        className="lg:hidden fixed top-20 left-4 z-50 p-2 bg-easypay-gray-dark text-white rounded-lg"
-      >
-        {isMobileOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-      </button>
-
       <aside className={cn(
-        "fixed inset-y-0 left-0 z-20 w-64 bg-white border-r border-easypay-gray-200 transform transition-transform duration-300 pt-16",
+        "fixed inset-y-0 left-0 z-40 w-64 bg-white border-r border-easypay-gray-200 transform transition-transform duration-300 pt-16",
         isMobileOpen ? "translate-x-0" : "-translate-x-full lg:translate-x-0"
       )}>
+        {/* Mobile Close Button */}
+        <button
+          onClick={() => setIsMobileOpen(false)}
+          className="lg:hidden absolute top-4 right-4 p-2 hover:bg-easypay-gray-50 rounded-lg transition-colors"
+          aria-label="Close menu"
+        >
+          <X className="w-5 h-5 text-easypay-gray-600" />
+        </button>
+        
         <div className="px-4 pt-6 pb-2">
           <h3 className="text-sm font-medium text-easypay-gray-600 mb-4">Menu</h3>
           <nav className="space-y-1">
@@ -98,7 +99,7 @@ export function Sidebar() {
 
       {isMobileOpen && (
         <div 
-          className="lg:hidden fixed inset-0 bg-black/50 z-30"
+          className="lg:hidden fixed inset-0 bg-black/50 z-30 top-16"
           onClick={() => setIsMobileOpen(false)}
         />
       )}
