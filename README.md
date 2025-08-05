@@ -45,9 +45,11 @@ EasyPay University is a cutting-edge Learning Management System (LMS) designed t
 - **Credit Culture Building** - Team training scenarios
 
 ### 📱 User Experience  
-- **EasyPay Branding** with official green theme and custom eBucks logo
+- **EasyPay Branding** with official green theme (#2E7D32) and custom eBucks logo
+- **Professional Modal System** with clean borders, drop shadows, and no background overlay
 - **Responsive Design** optimized for all devices with mobile-first approach
 - **Mobile Optimization** with hamburger menu, touch gestures, and responsive components
+- **React Portal Modals** rendering outside DOM hierarchy for proper layering
 - **Intuitive Navigation** with sidebar and breadcrumb navigation
 - **Consistent UI** matching EasyPay Business Center design
 - **Error Boundaries** for graceful error handling and crash prevention
@@ -60,12 +62,14 @@ EasyPay University is a cutting-edge Learning Management System (LMS) designed t
 - **Learning Streak Monitoring** with daily engagement metrics
 - **Performance Insights** with quiz scores and improvement areas
 
-### 🆘 Support Center
+#### 🆘 Support Center
 - **35 Official FAQs** directly from EasyPay Finance website
+- **Quick Help Modal Previews** - All Quick Help tiles open full content previews with download options
 - **Categorized Help Content** across 7 support categories
 - **Multi-channel Support** with phone, email, and live chat
-- **Quick Reference Guides** for common tasks
-- **Searchable Knowledge Base** with instant filtering
+- **Real-time Online Status** indicators for support departments
+- **Professional Modal System** with clean borders, shadows, and React portals
+- **Content Integration** reusing existing resource content for comprehensive previews
 
 ### 🛠️ Technical Stack
 - **Next.js 15.4.5** with App Router and TypeScript

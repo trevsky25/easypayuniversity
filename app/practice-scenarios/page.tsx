@@ -938,8 +938,8 @@ export default function PracticeScenariosPage() {
 
       {/* Success Modal */}
       {showSuccess && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-          <div className="bg-white rounded-2xl p-8 max-w-md mx-auto text-center animate-bounce shadow-2xl">
+        <div className="fixed inset-0 flex items-center justify-center z-50">
+          <div className="bg-white rounded-2xl p-8 max-w-md mx-auto text-center animate-bounce shadow-2xl border-2 border-green-500">
             <CheckCircle className="w-20 h-20 text-green-500 mx-auto mb-4" />
             <h2 className="text-3xl font-bold mb-2">Scenario Complete!</h2>
             <p className="text-gray-600 mb-6">Great job mastering the LTO application process!</p>

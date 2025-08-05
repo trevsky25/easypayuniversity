@@ -1,6 +1,7 @@
 'use client'
 
 import { useState, useEffect } from 'react'
+import { createPortal } from 'react-dom'
 import { Card } from '@/components/ui/Card'
 import { useEBucks } from '@/lib/eBucks'
 import { EBucksIcon, EBucksDisplay } from '@/components/ui/eBucksIcon'
@@ -33,11 +34,13 @@ export default function CurrencyExchangePage() {
   const [redeemed, setRedeemed] = useState<string[]>([])
   const [showReferralModal, setShowReferralModal] = useState(false)
   const [referralCode, setReferralCode] = useState('')
+  const [mounted, setMounted] = useState(false)
 
   const giftCardOptions = getGiftCardOptions()
   const recentTransactions = transactions.slice(0, 5)
   
   useEffect(() => {
+    setMounted(true)
     // Generate or retrieve referral code
     const savedCode = localStorage.getItem('merchantReferralCode')
     if (savedCode) {
@@ -82,7 +85,7 @@ export default function CurrencyExchangePage() {
       <div>
         <h1 className="text-3xl font-bold text-gray-900">eBucks Exchange</h1>
         <p className="text-gray-600 mt-2">
-          Exchange your eBucks for Amazon gift cards and other rewards
+          Exchange your eBucks for Amazon gift cards
         </p>
       </div>
 
@@ -338,9 +341,9 @@ export default function CurrencyExchangePage() {
       )}
 
       {/* Referral Modal */}
-      {showReferralModal && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
-          <div className="bg-white rounded-xl max-w-md w-full max-h-[90vh] flex flex-col">
+      {mounted && showReferralModal && createPortal(
+        <div className="fixed inset-0 flex items-center justify-center z-[9999] p-4">
+          <div className="bg-white rounded-xl max-w-md w-full max-h-[90vh] flex flex-col shadow-2xl border-2 border-easypay-green">
             {/* Fixed Modal Header */}
             <div className="flex items-center justify-between p-6 pb-4 border-b border-gray-200 flex-shrink-0">
               <h2 className="text-2xl font-bold text-gray-900">Refer a New Business to EasyPay</h2>
@@ -446,7 +449,8 @@ export default function CurrencyExchangePage() {
               </div>
             </div>
           </div>
-        </div>
+        </div>,
+        document.body
       )}
     </div>
   )

@@ -15,17 +15,27 @@ import {
   Users,
   ExternalLink,
   ThumbsUp,
-  ThumbsDown
+  ThumbsDown,
+  Download,
+  X
 } from 'lucide-react'
 import { useState, useEffect } from 'react'
+import { createPortal } from 'react-dom'
+import { getResourceContent, ResourceContent } from '@/data/resourceContent'
 
 export default function SupportPage() {
   const [searchTerm, setSearchTerm] = useState('')
   const [selectedCategory, setSelectedCategory] = useState('all')
   const [currentTime, setCurrentTime] = useState(new Date())
+  const [previewModal, setPreviewModal] = useState<{
+    open: boolean
+    resourceId: number | null
+  }>({ open: false, resourceId: null })
+  const [mounted, setMounted] = useState(false)
   
   // Update time every minute to check online status
   useEffect(() => {
+    setMounted(true)
     const timer = setInterval(() => {
       setCurrentTime(new Date())
     }, 60000) // Update every minute
@@ -143,28 +153,28 @@ export default function SupportPage() {
       title: 'Getting Started Guide',
       description: 'New to EasyPay? Start here for a complete overview',
       icon: BookOpen,
-      href: '#',
+      resourceId: 1,
       popular: true
     },
     {
       title: 'Application Process Tutorial',
       description: 'Step-by-step guide to submitting customer applications',
       icon: Video,
-      href: '#',
+      resourceId: 3,
       popular: true
     },
     {
-      title: 'Troubleshooting Common Issues',
-      description: 'Solutions to frequently encountered problems',
+      title: 'Staff Training Checklist',
+      description: 'Complete checklist for training new team members',
       icon: HelpCircle,
-      href: '#',
+      resourceId: 4,
       popular: true
     },
     {
-      title: 'Business Center Portal Guide',
-      description: 'Navigate the merchant portal like a pro',
+      title: 'Customer Objection Handling',
+      description: 'Scripts and strategies for handling customer concerns',
       icon: FileText,
-      href: '#',
+      resourceId: 2,
       popular: false
     }
   ]
@@ -760,7 +770,11 @@ export default function SupportPage() {
         <h2 className="text-xl font-semibold text-gray-900 mb-4">Quick Help</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           {quickLinks.map((link, index) => (
-            <Card key={index} className="hover:shadow-lg transition-all cursor-pointer">
+            <Card 
+              key={index} 
+              className="hover:shadow-lg transition-all cursor-pointer"
+              onClick={() => setPreviewModal({ open: true, resourceId: link.resourceId })}
+            >
               <div className="flex items-start gap-4">
                 <div className="p-2 bg-easypay-green/10 rounded-lg">
                   <link.icon className="w-5 h-5 text-easypay-green" />
@@ -776,7 +790,7 @@ export default function SupportPage() {
                   </div>
                   <p className="text-sm text-gray-600 mb-2">{link.description}</p>
                   <div className="flex items-center gap-1 text-easypay-green text-sm">
-                    <span>View Guide</span>
+                    <span>View Preview</span>
                     <ChevronRight className="w-4 h-4" />
                   </div>
                 </div>
@@ -907,6 +921,278 @@ export default function SupportPage() {
           </button>
         </Card>
       </div>
+
+      {/* Preview Modal */}
+      {mounted && previewModal.open && previewModal.resourceId && createPortal(
+        <div className="fixed inset-0 flex items-center justify-center z-[9999] p-4">
+          <div className="bg-white rounded-xl max-w-4xl w-full max-h-[90vh] flex flex-col shadow-2xl border-2 border-easypay-green">
+            {/* Fixed Modal Header */}
+            <div className="flex items-center justify-between p-6 pb-4 border-b border-gray-200 flex-shrink-0">
+              <h2 className="text-2xl font-bold text-gray-900">
+                {getResourceContent(previewModal.resourceId)?.content.title}
+              </h2>
+              <button
+                onClick={() => setPreviewModal({ open: false, resourceId: null })}
+                className="text-gray-400 hover:text-gray-600"
+              >
+                <X className="w-6 h-6" />
+              </button>
+            </div>
+            
+            {/* Scrollable Content */}
+            <div className="flex-1 overflow-y-auto p-6 pt-4">
+              {(() => {
+                const content = getResourceContent(previewModal.resourceId)
+                if (!content) return <p>Content not found</p>
+                
+                return (
+                  <div className="space-y-6">
+                    {content.content.sections.map((section, index) => (
+                      <div key={index} className="space-y-3">
+                        <h3 className="text-lg font-semibold text-gray-900 border-b border-gray-200 pb-2">
+                          {section.heading}
+                        </h3>
+                        
+                        {/* Handle different content types */}
+                        {typeof section.content === 'string' ? (
+                          <div className="text-gray-700 whitespace-pre-line leading-relaxed">
+                            {section.content}
+                          </div>
+                        ) : Array.isArray(section.content) ? (
+                          <ul className="space-y-2 text-gray-700">
+                            {section.content.map((item, itemIndex) => (
+                              <li key={itemIndex} className="leading-relaxed">
+                                {item}
+                              </li>
+                            ))}
+                          </ul>
+                        ) : section.content && typeof section.content === 'object' ? (
+                          <div className="space-y-4">
+                            {/* Handle complex object structures */}
+                            {Object.entries(section.content).map(([key, value]) => (
+                              <div key={key} className="space-y-2">
+                                {key === 'programs' && Array.isArray(value) ? (
+                                  <div className="grid gap-4">
+                                    {value.map((program: any, programIndex: number) => (
+                                      <div key={programIndex} className="bg-gray-50 p-4 rounded-lg">
+                                        <h4 className="font-semibold text-gray-900 mb-2">{program.name}</h4>
+                                        <p className="text-gray-600 mb-3">{program.description}</p>
+                                        <ul className="space-y-1 text-sm text-gray-700">
+                                          {program.features?.map((feature: string, featureIndex: number) => (
+                                            <li key={featureIndex}>{feature}</li>
+                                          ))}
+                                        </ul>
+                                      </div>
+                                    ))}
+                                  </div>
+                                ) : key === 'segments' && Array.isArray(value) ? (
+                                  <div className="space-y-4">
+                                    {value.map((segment: any, segIndex: number) => (
+                                      <div key={segIndex} className="bg-gray-50 p-4 rounded-lg border-l-4 border-easypay-green">
+                                        <div className="flex items-center gap-3 mb-3">
+                                          <span className="bg-easypay-green text-white px-2 py-1 rounded text-sm font-medium">
+                                            {segment.time}
+                                          </span>
+                                          <h4 className="font-semibold text-gray-900">{segment.title}</h4>
+                                        </div>
+                                        <div className="text-gray-700 whitespace-pre-line leading-relaxed">
+                                          {segment.script}
+                                        </div>
+                                      </div>
+                                    ))}
+                                  </div>
+                                ) : key === 'objections' && Array.isArray(value) ? (
+                                  <div className="space-y-4">
+                                    {value.map((objection: any, objIndex: number) => (
+                                      <div key={objIndex} className="bg-gray-50 p-4 rounded-lg">
+                                        <h4 className="font-semibold text-gray-900 mb-2">"{objection.objection}"</h4>
+                                        <p className="text-gray-700 italic">{objection.response}</p>
+                                      </div>
+                                    ))}
+                                  </div>
+                                ) : key === 'checklist' && Array.isArray(value) ? (
+                                  <ul className="space-y-2 text-gray-700">
+                                    {value.map((item: string, itemIndex: number) => (
+                                      <li key={itemIndex} className="flex items-start gap-2">
+                                        <span className="text-easypay-green mt-1">•</span>
+                                        <span>{item}</span>
+                                      </li>
+                                    ))}
+                                  </ul>
+                                ) : key === 'sections' && Array.isArray(value) ? (
+                                  <div className="space-y-6">
+                                    {value.map((subSection: any, subIndex: number) => (
+                                      <div key={subIndex} className="space-y-3">
+                                        <h4 className="font-semibold text-gray-900 text-lg">{subSection.title}</h4>
+                                        {Array.isArray(subSection.items) ? (
+                                          <ul className="space-y-2 text-gray-700">
+                                            {subSection.items.map((item: string, itemIndex: number) => (
+                                              <li key={itemIndex} className="flex items-start gap-2">
+                                                <span className="text-easypay-green mt-1">•</span>
+                                                <span>{item}</span>
+                                              </li>
+                                            ))}
+                                          </ul>
+                                        ) : (
+                                          <div className="text-gray-700">{subSection.content || ''}</div>
+                                        )}
+                                      </div>
+                                    ))}
+                                  </div>
+                                ) : key === 'fields' && Array.isArray(value) ? (
+                                  <div className="bg-gray-50 p-4 rounded-lg font-mono text-sm space-y-1">
+                                    {value.map((field: string, fieldIndex: number) => (
+                                      <div key={fieldIndex}>{field}</div>
+                                    ))}
+                                  </div>
+                                ) : key === 'departments' && Array.isArray(value) ? (
+                                  <div className="space-y-4">
+                                    {value.map((dept: any, deptIndex: number) => (
+                                      <div key={deptIndex} className="bg-gray-50 p-4 rounded-lg">
+                                        <h4 className="font-semibold text-gray-900 mb-2">{dept.name}</h4>
+                                        <div className="space-y-1 text-sm text-gray-700">
+                                          <div><strong>Phone:</strong> {dept.phone}</div>
+                                          <div><strong>Email:</strong> {dept.email}</div>
+                                          <div><strong>Hours:</strong> {dept.hours}</div>
+                                        </div>
+                                      </div>
+                                    ))}
+                                  </div>
+                                ) : key === 'colors' && Array.isArray(value) ? (
+                                  <div className="grid grid-cols-2 gap-2">
+                                    {value.map((color: string, colorIndex: number) => (
+                                      <div key={colorIndex} className="bg-gray-50 p-2 rounded text-sm font-mono">
+                                        {color}
+                                      </div>
+                                    ))}
+                                  </div>
+                                ) : key === 'fonts' && Array.isArray(value) ? (
+                                  <div className="space-y-1">
+                                    {value.map((font: string, fontIndex: number) => (
+                                      <div key={fontIndex} className="text-sm text-gray-700">{font}</div>
+                                    ))}
+                                  </div>
+                                ) : key === 'rules' && Array.isArray(value) ? (
+                                  <ul className="space-y-2 text-gray-700">
+                                    {value.map((rule: string, ruleIndex: number) => (
+                                      <li key={ruleIndex} className="flex items-start gap-2">
+                                        <span className="text-easypay-green mt-1">•</span>
+                                        <span>{rule}</span>
+                                      </li>
+                                    ))}
+                                  </ul>
+                                ) : key === 'approved_messages' && Array.isArray(value) ? (
+                                  <div className="space-y-2">
+                                    {value.map((message: string, msgIndex: number) => (
+                                      <div key={msgIndex} className="bg-blue-50 p-3 rounded border-l-2 border-blue-300">
+                                        <span className="text-blue-800 font-medium">"{message}"</span>
+                                      </div>
+                                    ))}
+                                  </div>
+                                ) : key === 'materials' && Array.isArray(value) ? (
+                                  <div className="space-y-4">
+                                    {value.map((material: any, matIndex: number) => (
+                                      <div key={matIndex} className="bg-gray-50 p-4 rounded-lg">
+                                        <h4 className="font-semibold text-gray-900 mb-2">{material.name}</h4>
+                                        <p className="text-gray-600 mb-2">{material.description}</p>
+                                        <div className="text-sm text-gray-700 whitespace-pre-line">{material.content}</div>
+                                        {material.specs && (
+                                          <div className="mt-2 text-xs text-gray-500 italic">Specs: {material.specs}</div>
+                                        )}
+                                      </div>
+                                    ))}
+                                  </div>
+                                ) : key === 'metrics' && Array.isArray(value) ? (
+                                  <div className="space-y-4">
+                                    {value.map((metric: any, metIndex: number) => (
+                                      <div key={metIndex} className="bg-gray-50 p-4 rounded-lg">
+                                        <h4 className="font-semibold text-gray-900 mb-2">{metric.category}</h4>
+                                        <ul className="space-y-1 text-sm text-gray-700">
+                                          {metric.items?.map((item: string, itemIndex: number) => (
+                                            <li key={itemIndex} className="flex items-start gap-2">
+                                              <span className="text-easypay-green mt-1">•</span>
+                                              <span>{item}</span>
+                                            </li>
+                                          ))}
+                                        </ul>
+                                      </div>
+                                    ))}
+                                  </div>
+                                ) : Array.isArray(value) ? (
+                                  <ul className="space-y-2 text-gray-700">
+                                    {value.map((item: any, itemIndex: number) => (
+                                      <li key={itemIndex} className="flex items-start gap-2">
+                                        <span className="text-easypay-green mt-1">•</span>
+                                        <span>{typeof item === 'string' ? item : JSON.stringify(item)}</span>
+                                      </li>
+                                    ))}
+                                  </ul>
+                                ) : (
+                                  <div className="text-gray-700 whitespace-pre-line">
+                                    {typeof value === 'string' ? value : JSON.stringify(value, null, 2)}
+                                  </div>
+                                )}
+                              </div>
+                            ))}
+                          </div>
+                        ) : null}
+                      </div>
+                    ))}
+                  </div>
+                )
+              })()}
+            </div>
+            
+            {/* Fixed Modal Footer */}
+            <div className="flex items-center justify-end gap-3 p-6 pt-4 border-t border-gray-200 flex-shrink-0">
+              <button
+                onClick={() => {
+                  const content = getResourceContent(previewModal.resourceId!)
+                  if (content) {
+                    // Create a downloadable version
+                    const textContent = content.content.sections.map(section => {
+                      let sectionText = `${section.heading}\n${'='.repeat(section.heading.length)}\n\n`
+                      
+                      if (typeof section.content === 'string') {
+                        sectionText += section.content
+                      } else if (Array.isArray(section.content)) {
+                        sectionText += section.content.join('\n')
+                      } else {
+                        sectionText += JSON.stringify(section.content, null, 2)
+                      }
+                      
+                      return sectionText
+                    }).join('\n\n')
+                    
+                    const fullContent = `${content.content.title}\n${'='.repeat(content.content.title.length)}\n\n${textContent}`
+                    
+                    const blob = new Blob([fullContent], { type: 'text/plain' })
+                    const url = URL.createObjectURL(blob)
+                    const a = document.createElement('a')
+                    a.href = url
+                    a.download = `${content.content.title.replace(/[^a-zA-Z0-9]/g, '_')}.txt`
+                    document.body.appendChild(a)
+                    a.click()
+                    document.body.removeChild(a)
+                    URL.revokeObjectURL(url)
+                  }
+                }}
+                className="flex items-center gap-2 bg-easypay-green text-white px-4 py-2 rounded-lg hover:bg-easypay-green-dark transition-colors"
+              >
+                <Download className="w-4 h-4" />
+                Download
+              </button>
+              <button
+                onClick={() => setPreviewModal({ open: false, resourceId: null })}
+                className="bg-gray-200 text-gray-700 px-4 py-2 rounded-lg hover:bg-gray-300 transition-colors"
+              >
+                Close
+              </button>
+            </div>
+          </div>
+        </div>,
+        document.body
+      )}
     </div>
   )
 }

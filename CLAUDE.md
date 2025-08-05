@@ -132,7 +132,21 @@ EasyPay University is a comprehensive, gamified training platform for EasyPay Fi
 
 ## 🆕 Recent Updates
 
-### Dashboard Enhancements (Latest Release)
+### Support Center Enhancement with Modal Previews (Latest Release)
+- **Quick Help Modal Previews**: All Quick Help tiles now open full content previews with download options
+- **Professional Modal Design**: Clean modals with colored borders, drop shadows, and no background overlay
+- **React Portal Implementation**: All modals render outside DOM hierarchy for proper layering
+- **Content Integration**: Reuses existing resource content for comprehensive previews
+- **Mobile Optimized**: Full responsive design with proper header locking and scrollable content
+
+### UI/UX Professional Enhancement
+- **Clean Modal System**: Removed dark background overlays across all modals
+- **Professional Borders**: Added EasyPay green borders with contextual colors for different modal types
+- **Enhanced Shadows**: Implemented clean drop shadows for elevated, professional appearance
+- **Consistent Design Language**: Unified modal styling across entire platform
+- **Improved User Experience**: Less intrusive modals that maintain page context visibility
+
+### Dashboard Enhancements
 - **Module Pagination System**: 4 modules per page with carousel navigation
 - **Enhanced Navigation Controls**: Previous/next buttons with dot indicators
 - **Keyboard Accessibility**: Arrow key navigation support

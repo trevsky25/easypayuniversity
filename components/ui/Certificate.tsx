@@ -218,8 +218,8 @@ export function CertificateModal({
   if (!isOpen) return null
 
   return (
-    <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4" style={{ zIndex: 9999 }}>
-      <div className="bg-white rounded-xl max-w-5xl w-full max-h-[95vh] overflow-y-auto">
+    <div className="fixed inset-0 flex items-center justify-center p-4" style={{ zIndex: 9999 }}>
+      <div className="bg-white rounded-xl max-w-5xl w-full max-h-[95vh] overflow-y-auto shadow-2xl border-2 border-easypay-green">
         {/* Fixed Header */}
         <div className="flex items-center justify-between p-6 pb-4 border-b border-gray-200 flex-shrink-0">
           <h2 className="text-2xl font-bold text-gray-900">🎉 Congratulations! Certificate Earned</h2>

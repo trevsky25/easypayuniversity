@@ -344,8 +344,8 @@ export default function Dashboard() {
 
       {/* Referral Modal */}
       {showReferralModal && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
-          <div className="bg-white rounded-xl max-w-md w-full max-h-[90vh] overflow-y-auto">
+        <div className="fixed inset-0 flex items-center justify-center z-50 p-4">
+          <div className="bg-white rounded-xl max-w-md w-full max-h-[90vh] overflow-y-auto shadow-2xl border-2 border-easypay-green">
             <div className="p-4 sm:p-6">
               {/* Modal Header */}
               <div className="flex items-center justify-between mb-4 sm:mb-6">

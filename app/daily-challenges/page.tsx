@@ -198,30 +198,77 @@ export default function DailyChallengesPage() {
   }
 
   const handleWheelSpin = () => {
-    if (!canSpin || isSpinning || !spinWheel || typeof spinWheel !== 'function') return
+    if (!canSpin || isSpinning || !getWheelSlots || !canSpinWheelToday || typeof canSpinWheelToday !== 'function') return
+    
+    // Check daily limit properly
+    if (!canSpinWheelToday()) {
+      setCanSpin(false)
+      return
+    }
     
     setIsSpinning(true)
     
-    // Create spinning animation
+    // Create random spinning animation (visual only)
     const spins = 5 + Math.random() * 5 // 5-10 full rotations
-    const finalRotation = wheelRotation + (spins * 360)
+    const randomAngle = Math.random() * 360 // Random final position
+    const finalRotation = wheelRotation + (spins * 360) + randomAngle
     setWheelRotation(finalRotation)
     
     // Show result after animation
     setTimeout(() => {
-      const result = spinWheel()
-      setWheelResult(result)
-      setLastSpinResult(result)
-      setIsSpinning(false)
-      setCanSpin(false)
+      // Calculate which slot the wheel landed on based on final rotation
+      const slots = getWheelSlots()
       
-      // Show gambling options immediately if applicable
-      if ((result.type === 'win' && result.value > 0) || result.type === 'blank') {
-        setShowGambleModal(true)
-      } else {
-        // Only show wheel result modal if no gambling options
-        setShowWheelResult(true)
+      // Debug the angle calculation
+      const normalizedRotation = ((finalRotation % 360) + 360) % 360
+      
+      // In the wheel rendering: startAngle = (360/20) * index - 90
+      // This means slot 0 center is at -90 + 9 = -81 degrees
+      // slot 1 center is at -90 + 18 + 9 = -63 degrees, etc.
+      // We need to reverse this: find which slot's center is closest to the pointer (top = 0°)
+      
+      // Adjust for the wheel's starting position and find which slot is at the top
+      let slotIndex = Math.floor((360 - normalizedRotation + 90) / 18) % 20
+      
+      // Get the actual slot that was landed on
+      const landedSlot = slots[slotIndex]
+      
+      // Debug logging
+      console.log('Final rotation:', finalRotation)
+      console.log('Normalized:', normalizedRotation) 
+      console.log('Calculated slot index:', slotIndex)
+      console.log('Landed slot:', landedSlot)
+      
+      // Use the proper eBucks manager to update state and award bucks
+      if (landedSlot && landedSlot.value > 0) {
+        awardBucks(landedSlot.value, `Won ${landedSlot.value} eBucks from wheel spin!`)
       }
+      
+      // Update spin tracking using the eBucks manager state
+      const today = new Date().toDateString()
+      const currentState = JSON.parse(localStorage.getItem('ebucks') || '{}')
+      const updatedState = {
+        ...currentState,
+        lastWheelSpinDate: today,
+        wheelSpinsToday: (currentState.wheelSpinsToday || 0) + 1
+      }
+      localStorage.setItem('ebucks', JSON.stringify(updatedState))
+      
+      setWheelResult(landedSlot)
+      setLastSpinResult(landedSlot)
+      setIsSpinning(false)
+      setCanSpin(false) // This should stay false until tomorrow
+      
+      // Wait additional 1-2 seconds before showing popup so user can see the result
+      setTimeout(() => {
+        // Show gambling options if applicable
+        if ((landedSlot.type === 'win' && landedSlot.value > 0) || landedSlot.type === 'blank') {
+          setShowGambleModal(true)
+        } else {
+          // Only show wheel result modal if no gambling options
+          setShowWheelResult(true)
+        }
+      }, 1500) // 1.5 second delay after wheel stops
     }, 3000)
   }
 
@@ -245,8 +292,8 @@ export default function DailyChallengesPage() {
       })
     }, 1000)
     
-    // 40% chance to win double, 60% chance to lose it all
-    const isWin = Math.random() < 0.4
+    // 60% chance to win double, 40% chance to lose it all
+    const isWin = Math.random() < 0.6
     
     // Show result after 5 seconds
     setTimeout(() => {
@@ -399,24 +446,26 @@ export default function DailyChallengesPage() {
               <div className="flex-1 flex justify-center">
                 {mounted ? (
                   <div className="relative">
-                    {/* Downward Pointing Arrow */}
-                    <div className="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1 z-20">
-                      <div className="w-0 h-0 border-l-[12px] border-r-[12px] border-t-[20px] border-l-transparent border-r-transparent border-t-red-500 drop-shadow-lg"></div>
+                    {/* Enhanced Pointer */}
+                    <div className="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-2 z-20">
+                      <div className="bg-gradient-to-b from-easypay-green to-emerald-600 rounded-full p-3 shadow-xl border-2 border-white">
+                        <div className="w-0 h-0 border-l-[10px] border-r-[10px] border-t-[16px] border-l-transparent border-r-transparent border-t-white"></div>
+                      </div>
                     </div>
                     
-                    {/* Bigger Wheel with Better Visibility */}
+                    {/* Enhanced Wheel with Modern Design */}
                     <div 
-                      className="w-96 h-96 rounded-full relative overflow-hidden transition-all duration-[3000ms] ease-out"
+                      className="w-96 h-96 rounded-full relative overflow-hidden transition-all duration-[3000ms] ease-out shadow-2xl border-8 border-white"
                       style={{ transform: `rotate(${wheelRotation}deg)` }}
                     >
                       {/* Create visible segments with SVG for better text rendering */}
                       <svg width="384" height="384" className="absolute inset-0" viewBox="0 0 384 384">
                         {getWheelSlots().map((slot, index) => {
-                          // Scale up for bigger wheel
-                          const outerRadius = 189 // Scaled up from 128
+                          // Adjust centering for the wheel
+                          const outerRadius = 192
                           const innerRadius = 0
-                          const centerX = 189 // Adjusted center for bigger wheel
-                          const centerY = 192
+                          const centerX = 192 // Perfect center
+                          const centerY = 192 // Perfect center
                           
                           const startAngle = (360 / 20) * index - 90
                           const endAngle = (360 / 20) * (index + 1) - 90
@@ -439,7 +488,7 @@ export default function DailyChallengesPage() {
                           
                           // Text positioning - place text at 70% of radius
                           const textAngle = (startAngle + endAngle) / 2
-                          const textRadius = outerRadius * 0.7
+                          const textRadius = outerRadius * 0.70
                           const textX = centerX + textRadius * Math.cos((textAngle * Math.PI) / 180)
                           const textY = centerY + textRadius * Math.sin((textAngle * Math.PI) / 180)
                           
@@ -447,19 +496,30 @@ export default function DailyChallengesPage() {
                             <g key={slot.id}>
                               <path
                                 d={pathData}
-                                fill={slot.color}
-                                stroke="#374151"
-                                strokeWidth="1"
+                                fill={slot.type === 'win' ? 
+                                  slot.value >= 200 ? '#FFD700' : // Gold for jackpots
+                                  slot.value >= 75 ? '#4ECDC4' : // Teal for big wins  
+                                  '#95E1D3' : // Light teal for small wins
+                                  '#F3F4F6' // Light gray for blanks
+                                }
+                                stroke="#FFFFFF"
+                                strokeWidth="2"
+                                className="drop-shadow-sm"
                               />
                               <text
                                 x={textX}
                                 y={textY}
                                 textAnchor="middle"
                                 dominantBaseline="central"
-                                fontSize="13"
+                                fontSize="12"
                                 fontWeight="bold"
-                                fill="#1f2937"
+                                fill={slot.type === 'win' ? 
+                                  slot.value >= 200 ? '#B45309' : // Dark orange for jackpots on gold
+                                  '#1F2937' : // Dark gray for regular wins
+                                  '#6B7280' // Medium gray for blanks
+                                }
                                 transform={`rotate(${textAngle} ${textX} ${textY})`}
+                                className="drop-shadow-sm"
                               >
                                 {slot.label}
                               </text>
@@ -479,40 +539,60 @@ export default function DailyChallengesPage() {
               {/* Wheel Info & Controls */}
               <div className="flex-1 space-y-6">
                 {/* Prize Breakdown */}
-                <div className="bg-gradient-to-br from-gray-50 to-gray-100 rounded-xl p-4">
-                  <h4 className="font-semibold text-gray-900 mb-3 flex items-center gap-2">
-                    <Trophy className="w-4 h-4 text-yellow-500" />
+                <div className="bg-gradient-to-br from-emerald-50 to-teal-50 rounded-xl p-4 border border-emerald-200">
+                  <h4 className="font-bold text-gray-900 mb-4 flex items-center gap-2">
+                    <div className="p-1.5 bg-white rounded-lg shadow-sm">
+                      <Trophy className="w-4 h-4 text-yellow-500" />
+                    </div>
                     Prize Breakdown
                   </h4>
-                  <div className="grid grid-cols-2 gap-2 text-sm">
-                    <div className="flex justify-between">
-                      <span className="text-gray-600">Jackpot:</span>
-                      <span className="font-medium text-yellow-600">200-500 eBucks</span>
+                  <div className="grid grid-cols-2 gap-2">
+                    <div className="flex flex-col items-center p-2 bg-gradient-to-r from-yellow-100 to-orange-100 rounded-lg">
+                      <span className="text-yellow-800 font-medium text-sm">Jackpot</span>
+                      <span className="font-bold text-yellow-800 text-xs">200-500</span>
                     </div>
-                    <div className="flex justify-between">
-                      <span className="text-gray-600">Big Win:</span>
-                      <span className="font-medium text-blue-600">40-100 eBucks</span>
+                    <div className="flex flex-col items-center p-2 bg-gradient-to-r from-teal-100 to-cyan-100 rounded-lg">
+                      <span className="text-teal-800 font-medium text-sm">Big Win</span>
+                      <span className="font-bold text-teal-800 text-xs">40-100</span>
                     </div>
-                    <div className="flex justify-between">
-                      <span className="text-gray-600">Small Win:</span>
-                      <span className="font-medium text-green-600">5-30 eBucks</span>
+                    <div className="flex flex-col items-center p-2 bg-gradient-to-r from-emerald-100 to-green-100 rounded-lg">
+                      <span className="text-emerald-800 font-medium text-sm">Small Win</span>
+                      <span className="font-bold text-emerald-800 text-xs">5-30</span>
                     </div>
-                    <div className="flex justify-between">
-                      <span className="text-gray-600">No Luck:</span>
-                      <span className="font-medium text-gray-500">Try Again</span>
+                    <div className="flex flex-col items-center p-2 bg-gradient-to-r from-gray-100 to-slate-100 rounded-lg">
+                      <span className="text-gray-700 font-medium text-sm">Try Again</span>
+                      <span className="font-bold text-gray-700 text-xs">Next Time</span>
                     </div>
                   </div>
                 </div>
                 
-                {/* Gambling Features */}
-                <div className="bg-gradient-to-br from-orange-50 to-red-50 rounded-xl p-4 border border-orange-200">
-                  <h4 className="font-semibold text-gray-900 mb-2 flex items-center gap-2">
-                    <Gamepad2 className="w-4 h-4" />
+                {/* Bonus Features */}
+                <div className="bg-gradient-to-br from-purple-50 to-pink-50 rounded-xl p-4 border border-purple-200">
+                  <h4 className="font-bold text-gray-900 mb-3 flex items-center gap-2">
+                    <div className="p-1.5 bg-white rounded-lg shadow-sm">
+                      <Gamepad2 className="w-4 h-4 text-purple-600" />
+                    </div>
                     Bonus Features
                   </h4>
-                  <div className="space-y-2 text-sm text-gray-700">
-                    <p>• <strong>Double or Nothing:</strong> Risk your winnings for 2x payout!</p>
-                    <p>• <strong>Extra Spin:</strong> Pay 50 eBucks to spin again</p>
+                  <div className="grid grid-cols-2 gap-2">
+                    <div className="flex flex-col items-center gap-2 p-2 bg-gradient-to-r from-red-100 to-pink-100 rounded-lg">
+                      <div className="w-6 h-6 bg-red-200 rounded-lg flex items-center justify-center">
+                        <span className="text-red-800 font-bold text-xs">2x</span>
+                      </div>
+                      <div className="text-center">
+                        <p className="font-bold text-red-800 text-sm">Double or Nothing</p>
+                        <p className="text-xs text-red-700">60% chance to win!</p>
+                      </div>
+                    </div>
+                    <div className="flex flex-col items-center gap-2 p-2 bg-gradient-to-r from-indigo-100 to-purple-100 rounded-lg">
+                      <div className="w-6 h-6 bg-indigo-200 rounded-lg flex items-center justify-center">
+                        <span className="text-indigo-800 font-bold text-xs">+1</span>
+                      </div>
+                      <div className="text-center">
+                        <p className="font-bold text-indigo-800 text-sm">Extra Spin</p>
+                        <p className="text-xs text-indigo-700">Pay 50 eBucks</p>
+                      </div>
+                    </div>
                   </div>
                 </div>
 
@@ -521,10 +601,10 @@ export default function DailyChallengesPage() {
                   <button
                     onClick={handleWheelSpin}
                     disabled={!canSpin || isSpinning}
-                    className={`w-full py-4 px-6 rounded-xl font-bold text-lg transition-all shadow-lg ${
+                    className={`w-full py-4 px-6 rounded-xl font-bold text-lg transition-all shadow-lg border-2 ${
                       canSpin && !isSpinning
-                        ? 'bg-gradient-to-r from-purple-500 via-pink-500 to-red-500 text-white hover:from-purple-600 hover:via-pink-600 hover:to-red-600 transform hover:scale-105 hover:shadow-xl'
-                        : 'bg-gray-300 text-gray-500 cursor-not-allowed'
+                        ? 'bg-gradient-to-r from-easypay-green via-emerald-500 to-teal-500 text-white hover:from-emerald-600 hover:via-teal-500 hover:to-cyan-500 transform hover:scale-105 hover:shadow-2xl border-white animate-pulse'
+                        : 'bg-gray-200 text-gray-500 cursor-not-allowed border-gray-300'
                     }`}
                   >
                     {isSpinning ? (
@@ -661,8 +741,8 @@ export default function DailyChallengesPage() {
 
       {/* Referral Modal */}
       {showReferralModal && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
-          <div className="bg-white rounded-xl max-w-md w-full max-h-[90vh] flex flex-col">
+        <div className="fixed inset-0 flex items-center justify-center z-50 p-4">
+          <div className="bg-white rounded-xl max-w-md w-full max-h-[90vh] flex flex-col shadow-2xl border-2 border-easypay-green">
             {/* Fixed Modal Header */}
             <div className="flex items-center justify-between p-6 pb-4 border-b border-gray-200 flex-shrink-0">
               <h2 className="text-2xl font-bold text-gray-900">Refer a New Business to EasyPay</h2>
@@ -783,8 +863,8 @@ export default function DailyChallengesPage() {
 
       {/* Wheel Result Modal */}
       {showWheelResult && wheelResult && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-          <div className="bg-white rounded-xl p-8 max-w-md mx-auto text-center">
+        <div className="fixed inset-0 flex items-center justify-center z-50">
+          <div className="bg-white rounded-xl p-8 max-w-md mx-auto text-center shadow-2xl border-2 border-easypay-green">
             <div className="flex justify-center mb-4">
               {wheelResult.label?.includes('Double or Nothing WIN') ? 
                 <DollarSign className="w-16 h-16 text-yellow-500" /> :
@@ -854,8 +934,8 @@ export default function DailyChallengesPage() {
 
       {/* Double or Nothing Suspense Animation */}
       {showGambleAnimation && lastSpinResult && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
-          <div className="bg-white rounded-xl max-w-md w-full p-6 relative overflow-hidden">
+        <div className="fixed inset-0 flex items-center justify-center z-50 p-4">
+          <div className="bg-white rounded-xl max-w-md w-full p-6 relative overflow-hidden shadow-2xl border-2 border-orange-400">
             {/* Pulsing Background Effect */}
             <div className="absolute inset-0 bg-gradient-to-r from-red-100/50 via-yellow-100/50 to-green-100/50 animate-pulse"></div>
             
@@ -919,8 +999,8 @@ export default function DailyChallengesPage() {
 
       {/* Gambling Modal */}
       {showGambleModal && lastSpinResult && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
-          <div className="bg-white rounded-xl max-w-md w-full p-6">
+        <div className="fixed inset-0 flex items-center justify-center z-50 p-4">
+          <div className="bg-white rounded-xl max-w-md w-full p-6 shadow-2xl border-2 border-purple-500">
             <h2 className="text-2xl font-bold text-center mb-4 flex items-center justify-center gap-2">
               <Gamepad2 className="w-6 h-6" />
               Feeling Lucky?
@@ -1008,8 +1088,8 @@ export default function DailyChallengesPage() {
 
       {/* Celebration Modal */}
       {showCelebration && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-          <div className="bg-white rounded-xl p-8 max-w-md mx-auto text-center animate-bounce">
+        <div className="fixed inset-0 flex items-center justify-center z-50">
+          <div className="bg-white rounded-xl p-8 max-w-md mx-auto text-center animate-bounce shadow-2xl border-2 border-yellow-400">
             <div className="flex justify-center mb-4">
               <Trophy className="w-16 h-16 text-yellow-500" />
             </div>

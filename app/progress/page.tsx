@@ -21,33 +21,105 @@ import {
   CheckCircle
 } from 'lucide-react'
 
+interface ModuleProgress {
+  id: string
+  title: string
+  progress: number
+  status: 'completed' | 'in-progress' | 'not-started'
+  certificate: boolean
+  score: number | null
+  quizScores?: { [moduleId: string]: number }
+  lessonProgress?: { [lessonId: string]: boolean }
+}
+
 export default function ProgressPage() {
+  const [moduleProgressData, setModuleProgressData] = useState<ModuleProgress[]>([])
   const [completedModules, setCompletedModules] = useState(0)
   
   useEffect(() => {
-    const completions = localStorage.getItem('module-completions')
-    if (completions) {
-      const completionData = JSON.parse(completions)
-      const completedCount = Object.values(completionData).filter(Boolean).length
-      setCompletedModules(completedCount)
-    } else {
+    // Load all progress data from localStorage
+    const completions = JSON.parse(localStorage.getItem('module-completions') || '{}')
+    const quizScores = JSON.parse(localStorage.getItem('quiz-scores') || '{}')
+    const lessonProgress = JSON.parse(localStorage.getItem('lesson-progress') || '{}')
+    
+    // If no data exists, initialize with first 2 modules completed
+    if (Object.keys(completions).length === 0) {
       const initialCompletions = { 1: true, 2: true }
+      const initialScores = { 1: 92, 2: 95 }
       localStorage.setItem('module-completions', JSON.stringify(initialCompletions))
-      setCompletedModules(2)
+      localStorage.setItem('quiz-scores', JSON.stringify(initialScores))
     }
+    
+    // Create progress data for each module
+    const progressData = trainingModules.map((module, index) => {
+      const moduleNum = index + 1
+      const isCompleted = completions[moduleNum] === true
+      const quizScore = quizScores[moduleNum] || null
+      
+      // Calculate lesson progress for this module
+      const moduleLessonIds = module.lessons.map(lesson => lesson.id)
+      const completedLessons = moduleLessonIds.filter(lessonId => lessonProgress[lessonId]).length
+      const totalLessons = moduleLessonIds.length
+      
+      // Calculate progress percentage
+      let progress = 0
+      if (isCompleted) {
+        progress = 100
+      } else if (completedLessons > 0) {
+        progress = Math.round((completedLessons / totalLessons) * 100)
+      }
+      
+      // Determine status
+      let status: 'completed' | 'in-progress' | 'not-started' = 'not-started'
+      if (isCompleted) {
+        status = 'completed'
+      } else if (progress > 0) {
+        status = 'in-progress'
+      }
+      
+      return {
+        id: module.id,
+        title: module.title,
+        progress,
+        status,
+        certificate: isCompleted && quizScore >= (module.quiz.passingScore || 80),
+        score: quizScore,
+        quizScores,
+        lessonProgress
+      }
+    })
+    
+    setModuleProgressData(progressData)
+    setCompletedModules(progressData.filter(m => m.status === 'completed').length)
   }, [])
 
   const overallProgress = Math.round((completedModules / trainingModules.length) * 100)
   
+  // Calculate total lessons dynamically
+  const totalLessons = trainingModules.reduce((sum, module) => sum + module.lessons.length, 0)
+  const completedLessons = moduleProgressData.reduce((sum, module) => {
+    if (module.status === 'completed') {
+      const moduleData = trainingModules.find(m => m.id === module.id)
+      return sum + (moduleData?.lessons.length || 0)
+    } else if (module.lessonProgress) {
+      const moduleData = trainingModules.find(m => m.id === module.id)
+      const completedInModule = moduleData?.lessons.filter(lesson => 
+        module.lessonProgress[lesson.id]
+      ).length || 0
+      return sum + completedInModule
+    }
+    return sum
+  }, 0)
+
   const userStats = {
     totalModules: trainingModules.length,
     completedModules: completedModules,
-    totalLessons: 23,
-    completedLessons: 14,
+    totalLessons: totalLessons,
+    completedLessons: completedLessons,
     totalTime: '4.5 hours',
     currentStreak: 5,
     longestStreak: 12,
-    certificatesEarned: 2,
+    certificatesEarned: moduleProgressData.filter(m => m.certificate).length,
     overallProgress: overallProgress
   }
 
@@ -95,10 +167,10 @@ export default function ProgressPage() {
     {
       id: 5,
       title: 'Expert Certified',
-      description: 'Complete all 4 modules',
+      description: 'Complete all 7 modules',
       icon: Medal,
-      earned: false,
-      earnedDate: null,
+      earned: completedModules >= 7,
+      earnedDate: completedModules >= 7 ? new Date().toISOString().split('T')[0] : null,
       rarity: 'legendary',
       points: 500
     },
@@ -167,40 +239,6 @@ export default function ProgressPage() {
     }
   ]
 
-  const moduleProgress = [
-    {
-      id: 1,
-      title: 'Welcome to EasyPay Finance',
-      progress: 100,
-      status: 'completed' as const,
-      certificate: true,
-      score: 92
-    },
-    {
-      id: 2,
-      title: 'How to Submit Applications',
-      progress: 100,
-      status: 'completed' as const,
-      certificate: true,
-      score: 95
-    },
-    {
-      id: 3,
-      title: 'Establishing a Credit Culture',
-      progress: 35,
-      status: 'in-progress' as const,
-      certificate: false,
-      score: null
-    },
-    {
-      id: 4,
-      title: 'Advanced Topics',
-      progress: 0,
-      status: 'not-started' as const,
-      certificate: false,
-      score: null
-    }
-  ]
 
   const getRarityColor = (rarity: string) => {
     switch (rarity) {
@@ -438,41 +476,105 @@ export default function ProgressPage() {
       </div>
 
       {/* Module Progress */}
-      <Card>
-        <h3 className="text-lg font-semibold text-gray-900 mb-6">Module Progress</h3>
-        <div className="space-y-6">
-          {moduleProgress.map((module) => (
-            <div key={module.id} className="flex items-center gap-6">
-              <div className="flex-1">
-                <div className="flex items-center justify-between mb-2">
-                  <h4 className="font-medium text-gray-900">{module.title}</h4>
-                  <div className="flex items-center gap-3">
-                    {module.certificate && (
-                      <div className="flex items-center gap-1 bg-emerald-100 text-emerald-700 px-3 py-1 rounded-full">
-                        <Award className="w-4 h-4" />
-                        <span className="text-sm font-bold">Certified</span>
-                      </div>
+      <div className="space-y-6">
+        <div className="flex items-center justify-between">
+          <h3 className="text-2xl font-bold text-gray-900">Training Modules</h3>
+          <div className="text-sm text-gray-500">
+            {completedModules} of {trainingModules.length} completed
+          </div>
+        </div>
+        
+        <div className="grid gap-3">
+          {moduleProgressData.map((module, index) => (
+            <Card 
+              key={module.id} 
+              className={`overflow-hidden transition-all hover:shadow-lg ${
+                module.status === 'completed' 
+                  ? 'bg-gradient-to-r from-emerald-50 to-teal-50 border-emerald-200' 
+                  : module.status === 'in-progress'
+                  ? 'bg-gradient-to-r from-blue-50 to-indigo-50 border-blue-200'
+                  : 'bg-gray-50 border-gray-200'
+              }`}
+            >
+              <div className="p-4">
+                <div className="flex items-center gap-3">
+                  <div className={`w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0 ${
+                    module.status === 'completed' 
+                      ? 'bg-emerald-100' 
+                      : module.status === 'in-progress'
+                      ? 'bg-blue-100'
+                      : 'bg-gray-100'
+                  }`}>
+                    {module.status === 'completed' ? (
+                      <CheckCircle className="w-5 h-5 text-emerald-600" />
+                    ) : module.status === 'in-progress' ? (
+                      <Clock className="w-5 h-5 text-blue-600" />
+                    ) : (
+                      <BookOpen className="w-5 h-5 text-gray-400" />
                     )}
-                    {module.score && (
-                      <span className="text-sm text-gray-600">Score: {module.score}%</span>
-                    )}
+                  </div>
+                  <div className="flex-1">
+                    <div className="flex items-center gap-2 mb-0.5">
+                      <span className="text-xs font-medium text-gray-500">Module {index + 1}</span>
+                      {module.certificate && (
+                        <div className="flex items-center gap-0.5 bg-gradient-to-r from-yellow-400 to-yellow-500 text-white px-2 py-0.5 rounded-full shadow-sm">
+                          <Award className="w-3 h-3" />
+                          <span className="text-xs font-bold">Certified</span>
+                        </div>
+                      )}
+                    </div>
+                    <h4 className="font-semibold text-base text-gray-900 line-clamp-1">{module.title}</h4>
+                  </div>
+                  <div className="flex flex-col items-end gap-1">
                     <Badge status={module.status}>
                       {module.status === 'completed' ? 'Completed' : 
                        module.status === 'in-progress' ? 'In Progress' : 'Not Started'}
                     </Badge>
+                    {module.score && (
+                      <div className="flex items-center gap-1">
+                        <Star className="w-3 h-3 text-yellow-500" />
+                        <span className="text-xs font-medium text-gray-700">{module.score}%</span>
+                      </div>
+                    )}
                   </div>
                 </div>
-                <div className="flex items-center gap-4">
-                  <Progress value={module.progress} className="flex-1" />
-                  <span className="text-sm font-medium text-gray-700 min-w-0">
-                    {module.progress}%
-                  </span>
+                
+                {/* Compact Progress Bar */}
+                <div className="mt-3">
+                  <div className="flex items-center justify-between mb-1">
+                    <span className="text-xs text-gray-500">Progress</span>
+                    <span className={`text-xs font-bold ${
+                      module.status === 'completed' 
+                        ? 'text-emerald-600' 
+                        : module.status === 'in-progress'
+                        ? 'text-blue-600'
+                        : 'text-gray-500'
+                    }`}>
+                      {module.progress}%
+                    </span>
+                  </div>
+                  <div className="relative h-2 bg-gray-200 rounded-full overflow-hidden">
+                    <div 
+                      className={`absolute inset-y-0 left-0 rounded-full transition-all duration-1000 ease-out ${
+                        module.status === 'completed' 
+                          ? 'bg-gradient-to-r from-emerald-400 to-teal-500' 
+                          : module.status === 'in-progress'
+                          ? 'bg-gradient-to-r from-blue-400 to-indigo-500'
+                          : 'bg-gray-300'
+                      }`}
+                      style={{ width: `${module.progress}%` }}
+                    >
+                      {module.progress > 0 && (
+                        <div className="absolute inset-0 bg-white/20 animate-pulse" />
+                      )}
+                    </div>
+                  </div>
                 </div>
               </div>
-            </div>
+            </Card>
           ))}
         </div>
-      </Card>
+      </div>
     </div>
   )
 }
