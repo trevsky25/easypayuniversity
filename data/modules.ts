@@ -28,12 +28,15 @@ export interface Lesson {
 }
 
 export interface LessonContent {
-  type: 'text' | 'video' | 'interactive' | 'checklist' | 'example' | 'warning' | 'tip'
+  type: 'text' | 'video' | 'interactive' | 'checklist' | 'example' | 'warning' | 'tip' | 'image'
   title?: string
   content: string
   videoUrl?: string
   interactiveType?: 'calculator' | 'scenario' | 'quiz'
   items?: string[]
+  imageUrl?: string
+  imageAlt?: string
+  imageCaption?: string
 }
 
 export interface TrainingModule {
@@ -139,9 +142,9 @@ export const trainingModules: TrainingModule[] = [
         title: 'Understanding Our Three Core Programs',
         duration: '20 minutes',
         objectives: [
-          'Distinguish between RIC and LTO programs',
-          'Understand when to use each program',
-          'Learn the unique benefits of each option'
+          'Understand the three core EasyPay Finance programs',
+          'Learn when to use RIC vs LTO for different customers',
+          'Master program comparison and selection strategies'
         ],
         content: [
           {
@@ -307,33 +310,15 @@ export const trainingModules: TrainingModule[] = [
         },
         {
           id: 'q1-4',
-          question: 'In the RIC program, who owns the item immediately?',
-          type: 'multiple-choice',
-          options: ['EasyPay Finance', 'The merchant', 'The customer', 'The bank'],
-          correctAnswer: 'The customer',
-          explanation: 'In the RIC (Retail Installment Contract) program, the customer owns the item immediately upon purchase.',
-          points: 15
-        },
-        {
-          id: 'q1-5',
-          question: 'Which program is best suited for credit-challenged customers?',
-          type: 'multiple-choice',
-          options: ['RIC Program', 'LTO Program', 'Both programs equally'],
-          correctAnswer: 'LTO Program',
-          explanation: 'The LTO (Lease-to-Own) program is specifically designed for credit-challenged customers with lower approval requirements.',
-          points: 15
-        },
-        {
-          id: 'q1-6',
-          question: 'The LTO program includes a processing fee.',
+          question: 'EasyPay Finance has been in business for over 20 years.',
           type: 'true-false',
           options: ['True', 'False'],
           correctAnswer: 'True',
-          explanation: 'The LTO program includes a $39 processing fee that must be collected from the customer.',
+          explanation: 'EasyPay Finance was founded in 2001, giving the company over 20 years of experience in consumer financing.',
           points: 10
         },
         {
-          id: 'q1-7',
+          id: 'q1-5',
           question: 'What is EasyPay Finance\'s mission?',
           type: 'multiple-choice',
           options: [
@@ -659,203 +644,252 @@ export const trainingModules: TrainingModule[] = [
   },
   {
     id: 'module-3',
-    title: 'Understanding RIC vs LTO Contracts',
-    description: 'Master the differences between Retail Installment Contracts and Lease-to-Own agreements, including when to use each and how they benefit different customer types.',
-    estimatedTime: '50 minutes',
+    title: 'Understanding EasyPay Finance Products by State',
+    description: 'Learn which EasyPay Finance product is available in your state and master the features, benefits, and application process for your specific program.',
+    estimatedTime: '45 minutes',
     difficulty: 'intermediate',
     prerequisites: ['module-1'],
     objectives: [
-      'Understand the fundamental differences between RIC and LTO',
-      'Learn the legal and practical implications of each contract type',
-      'Identify which customers benefit most from each program',
-      'Master the application and approval processes for both'
+      'Understand which states offer which EasyPay Finance products',
+      'Master the product available in your operating state',
+      'Learn the legal and practical implications of your state\'s product',
+      'Identify ideal customers for your state\'s program'
     ],
     lessons: [
       {
         id: 'lesson-3-1',
-        title: 'Retail Installment Contracts (RIC) Fundamentals',
-        duration: '20 minutes',
+        title: 'EasyPay Finance State Coverage and Product Availability',
+        duration: '15 minutes',
         objectives: [
-          'Understand RIC structure and legal framework',
-          'Learn customer qualification requirements',
-          'Master the RIC application process'
+          'Learn which states EasyPay Finance operates in',
+          'Understand the one-product-per-state structure',
+          'Identify your state\'s specific product offering'
+        ],
+        content: [
+          {
+            type: 'warning',
+            title: 'Critical: One Product Per State',
+            content: 'EasyPay Finance operates on a one-product-per-state model. Each state offers EITHER Retail Installment Contracts (RIC) OR Lease-to-Own (LTO), never both. This is determined by state regulations and licensing requirements.'
+          },
+          {
+            type: 'text',
+            title: 'EasyPay Finance Geographic Coverage',
+            content: 'EasyPay Finance currently operates in 22 states across the United States, serving over 12,000 merchant locations. Our geographic coverage is strategically designed to comply with state-specific regulations and provide the most appropriate financing product for each region.'
+          },
+          {
+            type: 'image',
+            title: 'EasyPay State Coverage Map',
+            content: 'Visual representation of EasyPay Finance geographic coverage across the United States.',
+            imageUrl: '/easypay-state-map.svg',
+            imageAlt: 'EasyPay Finance State Coverage Map',
+            imageCaption: 'Green states: RIC available (19 states) • Teal states: LTO available (3 states) • Gray states: No service available'
+          },
+          {
+            type: 'example',
+            title: 'States Offering Retail Installment Contracts (RIC)',
+            content: 'The following 19 states offer RIC (Retail Installment Contracts) ONLY:\n\n• Alaska (AK)\n• Arizona (AZ)\n• California (CA)\n• Delaware (DE)\n• Idaho (ID)\n• Kansas (KS)\n• Kentucky (KY)\n• Missouri (MO)\n• Nevada (NV)\n• New Hampshire (NH)\n• New Mexico (NM)\n• North Dakota (ND)\n• Oregon (OR)\n• Pennsylvania (PA)\n• South Dakota (SD)\n• Utah (UT)\n• Virginia (VA)\n• Washington (WA)\n• Wisconsin (WI)\n\nTotal: 19 RIC-only states'
+          },
+          {
+            type: 'example',
+            title: 'States Offering Lease-to-Own (LTO)',
+            content: 'The following 3 states offer LTO (Lease-to-Own) ONLY:\n\n• Florida (FL)\n• Georgia (GA)\n• Texas (TX)\n\nTotal: 3 LTO-only states'
+          },
+          {
+            type: 'text',
+            title: 'States Where EasyPay Finance Does Not Operate',
+            content: 'EasyPay Finance does not currently operate in 28 states plus Washington D.C. If your business is located in one of these areas, EasyPay Finance services are not available. These include:\n\nAlabama, Arkansas, Colorado, Connecticut, Hawaii, Illinois, Indiana, Iowa, Louisiana, Maine, Maryland, Massachusetts, Michigan, Minnesota, Mississippi, Montana, Nebraska, New Jersey, New York, North Carolina, Ohio, Oklahoma, Rhode Island, South Carolina, Tennessee, Vermont, Washington D.C., West Virginia, and Wyoming.'
+          },
+          {
+            type: 'tip',
+            title: 'Know Your State\'s Product',
+            content: 'As a merchant partner, it\'s essential to know which product your state offers. This determines everything about your customer experience, from application processes to contract terms. Never mention or offer the product that\'s not available in your state.'
+          },
+          {
+            type: 'interactive',
+            title: 'Knowledge Check: Match States to Products',
+            content: 'Test your knowledge by matching each state to the correct EasyPay Finance product offering.',
+            interactiveType: 'StateProductMatcher',
+            interactionData: {
+              instructions: 'Drag each state to the correct product category. Some states may not offer EasyPay services at all!',
+              states: [
+                { name: 'California', abbr: 'CA', correct: 'RIC' },
+                { name: 'Texas', abbr: 'TX', correct: 'LTO' },
+                { name: 'Florida', abbr: 'FL', correct: 'LTO' },
+                { name: 'Georgia', abbr: 'GA', correct: 'LTO' },
+                { name: 'Arizona', abbr: 'AZ', correct: 'RIC' },
+                { name: 'Nevada', abbr: 'NV', correct: 'RIC' },
+                { name: 'Washington', abbr: 'WA', correct: 'RIC' },
+                { name: 'Oregon', abbr: 'OR', correct: 'RIC' },
+                { name: 'New York', abbr: 'NY', correct: 'NONE' },
+                { name: 'Illinois', abbr: 'IL', correct: 'NONE' },
+                { name: 'Ohio', abbr: 'OH', correct: 'NONE' },
+                { name: 'Pennsylvania', abbr: 'PA', correct: 'RIC' }
+              ],
+              categories: [
+                { id: 'RIC', label: 'RIC States (19)', description: 'Retail Installment Contracts Only', color: 'green' },
+                { id: 'LTO', label: 'LTO States (3)', description: 'Lease-to-Own Only', color: 'teal' },
+                { id: 'NONE', label: 'No Service', description: 'EasyPay Not Available', color: 'gray' }
+              ],
+              successMessage: 'Excellent! You correctly identified which states offer which EasyPay Finance products.',
+              failureMessage: 'Review the state coverage information above and try again. Remember: each state offers only ONE product type.',
+              completionReward: 50
+            }
+          }
+        ],
+        keyTakeaways: [
+          'EasyPay Finance operates in only 22 states nationwide',
+          'Each state offers only ONE product: either RIC or LTO',
+          '19 states offer RIC (Retail Installment Contracts) only',
+          '3 states offer LTO (Lease-to-Own) only',
+          '28 states plus D.C. have no EasyPay Finance services'
+        ]
+      },
+      {
+        id: 'lesson-3-2',
+        title: 'Retail Installment Contracts (RIC) - For RIC States Only',
+        duration: '15 minutes',
+        objectives: [
+          'Master RIC program features and benefits',
+          'Understand RIC legal framework and Truth in Lending requirements',
+          'Learn proper RIC terminology and disclosures'
         ],
         content: [
           {
             type: 'text',
             title: 'What is a Retail Installment Contract?',
-            content: 'A Retail Installment Contract (RIC) is EasyPay Finance\'s traditional credit sales program where merchants originate credit sales and execute retail installment contracts with customers. EasyPay then purchases and services these contracts, providing immediate funding to merchants while handling all customer payments and servicing.'
+            content: 'In the 19 RIC states, EasyPay Finance offers Retail Installment Contracts - a traditional credit sales program where merchants originate credit sales and execute retail installment contracts with customers. EasyPay then purchases and services these contracts, providing immediate funding to merchants.'
           },
           {
             type: 'text',
-            title: 'Key RIC Characteristics',
-            content: 'In RIC financing, the customer immediately owns the merchandise upon contract execution. EasyPay Finance purchases the contract from you, providing same-day funding if received by 4pm EST. The customer makes installment payments directly to EasyPay, and there is no credit bureau reporting for these contracts.'
+            title: 'RIC Legal Framework - Truth in Lending Act Compliance',
+            content: 'RIC products are subject to the federal Truth in Lending Act (TILA), requiring specific disclosures including Annual Percentage Rate (APR), finance charges, amount financed, and total of payments. These disclosures must be provided before contract signing and use exact legal terminology.'
           },
           {
             type: 'example',
-            title: 'RIC Structure Example',
-            content: '• Customer selects $3,500 appliance package\n• Merchant completes RIC application through EasyPay portal\n• Customer signs retail installment contract\n• Customer owns appliances immediately\n• EasyPay purchases contract and funds merchant same-day\n• Customer makes payments directly to EasyPay Finance\n• 90-day finance charge capped at $40 maximum\n• Up to $5,000 financing available'
+            title: 'RIC Key Features',
+            content: '• Customer owns merchandise immediately upon contract signing\n• Finance charges accrue daily from contract date\n• 90-Day Finance Charge Cap: Maximum $40 if paid in full within 90 days\n• Same-day funding available if contract received by 4pm EST\n• No credit bureau reporting\n• Up to $5,000 financing available\n• Truth in Lending Act disclosures required'
+          },
+          {
+            type: 'warning',
+            title: 'Required RIC Disclosures',
+            content: 'CRITICAL: Finance charges accrue daily from the date the agreement is signed. There is NEVER a finance charge free period. If customers pay their amount financed within 90 days, finance charges are capped at $40. To qualify, customers MUST pay more than regular scheduled payments.'
           },
           {
             type: 'text',
-            title: 'Customer Benefits of RIC',
-            content: 'RIC customers benefit from immediate ownership, no down payment required, instant approval decisions, and the 90-day finance charge cap of only $40 if paid within 90 days. There is no credit bureau reporting, making it ideal for customers who want traditional financing without credit reporting concerns.'
-          },
-          {
-            type: 'text',
-            title: 'EasyPay Finance RIC Program Details',
-            content: 'EasyPay Finance has been offering RIC programs since 2001 with over 20 years of experience. The program covers 12,000+ locations across 21 states. Key features include instant approvals, same-day funding, financing up to $5,000, and the 90-day $40 finance charge cap that makes it very affordable for customers who pay quickly.'
+            title: 'RIC Customer Qualification',
+            content: 'RIC customers need stable employment and income verification. While no minimum credit score is required, credit history is evaluated as part of the approval process. EasyPay may perform hard credit inquiries during underwriting.'
           }
         ],
         keyTakeaways: [
-          'RIC provides immediate ownership with traditional installment payments',
-          'Customers need stronger credit profiles than LTO',
-          'Best for customers who want ownership benefits and traditional financing',
-          'Customer assumes full responsibility for the item immediately'
+          'Available in 19 states only: AK, AZ, CA, DE, ID, KS, KY, MO, NV, NH, NM, ND, OR, PA, SD, UT, VA, WA, WI',
+          'Customer owns merchandise immediately upon contract execution',
+          'Finance charges accrue from day one - never a "free" period',
+          '90-day finance charge cap of $40 requires extra payments beyond scheduled amounts'
         ]
       },
       {
-        id: 'lesson-3-2',
-        title: 'Lease-to-Own (LTO) Agreements Deep Dive',
-        duration: '20 minutes',
+        id: 'lesson-3-3',
+        title: 'Lease-to-Own (LTO) - For LTO States Only',
+        duration: '15 minutes',
         objectives: [
-          'Understand LTO structure and rental-purchase framework',
-          'Learn about early purchase options and savings',
-          'Master LTO qualification and approval processes'
+          'Master LTO program structure and rental-purchase framework',
+          'Understand LTO ownership and tax collection processes',
+          'Learn Early Purchase Option requirements and benefits'
         ],
         content: [
           {
             type: 'text',
             title: 'Understanding Lease-to-Own Structure',
-            content: 'EasyPay Finance\'s Lease-to-Own (LTO) program is a rental-purchase agreement where EasyPay Leasing purchases merchandise from merchants and leases it to customers. This structure provides more flexible qualification requirements since EasyPay retains ownership until the customer exercises their purchase option.'
+            content: 'In the 3 LTO states (Florida, Georgia, and Texas), EasyPay Finance offers Lease-to-Own through EasyPay Leasing. This is a rental-purchase agreement where EasyPay Leasing purchases merchandise from merchants and leases it to customers. EasyPay retains ownership until the customer exercises their purchase option.'
           },
           {
             type: 'text',
-            title: 'Rental-Purchase Agreement Framework',
-            content: 'Under EasyPay\'s LTO program, customers make regular rental payments with the right to purchase at any time. The customer can exercise early purchase options with significant savings, continue until ownership transfer, or return the merchandise without further payment obligation.'
+            title: 'LTO Ownership and Legal Structure',
+            content: 'CRITICAL: EasyPay Leasing owns the Personal Property throughout the lease term. Customers are renting the merchandise with options to purchase. Ownership only transfers when: (1) all lease payments are completed, OR (2) an Early Purchase Option is exercised.'
           },
           {
             type: 'example',
-            title: 'LTO Structure Example',
-            content: '• Customer selects $2,500 furniture set\n• Merchant submits LTO application to EasyPay Leasing\n• Customer approved and signs rental-purchase agreement\n• Customer pays $39 processing fee at signing\n• EasyPay purchases merchandise from merchant\n• Customer makes weekly/bi-weekly/monthly payments\n• Early purchase options provide 30-50% savings\n• Customer can return merchandise anytime\n• Up to $5,000 financing available'
-          },
-          {
-            type: 'text',
-            title: 'Processing Fee Structure',
-            content: 'All EasyPay LTO agreements include a mandatory $39 processing fee that must be collected at the time of signing. This fee covers administrative costs and application processing. The customer cannot take possession of merchandise until this processing fee is paid in full.'
+            title: 'LTO Key Features',
+            content: '• EasyPay Leasing owns merchandise during lease term\n• Customer makes lease payments (not finance charges)\n• $39 mandatory processing fee collected at signing\n• 90-Day Early Purchase Option: Cash Price + $39 + taxes\n• Standard Early Purchase Option: 70% of remaining payments + fees\n• Customer can return merchandise anytime\n• No sales tax collected at point of sale'
           },
           {
             type: 'warning',
-            title: 'Important LTO Requirements',
-            content: 'The $39 processing fee is mandatory and must be collected before merchandise delivery. This fee is separate from the rental-purchase payments and cannot be financed or waived. Ensure customers understand this requirement during the application process.'
-          }
-        ],
-        keyTakeaways: [
-          'LTO is a rental-purchase agreement, not traditional financing',
-          'Early purchase options provide significant savings to customers',
-          'Lower qualification requirements enable higher approval rates',
-          'Processing fee of $39 must be collected at signing'
-        ]
-      },
-      {
-        id: 'lesson-3-3',
-        title: 'Choosing the Right Program for Each Customer',
-        duration: '10 minutes',
-        objectives: [
-          'Develop decision-making criteria for program selection',
-          'Learn to read customer preferences and qualifications',
-          'Understand how to present both options effectively'
-        ],
-        content: [
+            title: 'LTO Tax Collection Process',
+            content: 'CRITICAL PROCESS: Merchant lists EasyPay Leasing as purchaser and uses EasyPay\'s tax-exempt ID. NO sales tax is charged at point of sale. EasyPay Leasing collects applicable sales tax as part of lease payments. Estimated tax amounts are shown on page 2 of the lease agreement.'
+          },
           {
             type: 'text',
-            title: 'Decision Framework',
-            content: 'Choosing between RIC and LTO depends on customer credit profile, preferences, and financial situation. Understanding these factors helps you recommend the best option and increases approval rates.'
-          },
-          {
-            type: 'interactive',
-            title: 'RIC vs LTO Comparison Tool',
-            content: 'Use this interactive comparison tool to understand the key differences between RIC and LTO programs and determine which program is best for different customer scenarios.',
-            interactiveType: 'scenario'
-          },
-          {
-            type: 'example',
-            title: 'When to Recommend RIC',
-            content: 'Recommend RIC for customers with:\n• Stable employment and income\n• Fair to good credit history\n• Preference for immediate ownership\n• Desire for traditional financing\n• Comfort with full item responsibility'
-          },
-          {
-            type: 'example',
-            title: 'When to Recommend LTO',
-            content: 'Recommend LTO for customers with:\n• Challenged credit history\n• Variable or newer income\n• Preference for lower payments\n• Interest in early purchase savings\n• Uncertainty about long-term item need'
+            title: 'Early Purchase Options Explained',
+            content: '90-Day Early Purchase Option: Cash Price + $39 processing fee + applicable taxes + any outstanding fees. Customer must pay MORE than regular scheduled payments.\n\nStandard Early Purchase Option (after 90 days): 70% of remaining regular payments + processing fees + taxes. Available throughout the lease term.'
           }
         ],
         keyTakeaways: [
-          'Program choice depends on credit profile, preferences, and financial situation',
-          'RIC is better for stable customers wanting immediate ownership',
-          'LTO serves credit-challenged customers and those wanting flexibility',
-          'Sometimes presenting both options allows customers to choose what works best'
+          'Available in 3 states only: Florida (FL), Georgia (GA), Texas (TX)',
+          'EasyPay Leasing owns merchandise until purchase option exercised',
+          'Mandatory $39 processing fee must be collected at contract signing',
+          'No sales tax collected by merchant - handled through lease payments'
         ]
       }
     ],
     quiz: {
       id: 'quiz-3',
-      title: 'RIC vs LTO Assessment',
+      title: 'State-Specific Product Knowledge Assessment',
       passingScore: 80,
       timeLimit: 15,
       questions: [
         {
           id: 'q3-1',
-          question: 'What is the maximum finance charge for RIC customers who pay within 90 days?',
+          question: 'How many states does EasyPay Finance currently operate in?',
           type: 'multiple-choice',
-          options: ['$25', '$40', '$50', '$75'],
-          correctAnswer: '$40',
-          explanation: 'EasyPay Finance caps the finance charge at $40 maximum for RIC customers who pay within 90 days, making it very affordable for quick payoffs.',
+          options: ['19 states', '21 states', '22 states', '25 states'],
+          correctAnswer: '22 states',
+          explanation: 'EasyPay Finance operates in 22 states total: 19 RIC-only states and 3 LTO-only states.',
           points: 15
         },
         {
           id: 'q3-2',
-          question: 'What is the mandatory processing fee for LTO agreements?',
+          question: 'How many states offer both RIC and LTO products?',
           type: 'multiple-choice',
-          options: ['$25', '$35', '$39', '$50'],
-          correctAnswer: '$39',
-          explanation: 'All EasyPay LTO agreements require a mandatory $39 processing fee that must be collected at signing before merchandise delivery.',
-          points: 15
+          options: ['0 states', '3 states', '19 states', '22 states'],
+          correctAnswer: '0 states',
+          explanation: 'NO state offers both products. Each state has either RIC or LTO, never both.',
+          points: 20
         },
         {
           id: 'q3-3',
-          question: 'Which program typically has lower qualification requirements?',
+          question: 'Which states offer Lease-to-Own (LTO) products?',
           type: 'multiple-choice',
-          options: ['RIC (Retail Installment Contract)', 'LTO (Lease-to-Own)', 'Both have the same requirements', 'It depends on the merchandise type'],
-          correctAnswer: 'LTO (Lease-to-Own)',
-          explanation: 'LTO has more flexible qualification requirements because EasyPay retains ownership until purchase, reducing risk.',
+          options: ['California, Arizona, Nevada', 'Florida, Georgia, Texas', 'New York, New Jersey, Connecticut', 'All 22 operating states'],
+          correctAnswer: 'Florida, Georgia, Texas',
+          explanation: 'Only 3 states offer LTO: Florida (FL), Georgia (GA), and Texas (TX).',
           points: 15
         },
         {
           id: 'q3-4',
-          question: 'In RIC agreements, when does the customer own the merchandise?',
+          question: 'What is the 90-day finance charge cap for RIC products?',
           type: 'multiple-choice',
-          options: ['After making the first payment', 'After making half the payments', 'Immediately upon contract execution', 'After completing all payments'],
-          correctAnswer: 'Immediately upon contract execution',
-          explanation: 'In RIC agreements, the customer owns the merchandise immediately upon contract execution.',
+          options: ['$25', '$39', '$40', '$50'],
+          correctAnswer: '$40',
+          explanation: 'RIC customers who pay their amount financed within 90 days have finance charges capped at $40 maximum.',
           points: 15
         },
         {
           id: 'q3-5',
-          question: 'In LTO agreements, who owns the merchandise initially?',
+          question: 'What is the mandatory processing fee for LTO agreements?',
           type: 'multiple-choice',
-          options: ['The customer', 'The merchant', 'EasyPay Leasing', 'A third-party bank'],
-          correctAnswer: 'EasyPay Leasing',
-          explanation: 'In LTO agreements, EasyPay Leasing purchases the merchandise from the merchant and leases it to the customer.',
+          options: ['$25', '$35', '$39', '$40'],
+          correctAnswer: '$39',
+          explanation: 'All LTO agreements require a mandatory $39 processing fee collected at contract signing.',
           points: 15
         },
         {
           id: 'q3-6',
-          question: 'When does same-day funding occur for approved RIC applications?',
+          question: 'In LTO agreements, who collects sales tax from the customer?',
           type: 'multiple-choice',
-          options: ['If received by 2pm EST', 'If received by 4pm EST', 'If received by 6pm EST', 'Next business day only'],
-          correctAnswer: 'If received by 4pm EST',
-          explanation: 'EasyPay Finance provides same-day funding for RIC contracts received by 4pm EST.',
-          points: 15
+          options: ['The merchant at point of sale', 'EasyPay Leasing through lease payments', 'The customer pays directly to the state', 'No sales tax applies to LTO'],
+          correctAnswer: 'EasyPay Leasing through lease payments',
+          explanation: 'Merchants do NOT collect sales tax on LTO transactions. EasyPay Leasing collects applicable sales tax as part of the lease payments.',
+          points: 20
         }
       ]
     },
@@ -1468,7 +1502,7 @@ export const trainingModules: TrainingModule[] = [
             'Customers with perfect credit seeking lowest rates'
           ],
           correctAnswer: ['Credit-challenged customers', 'Self-employed workers', 'Customers wanting early purchase savings', 'Commission-based earners'],
-          explanation: 'LTO is ideal for credit-challenged, self-employed, commission-based customers and those wanting early purchase savings. Customers preferring immediate ownership or seeking lowest rates might prefer RIC.',
+          explanation: 'LTO is ideal for credit-challenged, self-employed, commission-based customers and those wanting early purchase savings. LTO provides flexible payment options and early purchase opportunities.',
           points: 15
         }
       ]

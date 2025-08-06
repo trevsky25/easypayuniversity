@@ -1,24 +1,18 @@
 'use client'
 
 import { QuizComponent } from '@/components/quiz/QuizComponent'
-import { allQuizzes } from '@/data/quizData'
+import trainingModules from '@/data/modules'
 import { useParams, useRouter } from 'next/navigation'
 import { ArrowLeft } from 'lucide-react'
-
-const moduleNames: Record<string, string> = {
-  '1': 'Welcome to EasyPay Finance',
-  '2': 'How to Submit Applications', 
-  '3': 'Establishing a Credit Culture',
-  '4': 'Advanced Topics'
-}
 
 export default function QuizPage() {
   const params = useParams()
   const router = useRouter()
   const moduleId = params.id as string
   
-  const quizData = allQuizzes[moduleId as keyof typeof allQuizzes]
-  const moduleName = moduleNames[moduleId]
+  const module = trainingModules.find(m => m.id === `module-${moduleId}`)
+  const quizData = module?.quiz
+  const moduleName = module?.title
 
   if (!quizData || !moduleName) {
     return (
@@ -33,6 +27,19 @@ export default function QuizPage() {
       </div>
     )
   }
+
+  // Transform module quiz data to QuizComponent format
+  const transformedQuestions = quizData.questions.map((q, index) => ({
+    id: index + 1,
+    type: q.type as 'multiple-choice' | 'true-false' | 'text-input' | 'scenario',
+    question: q.question,
+    options: q.options,
+    correctAnswer: q.type === 'select-multiple' 
+      ? (q.options?.map((opt, i) => (q.correctAnswer as string[]).includes(opt) ? i : -1).filter(i => i !== -1) || [])
+      : (q.options?.indexOf(q.correctAnswer as string) ?? 0),
+    explanation: q.explanation,
+    points: q.points || 10
+  }));
 
   const handleQuizComplete = (score: number, passed: boolean, answers: any[]) => {
     console.log('Quiz completed:', { score, passed, answers })
@@ -63,7 +70,7 @@ export default function QuizPage() {
       <QuizComponent
         moduleId={parseInt(moduleId)}
         moduleName={moduleName}
-        questions={quizData.questions}
+        questions={transformedQuestions}
         timeLimit={quizData.timeLimit}
         passingScore={quizData.passingScore}
         onComplete={handleQuizComplete}

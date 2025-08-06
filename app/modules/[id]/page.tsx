@@ -15,7 +15,8 @@ import {
   HelpCircle,
   Award,
   Star,
-  Trophy
+  Trophy,
+  Image
 } from 'lucide-react'
 import React, { useState } from 'react'
 import { useParams, useRouter } from 'next/navigation'
@@ -97,7 +98,9 @@ export default function ModulePage() {
     }
     try {
       const hasInteractive = lesson.content.some((c: any) => c && c.type === 'interactive')
+      const hasImage = lesson.content.some((c: any) => c && c.type === 'image')
       if (hasInteractive) return <PlayCircle className="w-4 h-4" />
+      if (hasImage) return <Image className="w-4 h-4" />
       return <FileText className="w-4 h-4" />
     } catch (error) {
       return <FileText className="w-4 h-4" />
@@ -184,6 +187,28 @@ export default function ModulePage() {
                               data={section}
                               onComplete={() => handleLessonComplete()}
                             />
+                          ) : section.type === 'image' ? (
+                            <div className="text-center my-8">
+                              {section.title && (
+                                <h4 className="font-semibold text-gray-900 mb-4">{section.title}</h4>
+                              )}
+                              <div className="inline-block">
+                                <img 
+                                  src={section.imageUrl} 
+                                  alt={section.imageAlt || section.title || 'Image'} 
+                                  className="max-w-full h-auto border border-gray-200 rounded-lg shadow-lg"
+                                  style={{ maxHeight: '500px' }}
+                                />
+                                {section.imageCaption && (
+                                  <p className="text-sm text-gray-600 mt-3 px-4">
+                                    <strong>Legend:</strong> {section.imageCaption}
+                                  </p>
+                                )}
+                              </div>
+                              {section.content && (
+                                <p className="text-gray-700 mt-4 max-w-2xl mx-auto">{section.content}</p>
+                              )}
+                            </div>
                           ) : (
                             <div className={`
                               ${section.type === 'example' ? 'bg-blue-50 border-l-4 border-blue-400 p-4' :

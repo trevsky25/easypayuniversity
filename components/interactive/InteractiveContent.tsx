@@ -43,36 +43,62 @@ export function InteractiveContent({ type, data, onComplete }: InteractiveConten
       return <CreditCultureBuilder data={data} onComplete={onComplete} />
     case 'knowledge-quiz':
       return <KnowledgeQuiz data={data} onComplete={onComplete} />
+    case 'StateProductMatcher':
+      return <StateProductMatcher data={data} onComplete={onComplete} />
     default:
       return <div>Interactive content loading...</div>
   }
 }
 
-// Financing Calculator Interactive Tool
+// State-Specific Financing Calculator - COMPLIANCE COMPLIANT
 function FinancingCalculator({ data, onComplete }: { data: any, onComplete?: () => void }) {
   const [purchaseAmount, setPurchaseAmount] = useState(1000)
-  const [program, setProgram] = useState('RIC')
+  const [selectedState, setSelectedState] = useState('')
   const [results, setResults] = useState<any>(null)
   const [showCelebration, setShowCelebration] = useState(false)
 
+  // State product mapping - CRITICAL COMPLIANCE
+  const RIC_STATES = ['AK', 'AZ', 'CA', 'DE', 'ID', 'KS', 'KY', 'MO', 'NV', 'NH', 'NM', 'ND', 'OR', 'PA', 'SD', 'UT', 'VA', 'WA', 'WI']
+  const LTO_STATES = ['FL', 'GA', 'TX']
+
+  const getProductForState = (state: string) => {
+    if (RIC_STATES.includes(state)) return 'RIC'
+    if (LTO_STATES.includes(state)) return 'LTO'
+    return null
+  }
+
   const calculateFinancing = () => {
-    let payment, term, total
-    
-    if (program === 'RIC') {
-      term = 12
-      payment = Math.round((purchaseAmount * 1.15) / term)
-      total = payment * term
-    } else if (program === 'LTO') {
-      term = 18
-      payment = Math.round((purchaseAmount * 1.8) / term)
-      total = payment * term
-    } else { // Default to RIC
-      term = 24
-      payment = Math.round((purchaseAmount * 1.25) / term)
-      total = payment * term
+    const product = getProductForState(selectedState)
+    if (!product) {
+      setResults({ error: 'EasyPay Finance does not operate in this state' })
+      return
     }
 
-    setResults({ payment, term, total, savings: total - purchaseAmount })
+    let payment, term, total, program = product
+    
+    if (product === 'RIC') {
+      // RIC calculation with proper terminology
+      term = 12
+      const financeCharge = purchaseAmount * 0.15
+      total = purchaseAmount + financeCharge
+      payment = Math.round(total / term)
+    } else {
+      // LTO calculation with proper terminology  
+      term = 18
+      const costOfRental = purchaseAmount * 0.8
+      total = purchaseAmount + costOfRental
+      payment = Math.round(total / term)
+    }
+
+    setResults({ 
+      payment, 
+      term, 
+      total, 
+      program,
+      purchaseAmount,
+      additionalCost: total - purchaseAmount,
+      state: selectedState
+    })
     setShowCelebration(true)
     setTimeout(() => setShowCelebration(false), 2000)
     onComplete?.()
@@ -81,16 +107,39 @@ function FinancingCalculator({ data, onComplete }: { data: any, onComplete?: () 
   return (
     <div className="space-y-6">
       <div className="text-center">
-        <div className="inline-flex items-center gap-2 bg-blue-100 px-4 py-2 rounded-full mb-4">
-          <Calculator className="w-5 h-5 text-blue-600" />
-          <span className="font-semibold text-blue-800">Financing Calculator</span>
+        <div className="inline-flex items-center gap-2 bg-green-100 px-4 py-2 rounded-full mb-4">
+          <Calculator className="w-5 h-5 text-green-600" />
+          <span className="font-semibold text-green-800">EasyPay State-Specific Calculator</span>
         </div>
-        <p className="text-gray-600">Try different financing options for your customers!</p>
+        <p className="text-gray-600">Calculate payments for your state&apos;s available product!</p>
       </div>
 
-      <Card className="p-6 bg-gradient-to-br from-blue-50 to-indigo-50">
+      <Card className="p-6 bg-gradient-to-br from-green-50 to-emerald-50">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div className="space-y-4">
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-2">
+                Your State
+              </label>
+              <select
+                value={selectedState}
+                onChange={(e) => setSelectedState(e.target.value)}
+                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500"
+              >
+                <option value="">Select your state</option>
+                <optgroup label="RIC States (19 states)">
+                  {RIC_STATES.map(state => (
+                    <option key={state} value={state}>{state} - RIC Available</option>
+                  ))}
+                </optgroup>
+                <optgroup label="LTO States (3 states)">
+                  {LTO_STATES.map(state => (
+                    <option key={state} value={state}>{state} - LTO Available</option>
+                  ))}
+                </optgroup>
+              </select>
+            </div>
+
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-2">
                 Purchase Amount
@@ -106,36 +155,27 @@ function FinancingCalculator({ data, onComplete }: { data: any, onComplete?: () 
                   onChange={(e) => setPurchaseAmount(parseInt(e.target.value))}
                   className="w-full mt-2"
                 />
-                <div className="text-center text-2xl font-bold text-blue-600 mt-2">
+                <div className="text-center text-2xl font-bold text-green-600 mt-2">
                   ${purchaseAmount.toLocaleString()}
                 </div>
               </div>
             </div>
 
-            <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">
-                Financing Program
-              </label>
-              <div className="grid grid-cols-2 gap-2">
-                {['RIC', 'LTO'].map((prog) => (
-                  <button
-                    key={prog}
-                    onClick={() => setProgram(prog)}
-                    className={`px-3 py-2 rounded-lg text-sm font-medium transition-all ${
-                      program === prog
-                        ? 'bg-blue-600 text-white shadow-lg transform scale-105'
-                        : 'bg-white text-gray-600 hover:bg-blue-50'
-                    }`}
-                  >
-                    {prog}
-                  </button>
-                ))}
+            {selectedState && (
+              <div className="bg-blue-50 rounded-lg p-3">
+                <h4 className="font-semibold text-blue-800 mb-1">Available in {selectedState}:</h4>
+                <p className="text-sm text-blue-700">
+                  {getProductForState(selectedState) === 'RIC' ? 
+                    'Retail Installment Contract (RIC) - Credit sales program' : 
+                    'Lease-to-Own (LTO) - Rental-purchase program'}
+                </p>
               </div>
-            </div>
+            )}
 
             <button
               onClick={calculateFinancing}
-              className="w-full bg-gradient-to-r from-blue-600 to-purple-600 text-white py-3 rounded-lg font-semibold hover:shadow-lg transition-all transform hover:scale-105 flex items-center justify-center gap-2"
+              disabled={!selectedState}
+              className="w-full bg-gradient-to-r from-green-600 to-emerald-600 text-white py-3 rounded-lg font-semibold hover:shadow-lg transition-all transform hover:scale-105 flex items-center justify-center gap-2 disabled:opacity-50 disabled:transform-none"
             >
               <Sparkles className="w-5 h-5" />
               Calculate Payment
@@ -144,32 +184,65 @@ function FinancingCalculator({ data, onComplete }: { data: any, onComplete?: () 
 
           {results && (
             <div className={`space-y-4 transition-all duration-500 ${showCelebration ? 'animate-bounce' : ''}`}>
-              <div className="bg-white rounded-xl p-4 shadow-lg">
-                <h3 className="font-semibold text-gray-800 mb-3 flex items-center gap-2">
-                  <Trophy className="w-5 h-5 text-yellow-500" />
-                  Payment Results
-                </h3>
-                <div className="space-y-2">
-                  <div className="flex justify-between">
-                    <span className="text-gray-600">Monthly Payment:</span>
-                    <span className="font-bold text-green-600">${results.payment}</span>
-                  </div>
-                  <div className="flex justify-between">
-                    <span className="text-gray-600">Term:</span>
-                    <span className="font-bold">{results.term} months</span>
-                  </div>
-                  <div className="flex justify-between">
-                    <span className="text-gray-600">Total Cost:</span>
-                    <span className="font-bold">${results.total}</span>
-                  </div>
-                  <div className="flex justify-between border-t pt-2">
-                    <span className="text-gray-600">Financing Cost:</span>
-                    <span className="font-bold text-blue-600">${results.savings}</span>
-                  </div>
+              {results.error ? (
+                <div className="bg-red-50 rounded-xl p-4 border border-red-200">
+                  <h3 className="font-semibold text-red-800 mb-2">Service Not Available</h3>
+                  <p className="text-red-700">{results.error}</p>
                 </div>
-              </div>
+              ) : (
+                <div className="bg-white rounded-xl p-4 shadow-lg">
+                  <h3 className="font-semibold text-gray-800 mb-3 flex items-center gap-2">
+                    <Trophy className="w-5 h-5 text-yellow-500" />
+                    {results.program} Payment Results
+                  </h3>
+                  <div className="space-y-2">
+                    <div className="flex justify-between">
+                      <span className="text-gray-600">
+                        {results.program === 'RIC' ? 'Monthly Payment:' : 'Lease Payment:'}
+                      </span>
+                      <span className="font-bold text-green-600">${results.payment}</span>
+                    </div>
+                    <div className="flex justify-between">
+                      <span className="text-gray-600">Term:</span>
+                      <span className="font-bold">{results.term} months</span>
+                    </div>
+                    <div className="flex justify-between">
+                      <span className="text-gray-600">
+                        {results.program === 'RIC' ? 'Amount Financed:' : 'Cash Price:'}
+                      </span>
+                      <span className="font-bold">${results.purchaseAmount}</span>
+                    </div>
+                    <div className="flex justify-between">
+                      <span className="text-gray-600">Total of Payments:</span>
+                      <span className="font-bold">${results.total}</span>
+                    </div>
+                    <div className="flex justify-between border-t pt-2">
+                      <span className="text-gray-600">
+                        {results.program === 'RIC' ? 'Finance Charges:' : 'Cost of Rental:'}
+                      </span>
+                      <span className="font-bold text-blue-600">${results.additionalCost}</span>
+                    </div>
+                  </div>
+                  
+                  {results.program === 'RIC' && (
+                    <div className="mt-3 p-2 bg-yellow-50 rounded border border-yellow-200">
+                      <p className="text-xs text-yellow-800">
+                        <strong>90-Day Finance Charge Cap:</strong> If paid within 90 days, finance charges capped at $40.
+                      </p>
+                    </div>
+                  )}
+                  
+                  {results.program === 'LTO' && (
+                    <div className="mt-3 p-2 bg-purple-50 rounded border border-purple-200">
+                      <p className="text-xs text-purple-800">
+                        <strong>90-Day EPO:</strong> Cash Price + $39 processing fee + taxes if paid within 90 days.
+                      </p>
+                    </div>
+                  )}
+                </div>
+              )}
               
-              {showCelebration && (
+              {showCelebration && !results.error && (
                 <div className="text-center bg-yellow-100 rounded-lg p-3">
                   <div className="text-2xl">🎉</div>
                   <div className="text-sm font-semibold text-yellow-800">Great calculation!</div>
@@ -183,128 +256,139 @@ function FinancingCalculator({ data, onComplete }: { data: any, onComplete?: () 
   )
 }
 
-// Program Comparison Interactive Tool
+// Program Comparison Tool - Interactive Learning Component
 function ProgramComparison({ data, onComplete }: { data: any, onComplete?: () => void }) {
-  const [selectedScenario, setSelectedScenario] = useState(0)
-  const [userChoice, setUserChoice] = useState<string | null>(null)
+  const [currentScenario, setCurrentScenario] = useState(0)
+  const [selectedProgram, setSelectedProgram] = useState<string | null>(null)
   const [showResult, setShowResult] = useState(false)
+  const [score, setScore] = useState(0)
 
-  const scenarios = [
+  const scenarios = data?.scenarios || [
     {
-      customer: "Sarah - Credit Score 580, Needs furniture for new apartment",
-      item: "$2,500 Living Room Set",
+      customer: 'Sarah - Credit Score 580, Needs furniture for new apartment',
+      item: '$2,500 Living Room Set',
       options: ['RIC', 'LTO'],
       best: 'LTO',
-      reason: "LTO is perfect for credit-challenged customers like Sarah. Lower approval requirements and flexible payment options."
+      reason: 'LTO is perfect for credit-challenged customers like Sarah. Lower approval requirements and flexible payment options.'
     },
     {
-      customer: "Mike - Credit Score 720, Emergency car repair",
-      item: "$1,800 Auto Repair",
+      customer: 'Mike - Credit Score 720, Emergency car repair',
+      item: '$1,800 Auto Repair',
       options: ['RIC', 'LTO'],
       best: 'RIC',
-      reason: "RIC offers immediate ownership and competitive rates for customers with good credit like Mike."
+      reason: 'RIC offers immediate ownership and competitive rates for customers with good credit like Mike.'
+    },
+    {
+      customer: 'Jennifer - Credit Score 650, Kitchen renovation',
+      item: '$3,200 Kitchen Appliances',
+      options: ['RIC', 'LTO'],
+      best: 'RIC',
+      reason: 'RIC provides traditional financing that works well for medium credit customers seeking larger purchases.'
     }
   ]
 
-  const handleChoice = (choice: string) => {
-    setUserChoice(choice)
+  const handleProgramSelection = (program: string) => {
+    setSelectedProgram(program)
     setShowResult(true)
-    if (choice === scenarios[selectedScenario].best) {
-      onComplete?.()
+    if (program === scenarios[currentScenario].best) {
+      setScore(score + 20)
     }
   }
 
   const nextScenario = () => {
-    if (selectedScenario < scenarios.length - 1) {
-      setSelectedScenario(selectedScenario + 1)
-      setUserChoice(null)
+    if (currentScenario < scenarios.length - 1) {
+      setCurrentScenario(currentScenario + 1)
+      setSelectedProgram(null)
       setShowResult(false)
+    } else {
+      onComplete?.()
     }
   }
 
-  const currentScenario = scenarios[selectedScenario]
+  const currentCase = scenarios[currentScenario]
 
   return (
     <div className="space-y-6">
       <div className="text-center">
-        <div className="inline-flex items-center gap-2 bg-purple-100 px-4 py-2 rounded-full mb-4">
-          <Target className="w-5 h-5 text-purple-600" />
-          <span className="font-semibold text-purple-800">Program Matching Challenge</span>
+        <div className="inline-flex items-center gap-2 bg-green-100 px-4 py-2 rounded-full mb-4">
+          <TrendingUp className="w-5 h-5 text-green-600" />
+          <span className="font-semibold text-green-800">Program Comparison Challenge</span>
         </div>
-        <p className="text-gray-600">Match the right financing program to each customer!</p>
+        <p className="text-gray-600">Choose the best EasyPay program for each customer scenario</p>
+        <div className="flex items-center justify-center gap-4 mt-2">
+          <div className="flex items-center gap-2">
+            <Star className="w-5 h-5 text-yellow-500" />
+            <span className="font-bold">Score: {score}</span>
+          </div>
+        </div>
       </div>
 
-      <Card className="p-6 bg-gradient-to-br from-purple-50 to-pink-50">
+      <Card className="p-6 bg-gradient-to-br from-green-50 to-emerald-50">
         <div className="space-y-6">
           <div className="bg-white rounded-xl p-4 shadow-lg">
             <div className="flex items-center justify-between mb-4">
-              <h3 className="font-semibold text-gray-800">Customer Scenario {selectedScenario + 1}</h3>
-              <div className="bg-purple-100 px-3 py-1 rounded-full text-sm text-purple-700">
-                {selectedScenario + 1} of {scenarios.length}
+              <h3 className="font-semibold text-gray-800">Scenario {currentScenario + 1}</h3>
+              <div className="bg-green-100 px-3 py-1 rounded-full text-sm text-green-700">
+                {currentScenario + 1} of {scenarios.length}
               </div>
             </div>
             
-            <div className="space-y-3">
-              <div className="flex items-center gap-3">
-                <Users className="w-5 h-5 text-blue-500" />
-                <span className="text-gray-700">{currentScenario.customer}</span>
-              </div>
-              <div className="flex items-center gap-3">
-                <DollarSign className="w-5 h-5 text-green-500" />
-                <span className="text-gray-700">{currentScenario.item}</span>
-              </div>
+            <div className="space-y-3 mb-4">
+              <div className="text-lg font-medium text-gray-800">{currentCase.customer}</div>
+              <div className="text-gray-600">Purchase: {currentCase.item}</div>
+            </div>
+            
+            <div className="text-sm text-gray-600 mb-4">Which EasyPay program would you recommend?</div>
+            
+            <div className="grid grid-cols-2 gap-3 mb-4">
+              {currentCase.options.map((option: string) => (
+                <button
+                  key={option}
+                  onClick={() => handleProgramSelection(option)}
+                  disabled={showResult}
+                  className={`p-3 text-center rounded-lg border-2 transition-all font-medium ${
+                    selectedProgram === option
+                      ? option === currentCase.best
+                        ? 'border-green-500 bg-green-50 text-green-700'
+                        : 'border-red-500 bg-red-50 text-red-700'
+                      : 'border-gray-200 bg-white hover:border-green-300'
+                  }`}
+                >
+                  {option}
+                </button>
+              ))}
             </div>
           </div>
-
-          <div className="grid grid-cols-3 gap-4">
-            {currentScenario.options.map((option) => (
-              <button
-                key={option}
-                onClick={() => handleChoice(option)}
-                disabled={showResult}
-                className={`p-4 rounded-xl border-2 transition-all transform hover:scale-105 ${
-                  userChoice === option
-                    ? option === currentScenario.best
-                      ? 'border-green-500 bg-green-50 text-green-700'
-                      : 'border-red-500 bg-red-50 text-red-700'
-                    : 'border-gray-200 bg-white hover:border-purple-300'
-                }`}
-              >
-                <div className="text-xl font-bold mb-2">{option}</div>
-                <div className="text-sm text-gray-600">
-                  {option === 'RIC' ? 'Credit Sales' : 
-                   option === 'LTO' ? 'Lease-to-Own' : 'Retail Installment Contract'}
-                </div>
-              </button>
-            ))}
-          </div>
-
+          
           {showResult && (
-            <div className={`bg-white rounded-xl p-4 shadow-lg transition-all duration-500 ${
-              userChoice === currentScenario.best ? 'border-l-4 border-green-500' : 'border-l-4 border-orange-500'
-            }`}>
-              <div className="flex items-center gap-2 mb-2">
-                {userChoice === currentScenario.best ? (
+            <div className="bg-white rounded-xl p-4 shadow-lg">
+              <div className="flex items-start gap-3 mb-3">
+                {selectedProgram === currentCase.best ? (
                   <>
-                    <CheckCircle className="w-6 h-6 text-green-500" />
-                    <span className="font-semibold text-green-700">Excellent Choice! 🎉</span>
+                    <CheckCircle className="w-5 h-5 text-green-500 mt-1" />
+                    <div className="text-green-700 font-medium">Excellent choice! +20 points</div>
                   </>
                 ) : (
                   <>
-                    <Target className="w-6 h-6 text-orange-500" />
-                    <span className="font-semibold text-orange-700">Good try! Best option: {currentScenario.best}</span>
+                    <Target className="w-5 h-5 text-orange-500 mt-1" />
+                    <div className="text-orange-700 font-medium">Consider {currentCase.best} for this scenario</div>
                   </>
                 )}
               </div>
-              <p className="text-gray-700">{currentScenario.reason}</p>
+              <p className="text-gray-700">{currentCase.reason}</p>
               
-              {selectedScenario < scenarios.length - 1 && (
+              {currentScenario < scenarios.length - 1 ? (
                 <button
                   onClick={nextScenario}
-                  className="mt-4 bg-purple-600 text-white px-4 py-2 rounded-lg hover:bg-purple-700 transition-colors flex items-center gap-2"
+                  className="mt-4 bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 transition-colors flex items-center gap-2"
                 >
                   Next Scenario <ArrowRight className="w-4 h-4" />
                 </button>
+              ) : (
+                <div className="mt-4 text-center">
+                  <div className="text-lg font-bold text-green-600">Challenge Complete!</div>
+                  <div className="text-sm text-gray-600">Final Score: {score} points</div>
+                </div>
               )}
             </div>
           )}
@@ -919,6 +1003,237 @@ function KnowledgeQuiz({ data, onComplete }: { data: any, onComplete?: () => voi
             </div>
           )}
         </div>
+      </Card>
+    </div>
+  )
+}
+
+// State-Product Matching Game - Interactive Learning Component
+function StateProductMatcher({ data, onComplete }: { data: any, onComplete?: () => void }) {
+  const [draggedState, setDraggedState] = useState<any>(null)
+  const [droppedStates, setDroppedStates] = useState<{[key: string]: any[]}>({
+    RIC: [],
+    LTO: [],
+    NONE: []
+  })
+  const [isCompleted, setIsCompleted] = useState(false)
+  const [showResults, setShowResults] = useState(false)
+  const [score, setScore] = useState(0)
+  const [showCelebration, setShowCelebration] = useState(false)
+
+  // Access the interaction data correctly
+  const interactionData = data.interactionData || data
+  const availableStates = interactionData.states?.filter((state: any) => 
+    !Object.values(droppedStates).flat().find((s: any) => s.abbr === state.abbr)
+  ) || []
+
+  const handleDragStart = (e: React.DragEvent, state: any) => {
+    setDraggedState(state)
+    e.dataTransfer.effectAllowed = 'move'
+  }
+
+  const handleDragOver = (e: React.DragEvent) => {
+    e.preventDefault()
+    e.dataTransfer.dropEffect = 'move'
+  }
+
+  const handleDrop = (e: React.DragEvent, categoryId: string) => {
+    e.preventDefault()
+    if (draggedState) {
+      setDroppedStates(prev => ({
+        ...prev,
+        [categoryId]: [...prev[categoryId], draggedState]
+      }))
+      setDraggedState(null)
+    }
+  }
+
+  const removeState = (categoryId: string, stateToRemove: any) => {
+    setDroppedStates(prev => ({
+      ...prev,
+      [categoryId]: prev[categoryId].filter(s => s.abbr !== stateToRemove.abbr)
+    }))
+  }
+
+  const checkAnswers = () => {
+    let correctCount = 0
+    const totalStates = interactionData.states?.length || 0
+
+    Object.entries(droppedStates).forEach(([category, states]: [string, any[]]) => {
+      states.forEach(state => {
+        if (state.correct === category) {
+          correctCount++
+        }
+      })
+    })
+
+    setScore(correctCount)
+    setShowResults(true)
+    
+    if (correctCount === totalStates) {
+      setIsCompleted(true)
+      setShowCelebration(true)
+      if (onComplete) onComplete()
+      
+      // Award eBucks for completion
+      if (typeof window !== 'undefined') {
+        try {
+          const currentEBucks = parseInt(localStorage.getItem('totalEBucks') || '0')
+          localStorage.setItem('totalEBucks', (currentEBucks + (interactionData.completionReward || 50)).toString())
+        } catch (e) {
+          console.log('Could not update eBucks')
+        }
+      }
+    }
+  }
+
+  const resetGame = () => {
+    setDroppedStates({ RIC: [], LTO: [], NONE: [] })
+    setShowResults(false)
+    setIsCompleted(false)
+    setShowCelebration(false)
+    setScore(0)
+    // Scroll to top when resetting the game
+    window.scrollTo({ top: 0, behavior: 'smooth' })
+  }
+
+  const getCategoryColor = (color: string) => {
+    const colors = {
+      green: 'bg-green-50 border-green-200 text-green-800',
+      teal: 'bg-teal-50 border-teal-200 text-teal-800',
+      gray: 'bg-gray-50 border-gray-200 text-gray-800'
+    }
+    return colors[color as keyof typeof colors] || colors.gray
+  }
+
+  const allStatesPlaced = availableStates.length === 0
+
+  return (
+    <div className="w-full">
+      <Card className="p-6">
+        {showCelebration && (
+          <div className="mb-6 p-4 bg-green-50 border-2 border-green-200 rounded-lg text-center">
+            <div className="flex items-center justify-center gap-2 mb-2">
+              <Trophy className="w-6 h-6 text-yellow-600" />
+              <Crown className="w-6 h-6 text-yellow-600" />
+              <Trophy className="w-6 h-6 text-yellow-600" />
+            </div>
+            <div className="text-lg font-bold text-green-800">Perfect Score!</div>
+            <div className="text-sm text-green-600">+{interactionData.completionReward || 50} eBucks earned! 🪙</div>
+          </div>
+        )}
+
+        <div className="mb-6">
+          <h3 className="text-xl font-bold text-gray-900 mb-2">State-Product Matching Challenge</h3>
+          <p className="text-gray-600 mb-4">{interactionData.instructions}</p>
+        </div>
+
+        {/* Available States */}
+        <div className="mb-6">
+          <h4 className="font-semibold text-gray-800 mb-3">Available States ({availableStates.length})</h4>
+          <div className="flex flex-wrap gap-2 min-h-[60px] p-3 bg-gray-50 rounded-lg border-2 border-dashed border-gray-300">
+            {availableStates.map((state: any) => (
+              <div
+                key={state.abbr}
+                draggable
+                onDragStart={(e) => handleDragStart(e, state)}
+                className="px-3 py-2 bg-blue-500 text-white rounded-lg cursor-move hover:bg-blue-600 transition-colors shadow-sm"
+                title={state.name}
+              >
+                {state.abbr}
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Drop Categories */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+          {(interactionData.categories || []).map((category: any) => (
+            <div key={category.id}>
+              <div
+                onDragOver={handleDragOver}
+                onDrop={(e) => handleDrop(e, category.id)}
+                className={`min-h-[120px] p-4 rounded-lg border-2 border-dashed ${getCategoryColor(category.color)}`}
+              >
+                <h5 className="font-semibold mb-1">{category.label}</h5>
+                <p className="text-xs mb-3 opacity-75">{category.description}</p>
+                
+                <div className="flex flex-wrap gap-1">
+                  {droppedStates[category.id].map((state: any) => (
+                    <div
+                      key={state.abbr}
+                      className="px-2 py-1 bg-white rounded text-xs shadow-sm border flex items-center gap-1"
+                    >
+                      {state.abbr}
+                      <button
+                        onClick={() => removeState(category.id, state)}
+                        className="text-red-500 hover:text-red-700 text-xs"
+                        title="Remove"
+                      >
+                        ×
+                      </button>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        {/* Action Buttons */}
+        <div className="flex flex-col sm:flex-row gap-3 items-center justify-between">
+          <button
+            onClick={resetGame}
+            className="px-4 py-2 text-gray-600 hover:text-gray-800 hover:bg-gray-100 rounded-lg transition-all flex items-center gap-2"
+          >
+            <RotateCcw className="w-4 h-4" />
+            Reset
+          </button>
+          
+          <div className="flex gap-3 items-center">
+            {showResults && (
+              <div className={`px-3 py-1 rounded-full text-sm font-medium ${
+                score === (interactionData.states?.length || 0) ? 'bg-green-100 text-green-800' : 'bg-yellow-100 text-yellow-800'
+              }`}>
+                Score: {score}/{interactionData.states?.length || 0}
+              </div>
+            )}
+            
+            <button
+              onClick={checkAnswers}
+              disabled={!allStatesPlaced}
+              className={`px-6 py-2 rounded-lg font-medium transition-all flex items-center gap-2 ${
+                allStatesPlaced
+                  ? 'bg-blue-500 hover:bg-blue-600 text-white shadow-sm'
+                  : 'bg-gray-300 text-gray-500 cursor-not-allowed'
+              }`}
+            >
+              <CheckCircle className="w-4 h-4" />
+              Check Answers
+            </button>
+          </div>
+        </div>
+
+        {/* Results */}
+        {showResults && (
+          <div className="mt-6 p-4 border rounded-lg">
+            {isCompleted ? (
+              <div className="text-center">
+                <div className="text-green-600 font-semibold mb-2">{interactionData.successMessage}</div>
+                <div className="text-sm text-gray-600">
+                  You've mastered EasyPay's state coverage! Remember: each state offers only ONE product type.
+                </div>
+              </div>
+            ) : (
+              <div className="text-center">
+                <div className="text-yellow-600 font-semibold mb-2">{interactionData.failureMessage}</div>
+                <div className="text-sm text-gray-600">
+                  Review the incorrect placements and try again. Each state has exactly one correct category.
+                </div>
+              </div>
+            )}
+          </div>
+        )}
       </Card>
     </div>
   )

@@ -26,7 +26,9 @@ import {
   Target
 } from 'lucide-react'
 import { ltoCustomerScenarios, ltoApplicationProcess } from '@/data/ltoApplicationScenarios'
+import { ricCustomerScenarios, ricApplicationProcess } from '@/data/ricApplicationScenarios'
 import { conversationalScenarios, ConversationalScenario } from '@/data/conversationalScenarios'
+import { ricConversationalScenarios, RICConversationalScenario } from '@/data/ricConversationalScenarios'
 
 export default function PracticeScenariosPage() {
   const { awardBucks, completeDailyChallenge } = useEBucks()
@@ -36,7 +38,8 @@ export default function PracticeScenariosPage() {
   const [showSuccess, setShowSuccess] = useState(false)
   const [selectedCategory, setSelectedCategory] = useState<'all' | 'furniture' | 'automotive'>('all')
   const [practiceMode, setPracticeMode] = useState<'step-by-step' | 'conversation'>('step-by-step')
-  const [selectedConversation, setSelectedConversation] = useState<ConversationalScenario | null>(null)
+  const [productType, setProductType] = useState<'RIC' | 'LTO' | 'ALL'>('ALL')
+  const [selectedConversation, setSelectedConversation] = useState<ConversationalScenario | RICConversationalScenario | null>(null)
   const [conversationStep, setConversationStep] = useState(0)
   const [selectedChoice, setSelectedChoice] = useState<string | null>(null)
   const [conversationHistory, setConversationHistory] = useState<Array<{step: number, choice?: string, feedback?: string}>>([])
@@ -46,7 +49,7 @@ export default function PracticeScenariosPage() {
     setCurrentStep(0)
   }
 
-  const handleStartConversation = (conversation: ConversationalScenario) => {
+  const handleStartConversation = (conversation: ConversationalScenario | RICConversationalScenario) => {
     setSelectedConversation(conversation)
     setConversationStep(0)
     setConversationHistory([])
@@ -123,7 +126,8 @@ export default function PracticeScenariosPage() {
   }
 
   const handleNextStep = () => {
-    if (selectedScenario && currentStep < ltoApplicationProcess.length - 1) {
+    const currentProcess = productType === 'RIC' ? ricApplicationProcess : ltoApplicationProcess
+    if (selectedScenario && currentStep < currentProcess.length - 1) {
       setCurrentStep(currentStep + 1)
       // Scroll to top when moving to next step
       window.scrollTo({ top: 0, behavior: 'smooth' })
@@ -171,29 +175,134 @@ export default function PracticeScenariosPage() {
     advanced: 'text-red-600 bg-red-50 border-red-200'
   }
 
-  // Group scenarios by category - now focused on process types
-  const furnitureScenarios = ltoCustomerScenarios.filter(s => 
-    s.customerProfile.itemDescription?.toLowerCase().includes('bed') || 
-    s.customerProfile.itemDescription?.toLowerCase().includes('computer') ||
-    s.customerProfile.itemDescription?.toLowerCase().includes('scooter')
-  )
+  // Get current scenarios based on product type
+  const currentScenarios = productType === 'RIC' ? ricCustomerScenarios : 
+                          productType === 'LTO' ? ltoCustomerScenarios : 
+                          [...ricCustomerScenarios, ...ltoCustomerScenarios]
+  const currentConversationalScenarios = productType === 'RIC' ? ricConversationalScenarios : 
+                                        productType === 'LTO' ? conversationalScenarios : 
+                                        [...ricConversationalScenarios, ...conversationalScenarios]
   
-  const automotiveScenarios = ltoCustomerScenarios.filter(s => 
-    s.customerProfile.itemDescription?.toLowerCase().includes('transmission') ||
-    s.customerProfile.itemDescription?.toLowerCase().includes('repair') ||
-    s.customerProfile.itemDescription?.toLowerCase().includes('tire') ||
-    s.customerProfile.itemDescription?.toLowerCase().includes('engine') ||
-    s.customerProfile.itemDescription?.toLowerCase().includes('brake') ||
-    s.customerProfile.itemDescription?.toLowerCase().includes('fuel') ||
-    s.customerProfile.itemDescription?.toLowerCase().includes('ac') ||
-    s.customerProfile.itemDescription?.toLowerCase().includes('electrical')
-  )
+  // Group step-by-step scenarios by category
+  const furnitureScenarios = currentScenarios.filter(s => {
+    const desc = s.customerProfile.itemDescription?.toLowerCase() || ''
+    return desc.includes('bed') || 
+           desc.includes('computer') ||
+           desc.includes('gaming') ||
+           desc.includes('scooter') ||
+           desc.includes('appliance') ||
+           desc.includes('kitchen') ||
+           desc.includes('furniture') ||
+           desc.includes('home') ||
+           desc.includes('office') ||
+           desc.includes('laptop') ||
+           desc.includes('electronics') ||
+           desc.includes('hvac') ||
+           desc.includes('refrigerator') ||
+           desc.includes('washer') ||
+           desc.includes('bedroom') ||
+           desc.includes('living room') ||
+           desc.includes('medical equipment') ||
+           desc.includes('adjustable') ||
+           desc.includes('pc') ||
+           desc.includes('monitor') ||
+           desc.includes('desk') ||
+           desc.includes('chair') ||
+           desc.includes('tool') ||
+           desc.includes('energy-efficient')
+  })
+  
+  const automotiveScenarios = currentScenarios.filter(s => {
+    const desc = s.customerProfile.itemDescription?.toLowerCase() || ''
+    return desc.includes('transmission') ||
+           desc.includes('repair') ||
+           desc.includes('tire') ||
+           desc.includes('engine') ||
+           desc.includes('brake') ||
+           desc.includes('fuel') ||
+           desc.includes('ac system') ||
+           desc.includes('electrical') ||
+           desc.includes('auto') ||
+           desc.includes('automotive') ||
+           desc.includes('suspension') ||
+           desc.includes('cooling system') ||
+           desc.includes('wheels') ||
+           desc.includes('inspection') ||
+           desc.includes('motorcycle')
+  })
+
+  // Group conversational scenarios by category  
+  const furnitureConversationalScenarios = currentConversationalScenarios.filter(s => {
+    const desc = s.customerProfile.itemDescription?.toLowerCase() || ''
+    return desc.includes('bed') || 
+           desc.includes('computer') ||
+           desc.includes('gaming') ||
+           desc.includes('scooter') ||
+           desc.includes('appliance') ||
+           desc.includes('kitchen') ||
+           desc.includes('furniture') ||
+           desc.includes('home') ||
+           desc.includes('office') ||
+           desc.includes('laptop') ||
+           desc.includes('electronics') ||
+           desc.includes('hvac') ||
+           desc.includes('refrigerator') ||
+           desc.includes('washer') ||
+           desc.includes('bedroom') ||
+           desc.includes('living room') ||
+           desc.includes('medical equipment') ||
+           desc.includes('adjustable') ||
+           desc.includes('pc') ||
+           desc.includes('monitor') ||
+           desc.includes('desk') ||
+           desc.includes('chair') ||
+           desc.includes('tool') ||
+           desc.includes('energy-efficient')
+  })
+  
+  const automotiveConversationalScenarios = currentConversationalScenarios.filter(s => {
+    const desc = s.customerProfile.itemDescription?.toLowerCase() || ''
+    return desc.includes('transmission') ||
+           desc.includes('repair') ||
+           desc.includes('tire') ||
+           desc.includes('engine') ||
+           desc.includes('brake') ||
+           desc.includes('fuel') ||
+           desc.includes('ac system') ||
+           desc.includes('electrical') ||
+           desc.includes('auto') ||
+           desc.includes('automotive') ||
+           desc.includes('suspension') ||
+           desc.includes('cooling system') ||
+           desc.includes('wheels') ||
+           desc.includes('inspection') ||
+           desc.includes('motorcycle')
+  })
 
   const getFilteredScenarios = () => {
     switch(selectedCategory) {
       case 'furniture': return furnitureScenarios
       case 'automotive': return automotiveScenarios
-      default: return ltoCustomerScenarios
+      default: return currentScenarios
+    }
+  }
+
+  const getFilteredConversationalScenarios = () => {
+    switch(selectedCategory) {
+      case 'furniture': return furnitureConversationalScenarios
+      case 'automotive': return automotiveConversationalScenarios
+      default: return currentConversationalScenarios
+    }
+  }
+
+  const filteredScenarios = getFilteredScenarios()
+
+  // Get actual scenario count based on current mode and filters
+  const getScenarioCount = () => {
+    if (practiceMode === 'step-by-step') {
+      return filteredScenarios.length
+    } else {
+      return getFilteredConversationalScenarios().length
     }
   }
 
@@ -259,8 +368,8 @@ export default function PracticeScenariosPage() {
                     <p className="font-medium">{selectedConversation.customerProfile.income}</p>
                   </div>
                   <div>
-                    <p className="text-sm text-gray-600">Purchase Amount</p>
-                    <p className="font-medium text-teal-600">{selectedConversation.customerProfile.purchaseAmount}</p>
+                    <p className="text-sm text-gray-600">{ricConversationalScenarios.some(s => s.id === selectedConversation.id) ? 'Financed Amount' : 'Purchase Amount'}</p>
+                    <p className="font-medium text-teal-600">{selectedConversation.customerProfile.financedAmount || selectedConversation.customerProfile.purchaseAmount}</p>
                   </div>
                   <div>
                     <p className="text-sm text-gray-600">Item</p>
@@ -442,8 +551,9 @@ export default function PracticeScenariosPage() {
   }
 
   if (selectedScenario && !showSuccess) {
-    const step = ltoApplicationProcess[currentStep]
-    const progress = ((currentStep + 1) / ltoApplicationProcess.length) * 100
+    const currentProcess = productType === 'RIC' ? ricApplicationProcess : ltoApplicationProcess
+    const step = currentProcess[currentStep]
+    const progress = ((currentStep + 1) / currentProcess.length) * 100
 
     return (
       <div className="min-h-screen bg-gray-50">
@@ -464,7 +574,7 @@ export default function PracticeScenariosPage() {
               </div>
               <div className="flex items-center gap-4">
                 <div className="flex items-center gap-2 text-sm text-gray-600">
-                  <span>Step {currentStep + 1} of {ltoApplicationProcess.length}</span>
+                  <span>Step {currentStep + 1} of {productType === 'RIC' ? ricApplicationProcess.length : ltoApplicationProcess.length}</span>
                   <div className="w-24 bg-gray-200 rounded-full h-1.5">
                     <div 
                       className="bg-teal-500 h-1.5 rounded-full transition-all duration-300"
@@ -501,8 +611,8 @@ export default function PracticeScenariosPage() {
                     <p className="font-medium">{selectedScenario.customerProfile.income}</p>
                   </div>
                   <div>
-                    <p className="text-sm text-gray-600">Purchase Amount</p>
-                    <p className="font-medium text-teal-600">{selectedScenario.customerProfile.purchaseAmount}</p>
+                    <p className="text-sm text-gray-600">{ricCustomerScenarios.some(s => s.id === selectedScenario.id) ? 'Financed Amount' : 'Purchase Amount'}</p>
+                    <p className="font-medium text-teal-600">{selectedScenario.customerProfile.financedAmount || selectedScenario.customerProfile.purchaseAmount}</p>
                   </div>
                   <div>
                     <p className="text-sm text-gray-600">Item</p>
@@ -652,7 +762,7 @@ export default function PracticeScenariosPage() {
                     onClick={handleNextStep}
                     className="px-8 py-3 bg-teal-500 text-white rounded-xl hover:bg-teal-600 flex items-center gap-2 font-medium transition-all shadow-lg hover:shadow-xl"
                   >
-                    {currentStep < ltoApplicationProcess.length - 1 ? (
+                    {currentStep < (productType === 'RIC' ? ricApplicationProcess.length : ltoApplicationProcess.length) - 1 ? (
                       <>
                         Next Step 
                         <ArrowRight className="w-4 h-4" />
@@ -673,8 +783,6 @@ export default function PracticeScenariosPage() {
     )
   }
 
-  const filteredScenarios = getFilteredScenarios()
-
   return (
     <div className="space-y-8">
       <div>
@@ -684,61 +792,106 @@ export default function PracticeScenariosPage() {
         </p>
       </div>
 
-      {/* Practice Mode Toggle */}
-      <div className="mb-8">
-        <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4">
-          <div className="flex flex-col sm:flex-row items-start sm:items-center gap-2 sm:gap-4">
-            <span className="text-sm font-medium text-gray-700">Practice Mode:</span>
-            <div className="flex gap-2 bg-gray-100 rounded-lg p-1 w-full sm:w-auto">
-              <button
-                onClick={() => setPracticeMode('step-by-step')}
-                className={`px-3 sm:px-4 py-2 rounded-lg text-sm font-medium transition-all flex-1 sm:flex-none ${
-                  practiceMode === 'step-by-step'
-                    ? 'bg-white text-teal-600 shadow-sm'
-                    : 'text-gray-600 hover:text-gray-900'
-                }`}
-              >
-                Step-by-Step Process
-              </button>
-              <button
-                onClick={() => setPracticeMode('conversation')}
-                className={`px-3 sm:px-4 py-2 rounded-lg text-sm font-medium transition-all flex-1 sm:flex-none ${
-                  practiceMode === 'conversation'
-                    ? 'bg-white text-teal-600 shadow-sm'
-                    : 'text-gray-600 hover:text-gray-900'
-                }`}
-              >
-                Conversational Practice
-              </button>
-            </div>
-          </div>
-
-          {practiceMode === 'step-by-step' && (
-            <div className="flex flex-col sm:flex-row items-start sm:items-center gap-2 sm:gap-4">
-              <span className="text-sm font-medium text-gray-700">Filter by category:</span>
-              <div className="flex flex-wrap gap-2">
-                {[
-                  { key: 'all', label: 'All Scenarios', icon: FileText },
-                  { key: 'furniture', label: 'Furniture & Home', icon: Home },
-                  { key: 'automotive', label: 'Automotive Repairs', icon: Car }
-                ].map(({ key, label, icon: Icon }) => (
-                  <button
-                    key={key}
-                    onClick={() => setSelectedCategory(key as any)}
-                    className={`px-3 sm:px-4 py-2 rounded-lg flex items-center gap-2 text-sm font-medium transition-all ${
-                      selectedCategory === key
-                        ? 'bg-teal-500 text-white shadow-md'
-                        : 'bg-white text-gray-600 hover:bg-gray-50 border border-gray-200'
-                    }`}
-                  >
-                    <Icon className="w-4 h-4" />
-                    <span className="hidden sm:inline">{label}</span>
-                    <span className="sm:hidden">{label.split(' ')[0]}</span>
-                  </button>
-                ))}
+      {/* Elegant Filter Controls */}
+      <div className="bg-white rounded-xl border border-gray-200 p-6 shadow-sm">
+        <div className="space-y-6">
+          {/* Main Filter Row */}
+          <div className="flex flex-col lg:flex-row lg:items-center gap-4">
+            {/* Product Type */}
+            <div className="flex items-center gap-3">
+              <span className="text-sm font-medium text-gray-700 min-w-fit">Product:</span>
+              <div className="flex gap-1 bg-gray-100 rounded-lg p-1">
+                <button
+                  onClick={() => setProductType('ALL')}
+                  className={`px-4 py-2 rounded-md text-sm font-medium transition-all ${
+                    productType === 'ALL'
+                      ? 'bg-gray-700 text-white shadow-sm'
+                      : 'text-gray-600 hover:text-gray-900 hover:bg-gray-50'
+                  }`}
+                >
+                  All
+                </button>
+                <button
+                  onClick={() => setProductType('RIC')}
+                  className={`px-4 py-2 rounded-md text-sm font-medium transition-all ${
+                    productType === 'RIC'
+                      ? 'bg-green-500 text-white shadow-sm'
+                      : 'text-gray-600 hover:text-gray-900 hover:bg-gray-50'
+                  }`}
+                >
+                  RIC
+                </button>
+                <button
+                  onClick={() => setProductType('LTO')}
+                  className={`px-4 py-2 rounded-md text-sm font-medium transition-all ${
+                    productType === 'LTO'
+                      ? 'bg-teal-500 text-white shadow-sm'
+                      : 'text-gray-600 hover:text-gray-900 hover:bg-gray-50'
+                  }`}
+                >
+                  LTO
+                </button>
               </div>
             </div>
-          )}
+
+            {/* Divider */}
+            <div className="hidden lg:block w-px h-6 bg-gray-300"></div>
+
+            {/* Practice Mode */}
+            <div className="flex items-center gap-3">
+              <span className="text-sm font-medium text-gray-700 min-w-fit">Mode:</span>
+              <div className="flex gap-1 bg-gray-100 rounded-lg p-1">
+                <button
+                  onClick={() => setPracticeMode('step-by-step')}
+                  className={`px-4 py-2 rounded-md text-sm font-medium transition-all ${
+                    practiceMode === 'step-by-step'
+                      ? 'bg-blue-500 text-white shadow-sm'
+                      : 'text-gray-600 hover:text-gray-900 hover:bg-gray-50'
+                  }`}
+                >
+                  Process
+                </button>
+                <button
+                  onClick={() => setPracticeMode('conversation')}
+                  className={`px-4 py-2 rounded-md text-sm font-medium transition-all ${
+                    practiceMode === 'conversation'
+                      ? 'bg-blue-500 text-white shadow-sm'
+                      : 'text-gray-600 hover:text-gray-900 hover:bg-gray-50'
+                  }`}
+                >
+                  Conversation
+                </button>
+              </div>
+            </div>
+
+            {/* Category Filter - Available for both modes */}
+            <>
+              <div className="hidden lg:block w-px h-6 bg-gray-300"></div>
+              <div className="flex items-center gap-3">
+                <span className="text-sm font-medium text-gray-700 min-w-fit">Category:</span>
+                <div className="flex gap-1 bg-gray-100 rounded-lg p-1">
+                  {[
+                    { key: 'all', label: 'All', icon: FileText },
+                    { key: 'furniture', label: 'Home', icon: Home },
+                    { key: 'automotive', label: 'Auto', icon: Car }
+                  ].map(({ key, label, icon: Icon }) => (
+                    <button
+                      key={key}
+                      onClick={() => setSelectedCategory(key as any)}
+                      className={`px-3 py-2 rounded-md flex items-center gap-2 text-sm font-medium transition-all ${
+                        selectedCategory === key
+                          ? 'bg-purple-500 text-white shadow-sm'
+                          : 'text-gray-600 hover:text-gray-900 hover:bg-gray-50'
+                      }`}
+                    >
+                      <Icon className="w-4 h-4" />
+                      {label}
+                    </button>
+                  ))}
+                </div>
+              </div>
+            </>
+          </div>
         </div>
       </div>
 
@@ -750,7 +903,9 @@ export default function PracticeScenariosPage() {
               <FileText className="w-5 h-5 text-teal-600" />
             </div>
             <div>
-              <p className="text-xl sm:text-2xl font-bold text-gray-900">{filteredScenarios.length}</p>
+              <p className="text-xl sm:text-2xl font-bold text-gray-900">
+                {getScenarioCount()}
+              </p>
               <p className="text-xs sm:text-sm text-gray-600">Available Scenarios</p>
             </div>
           </div>
@@ -761,7 +916,12 @@ export default function PracticeScenariosPage() {
               <CheckCircle className="w-5 h-5 text-green-600" />
             </div>
             <div>
-              <p className="text-xl sm:text-2xl font-bold text-gray-900">{completedScenarios.length}</p>
+              <p className="text-xl sm:text-2xl font-bold text-gray-900">
+                {practiceMode === 'step-by-step' 
+                  ? completedScenarios.filter(id => currentScenarios.some(s => s.id === id)).length
+                  : completedScenarios.filter(id => currentConversationalScenarios.some(s => s.id === id)).length
+                }
+              </p>
               <p className="text-xs sm:text-sm text-gray-600">Completed</p>
             </div>
           </div>
@@ -772,7 +932,9 @@ export default function PracticeScenariosPage() {
               <Clock className="w-5 h-5 text-blue-600" />
             </div>
             <div>
-              <p className="text-xl sm:text-2xl font-bold text-gray-900">{ltoApplicationProcess.length}</p>
+              <p className="text-xl sm:text-2xl font-bold text-gray-900">
+                {productType === 'ALL' ? '12-13' : productType === 'RIC' ? ricApplicationProcess.length : ltoApplicationProcess.length}
+              </p>
               <p className="text-xs sm:text-sm text-gray-600">Process Steps</p>
             </div>
           </div>
@@ -784,7 +946,10 @@ export default function PracticeScenariosPage() {
             </div>
             <div>
               <p className="text-xl sm:text-2xl font-bold text-gray-900">
-                {filteredScenarios.reduce((sum, s) => sum + s.reward, 0)}
+                {practiceMode === 'step-by-step' 
+                  ? filteredScenarios.reduce((sum, s) => sum + s.reward, 0)
+                  : getFilteredConversationalScenarios().reduce((sum, s) => sum + s.reward, 0)
+                }
               </p>
               <p className="text-xs sm:text-sm text-gray-600">Total eBucks Available</p>
             </div>
@@ -816,6 +981,14 @@ export default function PracticeScenariosPage() {
                         {isAutomotive ? <Car className="w-5 h-5 text-blue-600" /> : <Home className="w-5 h-5 text-purple-600" />}
                       </div>
                       <h3 className="text-lg sm:text-xl font-semibold flex-1">{scenario.title}</h3>
+                      <span className={`px-3 py-1 rounded-full text-xs font-medium ${
+                        // Determine the actual product type for this scenario
+                        ricCustomerScenarios.some(s => s.id === scenario.id)
+                          ? 'bg-green-100 text-green-800 border border-green-200'
+                          : 'bg-teal-100 text-teal-800 border border-teal-200'
+                      }`}>
+                        {ricCustomerScenarios.some(s => s.id === scenario.id) ? 'RIC' : 'LTO'}
+                      </span>
                       <span className={`px-3 py-1 rounded-full text-xs font-medium border ${
                         difficultyColors[scenario.difficulty]
                       }`}>
@@ -835,8 +1008,8 @@ export default function PracticeScenariosPage() {
                         <p className="font-medium">{scenario.customerProfile.creditScore}</p>
                       </div>
                       <div>
-                        <p className="text-gray-500">Purchase Amount</p>
-                        <p className="font-medium text-teal-600">{scenario.customerProfile.purchaseAmount}</p>
+                        <p className="text-gray-500">{ricCustomerScenarios.some(s => s.id === scenario.id) ? 'Financed Amount' : 'Purchase Amount'}</p>
+                        <p className="font-medium text-teal-600">{scenario.customerProfile.financedAmount || scenario.customerProfile.purchaseAmount}</p>
                       </div>
                       <div>
                         <p className="text-gray-500">Reward</p>
@@ -852,7 +1025,11 @@ export default function PracticeScenariosPage() {
                         <span className="text-xs sm:text-sm text-green-600 font-medium">Completed</span>
                       </div>
                     ) : (
-                      <button className="px-4 sm:px-6 py-2.5 sm:py-3 bg-teal-500 text-white rounded-xl hover:bg-teal-600 flex items-center gap-2 font-medium transition-all shadow-md hover:shadow-lg text-sm sm:text-base whitespace-nowrap">
+                      <button className={`px-4 sm:px-6 py-2.5 sm:py-3 text-white rounded-xl flex items-center gap-2 font-medium transition-all shadow-md hover:shadow-lg text-sm sm:text-base whitespace-nowrap ${
+                        productType === 'RIC'
+                          ? 'bg-green-500 hover:bg-green-600'
+                          : 'bg-teal-500 hover:bg-teal-600'
+                      }`}>
                         <Play className="w-3.5 sm:w-4 h-3.5 sm:h-4" />
                         <span className="hidden sm:inline">Start Practice</span>
                         <span className="sm:hidden">Start</span>
@@ -865,7 +1042,7 @@ export default function PracticeScenariosPage() {
           })
         ) : (
           // Conversational scenarios
-          conversationalScenarios.map((conversation) => {
+          getFilteredConversationalScenarios().map((conversation) => {
             const isCompleted = completedScenarios.includes(conversation.id)
             
             return (
@@ -883,6 +1060,14 @@ export default function PracticeScenariosPage() {
                         <User className="w-5 h-5 text-indigo-600" />
                       </div>
                       <h3 className="text-lg sm:text-xl font-semibold flex-1">{conversation.title}</h3>
+                      <span className={`px-3 py-1 rounded-full text-xs font-medium ${
+                        // Determine the actual product type for this conversation
+                        ricConversationalScenarios.some(s => s.id === conversation.id)
+                          ? 'bg-green-100 text-green-800 border border-green-200'
+                          : 'bg-teal-100 text-teal-800 border border-teal-200'
+                      }`}>
+                        {ricConversationalScenarios.some(s => s.id === conversation.id) ? 'RIC' : 'LTO'}
+                      </span>
                       <span className={`px-3 py-1 rounded-full text-xs font-medium border ${
                         difficultyColors[conversation.difficulty]
                       }`}>
@@ -905,8 +1090,8 @@ export default function PracticeScenariosPage() {
                         <p className="font-medium">{conversation.customerProfile.creditScore}</p>
                       </div>
                       <div>
-                        <p className="text-gray-500">Purchase Amount</p>
-                        <p className="font-medium text-teal-600">{conversation.customerProfile.purchaseAmount}</p>
+                        <p className="text-gray-500">{ricConversationalScenarios.some(s => s.id === conversation.id) ? 'Financed Amount' : 'Purchase Amount'}</p>
+                        <p className="font-medium text-teal-600">{conversation.customerProfile.financedAmount || conversation.customerProfile.purchaseAmount}</p>
                       </div>
                       <div>
                         <p className="text-gray-500">Reward</p>
@@ -922,7 +1107,11 @@ export default function PracticeScenariosPage() {
                         <span className="text-xs sm:text-sm text-green-600 font-medium">Completed</span>
                       </div>
                     ) : (
-                      <button className="px-4 sm:px-6 py-2.5 sm:py-3 bg-indigo-500 text-white rounded-xl hover:bg-indigo-600 flex items-center gap-2 font-medium transition-all shadow-md hover:shadow-lg text-sm sm:text-base whitespace-nowrap">
+                      <button className={`px-4 sm:px-6 py-2.5 sm:py-3 text-white rounded-xl flex items-center gap-2 font-medium transition-all shadow-md hover:shadow-lg text-sm sm:text-base whitespace-nowrap ${
+                        productType === 'RIC'
+                          ? 'bg-green-500 hover:bg-green-600'
+                          : 'bg-teal-500 hover:bg-teal-600'
+                      }`}>
                         <Play className="w-3.5 sm:w-4 h-3.5 sm:h-4" />
                         <span className="hidden sm:inline">Start Conversation</span>
                         <span className="sm:hidden">Start</span>
@@ -942,7 +1131,7 @@ export default function PracticeScenariosPage() {
           <div className="bg-white rounded-2xl p-8 max-w-md mx-auto text-center animate-bounce shadow-2xl border-2 border-green-500">
             <CheckCircle className="w-20 h-20 text-green-500 mx-auto mb-4" />
             <h2 className="text-3xl font-bold mb-2">Scenario Complete!</h2>
-            <p className="text-gray-600 mb-6">Great job mastering the LTO application process!</p>
+            <p className="text-gray-600 mb-6">Great job mastering the {productType} application process!</p>
             <EBucksDisplay amount={selectedScenario?.reward || selectedConversation?.reward || 0} size="large" showAnimation />
           </div>
         </div>

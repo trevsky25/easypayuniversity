@@ -50,7 +50,7 @@ Our mission is simple: Easy Payment Solutions - No Perfect Credit Required.`
                   'Early purchase options available',
                   'No credit needed',
                   'Weekly, bi-weekly, or monthly payments',
-                  'Ideal for customers building credit'
+                  'Does not report to credit bureaus'
                 ]
               },
             ]
@@ -638,7 +638,7 @@ Back: "Ask about our 90-day promotional financing"`,
             approved_messages: [
               '"Finance Your Purchase Today - Up to $5,000"',
               '"No Credit? No Problem! Lease-to-Own Available"',
-              '"90-Day Same as Cash Option Available"',
+              '"90-Day Finance Charge Cap - $40 Maximum"',
               '"Get Approved in Minutes"',
               '"Take It Home Today with EasyPay Finance"',
               '"Flexible Payment Options to Fit Your Budget"',
@@ -858,9 +858,9 @@ Attendees: _____________________`
           heading: 'Success Story #3: The First-Time Homeowner',
           content: `**Customer**: Ashley Thompson, Las Vegas, NV
 **Purchase**: $2,200 Washer, Dryer & Refrigerator
-**Program**: 90-Day Same as Cash
+**Program**: 90-Day Finance Charge Cap
 
-"I just closed on my first house and needed appliances ASAP. My savings went to the down payment, but the appliance store had EasyPay financing. They approved me instantly, and I used the 90-day option. I paid it off in 60 days with my tax refund - only cost me $40 in fees! So much better than putting it on a credit card."
+"I just closed on my first house and needed appliances ASAP. My savings went to the down payment, but the appliance store had EasyPay financing. They approved me instantly, and I qualified for the 90-day finance charge cap. I paid it off in 60 days with my tax refund - finance charges were capped at $40 because I paid more than the scheduled payments. So much better than putting it on a credit card."
 
 **Merchant Impact**: Sold entire appliance package instead of just one item. Customer bought extended warranties due to affordable payments.`
         },

@@ -106,6 +106,8 @@ export function QuizComponent({
     if (currentQuestionIndex < questions.length - 1) {
       setCurrentQuestionIndex(currentQuestionIndex + 1)
       setShowExplanation(false)
+      // Scroll to top when moving to next question
+      window.scrollTo({ top: 0, behavior: 'smooth' })
     } else {
       // Quiz complete
       const score = calculateScore()
@@ -133,16 +135,22 @@ export function QuizComponent({
     if (currentQuestionIndex > 0) {
       setCurrentQuestionIndex(currentQuestionIndex - 1)
       setShowExplanation(false)
+      // Scroll to top when moving to previous question
+      window.scrollTo({ top: 0, behavior: 'smooth' })
     }
   }
 
   const startQuiz = () => {
     setQuizStarted(true)
+    // Scroll to top when starting quiz
+    window.scrollTo({ top: 0, behavior: 'smooth' })
     // Start timer if needed
   }
 
   const retakeQuiz = () => {
     setCurrentQuestionIndex(0)
+    // Scroll to top when retaking quiz
+    window.scrollTo({ top: 0, behavior: 'smooth' })
     setAnswers(new Array(questions.length).fill(null))
     setShowResults(false)
     setShowExplanation(false)

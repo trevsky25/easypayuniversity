@@ -409,7 +409,7 @@ export const ltoApplicationProcess: LTOApplicationStep[] = [
   }
 ]
 
-// Top 3 LTO Customer Scenarios (Reduced for Better UX)
+// Top 3 LTO Application Process Scenarios (Reduced for Better UX)
 export const ltoCustomerScenarios = [
   {
     id: "process-credit-challenged",
@@ -496,6 +496,199 @@ export const ltoCustomerScenarios = [
     ]
   }
 ];
+
+// Common Issues and Troubleshooting for LTO Process
+    customerProfile: {
+      name: "Linda Thompson",
+      creditScore: "Good (680-720)",
+      income: "$2,100/month (fixed)",
+      purchaseAmount: "$1,299", 
+      itemDescription: "Mobility scooter"
+    },
+    applicationDetails: {
+      email: "linda.thompson1952@aol.com",
+      phone: "(555) 567-1952",
+      bankingPreference: "Requires assistance",
+      challengePoints: ["Technology hesitancy", "Fixed income", "Needs patience", "Step-by-step help"]
+    },
+    expectedOutcome: "approved",
+    processingFee: "$39 (debit card)",
+    keyLearningPoints: [
+      "Providing patient assistance",
+      "Technology support for seniors",
+      "Fixed income considerations",
+      "Building trust through service"
+    ]
+  },
+  {
+    id: "auto-premium-upgrade",
+    title: "Premium Tire Package - Elective Upgrade",
+    difficulty: "beginner",
+    reward: 35,
+    scenarioType: "elective-upgrade",
+    customerProfile: {
+      name: "Jessica Williams",
+      creditScore: "Fair (640-680)",
+      income: "$3,800/month",
+      purchaseAmount: "$1,899",
+      itemDescription: "Premium tires, custom wheels, installation"
+    },
+    applicationDetails: {
+      email: "jess.williams2024@gmail.com",
+      phone: "(555) 456-7890",
+      bankingPreference: "Plaid connection",
+      challengePoints: ["Safety vs. cost", "Premium vs. standard options", "Early payoff planning"]
+    },
+    expectedOutcome: "approved",
+    processingFee: "$39 (debit card)",
+    keyLearningPoints: [
+      "Handling elective vs. emergency repairs",
+      "Explaining early purchase savings",
+      "Working with safety-conscious customers",
+      "Premium upgrade value proposition"
+    ]
+  },
+  {
+    id: "auto-inspection-failure",
+    title: "Inspection Failure - Compliance Deadline",
+    difficulty: "advanced",
+    reward: 50,
+    scenarioType: "compliance-critical",
+    customerProfile: {
+      name: "Michael Thompson",
+      creditScore: "No credit history",
+      income: "$2,400/month",
+      purchaseAmount: "$2,750",
+      itemDescription: "Fuel system replacement (inspection required)"
+    },
+    applicationDetails: {
+      email: "mike.t.auto@email.com",
+      phone: "(555) 234-5679",
+      bankingPreference: "Manual entry",
+      challengePoints: ["Legal compliance deadline", "Young customer", "Complex repair", "No credit history"]
+    },
+    expectedOutcome: "approved",
+    processingFee: "$39 (credit card)",
+    keyLearningPoints: [
+      "Handling compliance-driven repairs",
+      "Working with first-time credit applicants",
+      "Complex automotive system explanations",
+      "Deadline pressure management"
+    ]
+  },
+  {
+    id: "auto-high-value-repair",
+    title: "Engine Rebuild - Maximum Amount Financing",
+    difficulty: "advanced",
+    reward: 55,
+    scenarioType: "high-value",
+    customerProfile: {
+      name: "Sandra Davis",
+      creditScore: "Challenged (560-600)",
+      income: "$4,100/month",
+      purchaseAmount: "$4,200",
+      itemDescription: "Complete engine rebuild with warranty"
+    },
+    applicationDetails: {
+      email: "sandra.davis.mom@email.com",
+      phone: "(555) 567-8912",
+      bankingPreference: "Plaid connection",
+      challengePoints: ["Maximum LTO amount", "Credit challenges", "Repair vs. replace decision", "Family budget"]
+    },
+    expectedOutcome: "approved",
+    processingFee: "$39 (cash)",
+    keyLearningPoints: [
+      "Handling maximum LTO amounts",
+      "Repair vs. replacement counseling",
+      "Large purchase payment planning",
+      "Family financial decision support"
+    ]
+  },
+  {
+    id: "auto-contractor-vehicle",
+    title: "Contractor Vehicle - Business-Critical Repair",
+    difficulty: "intermediate",
+    reward: 40,
+    scenarioType: "business-critical",
+    customerProfile: {
+      name: "David Kim",
+      creditScore: "Fair (620-660)",
+      income: "$3,300/month (variable)",
+      purchaseAmount: "$2,100",
+      itemDescription: "Brake and suspension overhaul"
+    },
+    applicationDetails: {
+      email: "david.kim.contractor@gmail.com",
+      phone: "(555) 678-9013",
+      bankingPreference: "Manual entry",
+      challengePoints: ["Self-employed income", "Business vehicle dependency", "Safety-critical repair", "Variable income"]
+    },
+    expectedOutcome: "approved",
+    processingFee: "$39 (debit card)",
+    keyLearningPoints: [
+      "Self-employed income verification",
+      "Business vehicle importance",
+      "Safety-critical repair urgency",
+      "Variable income considerations"
+    ]
+  },
+  {
+    id: "auto-seasonal-urgency",
+    title: "AC Repair - Seasonal Emergency",
+    difficulty: "beginner",
+    reward: 30,
+    scenarioType: "seasonal-urgent",
+    customerProfile: {
+      name: "Lisa Rodriguez",
+      creditScore: "Good (680-720)",
+      income: "$3,600/month",
+      purchaseAmount: "$1,650",
+      itemDescription: "AC system and electrical repair"
+    },
+    applicationDetails: {
+      email: "lisa.rodriguez.teacher@edu.com",
+      phone: "(555) 345-6780",
+      bankingPreference: "Plaid connection",
+      challengePoints: ["Seasonal urgency", "Good credit choosing LTO", "Heat emergency", "Teacher schedule"]
+    },
+    expectedOutcome: "approved",
+    processingFee: "$39 (credit card)",
+    keyLearningPoints: [
+      "Seasonal repair urgency",
+      "Good credit customer LTO benefits",
+      "Weather-related emergencies",
+      "Professional schedule considerations"
+    ]
+  },
+  {
+    id: "auto-diagnostic-complex",
+    title: "Complex Diagnostic - Multi-System Repair",
+    difficulty: "advanced",
+    reward: 45,
+    scenarioType: "diagnostic-intensive",
+    customerProfile: {
+      name: "Robert Chen",
+      creditScore: "Fair (630-670)",
+      income: "$3,900/month",
+      purchaseAmount: "$2,450",
+      itemDescription: "Electrical, transmission, and cooling system repair"
+    },
+    applicationDetails: {
+      email: "robert.chen.engineer@email.com",
+      phone: "(555) 891-2345",
+      bankingPreference: "Plaid connection",
+      challengePoints: ["Complex multi-system repair", "Diagnostic uncertainty", "Technical customer", "Cost escalation"]
+    },
+    expectedOutcome: "approved",
+    processingFee: "$39 (debit card)",
+    keyLearningPoints: [
+      "Complex diagnostic explanations",
+      "Managing technical customers",
+      "Multi-system repair coordination",
+      "Cost escalation communication"
+    ]
+  }
+]
 
 // Common Issues and Troubleshooting for LTO Process
 export const ltoTroubleshooting = [

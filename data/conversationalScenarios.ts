@@ -107,14 +107,14 @@ export const conversationalScenarios: ConversationalScenario[] = [
       {
         stepNumber: 5,
         speaker: "merchant",
-        dialogue: "Let me tell you about our lease-to-own program - it's specifically designed for people who've had credit challenges. No traditional credit check required!",
-        tips: ["Recover by focusing on LTO benefits", "Emphasize 'no credit check'"],
+        dialogue: "Let me tell you about our lease-to-own program - it's specifically designed for people who've had credit challenges. No minimum credit score is required, though we may review credit as part of our approval process.",
+        tips: ["Recover by focusing on LTO benefits", "Emphasize flexible approval requirements"],
         nextStep: 6
       },
       {
         stepNumber: 6,
         speaker: "customer",
-        dialogue: "Really? No credit check? How does that work exactly? What's the catch?",
+        dialogue: "Really? No minimum credit score? How does that work exactly? What's the catch?",
         context: "Customer is intrigued but cautious about 'too good to be true' offers"
       },
       {

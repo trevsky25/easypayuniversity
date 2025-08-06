@@ -534,7 +534,7 @@ class EBucksManager {
       {
         id: 'comparison-pro',
         title: 'Comparison Pro',
-        description: 'Use the program comparison tool to analyze RIC vs LTO',
+        description: 'Use the state coverage quiz to learn about EasyPay geographic availability',
         reward: 25,
         category: 'tools',
         difficulty: 'easy'

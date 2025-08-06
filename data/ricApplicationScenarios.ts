@@ -1,6 +1,6 @@
-// Lease-to-Own Application Scenarios Based on Actual EasyPay Process
+// Retail Installment Contract (RIC) Application Scenarios Based on EasyPay Process
 
-export interface LTOApplicationStep {
+export interface RICApplicationStep {
   stepNumber: number
   title: string
   description: string
@@ -12,7 +12,7 @@ export interface LTOApplicationStep {
   tips: string[]
 }
 
-export const ltoApplicationProcess: LTOApplicationStep[] = [
+export const ricApplicationProcess: RICApplicationStep[] = [
   {
     stepNumber: 1,
     title: "Log into Business Center",
@@ -43,29 +43,29 @@ export const ltoApplicationProcess: LTOApplicationStep[] = [
   {
     stepNumber: 2,
     title: "Start New Application",
-    description: "Initiate the lease application process for the customer",
+    description: "Initiate the RIC application process for the customer",
     actor: "merchant",
     screenName: "New Application Screen",
     actions: [
       "Click 'New Application' or 'Start Application'",
-      "Select application type: Lease-to-Own",
+      "Select application type: Retail Installment Contract",
       "Enter customer's email OR mobile phone number",
       "Alternative: Generate QR code for customer to scan"
     ],
     importantNotes: [
       "Customer's email or phone number is required to send application link",
       "QR code option allows customer to start immediately",
-      "Make sure customer has access to their phone for texts"
+      "RIC provides immediate ownership unlike lease agreements"
     ],
     commonMistakes: [
       "Entering incorrect customer contact information",
       "Not verifying customer has phone access",
-      "Forgetting to specify Lease-to-Own program"
+      "Selecting wrong financing type (LTO vs RIC)"
     ],
     tips: [
       "Double-check customer email/phone spelling",
       "Use QR code for faster customer experience",
-      "Explain to customer they'll receive a text message"
+      "Explain immediate ownership benefit of RIC"
     ]
   },
   {
@@ -97,30 +97,31 @@ export const ltoApplicationProcess: LTOApplicationStep[] = [
   },
   {
     stepNumber: 4,
-    title: "Application Disclosures",
-    description: "Customer reviews lease terms and disclosure information",
+    title: "RIC Disclosures and Terms",
+    description: "Customer reviews Retail Installment Contract terms and disclosure information",
     actor: "customer",
-    screenName: "Disclosures and Example Cost",
+    screenName: "RIC Disclosures and Finance Terms",
     actions: [
-      "Customer reads Application Disclosures",
-      "Customer reviews Example Cost of Leasing",
+      "Customer reads RIC Application Disclosures",
+      "Customer reviews finance charge information",
+      "Customer understands 90-Day Finance Charge Cap ($40)",
       "Customer accepts terms to proceed",
       "Customer clicks 'Continue' or 'Get Started'"
     ],
     importantNotes: [
-      "Required legal disclosures for lease-to-own",
-      "Example costs help customer understand lease structure",
-      "Customer must accept to proceed"
+      "Required TILA (Truth in Lending Act) disclosures",
+      "90-Day Finance Charge Cap is a key RIC benefit",
+      "Customer owns the item immediately upon approval"
     ],
     commonMistakes: [
-      "Customer rushes through without reading",
-      "Not explaining lease vs. purchase difference",
-      "Customer confused about lease terms"
+      "Customer rushes through without reading TILA disclosures",
+      "Not explaining immediate ownership benefit",
+      "Customer confused about finance charges vs interest"
     ],
     tips: [
-      "Encourage customer to read disclosures",
-      "Be available to answer questions about lease structure",
-      "Explain early purchase options"
+      "Emphasize immediate ownership advantage",
+      "Explain the $40 finance charge cap benefit clearly",
+      "Be available to answer questions about RIC structure"
     ]
   },
   {
@@ -174,7 +175,7 @@ export const ltoApplicationProcess: LTOApplicationStep[] = [
     importantNotes: [
       "Plaid integration allows secure bank connection",
       "Manual entry option available as backup",
-      "Income verification affects approval terms"
+      "Income verification affects approval terms and rates"
     ],
     commonMistakes: [
       "Customer hesitant to connect bank account",
@@ -191,36 +192,36 @@ export const ltoApplicationProcess: LTOApplicationStep[] = [
   {
     stepNumber: 7,
     title: "Application Decision",
-    description: "System processes application and provides decision",
+    description: "System processes application and provides decision with RIC terms",
     actor: "system",
-    screenName: "Decision Screen",
+    screenName: "RIC Decision Screen",
     actions: [
       "System processes application (30-60 seconds)",
       "System generates approval decision",
-      "Customer sees approval amount and terms",
-      "Customer receives text message with full approval terms",
-      "Customer reviews lease terms and conditions"
+      "Customer sees approval amount and payment terms",
+      "Customer receives text message with full RIC terms",
+      "Customer reviews finance charges and payment schedule"
     ],
     importantNotes: [
       "Processing is typically very fast",
-      "Approval shows lease amount and terms",
-      "Text message contains detailed terms"
+      "Approval shows finance amount and monthly payment",
+      "Text message contains detailed RIC terms including FCCP"
     ],
     commonMistakes: [
       "Customer doesn't wait for processing to complete",
-      "Customer doesn't read full terms in text",
-      "Merchant assumes approval without checking"
+      "Customer doesn't read full RIC terms in text",
+      "Merchant assumes approval without checking decision"
     ],
     tips: [
       "Let customer know processing takes a minute",
       "Encourage customer to read full terms",
-      "Be ready to explain lease payment structure"
+      "Be ready to explain 90-Day Finance Charge Cap benefit"
     ]
   },
   {
     stepNumber: 8,
     title: "Return to Business Center - Enter Purchase Details",
-    description: "Store associate enters purchase information to generate lease documents",
+    description: "Store associate enters purchase information to generate RIC documents",
     actor: "merchant",
     screenName: "Purchase Details Entry",
     actions: [
@@ -229,15 +230,15 @@ export const ltoApplicationProcess: LTOApplicationStep[] = [
       "Enter detailed purchase information:",
       "- Item description and model numbers",
       "- Total purchase amount",
-      "- Any applicable taxes",
+      "- Any applicable taxes and fees",
       "- Delivery details if applicable",
-      "Generate customer's lease invoice",
+      "Generate customer's RIC contract",
       "Generate purchase receipt"
     ],
     importantNotes: [
-      "Must enter accurate item descriptions",
-      "Purchase amount affects lease terms",
-      "Generates official lease documentation"
+      "Must enter accurate item descriptions for RIC contract",
+      "Purchase amount affects finance charges",
+      "Generates official RIC documentation"
     ],
     commonMistakes: [
       "Entering vague item descriptions",
@@ -249,7 +250,7 @@ export const ltoApplicationProcess: LTOApplicationStep[] = [
       "Be specific with item descriptions for contract clarity",
       "Include all applicable fees and taxes",
       "Verify purchase amount is correct before generating",
-      "Keep copies of all generated documents"
+      "Keep copies of all generated RIC documents"
     ]
   },
   {
@@ -269,7 +270,7 @@ export const ltoApplicationProcess: LTOApplicationStep[] = [
       "Proceed to contract signing"
     ],
     importantNotes: [
-      "Required legal step for lease agreements",
+      "Required legal step for RIC agreements",
       "Must use valid government-issued ID",
       "Information must match application exactly"
     ],
@@ -286,23 +287,24 @@ export const ltoApplicationProcess: LTOApplicationStep[] = [
   },
   {
     stepNumber: 10,
-    title: "DocuSign Contract Signing",
-    description: "Customer electronically signs the lease agreement",
+    title: "DocuSign RIC Contract Signing",
+    description: "Customer electronically signs the Retail Installment Contract",
     actor: "customer",
     screenName: "DocuSign Interface",
     actions: [
       "Customer receives text message with DocuSign link",
-      "Customer clicks link to access contract",
+      "Customer clicks link to access RIC contract",
       "Customer confirms last 4 digits of SSN",
       "Customer proceeds to DocuSign interface",
-      "Customer reviews lease agreement terms",
+      "Customer reviews RIC agreement terms and payment schedule",
       "Customer signs electronically using DocuSign",
       "System confirms successful signature"
     ],
     importantNotes: [
       "SSN verification required for security",
       "Customer must sign electronically",
-      "Contract becomes legally binding upon signature"
+      "RIC contract becomes legally binding upon signature",
+      "Customer immediately owns the merchandise"
     ],
     commonMistakes: [
       "Customer rushes through contract review",
@@ -312,241 +314,220 @@ export const ltoApplicationProcess: LTOApplicationStep[] = [
     tips: [
       "Help customer access DocuSign if needed",
       "Encourage customer to read contract carefully",
-      "Be available for questions about terms",
-      "Ensure customer understands early purchase options"
+      "Be available for questions about payment terms",
+      "Emphasize immediate ownership benefit"
     ]
   },
   {
     stepNumber: 11,
-    title: "Collect $39 Processing Fee",
-    description: "Store associate collects required processing fee from customer",
+    title: "Complete Transaction - No Processing Fee",
+    description: "Finalize RIC transaction (no additional fees required)",
     actor: "merchant",
-    screenName: "Processing Fee Collection",
+    screenName: "Transaction Completion",
     actions: [
-      "Inform customer of $39 processing fee",
-      "Collect payment via:",
-      "- Cash",
-      "- Credit/debit card",
-      "- Other accepted payment methods",
-      "Confirm payment received in system",
-      "Provide receipt for processing fee"
+      "Confirm RIC contract is fully executed",
+      "Verify customer ownership begins immediately",
+      "Prepare merchandise for delivery",
+      "Provide customer with RIC documentation",
+      "Explain payment schedule and FCCP benefit"
     ],
     importantNotes: [
-      "CRITICAL: $39 fee MUST be collected before continuing",
-      "Fee is required for all lease agreements",
-      "Cannot proceed to delivery without fee collection"
+      "NO processing fee required for RIC (unlike LTO)",
+      "Customer owns item immediately upon contract execution",
+      "First payment typically due within 30 days"
     ],
     commonMistakes: [
-      "Forgetting to collect the processing fee",
-      "Proceeding without confirming fee payment",
-      "Not providing receipt for fee payment"
+      "Trying to collect processing fee (RIC has no fee)",
+      "Not explaining immediate ownership",
+      "Forgetting to provide payment schedule information"
     ],
     tips: [
-      "Inform customer of fee upfront during process",
-      "Collect fee immediately after contract signing",
-      "Always confirm fee collection in system",
-      "Keep record of fee payment method"
+      "Explain no processing fee advantage of RIC",
+      "Emphasize immediate ownership benefit",
+      "Provide clear payment schedule documentation",
+      "Explain 90-Day Finance Charge Cap opportunity"
     ]
   },
   {
     stepNumber: 12,
-    title: "Confirm Processing Fee Collection",
-    description: "System confirmation that processing fee has been collected",
-    actor: "merchant",
-    screenName: "Fee Confirmation Screen",
-    actions: [
-      "System prompts to confirm fee collection",
-      "Verify $39 processing fee has been collected",
-      "Select payment method used",
-      "Confirm collection in system",
-      "Proceed to final delivery step"
-    ],
-    importantNotes: [
-      "System will not allow progression without fee confirmation",
-      "Must accurately record payment method",
-      "This creates audit trail for fee collection"
-    ],
-    commonMistakes: [
-      "Confirming fee collection before actually collecting",
-      "Selecting wrong payment method",
-      "Not completing confirmation step"
-    ],
-    tips: [
-      "Only confirm after fee is actually in hand",
-      "Double-check payment method selection",
-      "This step protects both merchant and EasyPay"
-    ]
-  },
-  {
-    stepNumber: 13,
-    title: "Mark Item as Delivered",
-    description: "Final step confirming customer has received merchandise",
+    title: "Deliver Merchandise",
+    description: "Customer takes possession of purchased items",
     actor: "merchant",
     screenName: "Delivery Confirmation",
     actions: [
       "Customer takes physical possession of merchandise",
       "Verify delivery is complete",
-      "Mark item as 'Delivered' in system",
-      "Process is now complete",
-      "Customer officially begins lease terms"
+      "Mark transaction as 'Complete' in system",
+      "Customer officially begins RIC payment terms",
+      "Provide customer with warranty and care information"
     ],
     importantNotes: [
-      "DO NOT mark as delivered until customer has product",
-      "This starts the official lease period",
-      "Customer's first payment date begins from this point"
+      "Customer already owns the item (unlike LTO)",
+      "Payment schedule begins according to RIC terms",
+      "Customer can pay off early anytime with no penalties"
     ],
     commonMistakes: [
-      "Marking delivered before customer takes possession",
-      "Forgetting to complete delivery confirmation",
-      "Not explaining lease start date to customer"
+      "Not explaining early payoff benefits",
+      "Forgetting to complete transaction confirmation",
+      "Not providing payment information to customer"
     ],
     tips: [
-      "Only mark delivered when customer physically has product",
-      "Explain to customer when their first payment is due",
-      "Confirm customer understands early purchase options",
-      "Provide customer with lease documentation"
+      "Remind customer of 90-Day Finance Charge Cap benefit",
+      "Provide clear payment schedule and contact information",
+      "Explain early payment advantages",
+      "Ensure customer has all warranty documentation"
     ]
   }
 ]
 
-// Top 3 LTO Customer Scenarios (Reduced for Better UX)
-export const ltoCustomerScenarios = [
+// Top 3 RIC Customer Scenarios (Reduced for Better UX)
+export const ricCustomerScenarios = [
   {
-    id: "process-credit-challenged",
-    title: "Credit-Challenged Customer - Full Process Walkthrough",
+    id: "ric-good-credit-appliances",
+    title: "Good Credit Customer - Kitchen Appliances",
     difficulty: "beginner",
-    reward: 40,
-    scenarioType: "full-process",
-    customerProfile: {
-      name: "Maria Gonzalez",
-      creditScore: "Below 580",
-      income: "$2,200/month",
-      purchaseAmount: "$1,899",
-      itemDescription: "5-piece bedroom set"
-    },
-    applicationDetails: {
-      email: "maria.gonzalez@email.com",
-      phone: "(555) 234-5678",
-      bankingPreference: "Manual entry (no Plaid)",
-      challengePoints: ["Poor credit anxiety", "Manual banking preference", "Needs reassurance"]
-    },
-    expectedOutcome: "approved",
-    processingFee: "$39 (cash payment)",
-    keyLearningPoints: [
-      "Complete 13-step LTO process",
-      "Handling credit-challenged customers",
-      "Manual banking entry process",
-      "Building customer confidence"
-    ]
-  },
-  {
-    id: "process-tech-savvy",
-    title: "Tech-Savvy Customer - Digital-First Experience",
-    difficulty: "intermediate", 
     reward: 35,
-    scenarioType: "digital-focus",
+    scenarioType: "good-credit",
     customerProfile: {
-      name: "Tyler Chen",
-      creditScore: "No credit history",
-      income: "$1,800/month",
-      purchaseAmount: "$2,199",
-      itemDescription: "Gaming computer setup"
+      name: "David Martinez",
+      creditScore: "720+",
+      income: "$4,200/month",
+      financedAmount: "$3,500",
+      itemDescription: "Kitchen appliance package"
     },
     applicationDetails: {
-      email: "tyler.chen.student@university.edu",
-      phone: "(555) 345-6789",
-      bankingPreference: "Plaid connection preferred",
-      challengePoints: ["Young customer", "No credit history", "Wants fast digital process"]
+      email: "david.martinez@email.com",
+      phone: "(555) 234-5678",
+      bankingPreference: "Plaid connection",
+      challengePoints: ["Wants to understand terms clearly", "Considering early payoff", "Comparing to other options"]
     },
     expectedOutcome: "approved",
-    processingFee: "$39 (credit card)",
+    processingFee: "None (RIC advantage)",
     keyLearningPoints: [
-      "Plaid integration benefits",
-      "Working with younger customers",
-      "Digital-first application flow",
-      "Understanding that LTO does not report to credit bureaus"
+      "Working with good credit customers",
+      "Explaining immediate ownership benefits",
+      "90-Day Finance Charge Cap advantage",
+      "No processing fee benefit"
     ]
   },
   {
-    id: "process-urgent-need",
-    title: "Emergency Repair - Time-Pressured Process",
-    difficulty: "advanced",
-    reward: 50,
-    scenarioType: "time-critical",
+    id: "ric-fair-credit-auto",
+    title: "Fair Credit Customer - Emergency Auto Repair",
+    difficulty: "intermediate",
+    reward: 40,
+    scenarioType: "emergency-repair",
     customerProfile: {
-      name: "Carlos Martinez", 
-      creditScore: "Poor (520-580)",
-      income: "$2,900/month",
-      purchaseAmount: "$3,200",
-      itemDescription: "Emergency transmission replacement"
+      name: "Sarah Johnson",
+      creditScore: "650",
+      income: "$3,000/month",
+      financedAmount: "$2,200",
+      itemDescription: "Transmission and brake repair"
     },
     applicationDetails: {
-      email: "c.martinez87@email.com",
-      phone: "(555) 789-0123",
-      bankingPreference: "Manual entry",
-      challengePoints: ["Time pressure", "Work dependency", "Stress management", "Poor credit"]
+      email: "sarah.johnson@email.com",
+      phone: "(555) 345-6789",
+      bankingPreference: "Manual entry preferred",
+      challengePoints: ["Urgent need for transportation", "Budget constraints", "Stress about repair costs"]
     },
     expectedOutcome: "approved",
-    processingFee: "$39 (cash payment)",
+    processingFee: "None (RIC advantage)",
     keyLearningPoints: [
       "Managing urgent customer needs",
-      "Parallel processing (app + prep work)",
-      "Stress-reduction techniques", 
-      "Emergency approval handling"
+      "Fair credit approval process",
+      "Stress reduction through clear terms",
+      "Emergency situation handling"
+    ]
+  },
+  {
+    id: "ric-business-equipment",
+    title: "Self-Employed Customer - Office Equipment",
+    difficulty: "advanced",
+    reward: 50,
+    scenarioType: "business-purchase",
+    customerProfile: {
+      name: "Mike Chen",
+      creditScore: "680",
+      income: "$3,800/month (variable)",
+      financedAmount: "$4,200",
+      itemDescription: "Complete home office setup"
+    },
+    applicationDetails: {
+      email: "mike.chen.consulting@gmail.com",
+      phone: "(555) 456-7890",
+      bankingPreference: "Plaid connection",
+      challengePoints: ["Variable income verification", "Business tax considerations", "ROI analysis mindset"]
+    },
+    expectedOutcome: "approved",
+    processingFee: "None (RIC advantage)",
+    keyLearningPoints: [
+      "Self-employed income verification",
+      "Business equipment immediate ownership benefits",
+      "Variable income considerations",
+      "Early payoff planning for business customers"
     ]
   }
 ];
 
-// Common Issues and Troubleshooting for LTO Process
-export const ltoTroubleshooting = [
+// Common Issues and Troubleshooting for RIC Process
+export const ricTroubleshooting = [
   {
-    issue: "Customer doesn't receive text message",
-    causes: ["Wrong phone number entered", "Customer's phone blocking messages", "Network delays"],
+    issue: "Customer doesn't understand immediate ownership",
+    causes: ["Confused with lease concepts", "First-time RIC experience", "Unclear explanation"],
     solutions: [
-      "Verify phone number accuracy",
-      "Check customer's spam/blocked messages",
-      "Generate QR code as alternative",
-      "Re-send application link"
+      "Emphasize 'you own it immediately' benefit",
+      "Compare to traditional credit purchases",
+      "Explain difference from lease-to-own",
+      "Use simple ownership language"
     ]
   },
   {
-    issue: "Customer can't access DocuSign",
-    causes: ["Forgot last 4 SSN digits", "Technical issues", "Link expired"],
+    issue: "Customer confused about 90-Day Finance Charge Cap",
+    causes: ["Complex finance terminology", "Never seen FCCP before", "Skeptical about cap"],
     solutions: [
-      "Help customer recall SSN digits",
-      "Try different browser/device",
-      "Contact support for new link",
-      "Ensure customer has strong internet connection"
+      "Use specific dollar example ($40 cap)",
+      "Explain as 'maximum finance charge protection'",
+      "Show potential savings compared to other financing",
+      "Provide written summary of FCCP benefit"
     ]
   },
   {
-    issue: "Plaid bank connection fails",
-    causes: ["Bank not supported", "Customer uncomfortable", "Technical issues"],
+    issue: "Customer expects processing fee",
+    causes: ["Previous LTO experience", "Other financing had fees", "Confusion about RIC benefits"],
     solutions: [
-      "Switch to manual banking entry",
-      "Explain Plaid security features",
-      "Try different bank if customer has multiple",
-      "Contact support if persistent issues"
+      "Clearly state 'no processing fee for RIC'",
+      "Explain as RIC advantage",
+      "Compare to LTO processing fee difference",
+      "Emphasize total cost savings"
     ]
   },
   {
-    issue: "Customer confused about lease terms",
-    causes: ["First-time lease customer", "Complex terms", "Language barriers"],
+    issue: "Good credit customer questions RIC choice",
+    causes: ["Thinks traditional credit is better", "Doesn't understand RIC benefits", "Rate shopping"],
     solutions: [
-      "Explain lease vs. purchase clearly",
-      "Show early purchase savings",
-      "Use simple language",
-      "Provide written summary of terms"
+      "Explain immediate ownership benefit",
+      "Highlight 90-Day Finance Charge Cap protection",
+      "Show no processing fee advantage",
+      "Emphasize flexible early payoff options"
     ]
   },
   {
-    issue: "Processing fee payment issues",
-    causes: ["Customer unprepared", "Payment method declined", "Forgot about fee"],
+    issue: "Customer wants to pay off immediately",
+    causes: ["Doesn't understand payment timing", "Wants to avoid all finance charges", "Impatient"],
     solutions: [
-      "Inform customer of fee early in process",
-      "Accept multiple payment methods",
-      "Never skip fee collection",
-      "Explain fee purpose and requirements"
+      "Explain payment schedule flexibility",
+      "Show early payoff savings calculation",
+      "Describe 90-day cap benefit for planning",
+      "Confirm no prepayment penalties"
+    ]
+  },
+  {
+    issue: "Self-employed income verification concerns",
+    causes: ["Variable income", "Tax considerations", "Documentation worries"],
+    solutions: [
+      "Explain income verification process",
+      "Describe acceptable documentation",
+      "Reassure about privacy and security",
+      "Offer manual banking entry if needed"
     ]
   }
 ]
