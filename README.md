@@ -225,6 +225,26 @@ easypay-university/
 2. Start production server: `npm start`
 3. Serve on your preferred platform
 
+## 🆕 Recent Updates
+
+### Major UX Enhancement: Module 6 Carousel Implementation (Latest)
+- **Carousel-Based Learning**: 6 specialized carousel components to reduce information overload
+- **Auto Shop Associate Optimization**: One-piece-at-a-time information display for varying education levels
+- **Navigation Enhancement**: Dots and arrow navigation for intuitive progression
+- **Reduced Cognitive Load**: Information presented in digestible chunks
+
+### Certificate System & Quiz Improvements
+- **Fixed Certificate Modal Visibility**: Resolved certificate button functionality
+- **Compact Certificate Design**: Professional certificates that fit on one screen
+- **eBucks Reward Verification**: Confirmed 100 eBucks awards work correctly
+- **Print/Save Functionality**: Working certificate download options
+
+### Platform-Wide Content Standardization
+- **Complete Emoji Removal**: Professional appearance for business environment
+- **Enhanced Module 2**: Visual pillars carousel with outside navigation
+- **Enhanced Module 3**: Color-coded RIC/LTO references and enlarged state map
+- **UI Polish**: Centered lesson overview icons and removed non-functional buttons
+
 ## 🛠️ Development
 
 ### Available Scripts
