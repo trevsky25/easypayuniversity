@@ -659,22 +659,87 @@ function ObjectionTrainer({ data, onComplete }: { data: any, onComplete?: () => 
 // Application Simulator
 function ApplicationSimulator({ data, onComplete }: { data: any, onComplete?: () => void }) {
   const [step, setStep] = useState(0)
-  const [applicationData, setApplicationData] = useState<any>({})
+  const [applicationData, setApplicationData] = useState<any>({
+    amount: 1000,
+    paymentFrequency: 'monthly'
+  })
   const [showResult, setShowResult] = useState(false)
+  const [calculations, setCalculations] = useState<any>({})
 
   const steps = [
-    { title: 'Customer Info', field: 'customerName' },
-    { title: 'Purchase Amount', field: 'amount' },
-    { title: 'Program Selection', field: 'program' },
+    { title: 'Customer Information', field: 'customer' },
+    { title: 'Purchase Details', field: 'purchase' },
+    { title: 'Program Selection & Calculations', field: 'program' },
+    { title: 'Application Review', field: 'review' },
     { title: 'Submit Application', field: 'submit' }
   ]
 
+  // Cost calculation functions
+  const calculateRIC = (amount: number, term: number = 24) => {
+    const financeCharge = Math.min(40, amount * 0.1) // $40 max within 90 days, otherwise 10% APR
+    const total = amount + financeCharge
+    const monthlyPayment = total / term
+    
+    return {
+      financeAmount: amount,
+      financeCharge: financeCharge,
+      totalAmount: total,
+      monthlyPayment: monthlyPayment,
+      term: term,
+      apr: '10% - 24.99%'
+    }
+  }
+
+  const calculateLTO = (amount: number, frequency: string = 'monthly') => {
+    const processingFee = 39
+    const markup = amount * 1.6 // LTO typically 60% markup
+    const totalLease = amount + markup
+    
+    let payments: number, paymentAmount: number
+    
+    switch (frequency) {
+      case 'weekly':
+        payments = 78 // 18 months weekly
+        paymentAmount = totalLease / payments
+        break
+      case 'biweekly':
+        payments = 39 // 18 months biweekly
+        paymentAmount = totalLease / payments
+        break
+      default: // monthly
+        payments = 18
+        paymentAmount = totalLease / payments
+        break
+    }
+
+    const earlyPurchaseOption = amount * 1.2 // 20% markup for early purchase
+    
+    return {
+      financeAmount: amount,
+      processingFee: processingFee,
+      totalLeaseAmount: totalLease,
+      paymentAmount: paymentAmount,
+      payments: payments,
+      frequency: frequency,
+      earlyPurchaseOption: earlyPurchaseOption,
+      savings: totalLease - earlyPurchaseOption
+    }
+  }
+
   const handleStepComplete = (data: any) => {
-    setApplicationData({ ...applicationData, ...data })
+    const newData = { ...applicationData, ...data }
+    setApplicationData(newData)
+    
+    // Calculate costs when amount or program changes
+    if (data.amount || data.program || data.paymentFrequency) {
+      const amount = data.amount || newData.amount || 1000
+      const ricCalc = calculateRIC(amount)
+      const ltoCalc = calculateLTO(amount, newData.paymentFrequency)
+      setCalculations({ ric: ricCalc, lto: ltoCalc })
+    }
+    
     if (step < steps.length - 1) {
       setStep(step + 1)
-      // Scroll to top when moving to next step
-      window.scrollTo({ top: 0, behavior: 'smooth' })
     } else {
       setShowResult(true)
       onComplete?.()
@@ -684,107 +749,359 @@ function ApplicationSimulator({ data, onComplete }: { data: any, onComplete?: ()
   return (
     <div className="space-y-6">
       <div className="text-center">
-        <div className="inline-flex items-center gap-2 bg-indigo-100 px-4 py-2 rounded-full mb-4">
-          <Zap className="w-5 h-5 text-indigo-600" />
-          <span className="font-semibold text-indigo-800">Application Simulator</span>
+        <div className="inline-flex items-center gap-2 bg-green-100 px-4 py-2 rounded-full mb-4">
+          <Calculator className="w-5 h-5 text-green-600" />
+          <span className="font-semibold text-green-800">EasyPay Application Simulator</span>
         </div>
-        <div className="flex justify-center gap-2">
+        <div className="flex justify-center gap-2 mb-2">
           {steps.map((_, index) => (
             <div
               key={index}
               className={`w-3 h-3 rounded-full transition-all ${
-                index <= step ? 'bg-indigo-600' : 'bg-gray-300'
+                index <= step ? 'bg-green-600' : 'bg-gray-300'
               }`}
             />
           ))}
         </div>
+        <div className="text-sm text-gray-600">Step {step + 1} of {steps.length}</div>
       </div>
 
-      <Card className="p-6 bg-gradient-to-br from-indigo-50 to-purple-50">
+      <Card className="p-6 bg-gradient-to-br from-green-50 to-blue-50">
         {!showResult ? (
           <div className="space-y-6">
-            <h3 className="text-lg font-semibold text-center">
-              Step {step + 1}: {steps[step].title}
+            <h3 className="text-xl font-semibold text-center text-gray-800">
+              {steps[step].title}
             </h3>
             
+            {/* Step 1: Customer Information */}
             {step === 0 && (
-              <div className="text-center">
-                <input
-                  type="text"
-                  placeholder="Customer Name"
-                  className="w-full max-w-md px-4 py-3 border-2 border-gray-200 rounded-lg text-center text-lg"
-                  onBlur={(e) => e.target.value && handleStepComplete({ customerName: e.target.value })}
-                />
-              </div>
-            )}
-            
-            {step === 1 && (
-              <div className="text-center space-y-4">
-                <div className="text-2xl font-bold text-indigo-600">
-                  ${applicationData.amount || 0}
+              <div className="space-y-4 max-w-md mx-auto">
+                <div>
+                  <label className="block text-sm font-medium mb-2">Customer Name</label>
+                  <input
+                    type="text"
+                    placeholder="Enter customer name"
+                    className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-green-500 focus:outline-none"
+                    defaultValue={applicationData.customerName}
+                    onChange={(e) => setApplicationData({...applicationData, customerName: e.target.value})}
+                  />
                 </div>
-                <input
-                  type="range"
-                  min="100"
-                  max="5000"
-                  step="50"
-                  className="w-full max-w-md"
-                  onChange={(e) => setApplicationData({ ...applicationData, amount: parseInt(e.target.value) })}
-                />
-                <button
-                  onClick={() => handleStepComplete({ amount: applicationData.amount })}
-                  className="bg-indigo-600 text-white px-6 py-2 rounded-lg"
-                >
-                  Continue
-                </button>
-              </div>
-            )}
-            
-            {step === 2 && (
-              <div className="grid grid-cols-2 gap-4">
-                {['RIC', 'LTO'].map((program) => (
-                  <button
-                    key={program}
-                    onClick={() => handleStepComplete({ program })}
-                    className="p-4 border-2 border-gray-200 rounded-lg hover:border-indigo-500 hover:bg-indigo-50 transition-all"
-                  >
-                    <div className="font-semibold">{program}</div>
-                  </button>
-                ))}
-              </div>
-            )}
-            
-            {step === 3 && (
-              <div className="text-center">
+                <div>
+                  <label className="block text-sm font-medium mb-2">Phone Number</label>
+                  <input
+                    type="tel"
+                    placeholder="(555) 123-4567"
+                    className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-green-500 focus:outline-none"
+                    onChange={(e) => setApplicationData({...applicationData, phone: e.target.value})}
+                  />
+                </div>
+                <div>
+                  <label className="block text-sm font-medium mb-2">Email (Optional)</label>
+                  <input
+                    type="email"
+                    placeholder="customer@email.com"
+                    className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-green-500 focus:outline-none"
+                    onChange={(e) => setApplicationData({...applicationData, email: e.target.value})}
+                  />
+                </div>
                 <button
                   onClick={() => handleStepComplete({})}
-                  className="bg-gradient-to-r from-indigo-600 to-purple-600 text-white px-8 py-4 rounded-lg text-lg font-semibold hover:shadow-lg transition-all transform hover:scale-105"
+                  disabled={!applicationData.customerName}
+                  className="w-full bg-green-600 text-white px-6 py-3 rounded-lg hover:bg-green-700 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
                 >
-                  Submit Application
+                  Continue to Purchase Details
                 </button>
+              </div>
+            )}
+            
+            {/* Step 2: Purchase Details */}
+            {step === 1 && (
+              <div className="space-y-6 max-w-lg mx-auto">
+                <div className="text-center">
+                  <div className="text-4xl font-bold text-green-600 mb-2">
+                    ${applicationData.amount?.toLocaleString() || '1,000'}
+                  </div>
+                  <label className="block text-sm font-medium mb-4">Purchase Amount</label>
+                  <input
+                    type="range"
+                    min="100"
+                    max="5000"
+                    step="50"
+                    value={applicationData.amount || 1000}
+                    className="w-full h-3 bg-gray-200 rounded-lg appearance-none cursor-pointer slider"
+                    onChange={(e) => setApplicationData({ ...applicationData, amount: parseInt(e.target.value) })}
+                  />
+                  <div className="flex justify-between text-sm text-gray-600 mt-2">
+                    <span>$100</span>
+                    <span>$5,000</span>
+                  </div>
+                </div>
+                
+                <div>
+                  <label className="block text-sm font-medium mb-2">Item Description</label>
+                  <input
+                    type="text"
+                    placeholder="e.g., Living room furniture set"
+                    className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-green-500 focus:outline-none"
+                    onChange={(e) => setApplicationData({...applicationData, itemDescription: e.target.value})}
+                  />
+                </div>
+
+                <div>
+                  <label className="block text-sm font-medium mb-2">Payment Preference</label>
+                  <div className="grid grid-cols-3 gap-2">
+                    {['weekly', 'biweekly', 'monthly'].map((freq) => (
+                      <button
+                        key={freq}
+                        onClick={() => setApplicationData({...applicationData, paymentFrequency: freq})}
+                        className={`px-3 py-2 rounded-lg text-sm font-medium transition-all ${
+                          applicationData.paymentFrequency === freq
+                            ? 'bg-green-600 text-white'
+                            : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                        }`}
+                      >
+                        {freq.charAt(0).toUpperCase() + freq.slice(1)}
+                      </button>
+                    ))}
+                  </div>
+                </div>
+                
+                <button
+                  onClick={() => handleStepComplete({})}
+                  className="w-full bg-green-600 text-white px-6 py-3 rounded-lg hover:bg-green-700 transition-colors"
+                >
+                  Continue to Program Selection
+                </button>
+              </div>
+            )}
+            
+            {/* Step 3: Program Selection & Calculations */}
+            {step === 2 && (
+              <div className="space-y-6">
+                <div className="grid md:grid-cols-2 gap-6">
+                  {/* RIC Option */}
+                  <div className={`border-2 rounded-lg p-6 cursor-pointer transition-all ${
+                    applicationData.program === 'RIC' 
+                      ? 'border-green-500 bg-green-50' 
+                      : 'border-gray-200 hover:border-green-300'
+                  }`} onClick={() => handleStepComplete({ program: 'RIC' })}>
+                    <div className="text-center mb-4">
+                      <h4 className="text-lg font-semibold text-gray-800">Retail Installment Contract</h4>
+                      <p className="text-sm text-gray-600">Traditional financing with immediate ownership</p>
+                    </div>
+                    
+                    {calculations.ric && (
+                      <div className="space-y-3 text-sm">
+                        <div className="flex justify-between">
+                          <span>Purchase Amount:</span>
+                          <span className="font-semibold">${calculations.ric.financeAmount.toLocaleString()}</span>
+                        </div>
+                        <div className="flex justify-between">
+                          <span>Finance Charge:</span>
+                          <span className="font-semibold">${calculations.ric.financeCharge.toFixed(2)}</span>
+                        </div>
+                        <div className="flex justify-between border-t pt-2">
+                          <span>Total Amount:</span>
+                          <span className="font-bold">${calculations.ric.totalAmount.toFixed(2)}</span>
+                        </div>
+                        <div className="flex justify-between">
+                          <span>Monthly Payment:</span>
+                          <span className="font-bold text-green-600">${calculations.ric.monthlyPayment.toFixed(2)}</span>
+                        </div>
+                        <div className="text-xs text-gray-500 text-center">
+                          APR: {calculations.ric.apr} • {calculations.ric.term} months
+                        </div>
+                      </div>
+                    )}
+                  </div>
+
+                  {/* LTO Option */}
+                  <div className={`border-2 rounded-lg p-6 cursor-pointer transition-all ${
+                    applicationData.program === 'LTO' 
+                      ? 'border-blue-500 bg-blue-50' 
+                      : 'border-gray-200 hover:border-blue-300'
+                  }`} onClick={() => handleStepComplete({ program: 'LTO' })}>
+                    <div className="text-center mb-4">
+                      <h4 className="text-lg font-semibold text-gray-800">Lease-to-Own</h4>
+                      <p className="text-sm text-gray-600">Flexible payments with early purchase options</p>
+                    </div>
+                    
+                    {calculations.lto && (
+                      <div className="space-y-3 text-sm">
+                        <div className="flex justify-between">
+                          <span>Item Cost:</span>
+                          <span className="font-semibold">${calculations.lto.financeAmount.toLocaleString()}</span>
+                        </div>
+                        <div className="flex justify-between">
+                          <span>Processing Fee:</span>
+                          <span className="font-semibold">${calculations.lto.processingFee}</span>
+                        </div>
+                        <div className="flex justify-between border-t pt-2">
+                          <span>{applicationData.paymentFrequency} Payment:</span>
+                          <span className="font-bold text-blue-600">${calculations.lto.paymentAmount.toFixed(2)}</span>
+                        </div>
+                        <div className="flex justify-between">
+                          <span>Total ({calculations.lto.payments} payments):</span>
+                          <span className="font-bold">${calculations.lto.totalLeaseAmount.toFixed(2)}</span>
+                        </div>
+                        <div className="bg-yellow-50 p-2 rounded">
+                          <div className="flex justify-between text-xs">
+                            <span>Early Purchase Option:</span>
+                            <span className="font-bold text-green-600">${calculations.lto.earlyPurchaseOption.toFixed(2)}</span>
+                          </div>
+                          <div className="text-xs text-center text-green-600 font-medium">
+                            Save ${calculations.lto.savings.toFixed(2)} with early purchase!
+                          </div>
+                        </div>
+                      </div>
+                    )}
+                  </div>
+                </div>
+                
+                {applicationData.program && (
+                  <div className="text-center">
+                    <button
+                      onClick={() => handleStepComplete({})}
+                      className="bg-green-600 text-white px-8 py-3 rounded-lg hover:bg-green-700 transition-colors"
+                    >
+                      Continue to Review
+                    </button>
+                  </div>
+                )}
+              </div>
+            )}
+            
+            {/* Step 4: Application Review */}
+            {step === 3 && (
+              <div className="max-w-lg mx-auto space-y-6">
+                <div className="bg-white rounded-lg border p-6">
+                  <h4 className="text-lg font-semibold mb-4">Application Summary</h4>
+                  <div className="space-y-3 text-sm">
+                    <div className="flex justify-between">
+                      <span>Customer:</span>
+                      <span className="font-semibold">{applicationData.customerName}</span>
+                    </div>
+                    <div className="flex justify-between">
+                      <span>Phone:</span>
+                      <span className="font-semibold">{applicationData.phone}</span>
+                    </div>
+                    <div className="flex justify-between">
+                      <span>Item:</span>
+                      <span className="font-semibold">{applicationData.itemDescription || 'Purchase item'}</span>
+                    </div>
+                    <div className="flex justify-between">
+                      <span>Amount:</span>
+                      <span className="font-semibold">${applicationData.amount?.toLocaleString()}</span>
+                    </div>
+                    <div className="flex justify-between">
+                      <span>Program:</span>
+                      <span className="font-semibold">{applicationData.program}</span>
+                    </div>
+                    {applicationData.program === 'LTO' && (
+                      <div className="flex justify-between">
+                        <span>Payment Frequency:</span>
+                        <span className="font-semibold">{applicationData.paymentFrequency}</span>
+                      </div>
+                    )}
+                  </div>
+                </div>
+                
+                <button
+                  onClick={() => handleStepComplete({})}
+                  className="w-full bg-green-600 text-white px-6 py-3 rounded-lg hover:bg-green-700 transition-colors"
+                >
+                  Everything looks correct - Continue
+                </button>
+              </div>
+            )}
+            
+            {/* Step 5: Submit Application */}
+            {step === 4 && (
+              <div className="text-center space-y-6">
+                <div className="max-w-md mx-auto">
+                  <h4 className="text-lg font-semibold mb-4">Ready to Submit</h4>
+                  <p className="text-gray-600 mb-6">
+                    Review all information and submit the application to EasyPay Finance for processing.
+                  </p>
+                  
+                  <div className="bg-blue-50 border border-blue-200 rounded-lg p-4 mb-6">
+                    <div className="flex items-center gap-2 text-blue-800">
+                      <Sparkles className="w-5 h-5" />
+                      <span className="font-semibold">Instant Decision</span>
+                    </div>
+                    <p className="text-sm text-blue-700 mt-2">
+                      Most applications receive an instant approval decision
+                    </p>
+                  </div>
+                  
+                  <button
+                    onClick={() => handleStepComplete({})}
+                    className="w-full bg-gradient-to-r from-green-600 to-blue-600 text-white px-8 py-4 rounded-lg text-lg font-semibold hover:shadow-lg transition-all transform hover:scale-105"
+                  >
+                    Submit Application
+                  </button>
+                </div>
               </div>
             )}
           </div>
         ) : (
-          <div className="text-center space-y-4">
-            <div className="text-6xl">🎉</div>
-            <h3 className="text-2xl font-bold text-green-600">Application Approved!</h3>
-            <div className="bg-white rounded-lg p-4 max-w-md mx-auto">
-              <div className="space-y-2 text-left">
-                <div className="flex justify-between">
-                  <span>Customer:</span>
-                  <span className="font-semibold">{applicationData.customerName}</span>
+          <div className="text-center space-y-6">
+            <div className="text-6xl animate-bounce">🎉</div>
+            <h3 className="text-3xl font-bold text-green-600">Application Approved!</h3>
+            
+            <div className="bg-white rounded-lg border p-6 max-w-lg mx-auto">
+              <div className="space-y-4">
+                <div className="text-lg font-semibold text-gray-800 mb-4">Approval Details</div>
+                
+                <div className="grid grid-cols-2 gap-4 text-sm">
+                  <div className="text-left">
+                    <div className="font-medium text-gray-600">Customer</div>
+                    <div className="font-semibold">{applicationData.customerName}</div>
+                  </div>
+                  <div className="text-right">
+                    <div className="font-medium text-gray-600">Amount</div>
+                    <div className="font-semibold">${applicationData.amount?.toLocaleString()}</div>
+                  </div>
+                  <div className="text-left">
+                    <div className="font-medium text-gray-600">Program</div>
+                    <div className="font-semibold">{applicationData.program}</div>
+                  </div>
+                  <div className="text-right">
+                    <div className="font-medium text-gray-600">Payment</div>
+                    <div className="font-semibold text-green-600">
+                      ${applicationData.program === 'RIC' 
+                        ? calculations.ric?.monthlyPayment.toFixed(2) 
+                        : calculations.lto?.paymentAmount.toFixed(2)
+                      }/{applicationData.program === 'RIC' ? 'mo' : applicationData.paymentFrequency?.charAt(0)}
+                    </div>
+                  </div>
                 </div>
-                <div className="flex justify-between">
-                  <span>Amount:</span>
-                  <span className="font-semibold">${applicationData.amount}</span>
-                </div>
-                <div className="flex justify-between">
-                  <span>Program:</span>
-                  <span className="font-semibold">{applicationData.program}</span>
+                
+                <div className="border-t pt-4">
+                  <div className="bg-green-50 border border-green-200 rounded-lg p-3">
+                    <div className="flex items-center gap-2 text-green-800">
+                      <CheckCircle className="w-5 h-5" />
+                      <span className="font-semibold">Next Steps</span>
+                    </div>
+                    <p className="text-sm text-green-700 mt-2">
+                      Customer can {applicationData.program === 'RIC' ? 'take ownership immediately' : 'begin using the item today'} and start making payments according to the agreement.
+                    </p>
+                  </div>
                 </div>
               </div>
             </div>
+            
+            <button
+              onClick={() => {
+                setStep(0)
+                setApplicationData({ amount: 1000, paymentFrequency: 'monthly' })
+                setShowResult(false)
+                setCalculations({})
+              }}
+              className="bg-gray-600 text-white px-6 py-2 rounded-lg hover:bg-gray-700 transition-colors"
+            >
+              Start New Application
+            </button>
           </div>
         )}
       </Card>
@@ -920,8 +1237,7 @@ function KnowledgeQuiz({ data, onComplete }: { data: any, onComplete?: () => voi
       setCurrentQuestion(currentQuestion + 1)
       setSelectedAnswer(null)
       setShowResult(false)
-      // Scroll to top when moving to next question
-      window.scrollTo({ top: 0, behavior: 'smooth' })
+      // No auto-scroll - keep user focused on the quiz
     } else {
       onComplete?.()
     }

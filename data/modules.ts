@@ -139,18 +139,18 @@ export const trainingModules: TrainingModule[] = [
       },
       {
         id: 'lesson-1-2',
-        title: 'Understanding Our Three Core Programs',
+        title: 'Understanding Our Two Core Programs',
         duration: '20 minutes',
         objectives: [
-          'Understand the three core EasyPay Finance programs',
+          'Understand the two core EasyPay Finance programs',
           'Learn when to use RIC vs LTO for different customers',
           'Master program comparison and selection strategies'
         ],
         content: [
           {
             type: 'text',
-            title: 'Three Ways to Finance',
-            content: 'EasyPay Finance offers three distinct financing programs, each designed for different customer needs and situations. Understanding when and how to use each program is key to maximizing your sales and customer satisfaction.'
+            title: 'Two Core Financing Programs',
+            content: 'EasyPay Finance offers two distinct financing programs, each designed for different customer needs and situations. Understanding when and how to use each program is key to maximizing your sales and customer satisfaction.'
           },
           {
             type: 'text',
@@ -203,6 +203,7 @@ export const trainingModules: TrainingModule[] = [
           }
         ],
         keyTakeaways: [
+          'EasyPay Finance offers two core programs: RIC and LTO',
           'RIC provides immediate ownership with traditional financing structure',
           'LTO offers flexible payments with early purchase options, ideal for challenged credit',
           'Each program serves different customer needs and credit situations'
@@ -253,6 +254,24 @@ export const trainingModules: TrainingModule[] = [
             type: 'tip',
             title: 'Portal Best Practices',
             content: 'Bookmark your Business Center URL, keep login credentials secure, check your dashboard regularly for updates, and ensure team members have appropriate access levels for their roles.'
+          },
+          {
+            type: 'contact-info',
+            title: 'Business Center Support',
+            content: 'Need help with the Business Center portal or have technical questions? Our support team is ready to assist you.',
+            contacts: [
+              {
+                type: 'Merchant Services',
+                phone: '(866) 337-2537',
+                hours: 'Monday-Friday 5am-6pm PST, Saturday 5am-5pm PST',
+                description: 'For Business Center portal support and technical assistance'
+              },
+              {
+                type: 'Customer Service',
+                phone: '(800) 447-6215',
+                description: 'For general inquiries and customer support'
+              }
+            ]
           },
           {
             type: 'interactive',
@@ -379,61 +398,122 @@ export const trainingModules: TrainingModule[] = [
           {
             type: 'text',
             title: 'What is Credit Culture?',
-            content: 'Credit culture is the systematic approach to making financing conversations a natural part of every customer interaction. It\'s about shifting from reactive financing (only when customers ask) to proactive financing (offering solutions before problems arise).'
+            content: 'Credit culture is the systematic approach to making financing conversations a natural part of every customer interaction. It\'s about shifting from reactive financing (only when customers ask) to proactive financing (offering solutions before problems arise). Think of it as building financing discussions into your DNA as a business.'
           },
           {
-            type: 'text',
-            title: 'Pillar 1: Communication',
-            content: 'Effective communication means every team member knows how to naturally introduce financing options without being pushy. It\'s about reading customer cues, asking the right questions, and positioning financing as a helpful solution rather than a sales pitch.'
+            type: 'tip',
+            title: 'The Transformation',
+            content: 'Businesses with strong credit culture see 40-60% increases in average transaction values and significantly higher customer satisfaction scores. Customers appreciate having options, and your team gains confidence in helping people afford what they need.'
           },
           {
-            type: 'example',
-            title: 'Communication in Action',
-            content: 'Instead of: "Do you need financing?"\nTry: "To help you get the most value, we offer several payment options including financing that can break this into manageable payments. Would you like to hear about your options?"'
-          },
-          {
-            type: 'text',
-            title: 'Pillar 2: Training',
-            content: 'Comprehensive training ensures every team member understands not just the "how" but the "why" behind financing. This includes product knowledge, process understanding, objection handling, and most importantly, the value financing brings to customers.'
-          },
-          {
-            type: 'checklist',
-            title: 'Essential Training Components',
-            items: [
-              'Product knowledge: Understanding all three financing programs',
-              'Process mastery: Smooth application submission',
-              'Value proposition: Why financing helps customers',
-              'Objection handling: Addressing common concerns',
-              'Customer service: Making the experience positive'
+            type: 'pillars',
+            title: 'The Four Pillars of Credit Culture',
+            content: 'A successful credit culture is built on four essential pillars. Each pillar supports the others - remove any one and the entire structure becomes unstable.',
+            pillars: [
+              {
+                id: 1,
+                title: 'Communication',
+                icon: '1',
+                color: '#16a34a',
+                description: 'Natural, helpful financing conversations',
+                details: [
+                  'Read customer cues and buying signals',
+                  'Use assumptive, helpful language',
+                  'Position financing as a solution, not a sales pitch',
+                  'Practice conversation starters and transitions',
+                  'Handle objections with confidence and empathy'
+                ],
+                example: {
+                  wrong: '"Do you need financing?"',
+                  right: '"To make this work better for your budget, we have several payment options including financing that breaks this into manageable monthly payments. Let me show you what that looks like."'
+                }
+              },
+              {
+                id: 2,
+                title: 'Training',
+                icon: '2',
+                color: '#1976D2',
+                description: 'Comprehensive knowledge and skill development',
+                details: [
+                  'Complete product knowledge of all financing programs',
+                  'Smooth application submission process mastery',
+                  'Understanding the customer value proposition',
+                  'Objection handling techniques and scripts',
+                  'Ongoing skill development and refresher training'
+                ],
+                example: {
+                  components: [
+                    'Initial: EasyPay University certification',
+                    'Ongoing: Monthly team training sessions',
+                    'Practice: Role-playing with real scenarios',
+                    'Reinforcement: Quarterly refresher courses',
+                    'Measurement: Skills assessment and improvement plans'
+                  ]
+                }
+              },
+              {
+                id: 3,
+                title: 'Incentives',
+                icon: '3',
+                color: '#FF6F00',
+                description: 'Meaningful rewards that drive behavior',
+                details: [
+                  'Financial rewards for financing success',
+                  'Recognition programs and team competitions',
+                  'Professional development opportunities',
+                  'Performance-based advancement paths',
+                  'Team celebrations and achievement sharing'
+                ],
+                example: {
+                  ideas: [
+                    'Monthly bonuses for top financing performance',
+                    'Team lunch for hitting financing goals',
+                    'Recognition board highlighting success stories',
+                    'Advancement opportunities for financing champions',
+                    'Quarterly awards and public recognition'
+                  ]
+                }
+              },
+              {
+                id: 4,
+                title: 'Leadership',
+                icon: '4',
+                color: '#7B1FA2',
+                description: 'Management commitment and active support',
+                details: [
+                  'Visible leadership participation in financing discussions',
+                  'Consistent messaging about financing importance',
+                  'Resource allocation for training and tools',
+                  'Regular performance reviews including financing metrics',
+                  'Problem-solving support when challenges arise'
+                ],
+                example: {
+                  actions: [
+                    'Managers demonstrate financing conversations',
+                    'Financing metrics included in all team meetings',
+                    'Leadership celebrates financing wins publicly',
+                    'Resources provided for ongoing training',
+                    'Support given when team members face challenges'
+                  ]
+                }
+              }
             ]
           },
           {
-            type: 'text',
-            title: 'Pillar 3: Incentives',
-            content: 'Proper incentives align team behavior with business goals. This doesn\'t always mean monetary rewards - recognition, competition, and professional development can be equally motivating. The key is making financing success personally meaningful to each team member.'
-          },
-          {
-            type: 'text',
-            title: 'Pillar 4: Leadership',
-            content: 'Leadership sets the tone and expectations. When leaders actively support and participate in financing discussions, it signals to the entire team that this is a priority. Leadership also provides the resources and support needed for success.'
-          },
-          {
             type: 'warning',
-            title: 'Common Pitfall',
-            content: 'Many businesses focus only on training without addressing the other three pillars. Without proper communication standards, incentive alignment, and leadership support, even the best training will fail to create lasting change.'
+            title: 'Critical Success Factor',
+            content: 'Research shows that 73% of businesses that focus only on training without the other three pillars see their financing programs plateau within 6 months. All four pillars must work together - Communication provides the skills, Training builds the knowledge, Incentives drive the behavior, and Leadership sustains the culture.'
           },
           {
             type: 'interactive',
-            title: 'Credit Culture Foundation Builder',
-            content: 'Build your credit culture by selecting the essential pillars!',
+            title: 'Credit Culture Assessment',
+            content: 'Evaluate your current credit culture strength across all four pillars to identify improvement opportunities.',
             interactiveType: 'credit-culture-builder',
             pillars: [
-              { id: 'communication', name: 'Clear Communication', icon: '💬', description: 'Train staff to discuss financing naturally' },
-              { id: 'training', name: 'Ongoing Training', icon: '📚', description: 'Regular skill development sessions' },
-              { id: 'incentives', name: 'Performance Incentives', icon: '🎯', description: 'Reward successful financing conversations' },
-              { id: 'leadership', name: 'Leadership Support', icon: '👑', description: 'Management commitment to credit culture' },
-              { id: 'tools', name: 'Proper Tools', icon: '🛠️', description: 'Calculators and materials readily available' },
-              { id: 'tracking', name: 'Progress Tracking', icon: '📊', description: 'Monitor and measure success metrics' }
+              { id: 'communication', name: 'Communication', icon: '1', description: 'Natural, helpful financing conversations with customers' },
+              { id: 'training', name: 'Training', icon: '2', description: 'Comprehensive knowledge and ongoing skill development' },
+              { id: 'incentives', name: 'Incentives', icon: '3', description: 'Meaningful rewards that motivate financing success' },
+              { id: 'leadership', name: 'Leadership', icon: '4', description: 'Management commitment and active participation' }
             ]
           }
         ],
@@ -455,45 +535,104 @@ export const trainingModules: TrainingModule[] = [
         ],
         content: [
           {
-            type: 'text',
-            title: 'New Employee Onboarding',
-            content: 'The first 30 days are critical for establishing proper habits and mindset around financing. New employees should understand that financing is not an "add-on" service but an integral part of customer service.'
+            type: 'tip',
+            title: 'The Make-or-Break Period',
+            content: 'The first 30 days determine whether a new employee will naturally integrate financing into customer conversations or view it as an uncomfortable "add-on." Employees who receive structured onboarding are 3x more likely to consistently discuss financing options after 90 days.'
           },
           {
-            type: 'checklist',
-            title: '30-Day Onboarding Checklist',
-            items: [
-              'Day 1-3: Complete EasyPay University training modules',
-              'Day 4-7: Shadow experienced team members during customer interactions',
-              'Day 8-14: Practice applications with mock scenarios',
-              'Day 15-21: Handle applications with supervision',
-              'Day 22-30: Independent application handling with check-ins'
+            type: 'timeline',
+            title: '30-Day Onboarding Timeline',
+            content: 'A structured approach to building financing confidence from day one.',
+            phases: [
+              {
+                period: 'Days 1-3',
+                title: 'Foundation Building',
+                icon: '1',
+                color: '#16a34a',
+                tasks: [
+                  'Complete EasyPay University core modules',
+                  'Review financing value proposition materials',
+                  'Watch recorded customer interaction examples',
+                  'Complete product knowledge assessment'
+                ]
+              },
+              {
+                period: 'Days 4-7',
+                title: 'Observation Phase',
+                icon: '2',
+                color: '#1976D2',
+                tasks: [
+                  'Shadow experienced team members during customer interactions',
+                  'Observe natural financing conversation integration',
+                  'Take notes on successful techniques and phrases',
+                  'Attend financing discussion debriefs'
+                ]
+              },
+              {
+                period: 'Days 8-14',
+                title: 'Practice Phase',
+                icon: '3',
+                color: '#FF6F00',
+                tasks: [
+                  'Practice applications with mock customer scenarios',
+                  'Role-play common objection handling situations',
+                  'Practice using financing calculators and tools',
+                  'Complete supervised application submissions'
+                ]
+              },
+              {
+                period: 'Days 15-21',
+                title: 'Guided Independence',
+                icon: '4',
+                color: '#7B1FA2',
+                tasks: [
+                  'Handle real applications with manager oversight',
+                  'Lead financing conversations with backup support',
+                  'Practice problem-solving challenging situations',
+                  'Receive feedback on communication approach'
+                ]
+              },
+              {
+                period: 'Days 22-30',
+                title: 'Full Independence',
+                icon: '5',
+                color: '#D32F2F',
+                tasks: [
+                  'Independent application handling with check-ins',
+                  'Set personal financing conversation goals',
+                  'Begin tracking individual success metrics',
+                  'Complete 30-day performance review'
+                ]
+              }
             ]
           },
           {
             type: 'text',
-            title: 'Ongoing Skill Development',
-            content: 'Regular training keeps skills sharp and introduces new techniques. Monthly team meetings should include financing discussions, sharing success stories, and addressing challenges. Quarterly refresher training ensures everyone stays current with program updates.'
+            title: 'Beyond the First Month: Ongoing Development',
+            content: 'The learning doesn\'t stop at 30 days. Successful financing cultures invest in continuous skill development through monthly team meetings, quarterly refresher training, and regular coaching sessions. This ongoing investment keeps skills sharp and adapts to changing customer needs.'
           },
           {
-            type: 'text',
-            title: 'Role-Playing and Practice',
-            content: 'Regular role-playing sessions help team members practice difficult conversations and build confidence. Create scenarios based on real customer situations your team encounters, including objections and challenging credit situations.'
+            type: 'training-calendar',
+            title: 'Year-Long Training Calendar',
+            content: 'Structured ongoing development keeps your team\'s financing skills sharp and current.',
+            months: [
+              { month: 'Month 1', topic: 'Overcoming Price Objections', focus: 'Help customers see value beyond initial cost', activities: ['Role-play price objection scenarios', 'Review success stories', 'Practice value positioning'] },
+              { month: 'Month 2', topic: 'Credit-Challenged Customers', focus: 'Build confidence working with all credit types', activities: ['Review approval criteria', 'Practice empathetic communication', 'Learn alternative solutions'] },
+              { month: 'Month 3', topic: 'Emergency & Repair Situations', focus: 'Handle urgent customer needs with financing', activities: ['Quick application processes', 'Emergency approval procedures', 'Customer stress management'] },
+              { month: 'Month 4', topic: 'Upselling with Financing', focus: 'Use financing to enable better solutions', activities: ['Package presentation techniques', 'Value-based selling', 'Payment comparison tools'] },
+              { month: 'Month 5', topic: 'Seasonal Financing Strategies', focus: 'Adapt approach for seasonal business cycles', activities: ['Seasonal customer needs analysis', 'Promotional financing options', 'Peak season preparation'] },
+              { month: 'Month 6', topic: 'Customer Retention Through Financing', focus: 'Use financing to build long-term relationships', activities: ['Follow-up strategies', 'Repeat customer approaches', 'Referral generation techniques'] }
+            ]
           },
           {
-            type: 'example',
-            title: 'Monthly Training Topics',
-            content: '• Month 1: Overcoming price objections\n• Month 2: Working with credit-challenged customers\n• Month 3: Emergency repair situations\n• Month 4: Upselling with financing\n• Month 5: Seasonal financing strategies\n• Month 6: Customer retention through financing'
-          },
-          {
-            type: 'text',
-            title: 'Performance Tracking',
-            content: 'Track both individual and team performance with metrics that matter: application submission rate, approval rate, average ticket size with financing, and customer satisfaction scores. Use this data to identify coaching opportunities and celebrate successes.'
+            type: 'warning',
+            title: 'Training Without Practice Fails',
+            content: 'Knowledge without application quickly fades. Every training session should include role-playing, real scenario practice, and immediate application opportunities. Teams that practice regularly see 40% higher application submission rates.'
           },
           {
             type: 'interactive',
-            title: 'Training Plan Builder',
-            content: 'Use this tool to create a customized training plan for your team based on your business type and team size.',
+            title: 'Team Training Planner',
+            content: 'Create a customized training schedule based on your team size, business type, and current skill level.',
             interactiveType: 'scenario'
           }
         ],
@@ -515,34 +654,143 @@ export const trainingModules: TrainingModule[] = [
         ],
         content: [
           {
-            type: 'text',
-            title: 'The Right Time to Discuss Financing',
-            content: 'Timing is everything in financing conversations. The best time is after you\'ve established the customer\'s needs and interest but before you discuss the total price. This positions financing as a solution rather than a reaction to sticker shock.'
-          },
-          {
-            type: 'example',
-            title: 'Conversation Flow Example',
-            content: '1. Build rapport and understand needs\n2. Present appropriate solutions\n3. Confirm interest and fit\n4. Introduce payment options (including financing)\n5. Discuss total investment\n6. Close the sale'
-          },
-          {
-            type: 'text',
-            title: 'Reading Customer Signals',
-            content: 'Learn to recognize when customers might benefit from financing: hesitation about price, asking about payment options, mentioning budget constraints, or expressing urgency about getting the product but concern about immediate payment.'
-          },
-          {
-            type: 'text',
-            title: 'Natural Conversation Starters',
-            content: 'Use phrases that feel helpful rather than sales-focused: "To make this more manageable..." "We have several payment options that might work better for you..." "Many of our customers find it easier to..."'
-          },
-          {
             type: 'tip',
-            title: 'The Power of Assumption',
-            content: 'Instead of asking "Would you like to finance this?" assume they want options: "Let me show you a couple of payment options that work well for this purchase." This removes the yes/no barrier and opens up the conversation.'
+            title: 'The Golden Window',
+            content: 'There\'s a 30-second window in every sales conversation where customers are most receptive to financing discussions. This happens right after they show interest but before price becomes the focus. Master this timing and see conversion rates improve by 35%.'
+          },
+          {
+            type: 'conversation-flow',
+            title: 'Perfect Financing Conversation Flow',
+            content: 'Follow this proven 6-step process to naturally integrate financing into every customer interaction.',
+            steps: [
+              {
+                step: 1,
+                title: 'Build Rapport',
+                description: 'Establish trust and understand the customer\'s situation',
+                icon: '1',
+                color: '#16a34a',
+                example: '"Tell me about what brought you in today. What are you hoping to accomplish?"',
+                duration: '2-3 minutes'
+              },
+              {
+                step: 2,
+                title: 'Understand Needs',
+                description: 'Ask questions to identify the best solution for their situation',
+                icon: '2',
+                color: '#1976D2',
+                example: '"What\'s most important to you in solving this? How soon do you need this resolved?"',
+                duration: '3-5 minutes'
+              },
+              {
+                step: 3,
+                title: 'Present Solutions',
+                description: 'Show options that meet their specific needs',
+                icon: '3',
+                color: '#FF6F00',
+                example: '"Based on what you\'ve told me, I have a couple of solutions that would work really well..."',
+                duration: '5-7 minutes'
+              },
+              {
+                step: 4,
+                title: 'Introduce Payment Options',
+                description: 'THIS IS THE GOLDEN MOMENT - Present financing naturally',
+                icon: '4',
+                color: '#7B1FA2',
+                example: '"To make this work perfectly for your budget, let me show you some payment options..."',
+                duration: '3-4 minutes'
+              },
+              {
+                step: 5,
+                title: 'Discuss Investment',
+                description: 'Present total cost after establishing payment comfort',
+                icon: '5',
+                color: '#D32F2F',
+                example: '"Here\'s what your monthly investment would look like, and here\'s the total..."',
+                duration: '2-3 minutes'
+              },
+              {
+                step: 6,
+                title: 'Close & Schedule',
+                description: 'Secure the decision and next steps',
+                icon: '6',
+                color: '#388E3C',
+                example: '"This sounds like the right solution. Let\'s get your application started..."',
+                duration: '2-5 minutes'
+              }
+            ]
+          },
+          {
+            type: 'customer-signals',
+            title: 'Reading Customer Buying Signals',
+            content: 'Learn to recognize the verbal and non-verbal cues that indicate financing interest.',
+            signals: [
+              {
+                type: 'Verbal Cues',
+                icon: 'V',
+                color: '#16a34a',
+                examples: [
+                  '"That\'s more than I was planning to spend..."',
+                  '"Do you have any payment plans?"',
+                  '"I\'ll need to talk to my spouse about this amount..."',
+                  '"Is there a way to break this into payments?"',
+                  '"I wish I could do this right now..."'
+                ]
+              },
+              {
+                type: 'Body Language',
+                icon: 'B',
+                color: '#1976D2',
+                examples: [
+                  'Hesitation when hearing the price',
+                  'Looking away or stepping back',
+                  'Reaching for phone (to call spouse/check account)',
+                  'Fidgeting with wallet or purse',
+                  'Deep breath or sigh when price is mentioned'
+                ]
+              },
+              {
+                type: 'Circumstantial',
+                icon: 'C',
+                color: '#FF6F00',
+                examples: [
+                  'Emergency repair or replacement needed',
+                  'Seasonal purchases (AC in summer, heat in winter)',
+                  'Multiple family members present discussing cost',
+                  'Comparing multiple quotes or options',
+                  'Mentioning upcoming expenses or tight timing'
+                ]
+              }
+            ]
+          },
+          {
+            type: 'conversation-examples',
+            title: 'Conversation Starters That Work',
+            content: 'Master these natural, helpful phrases that open financing conversations.',
+            examples: [
+              {
+                situation: 'Customer shows price hesitation',
+                wrong: '"Do you need financing?"',
+                right: '"To make this more manageable, we have several payment options that work really well for this type of purchase. Let me show you what those look like."',
+                why: 'Assumptive and helpful rather than yes/no question'
+              },
+              {
+                situation: 'Customer mentions budget concerns',
+                wrong: '"Can you afford this?"',
+                right: '"I understand budget is important. Many of our customers find it easier to break this into monthly payments. Here are a few options that might work better for you."',
+                why: 'Shows empathy and offers solutions'
+              },
+              {
+                situation: 'Emergency repair situation',
+                wrong: '"This is expensive, do you want to finance?"',
+                right: '"Since this needs to be done right away, let me show you how we can get this taken care of today with payments that work for your budget."',
+                why: 'Focuses on solving the immediate problem'
+              }
+            ]
           },
           {
             type: 'warning',
-            title: 'What NOT to Say',
-            content: 'Avoid phrases that create negative associations: "Do you have bad credit?" "Can you afford this?" "Do you need to finance?" These create defensive reactions rather than open conversations.'
+            title: 'Conversation Killers to Avoid',
+            content: 'These phrases create defensive reactions and shut down financing conversations before they start. Never use credit-shaming or pressure language that makes customers feel judged or uncomfortable.'
           }
         ],
         keyTakeaways: [
@@ -672,9 +920,15 @@ export const trainingModules: TrainingModule[] = [
             content: 'EasyPay Finance operates on a one-product-per-state model. Each state offers EITHER Retail Installment Contracts (RIC) OR Lease-to-Own (LTO), never both. This is determined by state regulations and licensing requirements.'
           },
           {
-            type: 'text',
+            type: 'stats-overview',
             title: 'EasyPay Finance Geographic Coverage',
-            content: 'EasyPay Finance currently operates in 22 states across the United States, serving over 12,000 merchant locations. Our geographic coverage is strategically designed to comply with state-specific regulations and provide the most appropriate financing product for each region.'
+            content: 'Strategic nationwide coverage designed for regulatory compliance and optimal customer service.',
+            stats: [
+              { label: 'Total States Served', value: '22', color: '#16a34a', description: 'Across the United States' },
+              { label: 'Merchant Locations', value: '12,000+', color: '#1976D2', description: 'Active partner stores' },
+              { label: 'RIC States', value: '19', color: '#16a34a', description: 'Retail Installment Contracts' },
+              { label: 'LTO States', value: '3', color: '#14b8a6', description: 'Lease-to-Own programs' }
+            ]
           },
           {
             type: 'image',
@@ -685,19 +939,61 @@ export const trainingModules: TrainingModule[] = [
             imageCaption: 'Green states: RIC available (19 states) • Teal states: LTO available (3 states) • Gray states: No service available'
           },
           {
-            type: 'example',
-            title: 'States Offering Retail Installment Contracts (RIC)',
-            content: 'The following 19 states offer RIC (Retail Installment Contracts) ONLY:\n\n• Alaska (AK)\n• Arizona (AZ)\n• California (CA)\n• Delaware (DE)\n• Idaho (ID)\n• Kansas (KS)\n• Kentucky (KY)\n• Missouri (MO)\n• Nevada (NV)\n• New Hampshire (NH)\n• New Mexico (NM)\n• North Dakota (ND)\n• Oregon (OR)\n• Pennsylvania (PA)\n• South Dakota (SD)\n• Utah (UT)\n• Virginia (VA)\n• Washington (WA)\n• Wisconsin (WI)\n\nTotal: 19 RIC-only states'
+            type: 'state-grid',
+            title: 'Retail Installment Contract (RIC) States',
+            content: 'The following 19 states offer RIC financing exclusively.',
+            stateCategory: 'RIC',
+            color: '#16a34a',
+            states: [
+              { name: 'Alaska', abbr: 'AK' },
+              { name: 'Arizona', abbr: 'AZ' },
+              { name: 'California', abbr: 'CA' },
+              { name: 'Delaware', abbr: 'DE' },
+              { name: 'Idaho', abbr: 'ID' },
+              { name: 'Kansas', abbr: 'KS' },
+              { name: 'Kentucky', abbr: 'KY' },
+              { name: 'Missouri', abbr: 'MO' },
+              { name: 'Nevada', abbr: 'NV' },
+              { name: 'New Hampshire', abbr: 'NH' },
+              { name: 'New Mexico', abbr: 'NM' },
+              { name: 'North Dakota', abbr: 'ND' },
+              { name: 'Oregon', abbr: 'OR' },
+              { name: 'Pennsylvania', abbr: 'PA' },
+              { name: 'South Dakota', abbr: 'SD' },
+              { name: 'Utah', abbr: 'UT' },
+              { name: 'Virginia', abbr: 'VA' },
+              { name: 'Washington', abbr: 'WA' },
+              { name: 'Wisconsin', abbr: 'WI' }
+            ]
           },
           {
-            type: 'example',
-            title: 'States Offering Lease-to-Own (LTO)',
-            content: 'The following 3 states offer LTO (Lease-to-Own) ONLY:\n\n• Florida (FL)\n• Georgia (GA)\n• Texas (TX)\n\nTotal: 3 LTO-only states'
+            type: 'state-grid',
+            title: 'Lease-to-Own (LTO) States',
+            content: 'The following 3 states offer LTO financing exclusively.',
+            stateCategory: 'LTO',
+            color: '#14b8a6',
+            states: [
+              { name: 'Florida', abbr: 'FL' },
+              { name: 'Georgia', abbr: 'GA' },
+              { name: 'Texas', abbr: 'TX' }
+            ]
           },
           {
-            type: 'text',
+            type: 'info-panel',
             title: 'States Where EasyPay Finance Does Not Operate',
-            content: 'EasyPay Finance does not currently operate in 28 states plus Washington D.C. If your business is located in one of these areas, EasyPay Finance services are not available. These include:\n\nAlabama, Arkansas, Colorado, Connecticut, Hawaii, Illinois, Indiana, Iowa, Louisiana, Maine, Maryland, Massachusetts, Michigan, Minnesota, Mississippi, Montana, Nebraska, New Jersey, New York, North Carolina, Ohio, Oklahoma, Rhode Island, South Carolina, Tennessee, Vermont, Washington D.C., West Virginia, and Wyoming.'
+            content: 'EasyPay Finance does not currently operate in 28 states plus Washington D.C.',
+            panelType: 'unavailable',
+            details: [
+              'If your business is located in these areas, EasyPay Finance services are not available',
+              'Expansion decisions are based on regulatory environment and market conditions',
+              'Contact EasyPay Finance for updates on service area expansion'
+            ],
+            unavailableStates: [
+              'Alabama', 'Arkansas', 'Colorado', 'Connecticut', 'Hawaii', 'Illinois', 'Indiana', 'Iowa', 
+              'Louisiana', 'Maine', 'Maryland', 'Massachusetts', 'Michigan', 'Minnesota', 'Mississippi', 
+              'Montana', 'Nebraska', 'New Jersey', 'New York', 'North Carolina', 'Ohio', 'Oklahoma', 
+              'Rhode Island', 'South Carolina', 'Tennessee', 'Vermont', 'Washington D.C.', 'West Virginia', 'Wyoming'
+            ]
           },
           {
             type: 'tip',
@@ -755,29 +1051,114 @@ export const trainingModules: TrainingModule[] = [
         ],
         content: [
           {
-            type: 'text',
+            type: 'program-overview',
             title: 'What is a Retail Installment Contract?',
-            content: 'In the 19 RIC states, EasyPay Finance offers Retail Installment Contracts - a traditional credit sales program where merchants originate credit sales and execute retail installment contracts with customers. EasyPay then purchases and services these contracts, providing immediate funding to merchants.'
+            content: 'Traditional credit sales program available in 19 states where merchants originate credit sales and EasyPay purchases and services the contracts.',
+            programType: 'RIC',
+            color: '#16a34a',
+            features: [
+              { title: 'Merchant Role', description: 'Originate credit sales and execute contracts with customers' },
+              { title: 'EasyPay Role', description: 'Purchase and service contracts, provide immediate funding' },
+              { title: 'Customer Experience', description: 'Traditional financing with immediate ownership' }
+            ],
+            flowSteps: [
+              'Customer selects merchandise',
+              'Merchant presents financing option',
+              'Contract executed and signed',
+              'EasyPay purchases contract',
+              'Immediate funding to merchant'
+            ]
           },
           {
-            type: 'text',
+            type: 'legal-framework',
             title: 'RIC Legal Framework - Truth in Lending Act Compliance',
-            content: 'RIC products are subject to the federal Truth in Lending Act (TILA), requiring specific disclosures including Annual Percentage Rate (APR), finance charges, amount financed, and total of payments. These disclosures must be provided before contract signing and use exact legal terminology.'
+            content: 'RIC products are subject to federal Truth in Lending Act (TILA) regulations requiring specific disclosures.',
+            framework: 'TILA',
+            color: '#1976D2',
+            disclosures: [
+              { term: 'Annual Percentage Rate (APR)', description: 'The cost of credit expressed as a yearly rate' },
+              { term: 'Finance Charges', description: 'The dollar amount credit will cost over the life of the contract' },
+              { term: 'Amount Financed', description: 'The amount of credit provided to the customer' },
+              { term: 'Total of Payments', description: 'The sum of all payments the customer will make' }
+            ],
+            requirements: [
+              'Disclosures must be provided before contract signing',
+              'Exact legal terminology must be used',
+              'Written documentation required for compliance',
+              'Customer acknowledgment and signature needed'
+            ]
           },
           {
-            type: 'example',
-            title: 'RIC Key Features',
-            content: '• Customer owns merchandise immediately upon contract signing\n• Finance charges accrue daily from contract date\n• 90-Day Finance Charge Cap: Maximum $40 if paid in full within 90 days\n• Same-day funding available if contract received by 4pm EST\n• No credit bureau reporting\n• Up to $5,000 financing available\n• Truth in Lending Act disclosures required'
+            type: 'feature-highlights',
+            title: 'RIC Key Features & Benefits',
+            content: 'Comprehensive overview of RIC program advantages and important terms.',
+            category: 'RIC',
+            color: '#16a34a',
+            highlights: [
+              { 
+                title: 'Immediate Ownership', 
+                description: 'Customer owns merchandise immediately upon contract signing',
+                benefit: 'Full ownership rights from day one'
+              },
+              { 
+                title: '90-Day Finance Charge Cap', 
+                description: 'Maximum $40 if paid in full within 90 days',
+                benefit: 'Significant savings for early payoff'
+              },
+              { 
+                title: 'Same-Day Funding', 
+                description: 'Available if contract received by 4pm EST',
+                benefit: 'Immediate cash flow for merchants'
+              },
+              { 
+                title: 'No Credit Bureau Reporting', 
+                description: 'Does not impact customer credit scores',
+                benefit: 'Privacy and credit protection'
+              },
+              { 
+                title: 'Up to $5,000 Financing', 
+                description: 'Covers a wide range of purchase amounts',
+                benefit: 'Flexible financing options'
+              }
+            ]
           },
           {
             type: 'warning',
-            title: 'Required RIC Disclosures',
+            title: 'Critical RIC Disclosure Requirements',
             content: 'CRITICAL: Finance charges accrue daily from the date the agreement is signed. There is NEVER a finance charge free period. If customers pay their amount financed within 90 days, finance charges are capped at $40. To qualify, customers MUST pay more than regular scheduled payments.'
           },
           {
-            type: 'text',
-            title: 'RIC Customer Qualification',
-            content: 'RIC customers need stable employment and income verification. While no minimum credit score is required, credit history is evaluated as part of the approval process. EasyPay may perform hard credit inquiries during underwriting.'
+            type: 'qualification-criteria',
+            title: 'RIC Customer Qualification Requirements',
+            content: 'Understanding the qualification criteria helps merchants pre-screen customers and improve approval rates.',
+            category: 'RIC',
+            color: '#16a34a',
+            criteria: [
+              {
+                category: 'Employment',
+                requirements: [
+                  'Stable employment history',
+                  'Verifiable income source',
+                  'Sufficient income for payment obligations'
+                ]
+              },
+              {
+                category: 'Credit Assessment',
+                requirements: [
+                  'No minimum credit score required',
+                  'Credit history evaluation performed',
+                  'Hard credit inquiries may be conducted'
+                ]
+              },
+              {
+                category: 'Documentation',
+                requirements: [
+                  'Valid government-issued ID',
+                  'Proof of income or employment',
+                  'Contact information verification'
+                ]
+              }
+            ]
           }
         ],
         keyTakeaways: [
@@ -798,29 +1179,168 @@ export const trainingModules: TrainingModule[] = [
         ],
         content: [
           {
-            type: 'text',
+            type: 'program-overview',
             title: 'Understanding Lease-to-Own Structure',
-            content: 'In the 3 LTO states (Florida, Georgia, and Texas), EasyPay Finance offers Lease-to-Own through EasyPay Leasing. This is a rental-purchase agreement where EasyPay Leasing purchases merchandise from merchants and leases it to customers. EasyPay retains ownership until the customer exercises their purchase option.'
+            content: 'Rental-purchase agreement program available in 3 states where EasyPay Leasing purchases merchandise from merchants and leases to customers.',
+            programType: 'LTO',
+            color: '#14b8a6',
+            features: [
+              { title: 'EasyPay Leasing Role', description: 'Purchases merchandise from merchants and owns during lease term' },
+              { title: 'Customer Experience', description: 'Rental agreement with purchase options and return flexibility' },
+              { title: 'Merchant Benefits', description: 'Immediate sale to EasyPay Leasing with special tax handling' }
+            ],
+            flowSteps: [
+              'Customer selects merchandise',
+              'EasyPay Leasing purchases from merchant',
+              'Customer signs lease agreement',
+              'Customer makes lease payments',
+              'Purchase option exercised or lease completed'
+            ]
           },
           {
-            type: 'text',
+            type: 'ownership-structure',
             title: 'LTO Ownership and Legal Structure',
-            content: 'CRITICAL: EasyPay Leasing owns the Personal Property throughout the lease term. Customers are renting the merchandise with options to purchase. Ownership only transfers when: (1) all lease payments are completed, OR (2) an Early Purchase Option is exercised.'
+            content: 'Understanding the unique ownership model is critical for proper LTO program implementation.',
+            programType: 'LTO',
+            color: '#14b8a6',
+            ownershipPhases: [
+              {
+                phase: 'During Lease Term',
+                owner: 'EasyPay Leasing',
+                customerStatus: 'Renter',
+                details: 'EasyPay Leasing owns all personal property throughout the lease term'
+              },
+              {
+                phase: 'After Full Payment',
+                owner: 'Customer',
+                customerStatus: 'Owner',
+                details: 'Ownership transfers when all lease payments are completed'
+              },
+              {
+                phase: 'Early Purchase Option',
+                owner: 'Customer',
+                customerStatus: 'Owner',
+                details: 'Customer can purchase early using 90-day or standard option'
+              }
+            ],
+            transferConditions: [
+              'All lease payments completed successfully',
+              'Early Purchase Option exercised and paid',
+              'No outstanding fees or charges remain'
+            ]
           },
           {
-            type: 'example',
-            title: 'LTO Key Features',
-            content: '• EasyPay Leasing owns merchandise during lease term\n• Customer makes lease payments (not finance charges)\n• $39 mandatory processing fee collected at signing\n• 90-Day Early Purchase Option: Cash Price + $39 + taxes\n• Standard Early Purchase Option: 70% of remaining payments + fees\n• Customer can return merchandise anytime\n• No sales tax collected at point of sale'
+            type: 'feature-highlights',
+            title: 'LTO Key Features & Benefits',
+            content: 'Comprehensive overview of LTO program advantages and unique characteristics.',
+            category: 'LTO',
+            color: '#14b8a6',
+            highlights: [
+              { 
+                title: 'EasyPay Leasing Ownership', 
+                description: 'EasyPay Leasing owns merchandise during lease term',
+                benefit: 'Reduced risk and flexible return options'
+              },
+              { 
+                title: 'Lease Payments', 
+                description: 'Customer makes lease payments (not finance charges)',
+                benefit: 'Different legal structure than traditional financing'
+              },
+              { 
+                title: '$39 Processing Fee', 
+                description: 'Mandatory processing fee collected at signing',
+                benefit: 'Simple, transparent fee structure'
+              },
+              { 
+                title: '90-Day Early Purchase', 
+                description: 'Cash Price + $39 + taxes within 90 days',
+                benefit: 'Significant savings for early purchase'
+              },
+              { 
+                title: 'Flexible Returns', 
+                description: 'Customer can return merchandise anytime',
+                benefit: 'No long-term obligation or penalty'
+              },
+              { 
+                title: 'No Point-of-Sale Tax', 
+                description: 'No sales tax collected at point of sale',
+                benefit: 'Simplified checkout process'
+              }
+            ]
           },
           {
-            type: 'warning',
+            type: 'tax-process',
             title: 'LTO Tax Collection Process',
-            content: 'CRITICAL PROCESS: Merchant lists EasyPay Leasing as purchaser and uses EasyPay\'s tax-exempt ID. NO sales tax is charged at point of sale. EasyPay Leasing collects applicable sales tax as part of lease payments. Estimated tax amounts are shown on page 2 of the lease agreement.'
+            content: 'Critical process differences that merchants must understand and implement correctly.',
+            processType: 'LTO Tax Handling',
+            color: '#FF6F00',
+            steps: [
+              {
+                step: 1,
+                title: 'At Point of Sale',
+                action: 'Merchant lists EasyPay Leasing as purchaser',
+                details: 'Use EasyPay Leasing tax-exempt ID number'
+              },
+              {
+                step: 2,
+                title: 'No Sales Tax Charged',
+                action: 'NO sales tax is charged at point of sale',
+                details: 'This is different from traditional retail transactions'
+              },
+              {
+                step: 3,
+                title: 'Tax Collection via Payments',
+                action: 'EasyPay Leasing collects applicable sales tax',
+                details: 'Sales tax included as part of lease payments'
+              },
+              {
+                step: 4,
+                title: 'Documentation',
+                action: 'Tax amounts shown on lease agreement page 2',
+                details: 'Customer sees estimated tax amounts before signing'
+              }
+            ],
+            warnings: [
+              'NEVER charge sales tax at point of sale for LTO transactions',
+              'Always use EasyPay Leasing tax-exempt ID',
+              'Ensure customer understands tax is included in lease payments'
+            ]
           },
           {
-            type: 'text',
+            type: 'purchase-options',
             title: 'Early Purchase Options Explained',
-            content: '90-Day Early Purchase Option: Cash Price + $39 processing fee + applicable taxes + any outstanding fees. Customer must pay MORE than regular scheduled payments.\n\nStandard Early Purchase Option (after 90 days): 70% of remaining regular payments + processing fees + taxes. Available throughout the lease term.'
+            content: 'Understanding the two early purchase options helps customers save money and provides flexibility.',
+            category: 'LTO',
+            color: '#14b8a6',
+            options: [
+              {
+                type: '90-Day Early Purchase Option',
+                timeframe: 'First 90 days of lease',
+                calculation: 'Cash Price + $39 processing fee + applicable taxes + outstanding fees',
+                requirements: [
+                  'Customer must pay MORE than regular scheduled payments',
+                  'Available only within first 90 days',
+                  'Significant savings compared to full lease term'
+                ],
+                benefit: 'Maximum savings opportunity'
+              },
+              {
+                type: 'Standard Early Purchase Option',
+                timeframe: 'After 90 days, throughout lease term',
+                calculation: '70% of remaining regular payments + processing fees + taxes',
+                requirements: [
+                  'Available throughout the lease term',
+                  'Can be exercised at any time after 90 days',
+                  'Still provides savings over full term'
+                ],
+                benefit: 'Ongoing flexibility and savings'
+              }
+            ]
+          },
+          {
+            type: 'tip',
+            title: 'Additional Resources',
+            content: 'For detailed information about Early Purchase Options and customer benefits, visit the official EasyPay Finance Early Purchase Options page at: <a href="https://www.easypayfinance.com/early-purchase-options" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:text-blue-800 underline font-medium">https://www.easypayfinance.com/early-purchase-options</a>'
           }
         ],
         keyTakeaways: [
@@ -1211,209 +1731,226 @@ export const trainingModules: TrainingModule[] = [
   {
     id: 'module-5',
     title: 'How to Submit a Lease-to-Own (LTO) Application',
-    description: 'Master the LTO application process, including customer qualification, application submission, contract signing, and processing fee collection.',
-    estimatedTime: '60 minutes',
+    description: 'Master the complete LTO application process from Business Center login to delivery confirmation, including customer qualification, application submission, identity verification, contract signing, and processing fee collection.',
+    estimatedTime: '75 minutes',
     difficulty: 'intermediate',
     prerequisites: ['module-1', 'module-3'],
     objectives: [
-      'Navigate the complete LTO application process',
-      'Understand LTO-specific qualification requirements',
-      'Master the rental-purchase agreement signing process',
-      'Learn proper processing fee collection procedures'
+      'Navigate the complete 13-step LTO application process',
+      'Master the EasyPay Leasing Business Center portal',
+      'Guide customers through the mobile application flow',
+      'Handle identity verification and contract signing procedures',
+      'Properly collect the $39 processing fee and complete delivery'
     ],
     lessons: [
       {
         id: 'lesson-5-1',
-        title: 'LTO Customer Assessment and Qualification',
+        title: 'Business Center Setup and Application Initiation (Steps 1-2)',
         duration: '15 minutes',
         objectives: [
-          'Identify customers who benefit most from LTO',
-          'Understand LTO qualification requirements',
-          'Prepare customers for the LTO application process'
+          'Access the EasyPay Leasing Business Center portal',
+          'Understand the three ways to start an LTO application',
+          'Guide customers through the application initiation process'
         ],
         content: [
           {
             type: 'text',
-            title: 'Who Benefits from LTO?',
-            content: 'LTO is designed for customers who need financing but may not qualify for traditional credit programs. This includes customers with challenged credit, new employment, variable income, or those who prefer the flexibility of lease-to-own arrangements.'
+            title: 'Step 1: Access EasyPay Leasing Business Center',
+            content: 'Store associates must log into the EasyPay Leasing Business Center using the dedicated portal at https://businesscenterx.easypayfinance.com. This is your gateway to all LTO applications and transaction management.'
+          },
+          {
+            type: 'image',
+            title: 'Business Center Login Portal',
+            content: 'The EasyPay Leasing Business Center login screen where merchants access the LTO application system.',
+            imageUrl: '/business-center-start-application.png',
+            imageAlt: 'EasyPay Business Center Portal',
+            imageCaption: 'Step 1: Log into the EasyPay Leasing Business Center portal to begin the LTO application process'
+          },
+          {
+            type: 'text',
+            title: 'Step 2: Three Ways to Start an LTO Application',
+            content: 'Once logged in, you have three options to initiate a customer application: (1) Enter customer\'s Email/Mobile Phone Number for direct text/email link, (2) Select "New In-Store Application" for immediate processing, or (3) Generate a QR Code for the customer to scan with their phone.'
           },
           {
             type: 'example',
-            title: 'Ideal LTO Customers',
-            content: '• Credit-challenged customers (below 600 credit score)\n• Customers with recent employment changes\n• Self-employed or commission-based workers\n• Customers wanting lower approval requirements\n• Those interested in early purchase savings\n• Customers preferring flexible payment options'
-          },
-          {
-            type: 'text',
-            title: 'LTO Qualification Requirements',
-            content: 'LTO has more flexible qualification requirements than traditional financing. The focus is on current ability to pay rather than credit history, making it accessible to more customers.'
-          },
-          {
-            type: 'checklist',
-            title: 'LTO Qualification Checklist',
-            items: [
-              'Valid government-issued ID',
-              'Verifiable income source (any amount)',
-              'Active checking account',
-              'Reasonable income-to-payment ratio',
-              'No recent bankruptcy (timing varies)',
-              'Employment or income verification'
-            ]
-          },
-          {
-            type: 'text',
-            title: 'Income Verification for LTO',
-            content: 'LTO accepts various forms of income verification including pay stubs, bank statements, benefit letters, unemployment benefits, disability payments, and other regular income sources. The key is demonstrating ability to make the agreed payments.'
+            title: 'Application Initiation Options',
+            content: 'Option 1: Email/Mobile Phone Number\n• Enter customer\'s contact information\n• System sends secure application link via text/email\n• Customer completes application on their device\n\nOption 2: New In-Store Application\n• Start application directly in Business Center\n• Guide customer through process on your device\n• Ideal for customers without smartphones\n\nOption 3: QR Code Generation\n• Generate unique QR code for customer\n• Customer scans code with smartphone camera\n• Automatically directs to application start'
           },
           {
             type: 'tip',
-            title: 'LTO Advantage',
-            content: 'Because EasyPay Leasing retains ownership until purchase, they can approve customers that traditional financing cannot. This means higher approval rates and the ability to serve more customers.'
+            title: 'Best Practice: Customer Device Preference',
+            content: 'Most customers prefer using their own device for the application process. The Email/Mobile option or QR Code method allows them to use their familiar device while maintaining privacy for sensitive information entry.'
           },
           {
-            type: 'warning',
-            title: 'Set Proper Expectations',
-            content: 'Explain that LTO is a rental-purchase agreement, not traditional financing. Customers should understand the early purchase benefits, processing fee, and that they can return the item without further obligation.'
+            type: 'contact-info',
+            title: 'Important Contact Information',
+            content: 'For merchant support during the application process, contact Merchant Services or Customer Service using the information below.',
+            contacts: [
+              {
+                type: 'Merchant Services',
+                phone: '(866) 337-2537',
+                hours: 'Monday-Friday 5am-6pm PST, Saturday 5am-5pm PST',
+                description: 'For merchant support during the application process'
+              },
+              {
+                type: 'Customer Service',
+                phone: '(800) 447-6215',
+                description: 'For customer assistance and inquiries'
+              }
+            ]
           }
         ],
         keyTakeaways: [
-          'LTO serves customers who may not qualify for traditional financing',
-          'Qualification focuses on current ability to pay rather than credit history',
-          'Various income sources are acceptable for LTO verification',
-          'Higher approval rates make LTO accessible to more customers'
+          'Access Business Center at https://businesscenterx.easypayfinance.com',
+          'Three application initiation methods: Email/Phone, In-Store, or QR Code',
+          'Customer device applications provide privacy and convenience',
+          'Merchant Services available at (866) 337-2537 for support'
         ]
       },
       {
         id: 'lesson-5-2',
-        title: 'LTO Application Process Step-by-Step',
-        duration: '25 minutes',
+        title: 'Customer Application Flow (Steps 3-7)',
+        duration: '30 minutes',
         objectives: [
-          'Navigate the LTO application system efficiently',
-          'Input customer information accurately',
-          'Handle the unique aspects of LTO processing'
+          'Guide customers through the mobile application process',
+          'Understand each step of the customer application flow',
+          'Handle customer questions during the application process'
         ],
         content: [
           {
             type: 'text',
-            title: 'Starting the LTO Application',
-            content: 'Access the Business Center portal and select "New LTO Application." The LTO process is streamlined for speed and efficiency, typically providing decisions within minutes.'
+            title: 'Customer Application Process Overview',
+            content: 'After you send the application link, customers complete their LTO application through a structured mobile process. The following screens show each step customers experience on their device, from initial application to approval.'
           },
           {
-            type: 'text',
-            title: 'Step 1: Basic Customer Information',
-            content: 'Enter the customer\'s basic information including full name, address, phone, email, and Social Security Number. Accuracy is important as this information is used for verification and communication.'
-          },
-          {
-            type: 'text',
-            title: 'Step 2: Employment and Income Details',
-            content: 'For LTO, employment and income verification is more flexible. Include current employer, position, length of employment, and monthly income. For non-traditional employment, explain the income source clearly.'
-          },
-          {
-            type: 'example',
-            title: 'Non-Traditional Income Examples',
-            content: '• Self-employment income\n• Commission-based earnings\n• Social Security benefits\n• Disability payments\n• Unemployment benefits\n• Pension income\n• Part-time or gig work'
-          },
-          {
-            type: 'text',
-            title: 'Step 3: Banking Information',
-            content: 'Enter checking account information for automatic payments. LTO typically requires an active checking account but may be more flexible on minimum balance requirements compared to traditional financing.'
-          },
-          {
-            type: 'text',
-            title: 'Step 4: Purchase Information',
-            content: 'Enter detailed information about the merchandise to be leased: description, model numbers, retail price, and any special features. This information appears on the rental-purchase agreement.'
-          },
-          {
-            type: 'text',
-            title: 'Step 5: Payment Preferences',
-            content: 'LTO offers flexible payment schedules including weekly, bi-weekly, or monthly payments. Discuss options with the customer and select the preference that works best for their income schedule.'
-          },
-          {
-            type: 'text',
-            title: 'Step 6: Submit and Await Decision',
-            content: 'Review all information carefully and submit the application. LTO decisions typically come within minutes, allowing you to move quickly to the next steps.'
-          },
-          {
-            type: 'interactive',
-            title: 'LTO Application Practice',
-            content: 'Practice the LTO application process with various customer scenarios to build confidence and speed.',
-            interactiveType: 'scenario'
+            type: 'image-carousel',
+            title: 'Customer Application Flow (Steps 3-7)',
+            content: 'Navigate through each screen customers see during the mobile application process.',
+            images: [
+              {
+                title: 'Step 3: Application Start Screen',
+                imageUrl: '/LTO Application Process Mobile Screenshots - March 2025/-_2. Before You Apply.png',
+                imageAlt: 'LTO Application Start Screen',
+                imageCaption: 'Customer sees the initial application start screen with important information before beginning'
+              },
+              {
+                title: 'Step 4: Example Cost of Leasing',
+                imageUrl: '/LTO Application Process Mobile Screenshots - March 2025/-_3. Example Cost of Leasing.png',
+                imageAlt: 'Example Cost of Leasing Screen',
+                imageCaption: 'Customers review example lease costs and terms for transparency'
+              },
+              {
+                title: 'Step 5: Personal Information Entry',
+                imageUrl: '/LTO Application Process Mobile Screenshots - March 2025/-_5. Personal Information.png',
+                imageAlt: 'Personal Information Entry Screen',
+                imageCaption: 'Customer enters personal details and receives email verification'
+              },
+              {
+                title: 'Step 6: Banking Information',
+                imageUrl: '/LTO Application Process Mobile Screenshots - March 2025/-_10. Banking Info.png',
+                imageAlt: 'Banking Information Screen',
+                imageCaption: 'Customer enters banking information for automatic payments setup'
+              },
+              {
+                title: 'Step 7: Approval Decision',
+                imageUrl: '/LTO Application Process Mobile Screenshots - March 2025/-_12. Approval Message.png',
+                imageAlt: 'Application Approval Screen',
+                imageCaption: 'Customer receives instant approval decision with lease terms'
+              }
+            ]
           }
         ],
         keyTakeaways: [
-          'LTO applications are streamlined for quick processing',
-          'Income verification is flexible and includes non-traditional sources',
-          'Payment schedule options accommodate different customer needs',
-          'Decisions typically come within minutes of submission'
+          'Customers complete applications on their own devices for privacy',
+          'Email verification is required during the personal details step',
+          'Banking information can be verified through Plaid or manual entry',
+          'Application decisions are instant with immediate term display'
         ]
       },
       {
         id: 'lesson-5-3',
-        title: 'Contract Signing and Processing Fee Collection',
-        duration: '20 minutes',
+        title: 'Business Center Transaction Closing (Steps 8-13)',
+        duration: '30 minutes',
         objectives: [
-          'Guide customers through rental-purchase agreement signing',
-          'Properly collect the required processing fee',
-          'Complete the LTO transaction and delivery process'
+          'Complete the merchant transaction in Business Center',
+          'Verify customer identity and handle contract signing',
+          'Collect the $39 processing fee and finalize delivery'
         ],
         content: [
           {
             type: 'text',
-            title: 'Rental-Purchase Agreement Review',
-            content: 'Once approved, review the rental-purchase agreement with the customer. Explain key terms including payment amounts, early purchase options, return policies, and customer responsibilities.'
+            title: 'Step 8: Return to Business Center After Approval',
+            content: 'After the customer receives an approval message, return to your Business Center to close the transaction. Enter the details of the purchase which will generate the customer\'s lease invoice and the purchase receipt for EasyPay Leasing.'
           },
           {
-            type: 'checklist',
-            title: 'Agreement Review Points',
-            items: [
-              'Payment amount and schedule',
-              'Early purchase option and savings',
-              'Total lease cost if payments continue full term',
-              'Customer\'s right to return without further obligation',
-              'Care and maintenance responsibilities',
-              'Late payment policies and fees'
+            type: 'warning',
+            title: 'Critical Tax Rule for LTO',
+            content: 'DO NOT COLLECT SALES TAX. In LTO transactions, EasyPay Leasing is the purchaser and the sale is TAX EXEMPT. EasyPay Leasing is responsible for collecting and handling applicable sales tax from the customer under the lease agreement. Add "EasyPay Leasing, LLC" as the buyer/customer on your store invoice.'
+          },
+          {
+            type: 'text',
+            title: 'Step 9: Identity Verification Process',
+            content: 'It is critical to verify the customer\'s identity. The information on the pop-up screen must match the customer\'s valid U.S. Government ID, including full name, date of birth, and complete address. The ID address must match the application address exactly.'
+          },
+          {
+            type: 'warning',
+            title: 'State Residency Requirement',
+            content: 'Consumers from another state are NOT eligible for a lease in your state. The customer must be a resident of the state where the transaction is taking place, and their ID must reflect this residency.'
+          },
+          {
+            type: 'text',
+            title: 'Steps 10-11: Customer Signature and Fee Collection',
+            content: 'After approval verification, customers complete the final steps: signing their lease agreement via DocuSign and paying the mandatory $39 processing fee. Both steps are completed on their mobile device.'
+          },
+          {
+            type: 'image-carousel',
+            title: 'Contract Signing and Fee Collection Process',
+            content: 'View the customer experience for completing their lease agreement and processing fee payment.',
+            images: [
+              {
+                title: 'Step 10: DocuSign Electronic Signature',
+                imageUrl: '/LTO Application Process Mobile Screenshots - March 2025/-_18. DocuSign.png',
+                imageAlt: 'DocuSign Electronic Signature Process',
+                imageCaption: 'Customer completes electronic signature through secure DocuSign process'
+              },
+              {
+                title: 'Step 11: Processing Fee Payment',
+                imageUrl: '/LTO Application Process Mobile Screenshots - March 2025/-_19. Collect Processing Fee.png',
+                imageAlt: 'Processing Fee Payment Screen',
+                imageCaption: 'Customer pays the mandatory $39 processing fee before taking possession'
+              }
             ]
           },
           {
             type: 'text',
-            title: 'Early Purchase Benefits Explanation',
-            content: 'One of LTO\'s biggest selling points is the early purchase option. Clearly explain how much the customer can save by paying off early - often 30-50% of the total lease cost. Use specific dollar amounts to make the savings tangible.'
-          },
-          {
-            type: 'example',
-            title: 'Early Purchase Example',
-            content: 'For a $2,000 appliance:\n• Total lease payments: $3,200 over 24 months\n• Early purchase at 6 months: $1,600 (save $1,600)\n• Early purchase at 12 months: $2,000 (save $1,200)\n• Customer can choose timing that works best'
+            title: 'Step 12: Processing Fee Confirmation in Business Center',
+            content: 'You will see a receipt of the processing fee collection within the application details on the Delivery step in your Business Center. Do not continue with the application until the processing fee has been paid in full by the customer.'
           },
           {
             type: 'text',
-            title: 'Processing Fee Collection',
-            content: 'LTO requires a $39 processing fee that MUST be collected before the customer can take possession. This fee can be paid by cash, check, or card, but cannot be added to the lease agreement.'
+            title: 'Step 13: Mark as Delivered',
+            content: 'Once the customer receives the product(s) AND has paid the $39 processing fee, you can mark the item as delivered in the Business Center. This completes the LTO transaction process.'
           },
           {
             type: 'warning',
-            title: 'Critical Processing Fee Rule',
-            content: 'The $39 processing fee is mandatory and must be collected before delivery. This fee cannot be waived, financed, or added to the lease payments. Ensure collection before releasing merchandise.'
+            title: 'Delivery Requirements',
+            content: 'Do not click "Mark as Delivered" until BOTH conditions are met: (1) the customer has received the product(s) AND (2) has paid the $39 processing fee to EasyPay. Both must be completed before delivery confirmation.'
           },
           {
-            type: 'text',
-            title: 'Electronic Signature Process',
-            content: 'The customer completes electronic signature through a secure link. The rental-purchase agreement is legally binding once signed, so ensure the customer understands all terms before signing.'
-          },
-          {
-            type: 'text',
-            title: 'Delivery and Completion',
-            content: 'Once the agreement is signed and processing fee collected, the customer can take possession of the merchandise. Provide them with copies of the agreement and information about making payments.'
-          },
-          {
-            type: 'tip',
-            title: 'Customer Service Excellence',
-            content: 'Provide excellent service throughout the LTO process. Explain benefits clearly, answer questions patiently, and ensure customers feel confident about their decision. Happy LTO customers often become repeat customers.'
+            type: 'download',
+            title: 'Download Complete LTO Application Guide',
+            content: 'Get the official EasyPay Leasing Application Quick Start Guide for easy reference during customer transactions.',
+            downloadUrl: '/EasyPay-LTO-Application-Quick-Start-Guide.pdf',
+            downloadFileName: 'EasyPay-LTO-Application-Quick-Start-Guide.pdf',
+            buttonText: 'Download LTO Application Guide (PDF)',
+            description: 'This comprehensive guide includes step-by-step instructions, screenshots, and important reminders for processing LTO applications.'
           }
         ],
         keyTakeaways: [
-          'Review all rental-purchase agreement terms carefully with customers',
-          'Emphasize early purchase savings as a key benefit',
-          'Processing fee of $39 must be collected before delivery',
-          'Electronic signature completes the legal agreement'
+          'Never collect sales tax - EasyPay Leasing handles tax collection',
+          'Identity verification requires exact match between ID and application',
+          '$39 processing fee must be paid before marking items as delivered',
+          'Both product delivery AND fee payment required before completion'
         ]
       }
     ],
@@ -1535,44 +2072,154 @@ export const trainingModules: TrainingModule[] = [
         ],
         content: [
           {
-            type: 'text',
-            title: 'The Psychology of Objections',
-            content: 'Customer objections are rarely about the actual issue they state. Most objections stem from fear, uncertainty, past negative experiences, or lack of understanding. Recognizing the emotional root helps you address the real concern, not just the surface objection.'
+            type: 'objection-psychology',
+            title: 'Understanding the Psychology Behind Objections',
+            content: 'Customer objections are rarely about what they actually say - they are emotional responses to underlying fears and concerns.',
+            psychologyInsights: [
+              {
+                insight: 'Surface vs. Root Causes',
+                description: 'What customers say and what they really mean are often different',
+                example: '"It\'s too expensive" usually means "I\'m worried about my budget"'
+              },
+              {
+                insight: 'Emotional Triggers',
+                description: 'Objections stem from fear, uncertainty, or past negative experiences',
+                example: 'Previous rejection creates defensiveness and low expectations'
+              },
+              {
+                insight: 'Protection Mechanism',
+                description: 'Objections protect customers from potential disappointment or embarrassment',
+                example: 'Better to object first than risk another "no"'
+              },
+              {
+                insight: 'Information Gap',
+                description: 'Many objections come from lack of understanding about the process',
+                example: 'Complex terms create anxiety and resistance'
+              }
+            ]
           },
           {
-            type: 'text',
-            title: 'Types of Customer Objections',
-            content: 'Objections generally fall into four categories: Price/Cost, Trust/Credibility, Need/Urgency, and Process/Complexity. Understanding which category you\'re dealing with helps you choose the most effective response strategy.'
+            type: 'objection-categories',
+            title: 'Four Main Categories of Customer Objections',
+            content: 'Understanding which category you\'re dealing with helps you choose the most effective response strategy.',
+            categories: [
+              {
+                category: 'Price/Cost',
+                color: '#dc2626',
+                icon: '💰',
+                description: 'Concerns about affordability, value, and payment amounts',
+                examples: [
+                  '"This is too expensive"',
+                  '"I can\'t afford the payments"',
+                  '"I\'ll just save up and pay cash"',
+                  '"The interest rate is too high"',
+                  '"I can get a better deal elsewhere"'
+                ],
+                strategy: 'Focus on value, break down costs, show payment flexibility'
+              },
+              {
+                category: 'Trust/Credibility',
+                color: '#ea580c',
+                icon: '🤝',
+                description: 'Skepticism about company, process, or hidden catches',
+                examples: [
+                  '"I don\'t trust financing companies"',
+                  '"This sounds too good to be true"',
+                  '"I\'ve been burned before"',
+                  '"I don\'t want my credit checked"',
+                  '"What\'s the catch?"'
+                ],
+                strategy: 'Share company history, explain transparency, provide references'
+              },
+              {
+                category: 'Need/Urgency',
+                color: '#ca8a04',
+                icon: '⏰',
+                description: 'Hesitation about timing and necessity of purchase',
+                examples: [
+                  '"I need to think about it"',
+                  '"I want to shop around"',
+                  '"I\'m not sure I really need this"',
+                  '"I can wait until later"',
+                  '"Let me discuss with my spouse"'
+                ],
+                strategy: 'Provide more information, create appropriate urgency, offer consultation'
+              },
+              {
+                category: 'Process/Complexity',
+                color: '#7c3aed',
+                icon: '📋',
+                description: 'Confusion about how the process works or what\'s required',
+                examples: [
+                  '"This seems complicated"',
+                  '"I don\'t have time for paperwork"',
+                  '"I don\'t understand the terms"',
+                  '"Do I really own it or not?"',
+                  '"What if something goes wrong?"'
+                ],
+                strategy: 'Simplify explanation, break down steps, provide clear timeline'
+              }
+            ]
           },
           {
-            type: 'example',
-            title: 'Price/Cost Objections',
-            content: '• "This is too expensive"\n• "I can\'t afford the payments"\n• "I\'ll just save up and pay cash"\n• "The interest rate is too high"\n• "I can get a better deal elsewhere"'
+            type: 'objections-vs-concerns',
+            title: 'Objections vs. Concerns: Key Differences',
+            content: 'Learning to distinguish between objections and concerns helps you respond appropriately.',
+            comparison: {
+              objections: {
+                definition: 'Emotional resistance requiring empathy and understanding',
+                characteristics: [
+                  'Defensive tone',
+                  'Past negative experiences',
+                  'Fear-based responses',
+                  'Immediate rejection'
+                ],
+                response: 'Address with empathy first, then facts',
+                example: '"I don\'t trust financing companies" (fear-based resistance)'
+              },
+              concerns: {
+                definition: 'Legitimate questions seeking factual information',
+                characteristics: [
+                  'Curious tone',
+                  'Specific information needs',
+                  'Logical questions',
+                  'Open to learning'
+                ],
+                response: 'Provide clear, factual answers',
+                example: '"What are the payment options?" (information-seeking)'
+              }
+            }
           },
           {
-            type: 'example',
-            title: 'Trust/Credibility Objections',
-            content: '• "I don\'t trust financing companies"\n• "This sounds too good to be true"\n• "I\'ve been burned before"\n• "I don\'t want my credit checked"\n• "What\'s the catch?"'
-          },
-          {
-            type: 'example',
-            title: 'Need/Urgency Objections',
-            content: '• "I need to think about it"\n• "I want to shop around"\n• "I\'m not sure I really need this"\n• "I can wait until later"\n• "Let me discuss with my spouse"'
-          },
-          {
-            type: 'example',
-            title: 'Process/Complexity Objections',
-            content: '• "This seems complicated"\n• "I don\'t have time for paperwork"\n• "I don\'t understand the terms"\n• "Do I really own it or not?"\n• "What if something goes wrong?"'
-          },
-          {
-            type: 'text',
-            title: 'Objections vs. Concerns',
-            content: 'A concern is a legitimate question seeking information. An objection is resistance that requires addressing underlying emotions. Learning to distinguish between them helps you respond appropriately - answer concerns with facts, address objections with empathy first.'
-          },
-          {
-            type: 'tip',
-            title: 'The Golden Rule of Objections',
-            content: 'Never argue with an objection. Instead, acknowledge it, understand it, and then address the underlying concern. "I understand your concern about..." is always a good starting point.'
+            type: 'golden-rules',
+            title: 'Golden Rules for Handling Objections',
+            content: 'Essential principles that guide successful objection handling conversations.',
+            rules: [
+              {
+                rule: 'Never Argue',
+                description: 'Arguing creates conflict and destroys rapport',
+                correct: '"I understand your concern about..."',
+                incorrect: '"You\'re wrong about that..."'
+              },
+              {
+                rule: 'Listen First',
+                description: 'Let customers express their full concern before responding',
+                correct: 'Allow complete explanation, then respond',
+                incorrect: 'Interrupt with immediate solutions'
+              },
+              {
+                rule: 'Acknowledge Emotions',
+                description: 'Validate their feelings before addressing facts',
+                correct: '"That frustration makes complete sense..."',
+                incorrect: 'Jump directly to logical explanations'
+              },
+              {
+                rule: 'Address Root Causes',
+                description: 'Solve the underlying concern, not just the surface objection',
+                correct: 'Explore what\'s really bothering them',
+                incorrect: 'Only respond to what they literally said'
+              }
+            ]
           }
         ],
         keyTakeaways: [
@@ -1593,65 +2240,144 @@ export const trainingModules: TrainingModule[] = [
         ],
         content: [
           {
-            type: 'text',
-            title: 'The HEAR Method',
-            content: 'HEAR stands for Halt, Empathize, Ask, Respond. This four-step method ensures you fully understand the objection before attempting to address it, leading to more effective responses and better customer relationships.'
+            type: 'hear-method',
+            title: 'The HEAR Method: Your Foundation for Objection Handling',
+            content: 'HEAR provides a systematic approach that ensures you fully understand objections before responding.',
+            method: {
+              description: 'Four-step method for effective objection handling',
+              steps: [
+                {
+                  letter: 'H',
+                  step: 'HALT',
+                  action: 'Stop talking and listen completely',
+                  details: 'Let the customer express their full concern without interruption',
+                  example: 'Customer: "This is too expensive and I don\'t trust financing..." - Listen to everything',
+                  tips: ['Don\'t interrupt', 'Make eye contact', 'Show you\'re listening']
+                },
+                {
+                  letter: 'E',
+                  step: 'EMPATHIZE',
+                  action: 'Acknowledge their concern and show understanding',
+                  details: 'Validate their feelings before addressing facts',
+                  example: '"I completely understand your concerns about cost and trust..."',
+                  tips: ['Use their name', 'Mirror their emotions', 'Show genuine empathy']
+                },
+                {
+                  letter: 'A',
+                  step: 'ASK',
+                  action: 'Ask clarifying questions to understand the real issue',
+                  details: 'Discover the root cause behind the surface objection',
+                  example: '"What specifically concerns you about the cost?" or "What experiences have you had with financing before?"',
+                  tips: ['Ask open-ended questions', 'Listen for emotions', 'Dig deeper']
+                },
+                {
+                  letter: 'R',
+                  step: 'RESPOND',
+                  action: 'Address the underlying concern with appropriate information',
+                  details: 'Provide solutions that address their specific concerns',
+                  example: 'Address their actual worries with specific EasyPay solutions',
+                  tips: ['Be specific', 'Focus on benefits', 'Confirm understanding']
+                }
+              ]
+            }
           },
           {
-            type: 'checklist',
-            title: 'The HEAR Process',
-            items: [
-              'HALT: Stop talking and listen completely to the objection',
-              'EMPATHIZE: Acknowledge their concern and show understanding',
-              'ASK: Ask clarifying questions to understand the real issue',
-              'RESPOND: Address the underlying concern with appropriate information'
+            type: 'objection-response-cards',
+            title: 'Proven Scripts for Common Objections',
+            content: 'Master responses for the four main objection categories with tested, effective scripts.',
+            responseCards: [
+              {
+                category: 'Price/Cost',
+                color: '#dc2626',
+                objection: '"This is too expensive"',
+                hearResponse: {
+                  halt: 'Listen completely to their cost concerns',
+                  empathize: '"I understand cost is really important to you"',
+                  ask: '"When you say expensive, are you thinking about the total amount or the monthly payments?"',
+                  respond: '"When you break it down to weekly payments, this comes to about $X per week - less than many people spend on coffee. And you get to enjoy the benefits immediately while paying over time. Does that help put it in perspective?"'
+                },
+                keyPoints: ['Break down to smaller amounts', 'Compare to everyday expenses', 'Emphasize immediate benefits']
+              },
+              {
+                category: 'Trust/Credibility',
+                color: '#ea580c',
+                objection: '"I don\'t trust financing companies"',
+                hearResponse: {
+                  halt: 'Let them explain their past experiences fully',
+                  empathize: '"I completely understand that concern - you\'ve probably heard some concerning stories"',
+                  ask: '"What experiences have you had that make you feel this way?"',
+                  respond: '"That\'s exactly why we partner with EasyPay Finance. They\'ve been helping people for over 20 years with transparent terms and no hidden fees. Let me show you exactly how this works and you can see the difference..."'
+                },
+                keyPoints: ['Acknowledge past bad experiences', 'Share company history', 'Offer transparency']
+              },
+              {
+                category: 'Need/Urgency',
+                color: '#ca8a04',
+                objection: '"I need to think about it"',
+                hearResponse: {
+                  halt: 'Accept their need for consideration',
+                  empathize: '"Of course, this is an important decision"',
+                  ask: '"What specific aspects would you like to think through?"',
+                  respond: '"I\'d be happy to address any questions now so you have all the information you need. What would be most helpful to discuss?"'
+                },
+                keyPoints: ['Don\'t pressure', 'Identify specific concerns', 'Offer information']
+              },
+              {
+                category: 'Process/Complexity',
+                color: '#7c3aed',
+                objection: '"This seems complicated"',
+                hearResponse: {
+                  halt: 'Listen to what seems confusing to them',
+                  empathize: '"I can see why it might seem that way at first"',
+                  ask: '"What part seems most complicated to you?"',
+                  respond: '"It\'s actually much simpler than it appears. For you, it\'s just three easy steps: provide some basic information, review and sign the agreement, and take your purchase home. The whole process typically takes about 15 minutes. Would you like me to walk you through it?"'
+                },
+                keyPoints: ['Simplify the explanation', 'Focus on their role only', 'Provide clear timeline']
+              }
             ]
           },
           {
-            type: 'text',
-            title: 'Handling Price Objections',
-            content: 'Price objections are often about value perception rather than actual affordability. Focus on breaking down costs, emphasizing benefits, and showing how financing makes purchases more manageable.'
-          },
-          {
-            type: 'example',
-            title: 'Price Objection Scripts',
-            content: 'Objection: "This is too expensive"\nResponse: "I understand cost is important to you. When you break it down to weekly payments, this comes to about $X per week - less than many people spend on coffee. And you get to enjoy the benefits immediately while paying over time. Does that help put it in perspective?"'
-          },
-          {
-            type: 'text',
-            title: 'Addressing Trust Concerns',
-            content: 'Trust objections require transparency and education. Share information about EasyPay\'s 20+ year history, explain how the programs work, and offer references or testimonials when appropriate.'
-          },
-          {
-            type: 'example',
-            title: 'Trust Objection Scripts',
-            content: 'Objection: "I don\'t trust financing companies"\nResponse: "I completely understand that concern - there are some companies that don\'t put customers first. That\'s exactly why we partner with EasyPay Finance. They\'ve been helping people for over 20 years with transparent terms and no hidden fees. Let me show you exactly how this works..."'
-          },
-          {
-            type: 'text',
-            title: 'Overcoming Urgency Objections',
-            content: 'Need and urgency objections often indicate the customer needs more information or time to process. Provide additional value information and create appropriate urgency without pressure.'
-          },
-          {
-            type: 'example',
-            title: 'Urgency Objection Scripts',
-            content: 'Objection: "I need to think about it"\nResponse: "Of course, this is an important decision. What specific aspects would you like to think through? I\'d be happy to address any questions now so you have all the information you need."'
-          },
-          {
-            type: 'text',
-            title: 'Simplifying Process Concerns',
-            content: 'Process objections require breaking down the steps and showing how simple the process really is. Focus on what the customer needs to do, not all the behind-the-scenes work.'
-          },
-          {
-            type: 'example',
-            title: 'Process Objection Scripts',
-            content: 'Objection: "This seems complicated"\nResponse: "It\'s actually much simpler than it appears. For you, it\'s just three easy steps: provide some basic information, review and sign the agreement, and take your purchase home. The whole process typically takes about 15 minutes. Would you like me to walk you through it?"'
-          },
-          {
-            type: 'interactive',
-            title: 'Objection Handling Practice',
-            content: 'Practice handling various objections using the HEAR method with realistic customer scenarios.',
-            interactiveType: 'scenario'
+            type: 'objection-flow-process',
+            title: 'Complete Objection Handling Conversation Flow',
+            content: 'See how a complete objection handling conversation flows from initial resistance to resolution.',
+            conversationFlow: {
+              scenario: 'Customer looking at automotive repair financing',
+              stages: [
+                {
+                  stage: 1,
+                  title: 'Initial Objection',
+                  customer: '"I don\'t know... this financing stuff always has hidden fees and I can\'t afford to get burned again."',
+                  merchantThinking: 'Multiple concerns: trust + cost + past experience',
+                  action: 'Apply HEAR method'
+                },
+                {
+                  stage: 2,
+                  title: 'HALT & EMPATHIZE',
+                  merchant: '"I completely understand your concerns about hidden fees and past experiences. Nobody wants to get burned twice."',
+                  result: 'Customer feels heard and validated'
+                },
+                {
+                  stage: 3,
+                  title: 'ASK Questions',
+                  merchant: '"What happened before that made you feel burned? And what would need to be different this time for you to feel comfortable?"',
+                  customer: '"Last company added fees I didn\'t know about and the payments were way higher than they said."',
+                  result: 'Root cause identified: transparency and accurate payment information'
+                },
+                {
+                  stage: 4,
+                  title: 'RESPOND with Solutions',
+                  merchant: '"That\'s exactly why we work with EasyPay Finance - complete transparency is their specialty. Let me show you the exact payment amount and all fees upfront. The only fee is $39 processing, and I\'ll show you exactly what that covers. No surprises."',
+                  result: 'Customer sees specific solutions to their concerns'
+                },
+                {
+                  stage: 5,
+                  title: 'Confirmation',
+                  merchant: '"Does this address your main concerns about transparency and fees?"',
+                  customer: '"Yes, that\'s much clearer. Can you show me the payment options?"',
+                  result: 'Objection resolved, moving to solution discussion'
+                }
+              ]
+            }
           }
         ],
         keyTakeaways: [
@@ -1672,88 +2398,187 @@ export const trainingModules: TrainingModule[] = [
         ],
         content: [
           {
-            type: 'text',
-            title: 'Handling Multiple Objections',
-            content: 'Some customers raise multiple objections in sequence. Address each one individually using the HEAR method, but also look for patterns. Often, multiple objections indicate one underlying concern that needs addressing.'
-          },
-          {
-            type: 'text',
-            title: 'The "Yes, And" Technique',
-            content: 'Instead of using "Yes, but" which creates conflict, use "Yes, and" to acknowledge their concern while adding helpful information. This keeps the conversation collaborative rather than confrontational.'
-          },
-          {
-            type: 'example',
-            title: 'Yes, And in Action',
-            content: 'Customer: "I\'m worried about my credit and the payments are high"\nInstead of: "Yes, but our approval rates are high and payments are manageable"\nTry: "Yes, I understand credit concerns, and that\'s exactly why many customers choose our lease-to-own option - it has more flexible approval requirements and you can pay it off early to save money."'
-          },
-          {
-            type: 'text',
-            title: 'Managing Emotional Customers',
-            content: 'When customers become emotional, frustrated, or angry, focus on de-escalation first. Acknowledge their emotions, speak calmly, and avoid taking things personally. Once emotions are managed, you can address the logical concerns.'
-          },
-          {
-            type: 'checklist',
-            title: 'De-escalation Techniques',
-            items: [
-              'Lower your voice and speak more slowly',
-              'Use the customer\'s name frequently',
-              'Acknowledge their emotions: "I can see you\'re frustrated"',
-              'Take responsibility where appropriate: "Let me help fix this"',
-              'Focus on solutions, not problems',
-              'Give them time to express their concerns fully'
-            ]
-          },
-          {
-            type: 'text',
-            title: 'The Credit Conversation',
-            content: 'Credit-related objections require special sensitivity. Many customers have been embarrassed or rejected before. Approach credit discussions with empathy and focus on solutions rather than problems.'
-          },
-          {
-            type: 'example',
-            title: 'Credit Objection Response',
-            content: 'Objection: "My credit is terrible, I probably won\'t qualify"\nResponse: "I appreciate you being upfront about that. The good news is that our programs are specifically designed to help people in your situation. We look at much more than just credit scores - your current income and stability matter more to us. Let\'s see what options are available for you."'
-          },
-          {
-            type: 'text',
-            title: 'When to Walk Away',
-            content: 'Sometimes customers aren\'t ready to move forward, and that\'s okay. Recognize when to gracefully disengage while leaving the door open for future opportunities. Never pressure or guilt customers into decisions.'
-          },
-          {
-            type: 'tip',
-            title: 'Graceful Exit Strategy',
-            content: 'When a customer isn\'t ready: "I completely understand this is a big decision. Here\'s my card with information about the programs we discussed. Feel free to call me if you have any questions or when you\'re ready to move forward. There\'s no pressure - we\'ll be here when the timing is right for you."'
-          },
-          {
-            type: 'interactive',
-            title: 'Objection Handling Trainer',
-            content: 'Practice your objection handling skills with realistic scenarios!',
-            interactiveType: 'objection-trainer',
-            objections: [
+            type: 'multiple-objections-strategy',
+            title: 'Handling Multiple Objections and Complex Situations',
+            content: 'Advanced techniques for managing customers with multiple concerns or persistent resistance.',
+            strategies: [
               {
-                objection: 'I don\'t want to get into debt',
-                responses: [
-                  { text: 'This isn\'t debt, it\'s a smart way to spread payments', rating: 'good' },
-                  { text: 'I understand your concern. Our financing helps you get what you need now while managing cash flow', rating: 'excellent' },
-                  { text: 'Everyone uses financing these days', rating: 'poor' }
-                ]
+                situation: 'Sequential Objections',
+                description: 'Customer raises one objection after another',
+                approach: 'Look for patterns - multiple objections often indicate one underlying concern',
+                example: 'Credit + Cost + Time concerns usually = Financial anxiety',
+                technique: 'Address the root cause rather than each surface objection separately'
               },
               {
-                objection: 'The payments seem too high',
-                responses: [
-                  { text: 'We have different payment options to fit your budget', rating: 'excellent' },
-                  { text: 'The payments are fair for what you\'re getting', rating: 'poor' },
-                  { text: 'You can always return it if you can\'t afford it', rating: 'good' }
-                ]
+                situation: 'Contradictory Objections',
+                description: 'Customer gives conflicting reasons for hesitation',
+                approach: 'Gently point out the contradiction and explore the real concern',
+                example: '"I can\'t afford it" followed by "I\'ll just pay cash" suggests decision anxiety',
+                technique: 'Ask: "Help me understand - is it the payment amount or the financing process that concerns you most?"'
               },
               {
-                objection: 'My credit is terrible, I probably won\'t qualify',
-                responses: [
-                  { text: 'Let\'s just try and see what happens', rating: 'poor' },
-                  { text: 'Our programs are designed for people in your situation. We look at more than just credit scores', rating: 'excellent' },
-                  { text: 'Don\'t worry about your credit score', rating: 'good' }
-                ]
+                situation: 'Persistent Resistance',
+                description: 'Customer continues objecting despite good responses',
+                approach: 'Step back and ask what would need to change for them to feel comfortable',
+                example: 'After several objections: "What would need to be different about this for you to move forward?"',
+                technique: 'Focus on identifying their true decision criteria'
               }
             ]
+          },
+          {
+            type: 'yes-and-technique',
+            title: 'The "Yes, And" vs "Yes, But" Communication Strategy',
+            content: 'Transform potentially confrontational responses into collaborative conversations.',
+            comparison: {
+              wrongWay: {
+                title: '"Yes, But" - Creates Conflict',
+                pattern: 'Acknowledge + Dismiss + Counter',
+                problems: ['Sounds argumentative', 'Invalidates their concern', 'Creates defensive responses'],
+                examples: [
+                  {
+                    objection: '"I\'m worried about my credit and the payments are high"',
+                    response: '"Yes, but our approval rates are high and payments are manageable"',
+                    why_wrong: 'Dismisses both concerns without addressing them'
+                  }
+                ]
+              },
+              rightWay: {
+                title: '"Yes, And" - Maintains Collaboration',
+                pattern: 'Acknowledge + Validate + Build Solutions',
+                benefits: ['Sounds supportive', 'Validates their feelings', 'Leads to problem-solving'],
+                examples: [
+                  {
+                    objection: '"I\'m worried about my credit and the payments are high"',
+                    response: '"Yes, I understand credit concerns, and that\'s exactly why many customers choose our lease-to-own option - it has more flexible approval requirements and you can pay it off early to save money"',
+                    why_right: 'Acknowledges both concerns and offers specific solutions'
+                  }
+                ]
+              }
+            }
+          },
+          {
+            type: 'emotional-de-escalation',
+            title: 'Managing Emotional Customers and Difficult Situations',
+            content: 'Professional techniques for de-escalating tension and maintaining productive conversations.',
+            emotionalSituations: [
+              {
+                situation: 'Frustrated Customer',
+                signs: ['Raised voice', 'Rapid speech', 'Past negative experiences'],
+                approach: {
+                  immediate: 'Lower your voice, slow down, use their name',
+                  empathy: '"I can see you\'re frustrated, and that makes complete sense"',
+                  solution: 'Focus on what you CAN do, not what you can\'t'
+                }
+              },
+              {
+                situation: 'Embarrassed Customer',
+                signs: ['Quiet voice', 'Avoiding eye contact', 'Apologetic language'],
+                approach: {
+                  immediate: 'Be extra gentle, maintain dignity, normalize their situation',
+                  empathy: '"Many of our customers have been in similar situations"',
+                  solution: 'Emphasize that you specialize in helping people find solutions'
+                }
+              },
+              {
+                situation: 'Angry Customer',
+                signs: ['Hostile tone', 'Blame language', 'Aggressive body language'],
+                approach: {
+                  immediate: 'Stay calm, don\'t take it personally, focus on facts',
+                  empathy: '"I understand you\'re upset - let me see how I can help"',
+                  solution: 'Take ownership where appropriate, offer specific next steps'
+                }
+              }
+            ],
+            deEscalationTechniques: [
+              {
+                technique: 'Voice Control',
+                description: 'Lower your voice and speak more slowly',
+                why: 'Calm tones are naturally de-escalating'
+              },
+              {
+                technique: 'Name Usage',
+                description: 'Use the customer\'s name frequently',
+                why: 'Personal connection reduces hostility'
+              },
+              {
+                technique: 'Emotion Acknowledgment',
+                description: 'Directly acknowledge their emotions',
+                why: 'Validates their feelings and shows understanding'
+              },
+              {
+                technique: 'Solution Focus',
+                description: 'Immediately pivot to what you can do',
+                why: 'Moves conversation from problems to solutions'
+              }
+            ]
+          },
+          {
+            type: 'credit-conversation-guide',
+            title: 'The Sensitive Credit Conversation',
+            content: 'Special approaches for discussing credit-related concerns with empathy and professionalism.',
+            creditApproaches: {
+              avoidPhrases: [
+                '"What\'s wrong with your credit?"',
+                '"How bad is your credit?"',
+                '"You probably won\'t qualify"',
+                '"Most people don\'t have credit problems"',
+                '"You should have paid your bills"'
+              ],
+              usePhrases: [
+                '"Many of our customers have been in similar situations"',
+                '"We specialize in helping people find solutions"',
+                '"Your current situation matters more to us than your past"',
+                '"Let\'s see what options work best for you"',
+                '"We look at much more than just credit scores"'
+              ],
+              conversationFlow: {
+                opening: 'Normalize their situation and remove shame',
+                information: 'Explain how EasyPay\'s approach is different',
+                solution: 'Focus on available options, not limitations',
+                confidence: 'Build hope while being realistic'
+              }
+            }
+          },
+          {
+            type: 'graceful-exit-strategy',
+            title: 'When and How to Gracefully Disengage',
+            content: 'Recognize when to step back while keeping future opportunities open.',
+            exitSignals: [
+              'Customer becomes increasingly agitated despite de-escalation',
+              'Multiple objections persist after thorough responses',
+              'Customer explicitly states they\'re not interested multiple times',
+              'Personal attacks or inappropriate behavior'
+            ],
+            exitStrategy: {
+              steps: [
+                {
+                  step: 1,
+                  action: 'Acknowledge their position',
+                  script: '"I completely understand this isn\'t the right fit for you right now"'
+                },
+                {
+                  step: 2,
+                  action: 'Remove pressure',
+                  script: '"There\'s absolutely no pressure - this decision has to feel right for you"'
+                },
+                {
+                  step: 3,
+                  action: 'Leave door open',
+                  script: '"Here\'s my card with information about what we discussed"'
+                },
+                {
+                  step: 4,
+                  action: 'Future availability',
+                  script: '"Feel free to call if you have questions or when timing is better"'
+                },
+                {
+                  step: 5,
+                  action: 'Professional close',
+                  script: '"We\'ll be here when you\'re ready, and I hope you find the perfect solution"'
+                }
+              ],
+              benefits: ['Maintains relationship', 'Shows professionalism', 'Creates future opportunities', 'Reduces stress for both parties']
+            }
           }
         ],
         keyTakeaways: [

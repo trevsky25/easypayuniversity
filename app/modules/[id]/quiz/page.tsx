@@ -31,7 +31,7 @@ export default function QuizPage() {
   // Transform module quiz data to QuizComponent format
   const transformedQuestions = quizData.questions.map((q, index) => ({
     id: index + 1,
-    type: q.type as 'multiple-choice' | 'true-false' | 'text-input' | 'scenario',
+    type: q.type as 'multiple-choice' | 'true-false' | 'text-input' | 'scenario' | 'select-multiple',
     question: q.question,
     options: q.options,
     correctAnswer: q.type === 'select-multiple' 

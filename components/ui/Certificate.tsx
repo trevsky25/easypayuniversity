@@ -2,6 +2,7 @@
 
 import { Award, CheckCircle, Star, Sparkles } from 'lucide-react'
 import { EBucksIcon } from './eBucksIcon'
+import { useEffect } from 'react'
 
 interface CertificateProps {
   recipientName: string
@@ -140,6 +141,25 @@ export function CertificateModal({
   onClose: () => void
   certificateData: CertificateProps
 }) {
+  // Handle escape key to close modal
+  useEffect(() => {
+    const handleEscape = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') {
+        onClose()
+      }
+    }
+
+    if (isOpen) {
+      document.addEventListener('keydown', handleEscape)
+      // Prevent body scroll when modal is open
+      document.body.style.overflow = 'hidden'
+    }
+
+    return () => {
+      document.removeEventListener('keydown', handleEscape)
+      document.body.style.overflow = 'unset'
+    }
+  }, [isOpen, onClose])
   const handleDownload = () => {
     // Create a new window with the certificate
     const printWindow = window.open('', '_blank')
@@ -218,8 +238,15 @@ export function CertificateModal({
   if (!isOpen) return null
 
   return (
-    <div className="fixed inset-0 flex items-center justify-center p-4" style={{ zIndex: 9999 }}>
-      <div className="bg-white rounded-xl max-w-5xl w-full max-h-[95vh] overflow-y-auto shadow-2xl border-2 border-easypay-green">
+    <div 
+      className="fixed inset-0 bg-black/50 flex items-center justify-center p-4" 
+      style={{ zIndex: 9999 }}
+      onClick={onClose}
+    >
+      <div 
+        className="bg-white rounded-xl max-w-5xl w-full max-h-[95vh] overflow-y-auto shadow-2xl border-2 border-easypay-green"
+        onClick={(e) => e.stopPropagation()}
+      >
         {/* Fixed Header */}
         <div className="flex items-center justify-between p-6 pb-4 border-b border-gray-200 flex-shrink-0">
           <h2 className="text-2xl font-bold text-gray-900">🎉 Congratulations! Certificate Earned</h2>
